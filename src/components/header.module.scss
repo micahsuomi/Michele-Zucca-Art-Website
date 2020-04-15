@@ -1,0 +1,37 @@
+.header {
+    background-color: deeppink;
+}
+
+.title {
+    color: #000000;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    background-color: deeppink;
+    
+}
+.link {
+    color: white;
+}
+
+.nav-item {
+    color: white;
+    font-size: .9rem;
+    margin: 1.3rem;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: darkslategray;
+}
+
+.active-nav-item {
+    color: #333333;
+}
+
