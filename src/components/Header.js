@@ -17,7 +17,6 @@ const Header = () => {
         }
       }
     `);
-    console.log(data)
     return (
         <header styles={headerStyles.header}>
         <h2>
