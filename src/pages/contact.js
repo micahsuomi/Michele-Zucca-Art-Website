@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
-import { navigate } from 'gatsby-link'
-
+import { navigate } from 'gatsby-link';
 import Head from '../components/Head';
 
 const encode = (data) => {
