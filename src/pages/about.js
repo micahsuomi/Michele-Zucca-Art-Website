@@ -27,14 +27,16 @@ const AboutPage = (props) => {
 
        }
    }
+
+  
  
     return (
         <div>
             <Layout>
             <Head title="About" />
-            <h1>{props.data.contentfulAbout.title}</h1>
-            <p>{documentToReactComponents(props.data.contentfulAbout.body.json, options)}</p>
-            <p>Need a developer? <Link to="/contact">Contact Me</Link></p>
+             <h1>{props.data.contentfulAbout.title}</h1>
+            <p>{documentToReactComponents(props.data.contentfulAbout.body.json, options)}</p> 
+            <p> If you would like to get in touch,  <Link to="/contact">Contact Me</Link></p>
             </Layout>
         </div>
     )

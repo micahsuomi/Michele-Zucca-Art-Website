@@ -1,5 +1,6 @@
 .header {
-    background-color: deeppink;
+    display: flex;
+    
 }
 
 .title {
@@ -8,30 +9,34 @@
     text-decoration: none;
 }
 
+.subtitle {
+    font-size: 10px;
+    color: grey;
+}
+
 .nav-list {
     display: flex;
     list-style: none;
     justify-content: space-around;
     align-items: center;
-    background-color: deeppink;
     
 }
 .link {
-    color: white;
+    color: rgb(53, 36, 46);
 }
 
 .nav-item {
-    color: white;
+    color: rgb(53, 36, 46);
     font-size: .9rem;
     margin: 1.3rem;
     text-decoration: none;
 }
 
 .nav-item:hover {
-    color: darkslategray;
+    color: lightgray;
 }
 
 .active-nav-item {
-    color: #333333;
+    border-bottom: 2px solid rgb(53, 36, 46);
 }
 

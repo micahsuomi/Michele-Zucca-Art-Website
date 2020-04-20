@@ -2,8 +2,9 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'My Web Dev Blog',
+    title: 'Michele Zucca',
     author: 'Michele Zucca',
+    subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -20,6 +21,16 @@ module.exports = {
       options: {
         name: 'src',
         path: `${__dirname}/src/`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Montserrat`,
+          `Montserrat \:300,400,700` // you can also specify font weights and styles
+        ],
+        display: 'swap'
       }
     },
     'gatsby-plugin-sharp',

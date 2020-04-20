@@ -24,16 +24,16 @@ import Head from '../components/Head';
 // `
 
 export const query = graphql`
-  query($slug: String!) {
-    contentfulBlogPost(slug: {eq: $slug}) {
-      title
-      publishedDate(formatString: "MMMM Do, YYYY")
-      body {
-        json
+    query($slug: String!) {
+      contentfulBlogPost(slug: {eq: $slug}) {
+        title
+        publishedDate(formatString: "MMMM Do, YYYY")
+        body {
+          json
+        }
       }
-    }
 
-  }
+    }
 `
 
 

@@ -1,0 +1,40 @@
+.container {
+    padding: 4rem 3rem;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0;
+    margin-top: 2rem;
+}
+
+.card {
+    padding: 1rem;
+    // border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 3px;
+    // background-color: rgb(230, 225, 225);
+}
+
+
+.link {
+    text-decoration: none;
+    color: rgb(68, 64, 64);
+    
+}
+
+.link h3 {
+    font-size: var(--font-size-small);
+
+}
+
+.img {
+    width: 100%;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}

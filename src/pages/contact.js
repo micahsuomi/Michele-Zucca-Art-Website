@@ -11,7 +11,7 @@ const encode = (data) => {
   
 //   const Contact = () => {
 //     const [state, setState] = React.useState({})
-  
+
 class Contact extends Component {
     state = {}
 

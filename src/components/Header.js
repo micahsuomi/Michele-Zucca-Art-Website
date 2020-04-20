@@ -12,28 +12,69 @@ const Header = () => {
         site {
           siteMetadata {
             title
-            author
+            subtitle
           }
         }
       }
     `);
     return (
         <header styles={headerStyles.header}>
-        <h2>
+          <div>
         <Link to ="/" className={headerStyles.title}>
-        {data.site.siteMetadata.title}
+        <h2>{data.site.siteMetadata.title}</h2>
+        <p className={headerStyles.subtitle}>
+        {data.site.siteMetadata.subtitle}
+        </p>
         </Link>
-        </h2>
+        </div>
 
         <nav>
             <ul className={headerStyles.navList}>
-                <li><Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to ="/">Home</Link></li>
-                <li><Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to ="/about">About Me</Link></li>
-                <li><Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to ="/blog">Blog</Link></li>
-                <li><Link className={headerStyles.navItem} activeClassName={headerStyles.activeNavItem} to ="/contact">Contact</Link></li>
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/">
+                  Home
+                </Link></li>
+
+                <li><Link className={headerStyles.navItem}
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/about">
+                  About Me
+                </Link></li>
+
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/portfolio">
+                  Portfolio
+                  </Link></li>
+
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/abstracts">
+                  Abstracts
+                  </Link></li>  
+
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/digital">
+                  Digital
+                  </Link></li>
+
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/blog">
+                  Blog
+                  </Link></li>
+
+                <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/contact">
+                  Contact
+                  </Link></li>
             </ul>
             
         </nav>
+      
         </header>
     )
 }
