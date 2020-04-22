@@ -3,6 +3,7 @@ import {Link, useStaticQuery, graphql} from 'gatsby';
 import Layout from '../components/Layout';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../components/Head';
+import aboutStyles from './about.module.scss';
 
 const AboutPage = (props) => {
    const data = useStaticQuery(graphql`
@@ -22,7 +23,7 @@ const AboutPage = (props) => {
             console.log(node)
             const alt = node.data.target.fields.title['en-US'];
             const url = node.data.target.fields.file['en-US'].url;
-            return <img src={url} alt={alt} />
+            return <img src={url} alt={alt} className={aboutStyles.aboutImg}/>
         }
 
        }

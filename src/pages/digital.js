@@ -47,7 +47,7 @@ const PortfolioPage = () => {
             <ul className={portfolioStyles.wrapper}>
               
                 {data.allContentfulDigital.edges.map((edge) => {
-                  let imagePath 
+                  let imagePath; 
                   for (const item of edge.node.body.json.content) {
                    if(item.nodeType === "embedded-asset-block") {
                     imagePath = item

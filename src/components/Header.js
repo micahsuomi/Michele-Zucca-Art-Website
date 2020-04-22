@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 // import './header.module.scss';
 import headerStyles from './header.module.scss';
+import toggleBar from '../imgs/toggle-bar.svg';
 
 
 
@@ -29,6 +30,10 @@ const Header = () => {
         </div>
 
         <nav>
+          <div>
+            <img src={toggleBar} alt="toggle-bar" className={headerStyles.hamburger}
+            />
+          </div>
             <ul className={headerStyles.navList}>
                 <li><Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 

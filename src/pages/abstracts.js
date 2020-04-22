@@ -8,7 +8,10 @@ import Head from '../components/Head';
 const AbstractsPage = () => {
     const data = useStaticQuery(graphql`
     query {
-        allContentfulAbstracts {
+        allContentfulAbstracts(
+          sort: {
+            fields: createdAt,
+            order: ASC} ) {
           edges {
             node {
               title

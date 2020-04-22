@@ -40,3 +40,33 @@
     border-bottom: 2px solid rgb(53, 36, 46);
 }
 
+.hamburger {
+    display: none;
+}
+.hide-desktop {
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    nav {
+        position: relative;
+    }
+    .hide-mobile {
+        display: none;
+    }
+    .show-mobile {
+        display: block;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 2%;
+        width: 6%;
+
+    }
+    .nav-list {
+        flex-direction: column;
+    }
+}
+
