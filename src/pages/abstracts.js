@@ -16,8 +16,11 @@ const AbstractsPage = () => {
             node {
               title
               slug
-              body {
-                json
+              image {
+                file {
+                  url
+                }
+                description
               }
             }
           }
@@ -50,6 +53,7 @@ const AbstractsPage = () => {
             <ul className={portfolioStyles.wrapper}>
               
                 {data.allContentfulAbstracts.edges.map((edge) => {
+                  /*
                   let imagePath 
                   for (const item of edge.node.body.json.content) {
                    if(item.nodeType === "embedded-asset-block") {
@@ -59,13 +63,12 @@ const AbstractsPage = () => {
                   }
                   console.log(imagePath.data.target)
                  const url = imagePath.data.target.fields.file['en-US'].url
-                 const alt = imagePath.data.target.fields.title['en-US']
+                 const alt = imagePath.data.target.fields.title['en-US']*/
                     return (
                       <div className={portfolioStyles.card}>
                         <Link to ={`/abstracts/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <img src={url} alt={alt} className={portfolioStyles.img}/> 
-
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/> 
                         </Link>
                        
 

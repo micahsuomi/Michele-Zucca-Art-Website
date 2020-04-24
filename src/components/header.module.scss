@@ -1,6 +1,8 @@
-.header {
-    display: flex;
-    
+header {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: fixed;
+    width: 80vw;
 }
 
 .title {
@@ -14,7 +16,10 @@
     color: grey;
 }
 
-.nav-list {
+nav {
+    position: fixed;
+}
+.nav-links {
     display: flex;
     list-style: none;
     justify-content: space-around;
@@ -25,13 +30,31 @@
     color: rgb(53, 36, 46);
 }
 
-.nav-item {
+.nav-item,
+details {
     color: rgb(53, 36, 46);
     font-size: .9rem;
     margin: 1.3rem;
     text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
 }
 
+details summary::-webkit-details-marker {
+    background: url(../imgs/double-down-24.png) center no-repeat;
+    color: transparent;
+}
+details[open] summary::-webkit-details-marker {
+    background: url(../imgs/double-down-24.png) center no-repeat;
+    color: transparent;
+}
+
+.nestedNavList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+}
 .nav-item:hover {
     color: lightgray;
 }
@@ -48,6 +71,14 @@
 }
 
 @media screen and (max-width: 850px) {
+    header {
+        h2 {
+            font-size: 1rem;
+        }
+        .subtitle {
+            display: none;
+        }
+    }
     nav {
         position: relative;
     }
@@ -63,10 +94,40 @@
         position: absolute;
         right: 2%;
         width: 6%;
+        cursor: pointer;
+        z-index: 3;
 
     }
-    .nav-list {
+    
+    
+    .nav-links {
         flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        /* background-image: linear-gradient(135deg, #667eea 0%, #195aae 100%);     */
+        background-image: inherit;
+        top: 0%;
+        left: 0%;
+        padding: 0;
+        -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        transition: all ease-in-out .1s;
+        opacity: .95;
+        background-color: black;
+        color: white;
+        
+    }
+
+    .nav-links.open {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        
+    }
+
+    .nav-list.close {
+        display: none;
     }
 }
 

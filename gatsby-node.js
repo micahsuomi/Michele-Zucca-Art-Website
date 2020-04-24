@@ -3,29 +3,12 @@
 
 const path = require('path');
 
-/*
- module.exports.onCreateNode = ({ node, actions }) => {
-     const {createNodeField} = actions;
-
-     if(node.internal.type === 'MarkdownRemark') {
-         const slug = path.basename(node.fileAbsolutePath, '.md')
-
-         console.log('@@@@@@@@@@@@@', slug)
-         createNodeField({
-             node,
-             name: 'slug',
-             value: slug
-         })
-
-     }
- }*/
-
  
  module.exports.createPages = async ( {graphql, actions }) => {
   const {createPage} = actions;
   //1. get path to template
   const abstractsTemplate = path.resolve('./src/templates/abstracts.js')
-  const res = await graphql(`
+  const resAbstracts = await graphql(`
   query {
     allContentfulAbstracts {
         edges {
@@ -38,8 +21,7 @@ const path = require('path');
       }
     }
   `)
-  console.log('this is the data',res.data)
-  res.data.allContentfulAbstracts.edges.forEach((edge) => {
+  resAbstracts.data.allContentfulAbstracts.edges.forEach((edge) => {
       createPage({
           //the component in the object is the path to the component
           component: abstractsTemplate,
@@ -50,15 +32,9 @@ const path = require('path');
           }
       })
   })
-}
 
-
-
-module.exports.createPages = async ( {graphql, actions }) => {
-    const {createPage} = actions;
-    //1. get path to template
-    const blogTemplate = path.resolve('./src/templates/blog.js')
-    const res = await graphql(`
+  const blogTemplate = path.resolve('./src/templates/blog.js')
+    const resBlog = await graphql(`
     query {
       allContentfulBlogPost {
           edges {
@@ -72,7 +48,7 @@ module.exports.createPages = async ( {graphql, actions }) => {
     `)
 
 
-    res.data.allContentfulBlogPost.edges.forEach((edge) => {
+    resBlog.data.allContentfulBlogPost.edges.forEach((edge) => {
         createPage({
             //the component in the object is the path to the component
             component: blogTemplate,
@@ -83,14 +59,9 @@ module.exports.createPages = async ( {graphql, actions }) => {
             }
         })
     })
-  }
 
-    
-    module.exports.createPages = async ( {graphql, actions }) => {
-      const {createPage} = actions;
-      //1. get path to template
-      const digitalTemplate = path.resolve('./src/templates/digital.js')
-      const res = await graphql(`
+    const digitalTemplate = path.resolve('./src/templates/digital.js')
+      const resDigital = await graphql(`
       query {
         allContentfulDigital {
             edges {
@@ -103,8 +74,7 @@ module.exports.createPages = async ( {graphql, actions }) => {
           }
         }
       `)
-      console.log('this is the data',res.data)
-      res.data.allContentfulDigital.edges.forEach((edge) => {
+      resDigital.data.allContentfulDigital.edges.forEach((edge) => {
           createPage({
               //the component in the object is the path to the component
               component: digitalTemplate,
@@ -115,8 +85,9 @@ module.exports.createPages = async ( {graphql, actions }) => {
               }
           })
       })
-    }
-  
 
-    //2. get markdown data
-    //3. create new pages
+
+}
+
+
+    

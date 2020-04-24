@@ -1,5 +1,5 @@
-.container {
-    padding: 4rem 3rem;
+.portfolio-container {
+    padding: 5rem 3rem;
 }
 .wrapper {
     display: grid;
@@ -29,6 +29,7 @@
 
 .link h3 {
     font-size: var(--font-size-small);
+    font-weight: 500;
 
 }
 
@@ -49,3 +50,13 @@
 
     }
 }
+
+
+@media screen and (max-width: 500px) {
+   
+    .wrapper {
+        grid-template-columns: 1fr;
+
+    }
+}
+

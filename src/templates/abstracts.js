@@ -11,6 +11,12 @@ query($slug: String!) {
   contentfulAbstracts( slug: {eq: $slug} ) {
     title
     subtitle
+    image {
+      file {
+        url
+      }
+      description
+    }
     body {
       json
     }
@@ -42,7 +48,8 @@ const Abstracts = (props) => {
           <div className={portfolioStyles.container}>
             <h2>{props.data.contentfulAbstracts.title}</h2>
             <h4>{props.data.contentfulAbstracts.subtitle}</h4>
-            {documentToReactComponents(props.data.contentfulAbstracts.body.json, options)}
+            <img src={props.data.contentfulAbstracts.image.file.url} alt={props.data.contentfulAbstracts.image.description} className={portfolioStyles.image} />
+            {documentToReactComponents(props.data.contentfulAbstracts.body.json, options)} 
             </div>
 
         </Layout>

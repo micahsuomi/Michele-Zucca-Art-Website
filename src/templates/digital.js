@@ -11,6 +11,12 @@ query($slug: String!) {
   contentfulDigital( slug: {eq: $slug} ) {
     title
     subtitle
+    image {
+      file {
+        url
+      }
+      description
+    }
     body {
       json
     }
@@ -42,6 +48,7 @@ const Digital = (props) => {
           <div className={portfolioStyles.container}>
             <h2>{props.data.contentfulDigital.title}</h2>
             <h4>{props.data.contentfulDigital.subtitle}</h4>
+            <img src={props.data.contentfulDigital.image.file.url} alt={props.data.contentfulDigital.image.description} className={portfolioStyles.image}/>
             {documentToReactComponents(props.data.contentfulDigital.body.json, options)}
             </div>
 
