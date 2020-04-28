@@ -1,28 +1,33 @@
 import React, { useState } from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 // import './header.module.scss';
 import headerStyles from './header.module.scss';
 import './navbar.css';
 import toggleBar from '../imgs/toggle-bar.svg';
 
+let testStyles = [ 
 
-
-const Header = () => {
-    //it will allowe us to query the graphql api
-    const data = useStaticQuery(graphql`
-    query {
-        site {
-          siteMetadata {
-            title
-            subtitle
-          }
-        }
-      }
-    `);
-
-    let isClicked
-    let [state, setState] = useState([isClicked = false])
+  {clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)'},  
+  {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'}
     
+  ]
+
+  let style1 = {backgroundColor: 'red'}
+  let style2 = {backgroundColor: 'green'}
+
+      
+    
+  
+
+const Header = ({title, subtitle}) => {
+    //it will allowe us to query the graphql api
+    
+
+
+    let [state, setState] = useState({})
+    let navLinksClass = ["nav-links"];
+
+   
     state = { isToggleShowing: true,
               isExitShowing: false,
               addClass: false,
@@ -34,17 +39,27 @@ const Header = () => {
             }
 
             const toggle = () => {
-              navLinksClass.push("open");
-              console.log(navLinksClass)
+              
+              state = {
+                isClicked: !state.isClicked, 
+                addClass: !state.addClass, 
+                hideClass: !state.hideClass, 
+                isToggleShowing: false, 
+                isExitShowing: true
+                }
 
-
-              setState({
-                  isClicked: true, 
-                  addClass: true, 
-                  hideClass: !state.hideClass, 
-                  isToggleShowing: false, 
-                  isExitShowing: true})
-                  console.log(state)
+                console.log('isclicked', state.isClicked)
+                if(state.isClicked && state.addClass) {
+                  console.log('closing')
+                  navLinksClass.splice(1)
+                  console.log(navLinksClass)
+                } else if(state.isClicked === false && state.addClass === false){
+                  console.log(navLinksClass)
+                  navLinksClass.push('open')
+                  console.log('closing')
+                  
+                }
+ 
           }
         
           const close = () => {
@@ -93,26 +108,17 @@ const Header = () => {
               console.log('close tools')
           }
       
-          let navLinksClass = ["nav-links"];
-          let navDrowpDown = ["nav-dropdown"]
-        
-        
-        if(state.addClass === false && state.isClicked === true) {
-            navLinksClass.push("open");
-            console.log(navLinksClass)
-        }
-            else if(state.addClass && state.isClicked === true) {
-                navLinksClass.slice(1)
-            }
-        
+          
+    console.log(navLinksClass) 
+  
 
     return (
-        <header styles={headerStyles.header}>
+        <header>
           <div>
         <Link to ="/" className={headerStyles.title}>
-        <h2>{data.site.siteMetadata.title}</h2>
+        <h2>{title}</h2>
         <p className={headerStyles.subtitle}>
-        {data.site.siteMetadata.subtitle}
+        {subtitle}
         </p>
         </Link>
         </div>
@@ -123,6 +129,7 @@ const Header = () => {
             <img src={toggleBar} alt="toggle-bar" className={headerStyles.hamburger} onClick={toggle}
             />
           </div>
+          
             <ul className={navLinksClass.join('')}>
                 <li><Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
@@ -181,6 +188,12 @@ const Header = () => {
                 to ="/contact">
                   Contact
                   </Link></li>
+
+                  <li><Link className={headerStyles.navItem} 
+                activeClassName={headerStyles.activeNavItem} 
+                to ="/calendly">
+                  Book a meeting
+                  </Link></li>
             </ul>
             
         </nav>
@@ -189,5 +202,7 @@ const Header = () => {
         </header>
     )
 }
+
+
 
 export default Header;

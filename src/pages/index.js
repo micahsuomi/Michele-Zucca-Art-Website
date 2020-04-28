@@ -33,7 +33,7 @@ const IndexPage = (props) => {
         <Layout>
             <Head title="Home" />
             <h1>{props.data.contentfulHome.title}</h1>
-            <p>{documentToReactComponents(props.data.contentfulHome.body.json,images)}</p>
+            {documentToReactComponents(props.data.contentfulHome.body.json,images)}
             <p>Need a developer? <Link to="/contact">Contact Me</Link></p>
         </Layout>
     )

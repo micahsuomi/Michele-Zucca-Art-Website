@@ -65,7 +65,7 @@ const AbstractsPage = () => {
                  const url = imagePath.data.target.fields.file['en-US'].url
                  const alt = imagePath.data.target.fields.title['en-US']*/
                     return (
-                      <div className={portfolioStyles.card}>
+                      <div className={portfolioStyles.card} key={edge.node.slug}>
                         <Link to ={`/abstracts/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
                         <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/> 

@@ -19,7 +19,7 @@
         left: 0%;
         padding: 0;
         -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); 
         transition: all ease-in-out .1s;
         opacity: .95;
         background-color: black;
