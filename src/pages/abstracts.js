@@ -25,6 +25,7 @@ const AbstractsPage = () => {
             }
           }
         }
+        
       }
     `)
     console.log(data)
@@ -46,7 +47,6 @@ const AbstractsPage = () => {
     
 
     return(
-        <div className={portfolioStyles.container}>
             <Layout>
             <Head title = "digital" />
             <h2>Abstracts</h2>
@@ -81,7 +81,6 @@ const AbstractsPage = () => {
 
             </Layout>
 
-        </div>
     )
 
 }

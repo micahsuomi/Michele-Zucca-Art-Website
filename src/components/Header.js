@@ -5,112 +5,18 @@ import headerStyles from './header.module.scss';
 import './navbar.css';
 import toggleBar from '../imgs/toggle-bar.svg';
 
-let testStyles = [ 
 
-  {clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)'},  
-  {clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'}
-    
-  ]
-
-  let style1 = {backgroundColor: 'red'}
-  let style2 = {backgroundColor: 'green'}
-
-      
-    
   
-
-const Header = ({title, subtitle}) => {
-    //it will allowe us to query the graphql api
-    
-
-
-    let [state, setState] = useState({})
-    let navLinksClass = ["nav-links"];
-
-   
-    state = { isToggleShowing: true,
-              isExitShowing: false,
-              addClass: false,
-              hideClass: true,
-              isClicked: false,
-              isSwitched: false,
-              isMarketClicked: false,
-              isToolsClicked: false
-            }
-
+const Header = ( {title, subtitle} ) => {
+  
+    const [isClicked, setState] = useState(false)
+    let navLinksClass = ['nav-links']
+    let navLinksClassOpen = ['nav-links open']
+       
             const toggle = () => {
-              
-              state = {
-                isClicked: !state.isClicked, 
-                addClass: !state.addClass, 
-                hideClass: !state.hideClass, 
-                isToggleShowing: false, 
-                isExitShowing: true
-                }
-
-                console.log('isclicked', state.isClicked)
-                if(state.isClicked && state.addClass) {
-                  console.log('closing')
-                  navLinksClass.splice(1)
-                  console.log(navLinksClass)
-                } else if(state.isClicked === false && state.addClass === false){
-                  console.log(navLinksClass)
-                  navLinksClass.push('open')
-                  console.log('closing')
-                  
-                }
+              setState(!isClicked) 
  
           }
-        
-          const close = () => {
-              setState({
-                  addClass: !state.addClass, 
-                  isToggleShowing: true, 
-                  isExitShowing: false})
-        
-          }
-      
-          const closeNavigation = () => {
-              setState({
-                  isClicked: true, 
-                  addClass: !state.addClass,
-                  isToggleShowing: true, 
-                  isExitShowing: false,
-                  isMarketClicked: false
-      
-              })
-              console.log('close market')
-            
-      
-          }
-      
-          const openMarket = (e) => {
-              setState({isMarketClicked: true,
-                        isToolsClicked: false})
-              console.log('opening market')
-          }
-      
-          const openTools = () => {
-              setState({isToolsClicked: true,
-                            isMarketClicked: false})
-                              console.log('opening tools')
-      
-                              
-          }
-      
-          const closeMarket = () => {
-              setState({isMarketClicked: false})
-              console.log('close market')
-          }
-      
-          const closeTools = () => {
-              setState({isToolsClicked: false});
-              console.log('close tools')
-          }
-      
-          
-    console.log(navLinksClass) 
-  
 
     return (
         <header>
@@ -125,16 +31,19 @@ const Header = ({title, subtitle}) => {
 
         <div>
         <nav>
-          <div>
-            <img src={toggleBar} alt="toggle-bar" className={headerStyles.hamburger} onClick={toggle}
+          <div onClick={toggle}>
+            <img src={toggleBar} alt="toggle-bar" 
+            className={headerStyles.hamburger} 
+            style={isClicked ? style1 : style2}
             />
           </div>
-          
-            <ul className={navLinksClass.join('')}>
-                <li><Link className={headerStyles.navItem} 
+        
+            <ul className={isClicked ? navLinksClassOpen : navLinksClass}>
+                <li>  
+                <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/"
-                onClick={closeNavigation}>
+                >
                 
                   Home
                 </Link></li>
@@ -203,6 +112,7 @@ const Header = ({title, subtitle}) => {
     )
 }
 
-
+let style1 = {backgroundColor : 'white', padding: '.5rem', borderRadius: '3px'}
+let style2 = {backgroundColor : 'none'}
 
 export default Header;

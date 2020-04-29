@@ -34,7 +34,7 @@ const IndexPage = (props) => {
             <Head title="Home" />
             <h1>{props.data.contentfulHome.title}</h1>
             {documentToReactComponents(props.data.contentfulHome.body.json,images)}
-            <p>Need a developer? <Link to="/contact">Contact Me</Link></p>
+            <p><Link to="/contact">Contact Me</Link></p>
         </Layout>
     )
         

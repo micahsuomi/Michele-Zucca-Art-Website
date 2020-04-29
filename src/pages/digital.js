@@ -27,7 +27,6 @@ const PortfolioPage = () => {
     console.log(data)
 
     return(
-        <div className={portfolioStyles.container}>
             <Layout>
             <Head title = "digital" />
             <h2>Digital</h2>
@@ -62,7 +61,6 @@ const PortfolioPage = () => {
 
             </Layout>
 
-        </div>
     )
 
 }
