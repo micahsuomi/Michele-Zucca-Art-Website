@@ -52,35 +52,35 @@
 
     .line {
         position: absolute;
-        height: 7px;
-        width: 70%;
+        height: 5px;
+        width: 53%;
         background: white;
         border-radius: 8px;
 
     }
     .top {  
         transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-        top: 18%;
+        top: 29%;
     }
 
     .middle {
         transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-        top: 45%;
+        top: 46%;
     }
 
     .bottom {
         transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-        top: 71%;
+        top: 63%;
     }
 
     .top.active  {
         transform: rotate(45deg);
-        top: 48%;
+        top: 46%;
     }
 
     .middle.active, .bottom.active {
         transform: rotate(-45deg);
-        top: 48%;
+        top: 46%;
     }
 }
 

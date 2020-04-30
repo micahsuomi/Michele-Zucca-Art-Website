@@ -83,10 +83,6 @@ details:hover,
     border-bottom: 2px solid rgb(53, 36, 46);
 }
 
-.hamburger {
-    display: none;
-}
-
 .toggle-wrapper {
     display: none;
 }
@@ -116,10 +112,10 @@ details:hover,
         background-color: rgb(53, 36, 46);
         display: inline-block;
         border-radius: 500px;
-        margin-left: 27rem;
-        margin-top: -1rem;
+        margin-left: 28.3rem;
+        margin-top: -3rem;
         position: relative;
-        padding: 8px;
+        padding: 1px;
         cursor: pointer;
         z-index: 3;
 
@@ -186,7 +182,7 @@ details:hover,
     }
 
     .toggle-wrapper {
-        margin-left: 13rem;
+        margin-left: 14rem;
         margin-top: 0;
 
     }
@@ -196,4 +192,12 @@ details:hover,
         
     }
 }
+
+@media screen and (max-width: 320px) {
+    .toggle-wrapper {
+        margin-left: 11.5rem;
+    }
+
+}
+
 
