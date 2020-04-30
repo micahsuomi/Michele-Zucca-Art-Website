@@ -86,6 +86,10 @@ details:hover,
 .hamburger {
     display: none;
 }
+
+.toggle-wrapper {
+    display: none;
+}
 .hide-desktop {
     display: none;
 }
@@ -106,18 +110,33 @@ details:hover,
     .show-mobile {
         display: block;
     }
-    
-    .hamburger {
-        display: block;
-        position: absolute;
-        top: 6%;
-        right: 6%;
-        width: 8%;
+   
+
+    .toggle-wrapper {
+        background-color: rgb(53, 36, 46);
+        display: inline-block;
+        border-radius: 500px;
+        margin-left: 27rem;
+        margin-top: -1rem;
+        position: relative;
+        padding: 8px;
         cursor: pointer;
         z-index: 3;
-        
+
 
     }
+
+    .toggle-bar {
+        width: 64px;
+        height: 64px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
     
 
     .nav-item,
@@ -149,15 +168,7 @@ details:hover,
         
     }
 
-    .nav-links.open {
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        
-    }
-
-    .nav-list.close {
-        display: none;
-    }
+    
 
     summary {
         text-align: center;
@@ -168,15 +179,21 @@ details:hover,
     .subtitle {
         display: none;
     }
-    .hamburger {
-        right: 8%;
-
-    }
+   
     .nav-item,
      details {
         font-size: var(--font-size-small);
     }
 
-    
+    .toggle-wrapper {
+        margin-left: 13rem;
+        margin-top: 0;
+
+    }
+    .toggle-bar {
+        width: 45px;
+        height: 45px;
+        
+    }
 }
 

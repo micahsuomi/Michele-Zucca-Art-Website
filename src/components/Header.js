@@ -10,9 +10,19 @@ import exit from '../imgs/technology.png';
   
 const Header = ( {title, subtitle} ) => {
   
-    const [isClicked, setState] = useState(false)
-    let navLinksClass = ['nav-links']
-    let navLinksClassOpen = ['nav-links open']
+    const [isClicked, setState] = useState(false);
+    let navLinksClass = ['nav-links'];
+    let navLinksClassOpen = ['nav-links open'];
+
+    let lineClassOne = ['line top'];
+    let lineClassOneActive = ['line top active'];
+
+    let lineClassTwo = ['line middle'];
+    let lineClassTwoActive = ['line middle active'];
+
+    let lineClassThree = ['line bottom'];
+    let lineClassThreeActive = ['line bottom active'];
+
        
             const toggle = () => {
               setState(!isClicked) 
@@ -32,8 +42,13 @@ const Header = ( {title, subtitle} ) => {
 
         <div>
         <nav>
-          <div onClick={toggle}>
-            {
+          <div className={headerStyles.toggleWrapper}>
+          <div className={headerStyles.toggleBar} onClick={toggle}>
+            <span className={isClicked ? lineClassOneActive : lineClassOne}></span>
+            <span className={isClicked ? lineClassTwoActive : lineClassTwo}></span>
+            <span className={isClicked ? lineClassThreeActive : lineClassThree}></span>
+
+            {/* {
               isClicked ? 
               <img src={exit} alt="toggle-bar" 
               className={headerStyles.hamburger} 
@@ -43,8 +58,9 @@ const Header = ( {title, subtitle} ) => {
               className={headerStyles.hamburger} 
               style={isClicked ? style1 : style2}
               />
-            }
+            } */}
            
+          </div>
           </div>
         
             <ul className={isClicked ? navLinksClassOpen : navLinksClass}>

@@ -7,6 +7,32 @@ const path = require('path');
  module.exports.createPages = async ( {graphql, actions }) => {
   const {createPage} = actions;
   //1. get path to template
+  const helsinkiFirstBatchTemplate = path.resolve('./src/templates/helsinkifirstbatch.js')
+  const resHelsinkiFirstBatch = await graphql(`
+  query {
+    allContentfulHelsinkiFirstBatch {
+        edges {
+          node {
+            slug  
+            
+            
+          }
+        }
+      }
+    }
+  `)
+  resHelsinkiFirstBatch.data.allContentfulHelsinkiFirstBatch.edges.forEach((edge) => {
+      createPage({
+          //the component in the object is the path to the component
+          component: helsinkiFirstBatchTemplate,
+          path: `/helsinkifirstbatch/${edge.node.slug}`,
+          context: {
+              //slug in this case is like an id
+              slug: edge.node.slug
+          }
+      })
+  })
+
   const abstractsTemplate = path.resolve('./src/templates/abstracts.js')
   const resAbstracts = await graphql(`
   query {

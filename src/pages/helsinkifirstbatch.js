@@ -20,7 +20,7 @@ const HelsinkiFirstBatch = () => {
           node {
             title
             slug
-            images {
+            image {
               file {
                 url
               }
@@ -38,8 +38,7 @@ const HelsinkiFirstBatch = () => {
             <Head title = "helsini first batch" />
             <h2>{data.contentfulHelsinkiFirstBatchHeader.title}</h2>
             <p>{documentToReactComponents(data.contentfulHelsinkiFirstBatchHeader.body.json)}</p>
-            <ul className={portfolioStyles.wrapper}>
-              
+            <ul className={portfolioStyles.wrapper}>  
                 {data.allContentfulHelsinkiFirstBatch.edges.map((edge) => {
                   /*let imagePath; 
                   for (const item of edge.node.body.json.content) {
@@ -55,7 +54,7 @@ const HelsinkiFirstBatch = () => {
                       <div className={portfolioStyles.card}>
                         <Link to ={`/helsinkifirstbatch/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <img src={edge.node.images.file.url} alt={edge.node.images.description} className={portfolioStyles.img}/>
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/>
                         </Link>
                        
 
