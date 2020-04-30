@@ -5,7 +5,7 @@ import portfolioStyles from './portfolio.module.scss';
 import Head from '../components/Head';
 
 
-const PortfolioPage = () => {
+const Digital = () => {
     const data = useStaticQuery(graphql`
     query {
       allContentfulDigital {
@@ -65,4 +65,4 @@ const PortfolioPage = () => {
 
 }
 
-export default PortfolioPage;
+export default Digital;

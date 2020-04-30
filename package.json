@@ -29,7 +29,8 @@
     "react": "^16.12.0",
     "react-calendly": "0.0.13",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "react-icons": "^3.10.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

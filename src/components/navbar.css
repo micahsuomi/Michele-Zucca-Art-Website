@@ -1,11 +1,14 @@
 .nav-links {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     
 }
 
+.nav-item {
+    margin: 1rem;
+}
 @media screen and (max-width: 850px) {
     .nav-links {
         flex-direction: column;

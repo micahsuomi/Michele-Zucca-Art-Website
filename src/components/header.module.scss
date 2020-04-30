@@ -2,6 +2,8 @@ header {
     display: grid;
     grid-template-columns: 20% 80%;
     position: fixed;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
 }
 
@@ -16,13 +18,12 @@ header {
     color: grey;
 }
 
-nav {
-    position: fixed;
-}
-.nav-links {
+
+.nav-links,
+details {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     
 }
@@ -31,31 +32,50 @@ nav {
 }
 
 .nav-item,
-details {
+details,
+.nav-item-nested {
     color: rgb(53, 36, 46);
     font-size: .9rem;
-    margin: 1.3rem;
     text-decoration: none;
     font-weight: 700;
     cursor: pointer;
+    overflow: hidden;
+
 }
+
+.nav-item,
+details {
+    margin: 1rem;
+
+}
+
+.nav-item-nested {
+    margin-left: -2.3rem;
+}
+
+details {
+    margin-top: .1rem;
+    position: static;
+}
+
+
 
 details summary::-webkit-details-marker {
-    background: url(../imgs/double-down-24.png) center no-repeat;
-    color: transparent;
-}
-details[open] summary::-webkit-details-marker {
-    background: url(../imgs/double-down-24.png) center no-repeat;
-    color: transparent;
-}
+    display: none;
+    overflow: hidden;
+     
+ }
+// details[open] summary::-webkit-details-marker {
+//     background: url(../imgs/chevron-down-outline.svg) center no-repeat;
+//     color: transparent;
+// }
 
 .nestedNavList {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     list-style: none;
 }
-.nav-item:hover {
+.nav-item:hover,
+details:hover,
+.nav-item-nested:hover {
     color: lightgray;
 }
 
@@ -75,9 +95,7 @@ details[open] summary::-webkit-details-marker {
         h2 {
             font-size: 1rem;
         }
-        .subtitle {
-            display: none;
-        }
+        
     }
     nav {
         position: relative;
@@ -92,6 +110,7 @@ details[open] summary::-webkit-details-marker {
     .hamburger {
         display: block;
         position: absolute;
+        top: 6%;
         right: 6%;
         width: 8%;
         cursor: pointer;
@@ -102,9 +121,12 @@ details[open] summary::-webkit-details-marker {
     
 
     .nav-item,
-     details {
+     details,
+     .nav-item-nested {
         color: white;
-        font-size: var(--font-size-medium);
+        font-size: var(--font-size-mediumsmall);
+        margin-left: 0;
+        text-align: center;
     }
 
     .nav-links {
@@ -136,12 +158,25 @@ details[open] summary::-webkit-details-marker {
     .nav-list.close {
         display: none;
     }
+
+    summary {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 500px) {
+    .subtitle {
+        display: none;
+    }
     .hamburger {
         right: 8%;
 
     }
+    .nav-item,
+     details {
+        font-size: var(--font-size-small);
+    }
+
+    
 }
 

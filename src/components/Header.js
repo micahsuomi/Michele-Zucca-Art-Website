@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import headerStyles from './header.module.scss';
 import './navbar.css';
 import toggleBar from '../imgs/toggle-bar.svg';
+import exit from '../imgs/technology.png';
 
 
   
@@ -32,10 +33,18 @@ const Header = ( {title, subtitle} ) => {
         <div>
         <nav>
           <div onClick={toggle}>
-            <img src={toggleBar} alt="toggle-bar" 
-            className={headerStyles.hamburger} 
-            style={isClicked ? style1 : style2}
-            />
+            {
+              isClicked ? 
+              <img src={exit} alt="toggle-bar" 
+              className={headerStyles.hamburger} 
+              style={isClicked ? style1 : style2}
+              /> :
+              <img src={toggleBar} alt="toggle-bar" 
+              className={headerStyles.hamburger} 
+              style={isClicked ? style1 : style2}
+              />
+            }
+           
           </div>
         
             <ul className={isClicked ? navLinksClassOpen : navLinksClass}>
@@ -44,7 +53,6 @@ const Header = ( {title, subtitle} ) => {
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/"
                 >
-                
                   Home
                 </Link></li>
 
@@ -54,19 +62,18 @@ const Header = ( {title, subtitle} ) => {
                   About Me
                 </Link></li>
 
+                <li>
                 <details>
-                <summary>Portraits</summary>
+                <summary activeClassName={headerStyles.activeNavItem}> Portraits</summary>
                 <ul className={headerStyles.nestedNavList}>
                 <li>
-                <Link className={headerStyles.navItem} 
-                activeClassName={headerStyles.activeNavItem} 
-                to ="/helsinkifirst">
+                <Link className={headerStyles.navItemNested} 
+                to ="/helsinkifirstbatch">
                   Helsinki First Batch
                   </Link>
                   </li>
                   <li>
-                  <Link className={headerStyles.navItem} 
-                activeClassName={headerStyles.activeNavItem} 
+                  <Link className={headerStyles.navItemNested} 
                 to ="/helsinkisecond">
                   Helsinki Second Batch
                   </Link>
@@ -74,6 +81,7 @@ const Header = ( {title, subtitle} ) => {
                   </ul>
                   </details>
 
+                  </li>
                 <li><Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/abstracts">
@@ -112,7 +120,7 @@ const Header = ( {title, subtitle} ) => {
     )
 }
 
-let style1 = {backgroundColor : 'white', padding: '.5rem', borderRadius: '3px'}
+let style1 = {backgroundColor : 'white', borderRadius: '8px'}
 let style2 = {backgroundColor : 'none'}
 
 export default Header;
