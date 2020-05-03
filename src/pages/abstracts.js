@@ -49,7 +49,7 @@ const AbstractsPage = () => {
     return(
             <Layout>
             <Head title = "digital" />
-            <h2>Abstracts</h2>
+            <h1>Abstracts</h1>
             <ul className={portfolioStyles.wrapper}>
               
                 {data.allContentfulAbstracts.edges.map((edge) => {

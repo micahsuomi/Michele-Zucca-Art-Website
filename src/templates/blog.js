@@ -3,25 +3,8 @@ import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../components/Head';
+import blogStyles from './styles.module.scss';
 
-
-// export const query = graphql`
-// query ($slug: String!) {
-//     markdownRemark (
-//       fields: {
-//         slug: {
-//           eq: $slug
-//         }
-//       }
-//     ){
-//       frontmatter {
-//         title
-//         date
-//       }
-//       html
-//     }
-//   }
-// `
 
 export const query = graphql`
     query($slug: String!) {
@@ -44,7 +27,7 @@ const Blog = (props) => {
           console.log(node)
           const alt = node.data.target.fields.title['en-US'];
           const url = node.data.target.fields.file['en-US'].url;
-          return <img alt={alt} src={url}/>
+          return <img alt={alt} src={url} className={blogStyles.img}/>
 
         }
       }

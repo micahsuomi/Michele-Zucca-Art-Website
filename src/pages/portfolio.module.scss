@@ -27,6 +27,14 @@
     
 }
 
+.link:hover {
+    color: slategray;
+    transform: scale(1.1);
+    transition: all ease-in-out .1s;
+}
+
+
+
 .link h3 {
     font-size: var(--font-size-small);
     font-weight: 500;

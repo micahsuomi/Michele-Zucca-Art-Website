@@ -1,12 +1,24 @@
 import React from 'react';
+import { FaInstagram, FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa'
+import gatsbyImg from '../../imgs/gatsby-logo.png';
 import footerStyles from './styles.module.scss';
 
-const Footer = ({author}) => {
+const Footer = ( {author, link} ) => {
+    console.log(link)
    
     return (
         <footer className={footerStyles.footer}>
-            <p>Created by {author}, 2020</p>
-            <p>Site Built With Gatsby</p>
+            <div className={footerStyles.left}>
+            <p>Created by {author} with Gatsby JS, 2020</p>
+            <img src={gatsbyImg} alt="gatsby site generator" />
+            </div>
+            <div className={footerStyles.right}>
+                <a href='https://www.linkedin.com/in/michele-zucca/' target="blank"><FaLinkedin size={40} className={footerStyles.socialIcon}/></a>
+                <a href='https://www.instagram.com/mikibright_z/' target="blank"><FaInstagram size={40}  className={footerStyles.socialIcon}/></a>
+                <a href='https://www.facebook.com/michele.zucca.18' target="blank"><FaFacebook size={40} className={footerStyles.socialIcon}/></a>
+                <a href='https://github.com/micahsuomi' target="blank"><FaGithub size={40} className={footerStyles.socialIcon}/></a> 
+
+            </div>
         </footer>
     )
 }

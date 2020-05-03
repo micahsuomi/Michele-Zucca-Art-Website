@@ -39,7 +39,7 @@ const HelsinkiFirstBatch = () => {
     return(
             <Layout>
             <Head title = "helsini first batch" />
-            <h2>{data.contentfulHelsinkiFirstBatchHeader.title}</h2>
+            <h1>{data.contentfulHelsinkiFirstBatchHeader.title}</h1>
             <p>{documentToReactComponents(data.contentfulHelsinkiFirstBatchHeader.body.json)}</p>
             <ul className={portfolioStyles.wrapper}>  
                 {data.allContentfulHelsinkiFirstBatch.edges.map((edge) => {
@@ -57,7 +57,8 @@ const HelsinkiFirstBatch = () => {
                       <div className={portfolioStyles.card}>
                         <Link to ={`/helsinkifirstbatch/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}  />
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img} 
+                        height='2916' width='2000' />
                         </Link>
                        
 

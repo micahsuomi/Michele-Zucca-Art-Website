@@ -2,7 +2,7 @@
     display: flex;
     list-style: none;
     justify-content: center;
-    align-items: center;
+    position: sticky;
     
 } 
 
@@ -10,9 +10,14 @@
     margin: 1rem;
 }
 @media screen and (max-width: 850px) {
+    header {
+        grid-template-columns: 35% 65%;
+
+    }
     .nav-links {
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         height: 102vh;
         width: 102vw;
         position: fixed;
@@ -25,14 +30,20 @@
         clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); 
         transition: all ease-in-out .1s;
         opacity: .95;
-        background-color: black;
+        background-color: rgb(15, 15, 15);
         line-height: 1.8;
+        
 
         
     }
 
     .nav-item {
         color: white;
+        margin: 0;
+    }
+
+    .nav-item:hover {
+        background: red;
     }
 
     .nav-links.open {

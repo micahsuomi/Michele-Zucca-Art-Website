@@ -14,8 +14,17 @@ const Layout = ({children}) => {
             author
           }
         }
+        allContentfulFooterData {
+          edges {
+            node {
+              link
+            }
+          }
       }
+    }
     `);
+    
+
     return (
         <div className={layoutStyles.container}>
             <Header title={data.site.siteMetadata.title}
@@ -23,10 +32,12 @@ const Layout = ({children}) => {
             <div className={layoutStyles.content}>
             {children}
             </div>
-            <Footer author={data.site.siteMetadata.author}/>
+            <Footer author={data.site.siteMetadata.author} 
+            />
         </div>
     )
 }
+
 
 export default Layout;
 

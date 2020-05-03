@@ -17,6 +17,11 @@ const BlogPage = () => {
       edges {
         node {
           title
+          image {
+            file {
+              url
+            }
+          }
           slug
           publishedDate(formatString: "MMMM Do, YYYY")
   
@@ -24,28 +29,6 @@ const BlogPage = () => {
       }
     }
   }`)
-  /*
-  with markdown
-    const data = useStaticQuery(graphql`
-    
-    query {
-        allMarkdownRemark {
-          edges {
-            node {
-              frontmatter {
-                title
-                date
-              }
-              html
-              excerpt
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `)*/
   
 
     return (
@@ -53,19 +36,24 @@ const BlogPage = () => {
             <Layout>
             <Head title="Blog" />
             <h1>Blog</h1>
-            <ol className={blogStyles.posts}>
+            <div className={blogStyles.posts}>
                 {data.allContentfulBlogPost.edges.map((edge) => {
                     return(
-                        <li className={blogStyles.post} key={edge.node.slug}>
+                        <div className={blogStyles.post} key={edge.node.slug}>
+                          <div className={blogStyles.postLeft}>
                           <Link to={`/blog/${edge.node.slug}`}>
                             <h3>{edge.node.title}</h3>
                             <p>{edge.node.publishedDate}</p>
                             </Link>
+                            </div>
+                            <div className={blogStyles.postRight}>
+                              <img src={edge.node.image.file.url} alt="blog pic" className={blogStyles.img}/>
+                            </div>
 
-                        </li>
+                        </div>
                     )
                 })}
-            </ol>
+            </div>
             
             </Layout> 
         </div>

@@ -38,7 +38,7 @@ const Header = ( {title, subtitle} ) => {
         <div>
         <nav>
           <div className={headerStyles.toggleWrapper}>
-          <div className={headerStyles.toggleBar} onClick={toggle}>
+          <div className={headerStyles.toggleBar} onClick={toggle} style={isClicked ? styleBorder : styleNoBorder}>
             <span className={isClicked ? lineClassOneActive : lineClassOne}></span>
             <span className={isClicked ? lineClassTwoActive : lineClassTwo}></span>
             <span className={isClicked ? lineClassThreeActive : lineClassThree}></span>
@@ -118,6 +118,7 @@ const Header = ( {title, subtitle} ) => {
     )
 }
 
-
+const styleBorder = {border: '1px solid white', borderRadius: '500px'}
+const styleNoBorder = {border: 'none'}
 
 export default Header;

@@ -29,7 +29,7 @@ const Digital = () => {
     return(
             <Layout>
             <Head title = "digital" />
-            <h2>Digital</h2>
+            <h1>Digital</h1>
             <ul className={portfolioStyles.wrapper}>
               
                 {data.allContentfulDigital.edges.map((edge) => {
