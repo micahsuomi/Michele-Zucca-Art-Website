@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link, useStaticQuery, graphql} from 'gatsby';
-import Layout from '../components/Layout';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Head from '../components/Head';
-import aboutStyles from './about.module.scss';
+import Layout from '../../components/layout';
+import Head from '../../components/head'
+import aboutStyles from './styles.module.scss';
 
 const AboutPage = (props) => {
    const data = useStaticQuery(graphql`

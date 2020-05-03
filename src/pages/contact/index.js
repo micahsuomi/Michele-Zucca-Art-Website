@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout';
 import { navigate } from 'gatsby-link';
-import Head from '../components/Head';
-import contactStyles from './contact.module.scss';
+import Layout from '../../components/layout';
+import Head from '../../components/head'
+import contactStyles from './styles.module.scss';
 
 const encode = (data) => {
     return Object.keys(data)

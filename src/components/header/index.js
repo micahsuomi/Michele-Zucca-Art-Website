@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-// import './header.module.scss';
-import headerStyles from './header.module.scss';
-import './navbar.css';
-import toggleBar from '../imgs/toggle-bar.svg';
-import exit from '../imgs/technology.png';
-
-
+import headerStyles from './styles.module.scss';
+import './style.css';
   
 const Header = ( {title, subtitle} ) => {
   
@@ -47,19 +42,6 @@ const Header = ( {title, subtitle} ) => {
             <span className={isClicked ? lineClassOneActive : lineClassOne}></span>
             <span className={isClicked ? lineClassTwoActive : lineClassTwo}></span>
             <span className={isClicked ? lineClassThreeActive : lineClassThree}></span>
-
-            {/* {
-              isClicked ? 
-              <img src={exit} alt="toggle-bar" 
-              className={headerStyles.hamburger} 
-              style={isClicked ? style1 : style2}
-              /> :
-              <img src={toggleBar} alt="toggle-bar" 
-              className={headerStyles.hamburger} 
-              style={isClicked ? style1 : style2}
-              />
-            } */}
-           
           </div>
           </div>
         
@@ -136,7 +118,6 @@ const Header = ( {title, subtitle} ) => {
     )
 }
 
-let style1 = {backgroundColor : 'white', borderRadius: '8px'}
-let style2 = {backgroundColor : 'none'}
+
 
 export default Header;

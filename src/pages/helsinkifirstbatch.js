@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import portfolioStyles from './portfolio.module.scss';
-import Head from '../components/Head';
+import Head from '../components/head';
 
 
 const HelsinkiFirstBatch = () => {
@@ -15,7 +15,10 @@ const HelsinkiFirstBatch = () => {
               json
             }
           }
-      allContentfulHelsinkiFirstBatch {
+      allContentfulHelsinkiFirstBatch(
+        sort: {
+          fields: createdAt,
+          order: ASC} ) {
         edges {
           node {
             title
@@ -54,7 +57,7 @@ const HelsinkiFirstBatch = () => {
                       <div className={portfolioStyles.card}>
                         <Link to ={`/helsinkifirstbatch/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/>
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}  />
                         </Link>
                        
 
