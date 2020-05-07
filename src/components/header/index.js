@@ -92,6 +92,33 @@ const Header = ( {title, subtitle} ) => {
                   Digital
                   </Link></li>
 
+                  <li>
+                <details>
+                <summary activeClassName={headerStyles.activeNavItem}> Photography</summary>
+                <ul className={headerStyles.nestedNavList}>
+                <li>
+                <Link className={headerStyles.navItemNested} 
+                to ="/allegories">
+                  Allegories
+                  </Link>
+                  </li>
+                  <li>
+                  <Link className={headerStyles.navItemNested} 
+                to ="/playingwiththelightsofsydney">
+                  Playing With The Lights Of Sydney
+                  </Link>
+                  </li>
+                  <li>
+                  <Link className={headerStyles.navItemNested} 
+                to ="/whiletravelling">
+                  While Travelling
+                  </Link>
+                  </li>
+                  </ul>
+                  </details>
+
+                  </li>
+
                 <li><Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/blog">
@@ -104,11 +131,11 @@ const Header = ( {title, subtitle} ) => {
                   Contact
                   </Link></li>
 
-                  <li><Link className={headerStyles.navItem} 
+                  {/* <li><Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/calendly">
                   Book a meeting
-                  </Link></li>
+                  </Link></li> */}
             </ul>
             
         </nav>

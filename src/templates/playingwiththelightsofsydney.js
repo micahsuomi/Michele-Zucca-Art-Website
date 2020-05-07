@@ -8,9 +8,8 @@ import portfolioStyles from './portfolio.module.scss';
 
 export const query = graphql`
 query($slug: String!) {
-  contentfulHelsinkiFirstBatch( slug: {eq: $slug} ) {
+  contentfulPlayingWithTheLightsOfSydney( slug: {eq: $slug} ) {
     title
-    subtitle
     image {
       file {
         url
@@ -23,16 +22,16 @@ query($slug: String!) {
     
    
   }
-  contentfulHelsinkiFirstBatchHeader {
-    title
-    body {
+  contentfulPlayingWithTheLightOfSydneyHeader {
+    pageTitle
+    pageDescription {
       json
     }
   }
 
 }
 `
-const HelsinkiFirstBatch = (props) => {
+const PlayingWithTheLightsOfSydney = (props) => {
 
   const options = {
     renderNode: {
@@ -49,18 +48,18 @@ const HelsinkiFirstBatch = (props) => {
     return (
         <div>
         <Layout>
-          <Head title={props.data.contentfulHelsinkiFirstBatch.title}/>
+          <Head title={props.data.contentfulPlayingWithTheLightsOfSydney.title}/>
           <div className={portfolioStyles.container}>
-            <h2>{props.data.contentfulHelsinkiFirstBatch.title}</h2>
-            <h4>{props.data.contentfulHelsinkiFirstBatch.subtitle}</h4>
-            <img src={props.data.contentfulHelsinkiFirstBatch.image.file.url} alt={props.data.contentfulHelsinkiFirstBatch.image.description} className={portfolioStyles.image}/>
-            {documentToReactComponents(props.data.contentfulHelsinkiFirstBatch.body.json, options)}
+            <h2>{props.data.contentfulPlayingWithTheLightsOfSydney.title}</h2>
+            <h4>{props.data.contentfulPlayingWithTheLightsOfSydney.subtitle}</h4>
+            <img src={props.data.contentfulPlayingWithTheLightsOfSydney.image.file.url} alt={props.data.contentfulPlayingWithTheLightsOfSydney.image.description} className={portfolioStyles.image}/>
+            {documentToReactComponents(props.data.contentfulPlayingWithTheLightsOfSydney.body.json, options)}
             </div>
-            <Link to ="/helsinkifirstbatch" className={portfolioStyles.backToBtn}>Back to {props.data.contentfulHelsinkiFirstBatchHeader.title}</Link>
+            <Link to ="/playingwiththelightsofsydney" className={portfolioStyles.backToBtn}>Back to {props.data.contentfulPlayingWithTheLightOfSydneyHeader.pageTitle}</Link>
 
         </Layout>
         </div>
     )
 }
 
-export default HelsinkiFirstBatch;
+export default PlayingWithTheLightsOfSydney;

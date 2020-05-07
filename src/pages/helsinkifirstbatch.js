@@ -32,13 +32,21 @@ const HelsinkiFirstBatch = () => {
           }
         }
       }
+      allPdf {
+        edges {
+          node {
+        content
+            
+      }
+      }
+      }
     }
     `)
     console.log(data)
 
     return(
             <Layout>
-            <Head title = "helsini first batch" />
+            <Head title = "helsinki first batch" />
             <h1>{data.contentfulHelsinkiFirstBatchHeader.title}</h1>
             <p>{documentToReactComponents(data.contentfulHelsinkiFirstBatchHeader.body.json)}</p>
             <ul className={portfolioStyles.wrapper}>  

@@ -59,32 +59,7 @@ const path = require('path');
       })
   })
 
-  const blogTemplate = path.resolve('./src/templates/blog.js')
-    const resBlog = await graphql(`
-    query {
-      allContentfulBlogPost {
-          edges {
-            node {
-                slug
-              
-            }
-          }
-        }
-      }
-    `)
-
-
-    resBlog.data.allContentfulBlogPost.edges.forEach((edge) => {
-        createPage({
-            //the component in the object is the path to the component
-            component: blogTemplate,
-            path: `/blog/${edge.node.slug}`,
-            context: {
-                //slug in this case is like an id
-                slug: edge.node.slug
-            }
-        })
-    })
+  
 
     const digitalTemplate = path.resolve('./src/templates/digital.js')
       const resDigital = await graphql(`
@@ -111,6 +86,57 @@ const path = require('path');
               }
           })
       })
+
+      const playingWithTheLightsOfSydneyTemplate = path.resolve('./src/templates/playingwiththelightsofsydney.js')
+      const resLights = await graphql(`
+      query {
+        allContentfulPlayingWithTheLightsOfSydney {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+      `)
+      resLights.data.allContentfulPlayingWithTheLightsOfSydney.edges.forEach((edge) => {
+          createPage({
+              //the component in the object is the path to the component
+              component: playingWithTheLightsOfSydneyTemplate,
+              path: `/playingwiththelightsofsydney/${edge.node.slug}`,
+              context: {
+                  //slug in this case is like an id
+                  slug: edge.node.slug
+              }
+          })
+      })
+
+      const blogTemplate = path.resolve('./src/templates/blog.js')
+    const resBlog = await graphql(`
+    query {
+      allContentfulBlogPost {
+          edges {
+            node {
+                slug
+              
+            }
+          }
+        }
+      }
+    `)
+
+
+    resBlog.data.allContentfulBlogPost.edges.forEach((edge) => {
+        createPage({
+            //the component in the object is the path to the component
+            component: blogTemplate,
+            path: `/blog/${edge.node.slug}`,
+            context: {
+                //slug in this case is like an id
+                slug: edge.node.slug
+            }
+        })
+    })
 
 
 }

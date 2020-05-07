@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Layout from '../components/layout';
+import GallerySlider from '../components/galleryslider';
 import '../styles/index.scss';
 import homeStyles from './home.module.scss';
 import Head from '../components/head';
@@ -32,6 +33,7 @@ const IndexPage = (props) => {
     return (
         <Layout>
             <Head title="Home" />
+            <GallerySlider />
             <h1>{props.data.contentfulHome.title}</h1>
             {documentToReactComponents(props.data.contentfulHome.body.json,images)}
             <p><Link to="/contact">Contact Me</Link></p>

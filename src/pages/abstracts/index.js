@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../../components/layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
-import portfolioStyles from './portfolio.module.scss';
-import Head from '../components/Head';
+import portfolioStyles from '../portfolio.module.scss';
+import Head from '../../components/head';
 
 
 const AbstractsPage = () => {
