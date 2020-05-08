@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../components/Head';
 import blogStyles from './styles.module.scss';
@@ -54,7 +54,9 @@ const Blog = (props) => {
                   twitterHandle={`${props.data.site.siteMetadata.twitterHandle}${props.path}`}
                   title={props.data.contentfulBlogPost.title}
                   />
-</div>
+            <Link to="/blog">Back to Blog Posts</Link>
+            </div>
+            
         </Layout>
     )
 }

@@ -16,17 +16,18 @@ $brand-colors: (
 		margin-bottom: 0;
 		margin-right: 4rem;
 	}
-}
-.share-icon {
 
+	
+}
+
+.share {
+	margin-left: .3rem;
 }
 .share:focus {
 	outline: none;
 }
 .share-icon:active {
 	outline: none;
-}
-.facebook {
 }
 .post-social {
 	.button {
