@@ -26,7 +26,6 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
-    `gatsby-transformer-pdf`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
