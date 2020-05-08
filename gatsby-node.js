@@ -133,7 +133,8 @@ const path = require('path');
             path: `/blog/${edge.node.slug}`,
             context: {
                 //slug in this case is like an id
-                slug: edge.node.slug
+                slug: edge.node.slug,
+                url: `/blog/${edge.node.slug}`
             }
         })
     })

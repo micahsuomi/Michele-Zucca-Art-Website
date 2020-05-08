@@ -9,7 +9,7 @@
 }
 
 .card {
-    padding: 1rem;
+    padding-top: 1rem;
     // border: 1px solid lightgray;
     display: flex;
     flex-direction: column;
@@ -38,14 +38,14 @@
 .link h3 {
     font-size: var(--font-size-small);
     font-weight: 500;
+    margin-bottom: 0.6rem;
 
 }
 
 .img {
-    width: 100%;
-    border-radius: 50%;
-    height: 250px;
     width: 250px;
+    height: 250px;
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 768px) {

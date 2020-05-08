@@ -4,6 +4,8 @@ import { graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../components/Head';
 import blogStyles from './styles.module.scss';
+import ShareButtons from '../components/sharebuttons';
+import styles from './styles.module.scss';
 
 
 export const query = graphql`
@@ -15,12 +17,19 @@ export const query = graphql`
           json
         }
       }
+      site {
+        siteMetadata {
+          siteUrl
+          twitterHandle
+        }
+      }
 
     }
 `
 
-
 const Blog = (props) => {
+  console.log(props)
+
     const options = {
       renderNode: {
         "embedded-asset-block": (node) => {
@@ -35,13 +44,17 @@ const Blog = (props) => {
     return (
         <Layout>
           <Head title={props.data.contentfulBlogPost.title}/>
-            {/* <h1>{props.data.markdownRemark.frontmatter.title}</h1>
-            <p>{props.data.markdownRemark.frontmatter.date}</p>
-            <div dangerouslySetInnerHTML={{ __html:  props.data.markdownRemark.html}}></div> */}
+          <div className={styles.container}>
             <h1>{props.data.contentfulBlogPost.title}</h1>
             <p>{props.data.contentfulBlogPost.publishedDate}</p> 
             {documentToReactComponents(props.data.contentfulBlogPost.body.json, options)}
-
+             
+            <ShareButtons 
+                  url={`${props.data.site.siteMetadata.siteUrl}${props.path}`}
+                  twitterHandle={`${props.data.site.siteMetadata.twitterHandle}${props.path}`}
+                  title={props.data.contentfulBlogPost.title}
+                  />
+</div>
         </Layout>
     )
 }

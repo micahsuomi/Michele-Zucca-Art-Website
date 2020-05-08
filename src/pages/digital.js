@@ -47,8 +47,9 @@ const Digital = () => {
                       <div className={portfolioStyles.card}>
                         <Link to ={`/digital/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
+                        <div class={portfolioStyles.imageContainer}>
                         <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/>
-
+                        </div>
                         </Link>
                        
 

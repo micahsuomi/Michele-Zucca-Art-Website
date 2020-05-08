@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {galleryData } from './gallerysliderdata';
-import {faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import {faChevronRight, faLongArrowAltLeft, faChevronLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -45,15 +45,19 @@ class GallerySlider extends Component {
         
         return (
             <div className={gallerySliderStyles.container}>
+                <Link to={gallery[index].link}>
+                    <img src={gallery[index].img} alt={gallery[index].description} className={gallerySliderStyles.image} width='941' height='549'/></Link>
+                <div className={gallerySliderStyles.navContainer}>
                 <Link to={gallery[index].link}
                 className={gallerySliderStyles.pageLink}>
-                    <img src={gallery[index].img} alt={gallery[index].description} className={gallerySliderStyles.image} width='941' height='549'/>
-                <h2 className={gallerySliderStyles.title}>{gallery[index].description}</h2></Link>
+                <h2 className={gallerySliderStyles.title}>{gallery[index].description}</h2>
+                </Link>
 
                 <div className={gallerySliderStyles.buttonsContainer}>
-                    <FontAwesomeIcon icon={faChevronLeft} onClick={this.goToPrevious} className={gallerySliderStyles.icon}/><span>Prev</span>
-                    <span>Next</span><FontAwesomeIcon icon={faChevronRight} onClick={this.goToNext} className={gallerySliderStyles.icon}/>
+                    <FontAwesomeIcon icon={faLongArrowAltLeft} onClick={this.goToPrevious} className={gallerySliderStyles.icon}/><span>Prev</span>
+                    <span>Next</span><FontAwesomeIcon icon={faLongArrowAltRight} onClick={this.goToNext} className={gallerySliderStyles.icon}/>
 
+                </div>
                 </div>
             </div>
         )

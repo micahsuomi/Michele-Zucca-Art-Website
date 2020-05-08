@@ -5,6 +5,14 @@
     flex-direction: column;
 }
 
+.nav-container {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    align-items: center;
+    margin-top: 3rem;
+    width: 52rem;
+}
+
 img {
     animation-name:appear;
 	animation-duration:1s;
@@ -32,14 +40,13 @@ img {
 .title {
     text-decoration: none;
     color: rgb(38, 44, 49);
-    text-align: center;
-    margin-top: 2rem;
+    text-align: left;
 }
 .buttons-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    align-self: flex-end;
 }
 
 .icon {

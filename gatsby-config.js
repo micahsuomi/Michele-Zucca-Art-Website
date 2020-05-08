@@ -4,7 +4,9 @@ module.exports = {
   siteMetadata: {
     title: 'Michele Zucca',
     author: 'Michele Zucca',
-    subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It'
+    subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It',
+    siteUrl: `https://michelezucca-art.netlify.app/`,
+    twitterHandle: '@michelezucca-arthata'
   },
   plugins: [
     'gatsby-plugin-react-helmet',

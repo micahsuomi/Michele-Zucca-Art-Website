@@ -65,8 +65,9 @@ const HelsinkiFirstBatch = () => {
                       <div className={portfolioStyles.card}>
                         <Link to ={`/helsinkifirstbatch/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img} 
-                        height='2916' width='2000' />
+                        <div class={portfolioStyles.imageContainer}>
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img} />
+                        </div>
                         </Link>
                        
 

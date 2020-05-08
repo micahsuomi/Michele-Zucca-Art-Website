@@ -34,7 +34,7 @@ const IndexPage = (props) => {
         <Layout>
             <Head title="Home" />
             <GallerySlider />
-            <h1>{props.data.contentfulHome.title}</h1>
+            <h1 className={homeStyles.homeHeader}>{props.data.contentfulHome.title}</h1>
             {documentToReactComponents(props.data.contentfulHome.body.json,images)}
             <p><Link to="/contact">Contact Me</Link></p>
         </Layout>
