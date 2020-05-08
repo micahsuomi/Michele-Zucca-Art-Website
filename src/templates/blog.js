@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import { graphql, Link } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Head from '../components/Head';
+import Head from '../components/head';
 import blogStyles from './styles.module.scss';
 import ShareButtons from '../components/sharebuttons';
 import styles from './styles.module.scss';

@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import portfolioStyles from './portfolio.module.scss';
-import Head from '../components/Head';
+import Head from '../components/head';
 
 
 const Digital = () => {

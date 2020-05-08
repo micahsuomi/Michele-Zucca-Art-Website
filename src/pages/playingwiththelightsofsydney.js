@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import portfolioStyles from './portfolio.module.scss';
-import Head from '../components/Head';
+import Head from '../components/head';
 
 
 const PlayingWithTheLightsOfSydneyPage = () => {

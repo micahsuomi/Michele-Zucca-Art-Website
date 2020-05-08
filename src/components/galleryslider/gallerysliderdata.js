@@ -2,6 +2,7 @@ import gallery1 from '../../imgs/gallery-1.jpg';
 import gallery2 from '../../imgs/gallery-2.jpg';
 import gallery3 from '../../imgs/gallery-3.jpg';
 import gallery4 from '../../imgs/gallery-4.jpg';
+import gallery5 from '../../imgs/gallery-5.jpg';
 
 export const galleryData = [
     {
@@ -26,5 +27,11 @@ export const galleryData = [
     img: gallery4,
     link: '/abstracts',
     description: 'Allegories'
+},
+
+{
+    img: gallery5,
+    link: '/whiletravelling',
+    description: 'While Traveling'
 },
 ]
