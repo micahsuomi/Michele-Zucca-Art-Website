@@ -32,14 +32,7 @@ const HelsinkiFirstBatch = () => {
           }
         }
       }
-      allPdf {
-        edges {
-          node {
-        content
-            
-      }
-      }
-      }
+  
     }
     `)
     console.log(data)
@@ -70,7 +63,6 @@ const HelsinkiFirstBatch = () => {
                         </div>
                         </Link>
                        
-
                         </div>
 
 
