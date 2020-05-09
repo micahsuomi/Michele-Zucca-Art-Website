@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {galleryData } from './gallerysliderdata';
-import {faChevronRight, faLongArrowAltLeft, faChevronLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
