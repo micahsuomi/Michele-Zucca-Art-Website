@@ -1,0 +1,30 @@
+// Small devices
+@mixin sm {
+    @media (max-width: #{$smart-phones}) {
+      @content;
+    }
+  }
+  // Medium devices
+  @mixin md {
+    @media (max-width: #{$tablets}) {
+      @content;
+    }
+  }
+  // Large devices
+  @mixin lg {
+    @media (max-width: #{$small-desktops}) {
+      @content;
+    }
+  }
+  // Extra large devices
+  @mixin xl {
+    @media (max-width: #{$large-desktops}) {
+      @content;
+    }
+  }
+  @mixin rwd($screen) {
+    @media (max-width: $screen+'px') {
+      @content;
+    }
+  }
+  

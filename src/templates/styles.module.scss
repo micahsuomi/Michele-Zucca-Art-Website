@@ -12,4 +12,12 @@
 }
 .img {
     width: 70%;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 5rem 0;
+    }
+
 }

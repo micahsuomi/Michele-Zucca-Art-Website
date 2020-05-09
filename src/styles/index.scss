@@ -11,7 +11,16 @@ html {
     --font-size-medium: 2rem;
     --font-size-mediumsmall: 1.5rem;
     --font-size-small: 1.3rem;
+
+    //color palette: 
+
+    //paddings
+
+
+    //margins
   }
+
+
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -623,5 +632,15 @@ html {
   @media only screen and (max-width: 480px) {
     html {
       font-size: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: var(--font-size-medium);
+    }
+
+    h3 {
+      font-size: 1rem;
     }
   }

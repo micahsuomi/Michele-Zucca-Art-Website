@@ -72,7 +72,7 @@ const Header = ( {title, subtitle} ) => {
                   </li>
                   <li>
                   <Link className={headerStyles.navItemNested} 
-                to ="/helsinkisecond">
+                to ="/helsinkisecondbatch">
                   Helsinki Second Batch
                   </Link>
                   </li>

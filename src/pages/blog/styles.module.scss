@@ -45,3 +45,14 @@
 .img { 
     width: 100%;
 }
+
+@media screen and (max-width: 500px) {
+    .post {
+        grid-template-columns: 1fr;
+        margin-top: 2rem;
+
+        h2 {
+            font-size: var(--font-size-medium);
+        }
+    }
+}

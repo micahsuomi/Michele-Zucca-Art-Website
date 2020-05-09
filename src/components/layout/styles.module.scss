@@ -7,7 +7,7 @@
 
 .content {
     flex-grow: 1;
-    padding: 12rem 9rem;
+    padding: 10rem 15rem;
 
    
 }
@@ -17,12 +17,16 @@
          padding: 0;
 
      }
-
      .content {
         flex-grow: 1;
-        padding: 9rem 0;
+        padding: 12rem 6rem;
     
-       
     }
+ }
+
+ @media screen and (max-width: 500px) {
+     .content {
+         padding: 10rem 2rem;
+     }
  }
 

@@ -1,3 +1,21 @@
+@import '../../scss/main.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        align-self: flex-start;
+        font-weight: 800;
+    }
+
+    div {
+        line-height: $paragraph-line-height;
+    }
+}
 .about-img {
-    width: 100%;
+    width: 70%;
+    align-self: center;
 }

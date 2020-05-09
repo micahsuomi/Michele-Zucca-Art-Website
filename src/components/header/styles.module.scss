@@ -1,12 +1,14 @@
+@import '../../scss/main.scss';
+
 header {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 35% 65%;
     position: fixed;
     justify-content: center;
-    padding: .6rem 1.3rem;
+    padding: .2rem 1.3rem;
     width: 100vw;
     box-shadow: 0px 3px 10px #00000033;
-    height: 85px;
+    height: 70px;
     background: rgba(255, 255, 255, .6);
 
 }
@@ -39,11 +41,12 @@ details {
 details,
 .nav-item-nested {
     color: rgb(53, 36, 46);
-    font-size: .9rem;
     text-decoration: none;
     font-weight: 700;
     cursor: pointer;
     overflow: hidden;
+    font-size: 11px;
+
 
 
 }
@@ -117,10 +120,10 @@ details:hover,
         background-color: rgb(53, 36, 46);
         display: inline-block;
         border-radius: 500px;
-        margin-left: 20.4rem;
-        margin-top: 0;
+        margin-left: 23.7rem;
+        margin-top: .5rem;
         position: relative;
-        padding: 1px;
+        padding: 5px;
         cursor: pointer;
         z-index: 3;
 
@@ -128,14 +131,9 @@ details:hover,
     }
 
     .toggle-bar {
-        width: 55px;
-        height: 55px;
+        width: 45px;
+        height: 45px;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
     }
 
     
@@ -179,6 +177,10 @@ details:hover,
 }
 
 @media screen and (max-width: 500px) {
+
+    header {
+        grid-template-columns: 50% 50%;
+    }
   
    
     .nav-item,

@@ -14,12 +14,14 @@ const Footer = ( {author, link} ) => {
             </div>
             <div className={footerStyles.right}>
                 <a href='https://www.linkedin.com/in/michele-zucca/' target="blank">
-                    <FaLinkedin size={40} className={footerStyles.socialIcon}/></a>
-                <a href='https://www.instagram.com/mikibright_z/' target="blank"><FaInstagram size={40}  
+                    <FaLinkedin size={30} className={footerStyles.socialIcon}/></a>
+                <a href='https://www.instagram.com/mikibright_z/' target="blank">
+                    <FaInstagram size={30}  
                 className={footerStyles.socialIcon}/></a>
                 <a href='https://www.facebook.com/michele.zucca.18' target="blank">
-                    <FaFacebook size={40} className={footerStyles.socialIcon}/></a>
-                <a href='https://github.com/micahsuomi' target="blank"><FaGithub size={40} className={footerStyles.socialIcon}/></a> 
+                    <FaFacebook size={30} className={footerStyles.socialIcon}/></a>
+                <a href='https://github.com/micahsuomi' target="blank">
+                    <FaGithub size={30} className={footerStyles.socialIcon}/></a> 
 
             </div>
         </footer>

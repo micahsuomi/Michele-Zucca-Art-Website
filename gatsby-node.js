@@ -32,6 +32,31 @@ const path = require('path');
           }
       })
   })
+  const helsinkiSecondBatchTemplate = path.resolve('./src/templates/helsinkisecondbatch.js')
+  const resHelsinkiSecondBatch = await graphql(`
+  query {
+    allContentfulHelsinkiSecondBatch {
+        edges {
+          node {
+            slug  
+            
+            
+          }
+        }
+      }
+    }
+  `)
+  resHelsinkiSecondBatch.data.allContentfulHelsinkiSecondBatch.edges.forEach((edge) => {
+      createPage({
+          //the component in the object is the path to the component
+          component: helsinkiSecondBatchTemplate,
+          path: `/helsinkisecondbatch/${edge.node.slug}`,
+          context: {
+              //slug in this case is like an id
+              slug: edge.node.slug
+          }
+      })
+  })
 
   const abstractsTemplate = path.resolve('./src/templates/abstracts.js')
   const resAbstracts = await graphql(`
