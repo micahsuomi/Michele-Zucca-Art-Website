@@ -1,10 +1,12 @@
+@import '../scss/main.scss';
+
 .portfolio-container {
     padding: 5rem 3rem;
 }
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0;
+    grid-gap: 2rem;
     margin-top: 2rem;
     padding-left: 0;
 
@@ -31,23 +33,25 @@
 
 .link:hover {
     color: slategray;
-    transform: scale(1.1);
-    transition: all ease-in-out .1s;
+    transform: scale(1.0099);
+    transition: all ease-in-out .2s;
 }
 
 
 
 .link h3 {
-    font-size: var(--font-size-small);
+    font-size: $card-title;
     font-weight: 500;
     margin-bottom: 0.6rem;
 
 }
 
 .img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
+    // width: 250px;
+    // height: 250px;
+    // border-radius: 50%;
+    width: 100%;
+    @include shadow-trans
 }
 
 @media screen and (max-width: 768px) {

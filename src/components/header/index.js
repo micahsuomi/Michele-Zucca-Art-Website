@@ -110,7 +110,7 @@ const Header = ( {title, subtitle} ) => {
                   </li>
                   <li>
                   <Link className={headerStyles.navItemNested} 
-                to ="/whiletravelling">
+                to ="/whiletraveling">
                   While Travelling
                   </Link>
                   </li>

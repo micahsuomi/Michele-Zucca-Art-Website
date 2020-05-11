@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {galleryData } from './gallerysliderdata';
 import { faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
 import {Link} from 'gatsby';
 import gallerySliderStyles from './styles.module.scss';
 

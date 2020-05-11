@@ -136,6 +136,30 @@ const path = require('path');
           })
       })
 
+      const whileTravelingTemplate = path.resolve('./src/templates/whiletraveling/index.js')
+      const resWhileTraveling = await graphql(`
+      query {
+        allContentfulWhileTraveling {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+      `)
+      resWhileTraveling.data.allContentfulWhileTraveling.edges.forEach((edge) => {
+          createPage({
+              //the component in the object is the path to the component
+              component: whileTravelingTemplate,
+              path: `/whiletraveling/${edge.node.slug}`,
+              context: {
+                  //slug in this case is like an id
+                  slug: edge.node.slug
+              }
+          })
+      })
+
       const blogTemplate = path.resolve('./src/templates/blog.js')
     const resBlog = await graphql(`
     query {

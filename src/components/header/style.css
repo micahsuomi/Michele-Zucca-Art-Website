@@ -32,9 +32,7 @@
         opacity: .95;
         background-color: rgb(15, 15, 15);
         line-height: 1.8;
-        
-
-        
+    
     }
 
     .nav-item {
@@ -57,9 +55,6 @@
         clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); 
 
     }
-
-    
-    
 
     .line {
         position: absolute;
@@ -92,6 +87,11 @@
     .middle.active, .bottom.active {
         transform: rotate(-45deg);
         top: 27%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .nav-links.open {
+        top: -3%;
     }
 }
 

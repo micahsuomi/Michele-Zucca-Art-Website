@@ -11,12 +11,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 30rem;
     margin-top: 3rem;
     border: 1px solid lightgrey;
-    padding: 2rem 3rem;
+    padding: 3rem 3rem;
     border-radius: 3px;
     background-color: rgb(38, 44, 49);
     color: white;
+
 }
 
 label {
@@ -25,7 +27,7 @@ label {
 .name,
 .email,
 .message {
-    width: 18rem;
+    width: 22rem;
     padding: .5rem;
     margin-top: .6rem;
     font-family: 'Montserrat', sans-serif;

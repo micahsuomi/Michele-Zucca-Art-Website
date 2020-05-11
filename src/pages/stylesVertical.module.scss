@@ -1,0 +1,14 @@
+@import '../scss/main.scss';
+.image-container {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  @include shadow-trans
+}
+
+
+img {
+  max-width: 100%;
+}

@@ -19,7 +19,7 @@ export const galleryData = [
 
 {
     img: gallery3,
-    link: '/abstracts',
+    link: '/helsinkisecondbatch',
     description: 'Helsinki Second Batch'
 },
 

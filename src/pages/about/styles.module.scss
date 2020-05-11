@@ -13,9 +13,16 @@
 
     div {
         line-height: $paragraph-line-height;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 .about-img {
-    width: 70%;
-    align-self: center;
+    width: 80%;
+    justify-self: center;
+    @include sm {
+        width: 98%;
+    }
 }

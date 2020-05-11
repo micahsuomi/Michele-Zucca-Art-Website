@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '../components/layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import portfolioStyles from './portfolio.module.scss';
 import Head from '../components/head';
-
+import portfolioStyles from './portfolio.module.scss';
+import stylesVertical from './stylesVertical.module.scss';
 
 const HelsinkiSecondBatch = () => {
     const data = useStaticQuery(graphql`
@@ -44,22 +44,12 @@ const HelsinkiSecondBatch = () => {
             {documentToReactComponents(data.contentfulHelsinkiSecondBatchHeader.description.json)}
             <ul className={portfolioStyles.wrapper}>  
                 {data.allContentfulHelsinkiSecondBatch.edges.map((edge) => {
-                  /*let imagePath; 
-                  for (const item of edge.node.body.json.content) {
-                   if(item.nodeType === "embedded-asset-block") {
-                    imagePath = item
-                   }
-
-                  }
-                  console.log(imagePath.data.target)
-                 const url = imagePath.data.target.fields.file['en-US'].url
-                 const alt = imagePath.data.target.fields.title['en-US']*/
                     return (
                       <div className={portfolioStyles.card}>
                         <Link to ={`/helsinkisecondbatch/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
-                        <div class={portfolioStyles.imageContainer}>
-                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img} />
+                        <div class={stylesVertical.imageContainer}>
+                        <img src={edge.node.image.file.url} alt={edge.node.image.description} className={stylesVertical.img} />
                         </div>
                         </Link>
                        
