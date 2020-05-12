@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import SEO from '../components/seo';
 import Layout from '../components/layout';
 import GallerySlider from '../components/galleryslider';
 import '../styles/index.scss';
@@ -32,6 +33,7 @@ const IndexPage = (props) => {
 
     return (
         <Layout>
+          <SEO title="Michele Zucca Art Website" />
             <Head title="Home" />
             <GallerySlider />
             <h1 className={homeStyles.homeHeader}>{props.data.contentfulHome.title}</h1>

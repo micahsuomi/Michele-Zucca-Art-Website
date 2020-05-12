@@ -2,9 +2,11 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Michele Zucca',
+    title: 'Michele Zucca Art Website',
     author: 'Michele Zucca',
+    description: 'My personal art website featuring traditional paintings, photography, digital art and a blog.',
     subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It',
+    keywords: ['michele zucca', 'art', 'photography', 'paintings', 'digital', 'blog', 'abstract art', 'modern', 'acrylics', 'oils'],
     siteUrl: `https://michelezucca-art.netlify.app/`,
     twitterHandle: '@michelezucca-arthata'
   },
