@@ -1,17 +1,16 @@
 import React from 'react';
+import Layout from '../../components/layout';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-// import Layout from '../../components/layout';
-import Head from '../../components/head';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
-import styles from './styles.module.scss';
 
 
 export const query = graphql`
 query($slug: String!) {
-  contentfulWhileTraveling( slug: {eq: $slug} ) {
+  contentfulTheLordAndTheNewCreatures( slug: {eq: $slug} ) {
     title
     image {
       file {
@@ -28,8 +27,8 @@ query($slug: String!) {
 
 }
 `
-const WhileTraveling = (props) => {
-
+const TheLordAndTheNewCreatures = (props) => {
+  
   const options = {
     renderNode: {
       "embedded-asset-block": (node) => {
@@ -41,45 +40,46 @@ const WhileTraveling = (props) => {
       }
     }
   } 
+  const previousTheLordAndTheNewCreatures = props.pageContext.next ? {
+    url: `/thelordandthenewcreatures/${props.pageContext.next.slug}`,
 
-  const previousWhileTraveling = props.pageContext.next ? {
-    url: `/whiletraveling/${props.pageContext.next.slug}`,
+  } : '';
+
+  const nextTheLordAndTheNewCreatures = props.pageContext.previous ? {
+    url: `/thelordandthenewcreatures/${props.pageContext.previous.slug}`,
 
   } : '';
 
-  const nextWhileTraveling = props.pageContext.previous ? {
-    url: `/whiletraveling/${props.pageContext.previous.slug}`,
-
-  } : '';
     return (
         <div>
              {/* <Layout> */}
-          <Head title={props.data.contentfulWhileTraveling.title}/>
+          <Head title={props.data.contentfulTheLordAndTheNewCreatures.title}/>
           <div className={portfolioStyles.container}>
           <div className={portfolioStyles.exitContainer}>
-            <Link to='/whiletraveling'>
+            <Link to='/thelordandthenewcreatures'>
             <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
-            <h2>{props.data.contentfulWhileTraveling.title}</h2>
+            <h2>{props.data.contentfulTheLordAndTheNewCreatures.title}</h2>
             <div className={portfolioStyles.sliderContainer}>
             <div>
-              {previousWhileTraveling && (
-                <Link to={previousWhileTraveling.url}>
+              {previousTheLordAndTheNewCreatures && (
+                <Link to={previousTheLordAndTheNewCreatures.url}>
                   <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
-            <img src={props.data.contentfulWhileTraveling.image.file.url} alt={props.data.contentfulWhileTraveling.image.description} className={styles.photoImage} />
+
+            <img src={props.data.contentfulTheLordAndTheNewCreatures.image.file.url} alt={props.data.contentfulTheLordAndTheNewCreatures.image.description} className={portfolioStyles.image} />
             <div>
-              {nextWhileTraveling && (
-                <Link to={nextWhileTraveling.url}>
+              {nextTheLordAndTheNewCreatures && (
+                <Link to={nextTheLordAndTheNewCreatures.url}>
                   <FontAwesomeIcon icon={faLongArrowAltRight} />
                 </Link>
               )}
             </div>
             </div>
-            {documentToReactComponents(props.data.contentfulWhileTraveling.body.json, options)} 
+            {documentToReactComponents(props.data.contentfulTheLordAndTheNewCreatures.body.json, options)} 
             </div>
 
         {/* </Layout> */}
@@ -87,4 +87,4 @@ const WhileTraveling = (props) => {
     )
 }
 
-export default WhileTraveling;
+export default TheLordAndTheNewCreatures;

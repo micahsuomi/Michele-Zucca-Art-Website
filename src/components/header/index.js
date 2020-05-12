@@ -26,7 +26,7 @@ const Header = ( {title, subtitle} ) => {
 
     return (
         <header>
-          <div>
+          <div className={headerStyles.titleWrapper}>
         <Link to ="/" className={headerStyles.title}>
         <h2>{title}</h2>
         <p className={headerStyles.subtitle}>
@@ -76,6 +76,14 @@ const Header = ( {title, subtitle} ) => {
                   Helsinki Second Batch
                   </Link>
                   </li>
+
+                  <li>
+                  <Link className={headerStyles.navItemNested} 
+                to ="/thelordandthenewcreatures">
+                  The Lord and The New Creatures
+                  </Link>
+                  </li>
+
                   </ul>
                   </details>
 

@@ -60,7 +60,8 @@
         position: absolute;
         height: 5px;
         width: 70%;
-        background: white;
+        background: rgb(53, 36, 46);
+        ;
         border-radius: 8px;
 
     }
@@ -72,21 +73,28 @@
     .middle {
         transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
         top: 31%;
+        width: 60%;
     }
 
     .bottom {
         transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
         top: 52%;
+        width: 50%;
     }
 
     .top.active  {
         transform: rotate(45deg);
         top: 27%;
+        background: white;
+        width: 70%;
     }
 
     .middle.active, .bottom.active {
         transform: rotate(-45deg);
         top: 27%;
+        background: white;
+        width: 70%;
+
     }
 }
 @media screen and (max-width: 320px) {

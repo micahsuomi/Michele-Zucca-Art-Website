@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-// import Layout from '../../components/layout';
-import Head from '../../components/head';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Layout from '../../components/layout';
+import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
-import styles from './styles.module.scss';
 
 
 export const query = graphql`
 query($slug: String!) {
-  contentfulWhileTraveling( slug: {eq: $slug} ) {
+  contentfulHelsinkiSecondBatch( slug: {eq: $slug} ) {
     title
     image {
       file {
@@ -25,10 +24,16 @@ query($slug: String!) {
     
    
   }
+  contentfulHelsinkiSecondBatchHeader {
+    title
+    description {
+      json
+    }
+  }
 
 }
 `
-const WhileTraveling = (props) => {
+const HelsinkiFirstBatch = (props) => {
 
   const options = {
     renderNode: {
@@ -41,50 +46,55 @@ const WhileTraveling = (props) => {
       }
     }
   } 
+  const previousHelsinkiSecondBatch = props.pageContext.next ? {
+    url: `/helsinkisecondbatch/${props.pageContext.next.slug}`,
 
-  const previousWhileTraveling = props.pageContext.next ? {
-    url: `/whiletraveling/${props.pageContext.next.slug}`,
+  } : '';
+
+  const nextHelsinkiSecondBatch = props.pageContext.previous ? {
+    url: `/helsinkisecondbatch/${props.pageContext.previous.slug}`,
 
   } : '';
 
-  const nextWhileTraveling = props.pageContext.previous ? {
-    url: `/whiletraveling/${props.pageContext.previous.slug}`,
-
-  } : '';
     return (
         <div>
-             {/* <Layout> */}
-          <Head title={props.data.contentfulWhileTraveling.title}/>
+        {/* <Layout> */}
+        <Head title={props.data.contentfulHelsinkiSecondBatch.title}/>
           <div className={portfolioStyles.container}>
-          <div className={portfolioStyles.exitContainer}>
-            <Link to='/whiletraveling'>
+            <div className={portfolioStyles.exitContainer}>
+            <Link to='/helsinkifirstbatch'>
             <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
-            <h2>{props.data.contentfulWhileTraveling.title}</h2>
+            <h2>{props.data.contentfulHelsinkiSecondBatch.title}</h2>
+            <h4>{props.data.contentfulHelsinkiSecondBatch.subtitle}</h4>
             <div className={portfolioStyles.sliderContainer}>
             <div>
-              {previousWhileTraveling && (
-                <Link to={previousWhileTraveling.url}>
+              {previousHelsinkiSecondBatch && (
+                <Link to={previousHelsinkiSecondBatch.url}>
                   <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
-            <img src={props.data.contentfulWhileTraveling.image.file.url} alt={props.data.contentfulWhileTraveling.image.description} className={styles.photoImage} />
+            <img src={props.data.contentfulHelsinkiSecondBatch.image.file.url} alt={props.data.
+              contentfulHelsinkiSecondBatch.image.description} className={portfolioStyles.image}/>
             <div>
-              {nextWhileTraveling && (
-                <Link to={nextWhileTraveling.url}>
+              {nextHelsinkiSecondBatch && (
+                <Link to={nextHelsinkiSecondBatch.url}>
                   <FontAwesomeIcon icon={faLongArrowAltRight} />
                 </Link>
               )}
             </div>
             </div>
-            {documentToReactComponents(props.data.contentfulWhileTraveling.body.json, options)} 
+           
+            {documentToReactComponents(props.data.contentfulHelsinkiSecondBatch.body.json, options)}
             </div>
+          
+
 
         {/* </Layout> */}
         </div>
     )
 }
 
-export default WhileTraveling;
+export default HelsinkiFirstBatch;

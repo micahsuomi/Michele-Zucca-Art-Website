@@ -1,18 +1,18 @@
 import React from 'react';
+// import Layout from '../../components/layout';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-// import Layout from '../../components/layout';
 import Head from '../../components/head';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import portfolioStyles from '../portfolio.module.scss';
-import styles from './styles.module.scss';
 
 
 export const query = graphql`
 query($slug: String!) {
-  contentfulWhileTraveling( slug: {eq: $slug} ) {
+  contentfulAbstracts( slug: {eq: $slug} ) {
     title
+    subtitle
     image {
       file {
         url
@@ -28,8 +28,8 @@ query($slug: String!) {
 
 }
 `
-const WhileTraveling = (props) => {
-
+const Abstracts = (props) => {
+  
   const options = {
     renderNode: {
       "embedded-asset-block": (node) => {
@@ -42,44 +42,46 @@ const WhileTraveling = (props) => {
     }
   } 
 
-  const previousWhileTraveling = props.pageContext.next ? {
-    url: `/whiletraveling/${props.pageContext.next.slug}`,
+  const previousAbstracts = props.pageContext.previous ? {
+    url: `/abstracts/${props.pageContext.previous.slug}`,
 
   } : '';
 
-  const nextWhileTraveling = props.pageContext.previous ? {
-    url: `/whiletraveling/${props.pageContext.previous.slug}`,
+  const nextAbstracts = props.pageContext.next ? {
+    url: `/abstracts/${props.pageContext.next.slug}`,
 
   } : '';
+
     return (
         <div>
              {/* <Layout> */}
-          <Head title={props.data.contentfulWhileTraveling.title}/>
+          <Head title={props.data.contentfulAbstracts.title}/>
           <div className={portfolioStyles.container}>
           <div className={portfolioStyles.exitContainer}>
-            <Link to='/whiletraveling'>
+            <Link to='/abstracts'>
             <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
-            <h2>{props.data.contentfulWhileTraveling.title}</h2>
+            <h2>{props.data.contentfulAbstracts.title}</h2>
+            <h4>{props.data.contentfulAbstracts.subtitle}</h4>
             <div className={portfolioStyles.sliderContainer}>
             <div>
-              {previousWhileTraveling && (
-                <Link to={previousWhileTraveling.url}>
+              {previousAbstracts && (
+                <Link to={previousAbstracts.url}>
                   <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
-            <img src={props.data.contentfulWhileTraveling.image.file.url} alt={props.data.contentfulWhileTraveling.image.description} className={styles.photoImage} />
+            <img src={props.data.contentfulAbstracts.image.file.url} alt={props.data.contentfulAbstracts.image.description} className={portfolioStyles.image} />
             <div>
-              {nextWhileTraveling && (
-                <Link to={nextWhileTraveling.url}>
+              {nextAbstracts && (
+                <Link to={nextAbstracts.url}>
                   <FontAwesomeIcon icon={faLongArrowAltRight} />
                 </Link>
               )}
             </div>
             </div>
-            {documentToReactComponents(props.data.contentfulWhileTraveling.body.json, options)} 
+            {documentToReactComponents(props.data.contentfulAbstracts.body.json, options)} 
             </div>
 
         {/* </Layout> */}
@@ -87,4 +89,4 @@ const WhileTraveling = (props) => {
     )
 }
 
-export default WhileTraveling;
+export default Abstracts;

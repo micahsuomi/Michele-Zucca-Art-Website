@@ -1,3 +1,5 @@
+@import '../../scss/main.scss';
+
 .footer {
     margin-top: 3rem;
     display: flex;
@@ -6,10 +8,21 @@
     padding: 1.4rem 4.3rem;
     background-color:rgb(20, 19, 19);
     color: white;
+    @include md {
+        flex-direction: column;
+    }
+    @include sm {
+        padding: 1.4rem 1.3rem;
+    }
 
     .left {
         display: flex;
         align-items: center;
+        justify-content: center;
+        @include md {
+            margin-top: 2rem;
+
+        }
 
     }
 
@@ -19,6 +32,10 @@
 
     .left img {
         width: 5%;
+        @include sm {
+            width: 13%;
+
+        }
     }
 
 
@@ -42,16 +59,3 @@
     color: slategray;
 }
 
-@media screen and (max-width: 500px) {
-    .footer {
-        flex-direction: column;
-    }
-
-    .left {
-        margin-top: 2rem;
-    }
-
-    .left img {
-        width: 17%;
-    }
-}

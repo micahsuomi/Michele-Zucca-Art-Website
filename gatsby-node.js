@@ -7,7 +7,7 @@ const path = require('path');
  module.exports.createPages = async ( {graphql, actions }) => {
   const {createPage} = actions;
   //1. get path to template
-  const helsinkiFirstBatchTemplate = path.resolve('./src/templates/helsinkifirstbatch.js')
+  const helsinkiFirstBatchTemplate = path.resolve('./src/templates/helsinkifirstbatch/index.js')
   const resHelsinkiFirstBatch = await graphql(`
   query {
     allContentfulHelsinkiFirstBatch {
@@ -21,18 +21,22 @@ const path = require('path');
       }
     }
   `)
-  resHelsinkiFirstBatch.data.allContentfulHelsinkiFirstBatch.edges.forEach((edge) => {
+  const helsinkiFirstBatch = resHelsinkiFirstBatch.data.allContentfulHelsinkiFirstBatch.edges;
+  helsinkiFirstBatch.forEach((edge, index) => {
       createPage({
           //the component in the object is the path to the component
           component: helsinkiFirstBatchTemplate,
           path: `/helsinkifirstbatch/${edge.node.slug}`,
           context: {
               //slug in this case is like an id
-              slug: edge.node.slug
+              slug: edge.node.slug,
+              index: index,
+              previous: index === 0 ? null : helsinkiFirstBatch[index - 1].node,
+              next: index === helsinkiFirstBatch.length -1 ? null : helsinkiFirstBatch[index + 1].node
           }
       })
   })
-  const helsinkiSecondBatchTemplate = path.resolve('./src/templates/helsinkisecondbatch.js')
+  const helsinkiSecondBatchTemplate = path.resolve('./src/templates/helsinkisecondbatch/index.js')
   const resHelsinkiSecondBatch = await graphql(`
   query {
     allContentfulHelsinkiSecondBatch {
@@ -46,19 +50,53 @@ const path = require('path');
       }
     }
   `)
-  resHelsinkiSecondBatch.data.allContentfulHelsinkiSecondBatch.edges.forEach((edge) => {
+  const helsinkiSecondBatch = resHelsinkiSecondBatch.data.allContentfulHelsinkiSecondBatch.edges
+  helsinkiSecondBatch.forEach((edge, index) => {
       createPage({
           //the component in the object is the path to the component
           component: helsinkiSecondBatchTemplate,
           path: `/helsinkisecondbatch/${edge.node.slug}`,
           context: {
               //slug in this case is like an id
-              slug: edge.node.slug
+              slug: edge.node.slug,
+              index: index,
+              previous: index === 0 ? null : helsinkiSecondBatch[index - 1].node,
+              next: index === helsinkiSecondBatch.length -1 ? null : helsinkiSecondBatch[index + 1].node
           }
       })
   })
 
-  const abstractsTemplate = path.resolve('./src/templates/abstracts.js')
+  const theLordAndTheNewCreaturesTemplate = path.resolve('./src/templates/theLordAndTheNewCreatures/index.js')
+  const resTheLordAndTheNewCreatures = await graphql(`
+  query {
+    allContentfulTheLordAndTheNewCreatures {
+        edges {
+          node {
+            slug  
+            
+            
+          }
+        }
+      }
+    }
+  `)
+  const theLordAndNewCreatures = resTheLordAndTheNewCreatures.data.allContentfulTheLordAndTheNewCreatures.edges
+  theLordAndNewCreatures.forEach((edge, index) => {
+      createPage({
+          //the component in the object is the path to the component
+          component: theLordAndTheNewCreaturesTemplate,
+          path: `/thelordandthenewcreatures/${edge.node.slug}`,
+          context: {
+              //slug in this case is like an id
+              slug: edge.node.slug,
+              index: index,
+              previous: index === 0 ? null : theLordAndNewCreatures[index - 1].node,
+              next: index === theLordAndNewCreatures.length -1 ? null : theLordAndNewCreatures[index + 1].node
+          }
+      })
+  })
+
+  const abstractsTemplate = path.resolve('./src/templates/abstracts/index.js')
   const resAbstracts = await graphql(`
   query {
     allContentfulAbstracts {
@@ -72,21 +110,26 @@ const path = require('path');
       }
     }
   `)
-  resAbstracts.data.allContentfulAbstracts.edges.forEach((edge) => {
+  const abstracts = resAbstracts.data.allContentfulAbstracts.edges
+  abstracts.forEach((edge, index) => {
       createPage({
           //the component in the object is the path to the component
           component: abstractsTemplate,
           path: `/abstracts/${edge.node.slug}`,
           context: {
               //slug in this case is like an id
-              slug: edge.node.slug
+              slug: edge.node.slug,
+              index: index,
+              previous: index === 0 ? null : abstracts[index - 1].node,
+              next: index === abstracts.length -1 ? null : abstracts[index + 1].node
+
           }
       })
   })
 
   
 
-    const digitalTemplate = path.resolve('./src/templates/digital.js')
+    const digitalTemplate = path.resolve('./src/templates/digital/index.js')
       const resDigital = await graphql(`
       query {
         allContentfulDigital {
@@ -100,19 +143,23 @@ const path = require('path');
           }
         }
       `)
-      resDigital.data.allContentfulDigital.edges.forEach((edge) => {
+      const digital = resDigital.data.allContentfulDigital.edges
+      digital.forEach((edge, index) => {
           createPage({
               //the component in the object is the path to the component
               component: digitalTemplate,
               path: `/digital/${edge.node.slug}`,
               context: {
                   //slug in this case is like an id
-                  slug: edge.node.slug
+                  slug: edge.node.slug,
+                  index: index,
+                  previous: index === 0 ? null : digital[index - 1].node,
+                  next: index === digital.length -1 ? null : digital[index + 1].node
               }
           })
       })
 
-      const playingWithTheLightsOfSydneyTemplate = path.resolve('./src/templates/playingwiththelightsofsydney.js')
+      const playingWithTheLightsOfSydneyTemplate = path.resolve('./src/templates/playingwiththelightsofsydney/index.js')
       const resLights = await graphql(`
       query {
         allContentfulPlayingWithTheLightsOfSydney {
@@ -124,14 +171,18 @@ const path = require('path');
         }
       }
       `)
-      resLights.data.allContentfulPlayingWithTheLightsOfSydney.edges.forEach((edge) => {
+      const lightsSydney = resLights.data.allContentfulPlayingWithTheLightsOfSydney.edges;
+      lightsSydney.forEach((edge, index) => {
           createPage({
               //the component in the object is the path to the component
               component: playingWithTheLightsOfSydneyTemplate,
               path: `/playingwiththelightsofsydney/${edge.node.slug}`,
               context: {
                   //slug in this case is like an id
-                  slug: edge.node.slug
+                  slug: edge.node.slug,
+                  index: index,
+                  previous: index === 0 ? null : lightsSydney[index - 1].node,
+                  next: index === lightsSydney.length -1 ? null : lightsSydney[index + 1].node
               }
           })
       })
@@ -148,19 +199,23 @@ const path = require('path');
         }
       }
       `)
-      resWhileTraveling.data.allContentfulWhileTraveling.edges.forEach((edge) => {
+      const whileTraveling = resWhileTraveling.data.allContentfulWhileTraveling.edges;
+      whileTraveling.forEach((edge, index) => {
           createPage({
               //the component in the object is the path to the component
               component: whileTravelingTemplate,
               path: `/whiletraveling/${edge.node.slug}`,
               context: {
                   //slug in this case is like an id
-                  slug: edge.node.slug
+                  slug: edge.node.slug,
+                  index: index,
+                  previous: index === 0 ? null : whileTraveling[index - 1].node,
+                  next: index === whileTraveling.length -1 ? null : whileTraveling[index + 1].node
               }
           })
       })
 
-      const blogTemplate = path.resolve('./src/templates/blog.js')
+      const blogTemplate = path.resolve('./src/templates/blog/index.js')
     const resBlog = await graphql(`
     query {
       allContentfulBlogPost {

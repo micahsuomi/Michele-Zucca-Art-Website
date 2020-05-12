@@ -1,21 +1,22 @@
 import React from 'react';
-import Layout from '../components/layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Head from '../components/head';
-import portfolioStyles from './portfolio.module.scss';
-import stylesVertical from './stylesVertical.module.scss';
+import Layout from '../../components/layout';
+import Head from '../../components/head';
+import portfolioStyles from '../portfolio.module.scss';
+import stylesVertical from '../stylesVertical.module.scss';
 
-const HelsinkiSecondBatch = () => {
+
+const TheLordAndTheNewCreatures = () => {
     const data = useStaticQuery(graphql`
     query {
-        contentfulHelsinkiSecondBatchHeader {
+        contentfulTheLordAndTheNewCreaturesHeader {
             title
             description {
               json
             }
           }
-      allContentfulHelsinkiSecondBatch(
+          allContentfulTheLordAndTheNewCreatures(
         sort: {
           fields: createdAt,
           order: ASC} ) {
@@ -39,14 +40,15 @@ const HelsinkiSecondBatch = () => {
 
     return(
             <Layout>
-            <Head title = "helsinki second batch" />
-            <h1>{data.contentfulHelsinkiSecondBatchHeader.title}</h1>
-            {documentToReactComponents(data.contentfulHelsinkiSecondBatchHeader.description.json)}
+            <Head title = "the lord and the new creatures" />
+            <h1>{data.contentfulTheLordAndTheNewCreaturesHeader.title}</h1>
+            <p>{documentToReactComponents(data.contentfulTheLordAndTheNewCreaturesHeader.description.json)}</p>
             <ul className={portfolioStyles.wrapper}>  
-                {data.allContentfulHelsinkiSecondBatch.edges.map((edge) => {
+                {data.allContentfulTheLordAndTheNewCreatures.edges.map((edge) => {
+                
                     return (
                       <div className={portfolioStyles.card}>
-                        <Link to ={`/helsinkisecondbatch/${edge.node.slug}`} className={portfolioStyles.link}>
+                        <Link to ={`/thelordandthenewcreatures/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
                         <div class={stylesVertical.imageContainer}>
                         <img src={edge.node.image.file.url} alt={edge.node.image.description} className={stylesVertical.img} />
@@ -66,4 +68,4 @@ const HelsinkiSecondBatch = () => {
 
 }
 
-export default HelsinkiSecondBatch;
+export default TheLordAndTheNewCreatures;

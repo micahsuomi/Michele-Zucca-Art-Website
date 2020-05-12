@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 
 export const query = graphql`
 query($slug: String!) {
-  contentfulWhileTraveling( slug: {eq: $slug} ) {
+  contentfulPlayingWithTheLightsOfSydney( slug: {eq: $slug} ) {
     title
     image {
       file {
@@ -25,11 +25,26 @@ query($slug: String!) {
     
    
   }
+  contentfulPlayingWithTheLightOfSydneyHeader {
+    pageTitle
+    pageDescription {
+      json
+    }
+  }
 
 }
 `
-const WhileTraveling = (props) => {
+const PlayingWithTheLightsOfSydney = (props) => {
 
+  const previousPlayingWithTheLightsOfSydney = props.pageContext.next ? {
+    url: `/playingwiththelightsofsydney/${props.pageContext.next.slug}`,
+
+  } : '';
+
+  const nextPlayingWithTheLightsOfSydney = props.pageContext.previous ? {
+    url: `/playingwiththelightsofsydney/${props.pageContext.previous.slug}`,
+
+  } : '';
   const options = {
     renderNode: {
       "embedded-asset-block": (node) => {
@@ -42,44 +57,37 @@ const WhileTraveling = (props) => {
     }
   } 
 
-  const previousWhileTraveling = props.pageContext.next ? {
-    url: `/whiletraveling/${props.pageContext.next.slug}`,
-
-  } : '';
-
-  const nextWhileTraveling = props.pageContext.previous ? {
-    url: `/whiletraveling/${props.pageContext.previous.slug}`,
-
-  } : '';
     return (
         <div>
-             {/* <Layout> */}
-          <Head title={props.data.contentfulWhileTraveling.title}/>
+        {/* <Layout> */}
+          <Head title={props.data.contentfulPlayingWithTheLightsOfSydney.title}/>
           <div className={portfolioStyles.container}>
           <div className={portfolioStyles.exitContainer}>
-            <Link to='/whiletraveling'>
+            <Link to='/playingwiththelightsofsydney'>
             <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
-            <h2>{props.data.contentfulWhileTraveling.title}</h2>
+            <h2>{props.data.contentfulPlayingWithTheLightsOfSydney.title}</h2>
+            <h4>{props.data.contentfulPlayingWithTheLightsOfSydney.subtitle}</h4>
             <div className={portfolioStyles.sliderContainer}>
             <div>
-              {previousWhileTraveling && (
-                <Link to={previousWhileTraveling.url}>
+              {previousPlayingWithTheLightsOfSydney && (
+                <Link to={previousPlayingWithTheLightsOfSydney.url}>
                   <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
-            <img src={props.data.contentfulWhileTraveling.image.file.url} alt={props.data.contentfulWhileTraveling.image.description} className={styles.photoImage} />
+            <img src={props.data.contentfulPlayingWithTheLightsOfSydney.image.file.url} alt={props.data.contentfulPlayingWithTheLightsOfSydney.image.description} className={styles.imagePhoto}/>
             <div>
-              {nextWhileTraveling && (
-                <Link to={nextWhileTraveling.url}>
+              {nextPlayingWithTheLightsOfSydney && (
+                <Link to={nextPlayingWithTheLightsOfSydney.url}>
                   <FontAwesomeIcon icon={faLongArrowAltRight} />
                 </Link>
               )}
             </div>
             </div>
-            {documentToReactComponents(props.data.contentfulWhileTraveling.body.json, options)} 
+            {documentToReactComponents(props.data.contentfulPlayingWithTheLightsOfSydney.body.json, options)}
+
             </div>
 
         {/* </Layout> */}
@@ -87,4 +95,4 @@ const WhileTraveling = (props) => {
     )
 }
 
-export default WhileTraveling;
+export default PlayingWithTheLightsOfSydney;

@@ -15,10 +15,19 @@ header {
 
 }
 
+.title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
 .title {
     color: #000000;
     font-size: 2rem;
     text-decoration: none;
+    margin-left: .5rem;
+    
 }
 
 
@@ -26,7 +35,7 @@ header {
     font-size: 10px;
     color: grey;
     @include sm {
-        font-size: 7px;
+        display: none;
     }
 }
 
@@ -105,7 +114,9 @@ details:hover,
 
 @media screen and (max-width: 850px) {
     header {
-       
+        grid-template-columns: 45% 55%;
+    
+    
     
         h2 {
             font-size: 1rem;
@@ -125,17 +136,17 @@ details:hover,
    
 
     .toggle-wrapper {
-        background-color: rgb(53, 36, 46);
+        color: rgb(53, 36, 46);
         display: inline-block;
         border-radius: 500px;
         margin-left: 23.7rem;
-        margin-top: .5rem;
+        margin-top: .2rem;
         position: relative;
         padding: 5px;
         cursor: pointer;
         z-index: 3;
         @include sm {
-            margin-left: 11.5rem;
+            margin-left: 10.5rem;
             margin-top: .5rem;
         }
 
@@ -159,9 +170,20 @@ details:hover,
      .nav-item-nested {
         color: white;
         font-size: var(--font-size-mediumsmall);
-        margin-left: 0;
+        margin-left: none;
         text-align: center;
+    }
+
+    .nav-item,
+    summary {
         text-transform: uppercase;
+
+
+    }
+
+    .nav-item:active,
+    details:focus {
+        outline: none;
     }
 
     .nav-links {

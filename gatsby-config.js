@@ -11,6 +11,25 @@ module.exports = {
     twitterHandle: '@michelezucca-arthata'
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://michelezucca-art.netlify.app/',
+        sitemap: 'https://michelezucca-art.netlify.app/sitemap.xml',
+        resolveEnv: () => process.env.GATSBY_ENV,
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }]
+          }
+        }
+      }
+    }
+  ],
+
+  plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-contentful',
