@@ -70,7 +70,9 @@ const TheLordAndTheNewCreatures = (props) => {
               )}
             </div>
 
-            <img src={props.data.contentfulTheLordAndTheNewCreatures.image.file.url} alt={props.data.contentfulTheLordAndTheNewCreatures.image.description} className={portfolioStyles.image} />
+            <img src={props.data.contentfulTheLordAndTheNewCreatures.image.file.url} 
+            alt={props.data.contentfulTheLordAndTheNewCreatures.image.description} 
+            className={portfolioStyles.image} />
             <div>
               {nextTheLordAndTheNewCreatures && (
                 <Link to={nextTheLordAndTheNewCreatures.url}>

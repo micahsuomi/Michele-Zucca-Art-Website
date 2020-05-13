@@ -18,7 +18,7 @@ const TheLordAndTheNewCreatures = () => {
           }
           allContentfulTheLordAndTheNewCreatures(
         sort: {
-          fields: createdAt,
+          fields: datePublished,
           order: DESC} ) {
         edges {
           node {
