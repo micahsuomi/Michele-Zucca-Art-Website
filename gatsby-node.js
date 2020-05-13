@@ -65,7 +65,7 @@ const path = require('path');
           }
       })
   })
-
+/*
   const theLordAndTheNewCreaturesTemplate = path.resolve('./src/templates/theLordAndTheNewCreatures/index.js')
   const resTheLordAndTheNewCreatures = await graphql(`
   query {
@@ -80,7 +80,7 @@ const path = require('path');
       }
     }
   `)
-  /*
+  
   const theLordAndNewCreatures = resTheLordAndTheNewCreatures.data.allContentfulTheLordAndTheNewCreatures.edges;
   theLordAndNewCreatures.forEach((edge, index) => {
       createPage({
