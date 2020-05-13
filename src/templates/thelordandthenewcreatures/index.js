@@ -40,15 +40,15 @@ const TheLordAndTheNewCreatures = (props) => {
       }
     }
   } 
-  const previousTheLordAndTheNewCreatures = props.pageContext.next ? {
-    url: `/thelordandthenewcreatures/${props.pageContext.next.slug}`,
-
-  } : '';
-
-  const nextTheLordAndTheNewCreatures = props.pageContext.previous ? {
+  const previousTheLordAndTheNewCreatures = props.pageContext.previous ? {
     url: `/thelordandthenewcreatures/${props.pageContext.previous.slug}`,
 
-  } : '';
+  } : null;
+
+  const nextTheLordAndTheNewCreatures = props.pageContext.next ? {
+    url: `/thelordandthenewcreatures/${props.pageContext.next.slug}`,
+
+  } : null;
 
     return (
         <div>
