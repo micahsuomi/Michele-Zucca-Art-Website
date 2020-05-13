@@ -20,7 +20,6 @@ module.exports = {
     siteUrl: `https://michelezucca-art.netlify.app/`,
     twitterHandle: '@michelezucca-arthata'
   },
-  plugins: [`gatsby-plugin-sitemap`],
 
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -72,6 +71,8 @@ module.exports = {
       }
     },
     'gatsby-plugin-sharp',
+    `gatsby-plugin-sitemap`,
+
     {
       resolve: 'gatsby-transformer-remark',
       options: {
