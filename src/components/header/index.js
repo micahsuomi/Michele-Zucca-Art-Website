@@ -64,20 +64,20 @@ const Header = ( {title, subtitle} ) => {
                 <details>
                 <summary activeClassName={headerStyles.activeNavItem}> Portraits</summary>
                 <ul className={headerStyles.nestedNavList}>
-                <li>
+                <li className={headerStyles.nestedListItem}>
                 <Link className={headerStyles.navItemNested} 
                 to ="/helsinkifirstbatch">
                   Helsinki First Batch
                   </Link>
                   </li>
-                  <li>
+                  <li className={headerStyles.nestedListItem}>
                   <Link className={headerStyles.navItemNested} 
                 to ="/helsinkisecondbatch">
                   Helsinki Second Batch
                   </Link>
                   </li>
 
-                  <li>
+                  <li className={headerStyles.nestedListItem}>
                   <Link className={headerStyles.navItemNested} 
                 to ="/thelordandthenewcreatures">
                   The Lord and The New Creatures
@@ -110,13 +110,13 @@ const Header = ( {title, subtitle} ) => {
                   Allegories
                   </Link>
                   </li>*/}
-                  <li> 
+                  <li className={headerStyles.nestedListItem}> 
                   <Link className={headerStyles.navItemNested} 
                 to ="/playingwiththelightsofsydney">
                   Playing With The Lights Of Sydney
                   </Link>
                   </li>
-                  <li>
+                  <li  className={headerStyles.nestedListItem}>
                   <Link className={headerStyles.navItemNested} 
                 to ="/whiletraveling">
                   While Travelling

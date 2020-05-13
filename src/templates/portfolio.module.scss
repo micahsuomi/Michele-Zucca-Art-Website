@@ -7,12 +7,22 @@
     color: white;
     position: relative;
     padding: 1rem 3rem;
+    @include md {
+        padding: 1rem 1rem;
+    }
 
    
     .exit-container {
         display: flex;
         justify-content: flex-end;
         width: 96vw;
+    }
+
+    h2 {
+        @include sm {
+            font-size: var(--font-size-mediumsmall);
+            text-align: center;
+        }
     }
 
     
@@ -23,6 +33,9 @@
         padding: 1rem 12rem;
         justify-items: center;
         align-items: center;
+        .slider-container div:nth-of-type(2) {
+            padding: 5rem;
+        }
         @include md {
             grid-template-columns: 10% 80% 10%;
             height: 80vh;
@@ -42,12 +55,27 @@
     }
 
     .image {
-        width: 70%;
+        width: 60%;
         margin-bottom: 1.5rem;
+        animation-name:appear;
+        animation-duration:1s;
+        animation-timing-function: ease-in-out;
+
         @include md {
-            height: 70%;
-            
+            width: 80%;
         }
+        @include sm {
+            width: 100%;
+        }
+       
+       
+    }
+
+    
+
+    @keyframes appear {
+        0%   { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     

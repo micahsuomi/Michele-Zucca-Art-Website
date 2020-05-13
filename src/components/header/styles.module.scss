@@ -87,10 +87,7 @@ details summary::-webkit-details-marker {
     overflow: hidden;
      
  }
-// details[open] summary::-webkit-details-marker {
-//     background: url(../imgs/chevron-down-outline.svg) center no-repeat;
-//     color: transparent;
-// }
+
 
 .nestedNavList {
     list-style: none;
@@ -115,8 +112,6 @@ details:hover,
 @media screen and (max-width: 850px) {
     header {
         grid-template-columns: 45% 55%;
-    
-    
     
         h2 {
             font-size: 1rem;
@@ -164,26 +159,47 @@ details:hover,
     }
 
     
-
+    
     .nav-item,
      details,
      .nav-item-nested {
         color: white;
-        font-size: var(--font-size-mediumsmall);
         margin-left: none;
-        text-align: center;
+        
+       
     }
+    li {
+        background-color: black;
+        width: 100vw;
+        border: 1px solid rgba(231, 208, 208, 0.4);
+        text-align: center;
 
+    }
     .nav-item,
     summary {
         text-transform: uppercase;
-
+        font-size: var(--font-size-mediumsmall);
+       
+       
 
     }
 
+    .nested-list-item {
+        border: none;
+    }
+    .nav-item-nested {
+        font-size: var(--font-size-small);
+        margin-left: -6.3rem;
+        border: none;
+        
+    }
+
+
     .nav-item:active,
-    details:focus {
+    summary:focus,
+    .nav-item-nested:focus {
         outline: none;
+        text-decoration: none;
     }
 
     .nav-links {
@@ -230,10 +246,7 @@ details:hover,
         margin-left: 11.5rem;
 
     }
-    .toggle-bar {
-       
-        
-    }
+  
 }
 
 @media screen and (max-width: 500px) {
