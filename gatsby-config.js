@@ -12,7 +12,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Michele Zucca Art Website',
+    title: 'Michele Zucca',
     author: 'Michele Zucca',
     description: 'My personal art website featuring traditional paintings, photography, digital art and a blog.',
     subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It',
@@ -20,7 +20,8 @@ module.exports = {
     siteUrl: `https://michelezucca-art.netlify.app/`,
     twitterHandle: '@michelezucca-arthata'
   },
-    
+  plugins: [`gatsby-plugin-sitemap`],
+
   plugins: [
     'gatsby-plugin-react-helmet',
     {
