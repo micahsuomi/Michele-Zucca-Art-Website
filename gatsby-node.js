@@ -80,7 +80,7 @@ const path = require('path');
       }
     }
   `)
-  const theLordAndNewCreatures = resTheLordAndTheNewCreatures.data.allContentfulTheLordAndTheNewCreatures.edges
+  const theLordAndNewCreatures = resTheLordAndTheNewCreatures.data.allContentfulTheLordAndTheNewCreatures.edges;
   theLordAndNewCreatures.forEach((edge, index) => {
       createPage({
           //the component in the object is the path to the component

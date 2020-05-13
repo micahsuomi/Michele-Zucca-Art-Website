@@ -35,7 +35,6 @@ const HelsinkiSecondBatch = () => {
   
     }
     `)
-    console.log(data)
 
     return(
             <Layout>

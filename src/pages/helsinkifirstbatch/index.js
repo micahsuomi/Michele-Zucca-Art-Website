@@ -36,7 +36,6 @@ const HelsinkiFirstBatch = () => {
   
     }
     `)
-    console.log(data)
 
     return(
             <Layout>

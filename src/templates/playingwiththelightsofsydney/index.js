@@ -25,12 +25,6 @@ query($slug: String!) {
     
    
   }
-  contentfulPlayingWithTheLightOfSydneyHeader {
-    pageTitle
-    pageDescription {
-      json
-    }
-  }
 
 }
 `

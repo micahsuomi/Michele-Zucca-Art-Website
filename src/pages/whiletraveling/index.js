@@ -36,7 +36,6 @@ const WhileTravelingPage = () => {
         
       }
     `)
-    console.log(data)
    
 
     return(

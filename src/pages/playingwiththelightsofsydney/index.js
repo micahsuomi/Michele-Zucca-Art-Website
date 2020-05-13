@@ -9,7 +9,6 @@ import portfolioStyles from '../portfolio.module.scss';
 const PlayingWithTheLightsOfSydneyPage = () => {
     const data = useStaticQuery(graphql`
     query {
-
       contentfulPlayingWithTheLightOfSydneyHeader {
         pageTitle
         pageDescription {
@@ -36,7 +35,6 @@ const PlayingWithTheLightsOfSydneyPage = () => {
         
       }
     `)
-    console.log(data.allPdf)
 
     return(
             <Layout>
@@ -45,9 +43,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
             <p>{documentToReactComponents(data.contentfulPlayingWithTheLightOfSydneyHeader.pageDescription.json)}</p>
 
             <ul className={portfolioStyles.wrapper}>
-              
                 {data.allContentfulPlayingWithTheLightsOfSydney.edges.map((edge) => {
-                  
                     return (
                       <div className={portfolioStyles.card} key={edge.node.slug}>
                         <Link to ={`/playingwiththelightsofsydney/${edge.node.slug}`} className={portfolioStyles.link}>

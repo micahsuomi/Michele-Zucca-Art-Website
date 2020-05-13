@@ -24,11 +24,10 @@ const Digital = () => {
       }
     }
     `)
-    console.log(data)
 
     return(
             <Layout>
-            <Head title = "digital" />
+            <Head title = "Digital" />
             <h1>Digital</h1>
             <ul className={portfolioStyles.wrapper}>
               

@@ -12,7 +12,6 @@ export const query = graphql`
 query($slug: String!) {
   contentfulAbstracts( slug: {eq: $slug} ) {
     title
-    subtitle
     image {
       file {
         url
@@ -22,9 +21,9 @@ query($slug: String!) {
     body {
       json
     }
-    
-   
+     
   }
+  
 
 }
 `
@@ -42,16 +41,17 @@ const Abstracts = (props) => {
     }
   } 
 
-  const previousAbstracts = props.pageContext.previous ? {
-    url: `/abstracts/${props.pageContext.previous.slug}`,
-
-  } : '';
-
-  const nextAbstracts = props.pageContext.next ? {
+  const previousAbstracts = props.pageContext.next ? {
     url: `/abstracts/${props.pageContext.next.slug}`,
 
-  } : '';
+  } : null;
 
+  const nextAbstracts = props.pageContext.previous ? {
+    url: `/abstracts/${props.pageContext.previous.slug}`,
+
+  } : null;
+
+  console.log(props)
     return (
         <div>
              {/* <Layout> */}
@@ -63,7 +63,6 @@ const Abstracts = (props) => {
             </Link>
             </div>
             <h2>{props.data.contentfulAbstracts.title}</h2>
-            <h4>{props.data.contentfulAbstracts.subtitle}</h4>
             <div className={portfolioStyles.sliderContainer}>
             <div>
               {previousAbstracts && (
