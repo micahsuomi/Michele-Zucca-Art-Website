@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Layout from '../../components/layout';
@@ -6,7 +6,7 @@ import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
 import stylesVertical from '../stylesVertical.module.scss';
 
-/*
+
 const TheLordAndTheNewCreatures = () => {
     const data = useStaticQuery(graphql`
     query {

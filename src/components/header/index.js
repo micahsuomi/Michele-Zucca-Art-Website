@@ -77,12 +77,12 @@ const Header = ( {title, subtitle} ) => {
                   </Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                   <Link className={headerStyles.navItemNested} 
                 to ="/thelordandthenewcreatures">
                   The Lord and The New Creatures
                   </Link>
-                  </li>
+                  </li> */}
 
                   </ul>
                   </details>
@@ -104,13 +104,13 @@ const Header = ( {title, subtitle} ) => {
                 <details>
                 <summary activeClassName={headerStyles.activeNavItem}> Photography</summary>
                 <ul className={headerStyles.nestedNavList}>
-                <li>
+                {/* <li>
                 <Link className={headerStyles.navItemNested} 
                 to ="/allegories">
                   Allegories
                   </Link>
-                  </li>
-                  <li>
+                  </li>*/}
+                  <li> 
                   <Link className={headerStyles.navItemNested} 
                 to ="/playingwiththelightsofsydney">
                   Playing With The Lights Of Sydney
