@@ -80,6 +80,7 @@ const path = require('path');
       }
     }
   `)
+  /*
   const theLordAndNewCreatures = resTheLordAndTheNewCreatures.data.allContentfulTheLordAndTheNewCreatures.edges;
   theLordAndNewCreatures.forEach((edge, index) => {
       createPage({
@@ -94,7 +95,7 @@ const path = require('path');
               next: index === theLordAndNewCreatures.length -1 ? null : theLordAndNewCreatures[index + 1].node
           }
       })
-  })
+  })*/
 
   const abstractsTemplate = path.resolve('./src/templates/abstracts/index.js')
   const resAbstracts = await graphql(`

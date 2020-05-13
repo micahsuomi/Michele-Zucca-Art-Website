@@ -6,7 +6,7 @@ import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
 import stylesVertical from '../stylesVertical.module.scss';
 
-
+/*
 const TheLordAndTheNewCreatures = () => {
     const data = useStaticQuery(graphql`
     query {
@@ -68,4 +68,4 @@ const TheLordAndTheNewCreatures = () => {
 
 }
 
-export default TheLordAndTheNewCreatures;
+export default TheLordAndTheNewCreatures;*/
