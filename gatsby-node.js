@@ -66,7 +66,7 @@ const path = require('path');
       })
   })
 
-  const theLordAndTheNewCreaturesTemplate = path.resolve('./src/templates/theLordAndTheNewCreatures/index.js')
+  const theLordAndTheNewCreaturesTemplate = path.resolve('./src/templates/thelordandthenewcreatures/index.js')
   const resTheLordAndTheNewCreatures = await graphql(`
   query {
     allContentfulTheLordAndTheNewCreatures {
