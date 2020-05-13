@@ -19,7 +19,7 @@ const TheLordAndTheNewCreatures = () => {
           allContentfulTheLordAndTheNewCreatures(
         sort: {
           fields: datePublished,
-          order: DESC} ) {
+          order: ASC} ) {
         edges {
           node {
             title
@@ -37,6 +37,7 @@ const TheLordAndTheNewCreatures = () => {
     }
     `)
 
+    console.log(data.allContentfulTheLordAndTheNewCreatures.edges)
     return(
             <Layout>
             <Head title = "the lord and the new creatures" />
