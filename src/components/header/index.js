@@ -77,12 +77,12 @@ const Header = ( {title, subtitle} ) => {
                   </Link>
                   </li>
 
-                  {/* <li>
+                  <li>
                   <Link className={headerStyles.navItemNested} 
                 to ="/thelordandthenewcreatures">
                   The Lord and The New Creatures
                   </Link>
-                  </li> */}
+                  </li> 
 
                   </ul>
                   </details>

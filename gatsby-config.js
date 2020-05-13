@@ -1,4 +1,14 @@
 //this is a NodeJS file
+
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://michelezucca-art.netlify.app/',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 module.exports = {
   /* Your site config here */
   siteMetadata: {
@@ -10,25 +20,7 @@ module.exports = {
     siteUrl: `https://michelezucca-art.netlify.app/`,
     twitterHandle: '@michelezucca-arthata'
   },
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://michelezucca-art.netlify.app/',
-        sitemap: 'https://michelezucca-art.netlify.app/sitemap.xml',
-        resolveEnv: () => process.env.GATSBY_ENV,
-        env: {
-          development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
-          },
-          production: {
-            policy: [{ userAgent: '*', allow: '/' }]
-          }
-        }
-      }
-    }
-  ],
-
+    
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -55,6 +47,27 @@ module.exports = {
           `Montserrat \:300,400,700` // you can also specify font weights and styles
         ],
         display: 'swap'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+        }
       }
     },
     'gatsby-plugin-sharp',

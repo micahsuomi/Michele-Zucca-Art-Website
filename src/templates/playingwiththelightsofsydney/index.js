@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-// import Layout from '../../components/layout';
 import Head from '../../components/head';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -53,7 +52,6 @@ const PlayingWithTheLightsOfSydney = (props) => {
 
     return (
         <div>
-        {/* <Layout> */}
           <Head title={props.data.contentfulPlayingWithTheLightsOfSydney.title}/>
           <div className={portfolioStyles.container}>
           <div className={portfolioStyles.exitContainer}>
@@ -84,7 +82,6 @@ const PlayingWithTheLightsOfSydney = (props) => {
 
             </div>
 
-        {/* </Layout> */}
         </div>
     )
 }

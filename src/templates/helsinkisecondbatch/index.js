@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Layout from '../../components/layout';
 import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
 
@@ -58,12 +57,12 @@ const HelsinkiFirstBatch = (props) => {
 
     return (
         <div>
-        {/* <Layout> */}
         <Head title={props.data.contentfulHelsinkiSecondBatch.title}/>
           <div className={portfolioStyles.container}>
             <div className={portfolioStyles.exitContainer}>
             <Link to='/helsinkifirstbatch'>
-            <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
+            <FontAwesomeIcon icon={faTimes} 
+            style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
             <h2>{props.data.contentfulHelsinkiSecondBatch.title}</h2>
@@ -85,14 +84,10 @@ const HelsinkiFirstBatch = (props) => {
                 </Link>
               )}
             </div>
-            </div>
-           
+            </div>  
             {documentToReactComponents(props.data.contentfulHelsinkiSecondBatch.body.json, options)}
             </div>
           
-
-
-        {/* </Layout> */}
         </div>
     )
 }

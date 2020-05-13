@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-// import Layout from '../../components/layout';
 import Head from '../../components/head';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -60,7 +59,6 @@ const HelsinkiFirstBatch = (props) => {
  
     return (
         <div>
-        {/* <Layout> */}
           <Head title={props.data.contentfulHelsinkiFirstBatch.title}/>
           <div className={portfolioStyles.container}>
             <div className={portfolioStyles.exitContainer}>
@@ -91,9 +89,7 @@ const HelsinkiFirstBatch = (props) => {
            
             {documentToReactComponents(props.data.contentfulHelsinkiFirstBatch.body.json, options)}
             </div>
-          
-
-        {/* </Layout> */}
+        
         </div>
     )
 }

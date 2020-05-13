@@ -65,7 +65,7 @@ const path = require('path');
           }
       })
   })
-/*
+
   const theLordAndTheNewCreaturesTemplate = path.resolve('./src/templates/theLordAndTheNewCreatures/index.js')
   const resTheLordAndTheNewCreatures = await graphql(`
   query {
@@ -95,7 +95,7 @@ const path = require('path');
               next: index === theLordAndNewCreatures.length -1 ? null : theLordAndNewCreatures[index + 1].node
           }
       })
-  })*/
+  })
 
   const abstractsTemplate = path.resolve('./src/templates/abstracts/index.js')
   const resAbstracts = await graphql(`

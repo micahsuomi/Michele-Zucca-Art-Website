@@ -1,5 +1,4 @@
-/*import React from 'react';
-import Layout from '../../components/layout';
+import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
@@ -56,7 +55,8 @@ const TheLordAndTheNewCreatures = (props) => {
           <div className={portfolioStyles.container}>
           <div className={portfolioStyles.exitContainer}>
             <Link to='/thelordandthenewcreatures'>
-            <FontAwesomeIcon icon={faTimes} style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
+            <FontAwesomeIcon icon={faTimes} 
+            style={{color: 'white', height: '1.5rem', width: '1.5rem', alignSelf: 'flex-end'}}/>
             </Link>
             </div>
             <h2>{props.data.contentfulTheLordAndTheNewCreatures.title}</h2>
@@ -87,4 +87,4 @@ const TheLordAndTheNewCreatures = (props) => {
     )
 }
 
-export default TheLordAndTheNewCreatures;*/
+export default TheLordAndTheNewCreatures;
