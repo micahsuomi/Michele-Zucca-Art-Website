@@ -4,28 +4,103 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+
+    h2 {
+        position: absolute;
+        top: 45%;
+        left: 18%;
+        color: rgb(241, 236, 236);
+        font-size: $banner-title;
+        text-transform: uppercase;
+        @include md {
+            top: 46.5%;
+            left: 16%;
+            font-size: $section-title;
+        }
+         @include sm {
+             top: 45%;
+         }
+         @include ssm {
+             font-size: $card-title;
+             top: 46.5%;
+         }
+    }
 
     img {
-        animation-name:appear;
-        animation-duration:1s;
-        animation-timing-function: ease-in-out;
-       
+        animation-name:fade;
+        width: 42rem;
+        height: 26rem;
         @include md {
-            width: 100%;
-            height: 100%;
-        
+            height: 19rem;
+        }@include sm {
+            height: 13.5rem;
         }
+        @include ssm {
+            height: 12rem;
+        }
+
+
+        // animation-duration:1s;
+        // animation-timing-function: ease-in-out;
+       
+      
     }
-   
+ 
 
 }
+
+.mask {
+    opacity: 0;
+    background-color: rgb(48, 4, 4);
+    width: 100vw;
+    height: 80vh;
+    position: absolute;
+    transition: all ease-in-out 1s;
+    top: -110px;
+    @include md {
+        height: 60vh;
+        top: -148px;
+        opacity: 0.5;
+        
+    }
+    @include sm {
+        height: 56vh;
+        top: -107px;
+
+    }
+    @include ssm {
+        height: 66vh;
+    }
+}
+.mask:hover {
+    opacity: .8;
+}
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
 
 .nav-container {
     display: grid;
     grid-template-columns: 75% 25%;
     align-items: center;
-    margin-top: 3rem;
-    width: 52rem;
+    width: 100vw;
+    position: absolute;
+    top: 50%;
     @include md {
         width: 36rem;
     }
@@ -60,18 +135,38 @@
     color: rgb(38, 44, 49);
     text-align: left;
 }
-.buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-end;
-}
 
 .icon {
     margin: 1rem;
     cursor: pointer;
-    width: 5rem;
+    width: 8rem;
+    color: white;
+}
+.icon:hover {
+    color: silver;
+}
+
+.left, .right {
+    position: absolute;
+    top: 45%;
+    display: flex;
+    align-items: center;
+    @include sm {
+        top: 43.5%;
+    }
+
+}
+.left {
+    left: 4%;
+    
+
+}
+
+.right {
+    right: 4%;
+   
 }
 span {
     margin: .4rem;
+    color: white;
 }

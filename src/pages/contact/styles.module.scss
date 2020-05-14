@@ -1,64 +1,12 @@
 .container {
-    padding: 3rem 4rem;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     align-items: center;
-    flex-direction: column;
 }
 
-.form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 30rem;
-    margin-top: 3rem;
-    border: 1px solid lightgrey;
-    padding: 3rem 3rem;
-    border-radius: 3px;
-    background-color: rgb(38, 44, 49);
-    color: white;
+.content {
+    padding: 7rem 10rem;
 
 }
 
-label {
-    font-family: 'Montserrat', sans-serif;
-}
-.name,
-.email,
-.message {
-    width: 22rem;
-    padding: .5rem;
-    margin-top: .6rem;
-    font-family: 'Montserrat', sans-serif;
-    
-
-}
-
-.message {
-    height: 12rem;
-
-}
-
-.submit-btn {
-    width: 10rem;
-    padding: .7rem;
-    background-color: rgb(255, 0, 140);
-    border: none;
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all ease-in-out(.2s);
-
-}
-
-.submit-btn:hover {
-    background-color: rgb(187, 13, 109);
-    transform: scale(1.02, 1.02);
-    transition: all ease-in-out .2s;
-
-
-
-}

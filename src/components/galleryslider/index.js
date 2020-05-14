@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {galleryData } from './gallerysliderdata';
-import { faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Link} from 'gatsby';
 import gallerySliderStyles from './styles.module.scss';
@@ -44,19 +44,29 @@ class GallerySlider extends Component {
         return (
             <div className={gallerySliderStyles.container}>
                 <Link to={gallery[index].link}>
-                    <img src={gallery[index].img} alt={gallery[index].description} className={gallerySliderStyles.image} width='941' height='549'/></Link>
-                <div className={gallerySliderStyles.navContainer}>
+                <div className={gallerySliderStyles.fade}>                
+                    <img src={gallery[index].img} alt={gallery[index].description} className={gallerySliderStyles.image} width='941' height='549'/>
+                </div>
+                </Link>
+               
+                <div className={gallerySliderStyles.mask}>
                 <Link to={gallery[index].link}
                 className={gallerySliderStyles.pageLink}>
                 <h2 className={gallerySliderStyles.title}>{gallery[index].description}</h2>
                 </Link>
 
                 <div className={gallerySliderStyles.buttonsContainer}>
-                    <FontAwesomeIcon icon={faLongArrowAltLeft} onClick={this.goToPrevious} className={gallerySliderStyles.icon}/><span>Prev</span>
-                    <span>Next</span><FontAwesomeIcon icon={faLongArrowAltRight} onClick={this.goToNext} className={gallerySliderStyles.icon}/>
-
+                <div className={gallerySliderStyles.left}>
+                    <FontAwesomeIcon icon={faChevronLeft} onClick={this.goToPrevious} className={gallerySliderStyles.icon}/>
+                </div>
+                <div className={gallerySliderStyles.right}>
+                    <FontAwesomeIcon icon={faChevronRight} onClick={this.goToNext} className={gallerySliderStyles.icon}/>
                 </div>
                 </div>
+                </div>
+               
+               
+              
             </div>
         )
     }

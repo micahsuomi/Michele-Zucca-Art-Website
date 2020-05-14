@@ -1,122 +1,52 @@
-import React, { Component } from 'react';
-import { navigate } from 'gatsby-link';
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby'; 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Layout from '../../components/layout';
+import ContactForm from '../../components/contact';
 import Head from '../../components/head'
-import contactStyles from './styles.module.scss';
+import styles from './styles.module.scss';
 
-const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&')
+const ContactPage = () => {
+  const data = useStaticQuery(graphql`
+  query {
+    contentfulContactHeader {
+      title 
+      description {
+        json
+      }
+    }
+  }
+  `)
+  
+  const options = {
+    renderNode: {
+      "embedded-asset-block": (node) => {
+        console.log(node)
+        const alt = node.data.target.fields.title['en-US'];
+        const url = node.data.target.fields.file['en-US'].url;
+        return <img alt={alt} src={url} className={styles.img}/>
+
+      }
+    }
   }
   
-//   const Contact = () => {
-//     const [state, setState] = React.useState({})
-
-class Contact extends Component {
-    state = {}
-
-     handleChange = (e) => {
-      let {name, value} = e.target
-      this.setState({ ...this.state, [name]: value })
-      console.log(name, value)
-    }
-  
-     handleSubmit = (e) => {
-      e.preventDefault()
-      const form = e.target
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': form.getAttribute('name'),
-          ...this.state,
-        }),
-      })
-        .then(() => navigate(form.getAttribute('action')))
-        .catch((error) => alert(error))
-    }
-    render() {
+    
         return (
             <Layout>
-                <Head />
-              <div className={contactStyles.container}>
-              <h1>Contact Me</h1>
-              <form
-                name="contact"
-                method="post"
-                action="/thanks/"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-                className={contactStyles.form}
-              >
-                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-                <input type="hidden" name="form-name" value="contact" />
-                <p hidden>
-                  <label>
-                    Don’t fill this out: <input name="bot-field" onChange={this.handleChange}/>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    Your name:
-                    <br />
-                    <input type="text" 
-                    name="name" 
-                    onChange={this.handleChange}
-                    className={contactStyles.name} />
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    Your email:
-                    <br />
-                    <input type="email" 
-                    name="email" 
-                    onChange={this.handleChange}
-                    className={contactStyles.email} />
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    Message:
-                    <br />
-                    <textarea 
-                    name="message" 
-                    onChange={this.handleChange}
-                    className={contactStyles.message} />
-                  </label>
-                </p>
-                <p>
-                  <button type="submit" className={contactStyles.submitBtn}>Send</button>
-                </p>
-              </form>
-              </div>
+                <Head title ="Contact"/>
+                <div className={styles.container}>
+                <div className={styles.containerLeft}>
+                <h1>{data.contentfulContactHeader.title}</h1>
+                {documentToReactComponents(data.contentfulContactHeader.description.json)}
+                <p></p>
+                 </div>
+                 <div className={styles.contactRight}>
+                   <ContactForm />
+                 </div>
+                 </div>
             </Layout>
           )
-    }
     
   }
 
-  export default Contact
-// const ContactPage = () => {
-//     return (
-//         <div>
-//             <Layout>
-//             <Head title="Contact"/>
-//             <h1>Contact</h1>
-//                         <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-//             {/* You still need to add the hidden input with the form name to your JSX form */}
-//             <input type="hidden" name="form-name" value="contact" />
-//             ...
-//             </form>
-//             <p>Name: Michele Zucca</p>
-//             <p>Email: michele.zucca@integrify.io</p>
-//             <p><a href="https://github.com/micahsuomi" target="blank">My Github</a></p>
-//             </Layout>
-//         </div>
-//     )
-// }
-
-// export default ContactPage;
+  export default ContactPage;

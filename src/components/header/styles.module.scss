@@ -11,6 +11,10 @@ header {
     height: 70px;
     background: rgba(255, 255, 255, .6);
     z-index: 2;
+    @include sm {
+        height: 51px;
+
+    }
     
 
 }
@@ -22,14 +26,12 @@ header {
     flex-direction: column;
     position: fixed;
     padding: .3rem 1rem;
-    @include sm {
-        padding: .2rem .4rem;
+
+    @include md {
+        padding: 0;
 
     }
-    @include ssm {
-        padding: .5rem .4rem;
-
-    }
+  
 
 
 }
@@ -61,9 +63,9 @@ header {
     display: none;
     @include md {
         display: block;
-        width: 26%;
+        width: 12%;
     }
-    @include ssm {
+    @include sm {
         width: 20%;
     }
 }
@@ -183,7 +185,7 @@ summary:focus,
         z-index: 3;
         @include sm {
             margin-left: 10.5rem;
-            margin-top: .5rem;
+            margin-top: 0;
         }
 
 

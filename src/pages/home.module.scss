@@ -5,8 +5,12 @@
 }
 
 .home-header {
-    margin-top: 8rem;
+    margin-top: 13rem;
+    @include ssm {
+        margin-top: 10rem;
+    }
 }
+
 .image {
     width: 40%;
     display: inline-block;
