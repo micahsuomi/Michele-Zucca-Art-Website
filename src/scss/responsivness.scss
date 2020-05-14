@@ -1,4 +1,11 @@
+//Very small devices
+@mixin ssm {
+  @media (max-width: #{$small-smart-phones}) {
+    @content;
+  }
+}
 // Small devices
+
 @mixin sm {
     @media (max-width: #{$smart-phones}) {
       @content;

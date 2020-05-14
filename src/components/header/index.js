@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import logo from '../../imgs/logo-brightmike.png';
 import headerStyles from './styles.module.scss';
 import './style.css';
   
@@ -28,6 +29,7 @@ const Header = ( {title, subtitle} ) => {
         <header>
           <div className={headerStyles.titleWrapper}>
         <Link to ="/" className={headerStyles.title}>
+        <img src={logo} alt="michele zucca logo pic" className={headerStyles.logo}/>
         <h2>{title}</h2>
         <p className={headerStyles.subtitle}>
         {subtitle}
@@ -104,12 +106,12 @@ const Header = ( {title, subtitle} ) => {
                 <details>
                 <summary activeClassName={headerStyles.activeNavItem}> Photography</summary>
                 <ul className={headerStyles.nestedNavList}>
-                {/* <li>
+                <li className={headerStyles.nestedListItem}>
                 <Link className={headerStyles.navItemNested} 
                 to ="/allegories">
                   Allegories
                   </Link>
-                  </li>*/}
+                  </li>
                   <li className={headerStyles.nestedListItem}> 
                   <Link className={headerStyles.navItemNested} 
                 to ="/playingwiththelightsofsydney">

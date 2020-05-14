@@ -20,13 +20,31 @@ header {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    position: fixed;
+    padding: .3rem 1rem;
+    @include sm {
+        padding: .2rem .4rem;
+
+    }
+    @include ssm {
+        padding: .5rem .4rem;
+
+    }
+
+
 }
 
 .title {
-    color: #000000;
-    font-size: 2rem;
     text-decoration: none;
-    margin-left: .5rem;
+}
+.title h2 {
+    color: #000000;
+    font-size: $card-title;
+    text-decoration: none;
+    @include sm {
+         display: none;
+     }
+
     
 }
 
@@ -35,10 +53,26 @@ header {
     font-size: 10px;
     color: grey;
     @include sm {
-        display: none;
+         display: none;
+     }
+}
+
+.logo {
+    display: none;
+    @include md {
+        display: block;
+        width: 26%;
+    }
+    @include ssm {
+        width: 20%;
     }
 }
 
+nav {
+    position: fixed;
+    align-self: flex-end;
+    margin-left: 25rem;
+}
 
 .nav-links,
 details {
@@ -67,12 +101,12 @@ details,
 
 .nav-item,
 details {
-    margin: 1rem;
-
+    margin: 2rem;
 }
 
+
 .nav-item-nested {
-    margin-left: -2.3rem;
+    margin-left: -2.2rem;
 }
 
 details {
@@ -100,6 +134,13 @@ details:hover,
 
 .active-nav-item {
     border-bottom: 2px solid rgb(53, 36, 46);
+}
+
+.nav-item:active,
+summary:focus,
+.nav-item-nested:focus {
+    outline: none;
+    text-decoration: none;
 }
 
 .toggle-wrapper {
@@ -134,7 +175,7 @@ details:hover,
         color: rgb(53, 36, 46);
         display: inline-block;
         border-radius: 500px;
-        margin-left: 23.7rem;
+        margin-left: 12.7rem;
         margin-top: .2rem;
         position: relative;
         padding: 5px;
@@ -195,13 +236,6 @@ details:hover,
     }
 
 
-    .nav-item:active,
-    summary:focus,
-    .nav-item-nested:focus {
-        outline: none;
-        text-decoration: none;
-    }
-
     .nav-links {
         flex-direction: column;
         justify-content: center;
@@ -241,9 +275,12 @@ details:hover,
         font-size: var(--font-size-small);
         margin: 0;
     }
+    .nav-item-nested {
+        font-size: 16px;
+    }
 
     .toggle-wrapper {
-        margin-left: 11.5rem;
+        margin-left: -5.5rem;
 
     }
   
@@ -256,7 +293,7 @@ details:hover,
 }
 @media screen and (max-width: 320px) {
     .toggle-wrapper {
-        margin-left: 9.5rem;
+        margin-left: -8.5rem;
     }
 
 }

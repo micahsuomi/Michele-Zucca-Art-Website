@@ -86,8 +86,20 @@ module.exports = {
             }
           }
         ]
-      }
-
-    }
+      },
+      
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Michele Zucca Art`,
+        short_name: `Michele Zucca Art`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/imgs/logo-brightmike.png`, // This path is relative to the root of the site.
+      },
+    },
   ]
 }

@@ -1,24 +1,25 @@
 import React from 'react';
-import Layout from '../../components/layout';
 import {Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import portfolioStyles from '../portfolio.module.scss';
+import Layout from '../../components/layout';
 import Head from '../../components/head';
+import portfolioStyles from '../portfolio.module.scss';
 
 
-const AbstractsPage = () => {
+const AllegoriesPage = () => {
     const data = useStaticQuery(graphql`
     query {
-      contentfulAbstractsHeader {
+      contentfulAllegoriesHeader {
         title
         description {
           json
         }
       }
-        allContentfulAbstracts(
+        
+        allContentfulAllegories (
           sort: {
             fields: datePublished,
-            order: ASC} ) {
+            order: DESC} ) {
           edges {
             node {
               title
@@ -35,26 +36,24 @@ const AbstractsPage = () => {
         
       }
     `)
-
+   
 
     return(
             <Layout>
-            <Head title = "Abstracts" />
-            <h1>{data.contentfulAbstractsHeader.title}</h1>
-            {documentToReactComponents(data.contentfulAbstractsHeader.description.json)}
+            <Head title = "while traveling" />
+            <h1>{data.contentfulAllegoriesHeader.title}</h1>
+            {documentToReactComponents(data.contentfulAllegoriesHeader.description.json)}
             <ul className={portfolioStyles.wrapper}>
               
-                {data.allContentfulAbstracts.edges.map((edge) => {
-                
+                {data.allContentfulAllegories.edges.map((edge) => {
+                 
                     return (
                       <div className={portfolioStyles.card} key={edge.node.slug}>
-                        <Link to ={`/abstracts/${edge.node.slug}`} className={portfolioStyles.link}>
+                        <Link to ={`/allegories/${edge.node.slug}`} className={portfolioStyles.link}>
                         <h3>{edge.node.title}</h3>
                         <img src={edge.node.image.file.url} alt={edge.node.image.description} className={portfolioStyles.img}/> 
                         </Link>
-                       
-
-                        </div>
+                      </div>
 
 
                     )
@@ -67,4 +66,4 @@ const AbstractsPage = () => {
 
 }
 
-export default AbstractsPage;
+export default AllegoriesPage;

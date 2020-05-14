@@ -160,6 +160,35 @@ const path = require('path');
           })
       })
 
+      const allegoriesTemplate = path.resolve('./src/templates/allegories/index.js')
+      const resAllegories = await graphql(`
+      query {
+        allContentfulAllegories {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+      `)
+      const allegories = resAllegories.data.allContentfulAllegories.edges;
+      allegories.forEach((edge, index) => {
+          createPage({
+              //the component in the object is the path to the component
+              component: allegoriesTemplate,
+              path: `/allegories/${edge.node.slug}`,
+              context: {
+                  //slug in this case is like an id
+                  slug: edge.node.slug,
+                  index: index,
+                  previous: index === 0 ? null : allegories[index - 1].node,
+                  next: index === allegories.length -1 ? null : allegories[index + 1].node
+              }
+          })
+      })
+
+
       const playingWithTheLightsOfSydneyTemplate = path.resolve('./src/templates/playingwiththelightsofsydney/index.js')
       const resLights = await graphql(`
       query {
@@ -216,7 +245,7 @@ const path = require('path');
           })
       })
 
-      const blogTemplate = path.resolve('./src/templates/blog/index.js')
+    const blogTemplate = path.resolve('./src/templates/blog/index.js')
     const resBlog = await graphql(`
     query {
       allContentfulBlogPost {

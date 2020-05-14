@@ -8,21 +8,22 @@
     position: relative;
     padding: 1rem 3rem;
     @include md {
-        padding: 1rem 1rem;
+        padding: 1rem .5rem;
     }
 
    
     .exit-container {
         display: flex;
         justify-content: flex-end;
-        width: 96vw;
+        width: 95vw;
     }
 
     h2 {
         @include sm {
-            font-size: var(--font-size-mediumsmall);
+            font-size: $regular-text;
             text-align: center;
         }
+        
     }
 
     
@@ -46,7 +47,7 @@
             color: white;
             margin:12rem;
             @include md {
-                margin: 1rem;
+                margin: 2rem;
             }
         }
         a:hover {
