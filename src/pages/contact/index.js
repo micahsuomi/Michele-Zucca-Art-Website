@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby'; 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 import Layout from '../../components/layout';
 import ContactForm from '../../components/contact';
 import Head from '../../components/head'
@@ -35,10 +37,9 @@ const ContactPage = () => {
             <Layout>
                 <Head title ="Contact"/>
                 <div className={styles.container}>
-                <div className={styles.containerLeft}>
+                <div className={styles.contactLeft}>
                 <h1>{data.contentfulContactHeader.title}</h1>
-                {documentToReactComponents(data.contentfulContactHeader.description.json)}
-                <p></p>
+                {documentToReactComponents(data.contentfulContactHeader.description.json, options)}
                  </div>
                  <div className={styles.contactRight}>
                    <ContactForm />

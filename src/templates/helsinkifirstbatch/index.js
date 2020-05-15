@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../../components/head';
-import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import portfolioStyles from '../portfolio.module.scss';
 
@@ -72,7 +72,7 @@ const HelsinkiFirstBatch = (props) => {
             <div>
               {previousHelsinkiFirstBatch && (
                 <Link to={previousHelsinkiFirstBatch.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
+                  <FontAwesomeIcon icon={faChevronLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
@@ -81,7 +81,7 @@ const HelsinkiFirstBatch = (props) => {
             <div>
               {nextHelsinkiFirstBatch && (
                 <Link to={nextHelsinkiFirstBatch.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               )}
             </div>

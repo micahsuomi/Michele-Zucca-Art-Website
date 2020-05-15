@@ -2,7 +2,7 @@
 
 header {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns:25% 75%;
     position: fixed;
     justify-content: center;
     padding: .2rem 1.3rem;
@@ -20,20 +20,12 @@ header {
 }
 
 .title-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    position: fixed;
     padding: .3rem 1rem;
 
     @include md {
         padding: 0;
 
     }
-  
-
-
 }
 
 .title {
@@ -54,7 +46,7 @@ header {
 .subtitle {
     font-size: 10px;
     color: grey;
-    @include sm {
+    @include md {
          display: none;
      }
 }
@@ -66,14 +58,13 @@ header {
         width: 12%;
     }
     @include sm {
-        width: 20%;
+        width: 32%;
     }
 }
 
 nav {
     position: fixed;
-    align-self: flex-end;
-    margin-left: 25rem;
+    
 }
 
 .nav-links,
@@ -154,16 +145,16 @@ summary:focus,
 
 @media screen and (max-width: 850px) {
     header {
-        grid-template-columns: 45% 55%;
+        grid-template-columns: 40% 60%;
     
         h2 {
             font-size: 1rem;
-
         }
         
     }
     nav {
         position: relative;
+        
     }
     .hide-mobile {
         display: none;
@@ -175,18 +166,13 @@ summary:focus,
 
     .toggle-wrapper {
         color: rgb(53, 36, 46);
-        display: inline-block;
+        display: flex;
         border-radius: 500px;
-        margin-left: 12.7rem;
-        margin-top: .2rem;
+        padding-top: .2rem;
         position: relative;
-        padding: 5px;
-        cursor: pointer;
+        float: right;
         z-index: 3;
-        @include sm {
-            margin-left: 10.5rem;
-            margin-top: 0;
-        }
+      
 
 
     }
@@ -195,6 +181,8 @@ summary:focus,
         width: 45px;
         height: 45px;
         position: relative;
+        cursor: pointer;
+        float: right;
         @include sm {
             width: 40px;
             height: 40px;
@@ -258,19 +246,26 @@ summary:focus,
         
     }
 
-    
-
     summary {
         text-align: center;
     }
 
 }
 
-@media screen and (max-width: 500px) {
 
+@media screen and (max-width: 568px) {
+   
+    .logo {
+        width: 21%;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    
    header {
-    grid-template-columns: 50% 50%;
-    padding: 0.15rem .1rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0.15rem .8rem;
    }
     .nav-item,
      details {
@@ -280,24 +275,16 @@ summary:focus,
     .nav-item-nested {
         font-size: 16px;
     }
-
-    .toggle-wrapper {
-        margin-left: -5.5rem;
-
-    }
-  
-}
-
-@media screen and (max-width: 500px) {
     .nav-links {
         line-height: 1.5;
     }
-}
-@media screen and (max-width: 320px) {
-    .toggle-wrapper {
-        margin-left: -8.5rem;
+   
+    .logo {
+        width: 33%;
     }
+   
 
+  
 }
 
 

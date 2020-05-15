@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../../components/head';
-import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import portfolioStyles from '../portfolio.module.scss';
 import styles from './styles.module.scss';
@@ -65,7 +65,7 @@ const Allegories = (props) => {
             <div>
               {previousAllegories && (
                 <Link to={previousAllegories.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
+                  <FontAwesomeIcon icon={faChevronLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
@@ -73,7 +73,7 @@ const Allegories = (props) => {
             <div>
               {nextAllegories && (
                 <Link to={nextAllegories.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               )}
             </div>

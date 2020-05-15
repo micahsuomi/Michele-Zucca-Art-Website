@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from '../../components/head';
-import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import portfolioStyles from '../portfolio.module.scss';
 
@@ -69,7 +69,7 @@ const Digital = (props) => {
             <div>
               {previousDigital && (
                 <Link to={previousDigital.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
+                  <FontAwesomeIcon icon={faChevronLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
@@ -77,7 +77,7 @@ const Digital = (props) => {
             <div>
               {nextDigital && (
                 <Link to={nextDigital.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               )}
             </div>

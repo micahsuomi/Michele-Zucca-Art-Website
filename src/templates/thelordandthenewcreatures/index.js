@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { faTimes, faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from '../../components/head';
 import portfolioStyles from '../portfolio.module.scss';
@@ -64,7 +64,7 @@ const TheLordAndTheNewCreatures = (props) => {
             <div>
               {previousTheLordAndTheNewCreatures && (
                 <Link to={previousTheLordAndTheNewCreatures.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltLeft} style={{height: '5rem'}}/>
+                  <FontAwesomeIcon icon={faChevronLeft} style={{height: '5rem'}}/>
                 </Link>
               )}
             </div>
@@ -75,7 +75,7 @@ const TheLordAndTheNewCreatures = (props) => {
             <div>
               {nextTheLordAndTheNewCreatures && (
                 <Link to={nextTheLordAndTheNewCreatures.url}>
-                  <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               )}
             </div>

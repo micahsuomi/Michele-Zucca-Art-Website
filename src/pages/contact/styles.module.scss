@@ -1,12 +1,23 @@
+@import '../../scss/main.scss';
+
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     align-items: center;
+    margin: -5rem;
+    @include md {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
 }
 
-.content {
-    padding: 7rem 10rem;
-
+.contact-left {
+    line-height: 2;
 }
+.contact-right {
+    padding: 0;
+}
+
+
 

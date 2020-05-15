@@ -1,16 +1,18 @@
-
+@import '../../scss/main.scss';
 .form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 28rem;
-    margin-top: 3rem;
+    width: 30rem;
     border: 1px solid lightgrey;
     padding: 3rem 3rem;
     border-radius: 3px;
-    background-color: rgb(38, 44, 49);
+    background-color: rgb(43, 38, 41);
     color: white;
+    @include md {
+        margin-top: 2rem;
+    }
 
 }
 
@@ -20,7 +22,7 @@ label {
 .name,
 .email,
 .message {
-    width: 19rem;
+    width: 22rem;
     padding: .5rem;
     margin-top: .6rem;
     font-family: 'Montserrat', sans-serif;
