@@ -132,14 +132,14 @@ const Header = ( {title, subtitle} ) => {
 
                   </li>
 
-                <li className={headerStyles.navListItem}> >
+                <li className={headerStyles.navListItem}> 
                   <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/blog">
                   Blog
                   </Link></li>
 
-                <li className={headerStyles.navListItem}> >
+                <li className={headerStyles.navListItem}> 
                   <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/contact">
