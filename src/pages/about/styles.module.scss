@@ -26,3 +26,17 @@
         width: 98%;
     }
 }
+
+.contact {
+    text-decoration: none;
+    font-weight: 700;
+    color: $color-text;
+}
+
+.contact-icon {
+    margin: .6rem;
+}
+
+.contact:hover {
+    color: skyblue;
+}

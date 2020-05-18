@@ -8,17 +8,21 @@
     padding: 1.4rem 4.3rem;
     background-color:rgb(20, 19, 19);
     color: white;
+    @include lg {
+        padding: 1.4rem 1.3rem;
+    }
     @include md {
         flex-direction: column;
     }
-    @include sm {
-        padding: 1.4rem 1.3rem;
-    }
+   
 
     .left {
         display: flex;
         align-items: center;
         justify-content: center;
+        @include lg {
+            justify-content: flex-start;
+        }
         @include md {
             margin-top: 2rem;
 

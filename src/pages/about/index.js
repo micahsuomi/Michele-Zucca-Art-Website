@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link, useStaticQuery, graphql} from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '../../components/layout';
 import Head from '../../components/head'
 import aboutStyles from './styles.module.scss';
@@ -40,7 +42,10 @@ const AboutPage = (props) => {
              <div>
             {documentToReactComponents(props.data.contentfulAbout.body.json, options)}
             </div>
-            <p> If you would like to get in touch,  <Link to="/contact">Contact Me</Link></p>
+            <p> If you would like to get in touch,  
+              <Link to="/contact" className={aboutStyles.contact}> Contact Me
+              <FontAwesomeIcon icon={faEnvelope} className={aboutStyles.contactIcon} />
+              </Link></p>
             </div>
             </Layout>
         </div>

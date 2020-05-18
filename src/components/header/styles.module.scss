@@ -143,9 +143,10 @@ summary:focus,
     display: none;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1024px) {
     header {
         grid-template-columns: 40% 60%;
+        padding: 0;
     
         h2 {
             font-size: 1rem;
@@ -168,10 +169,13 @@ summary:focus,
         color: rgb(53, 36, 46);
         display: flex;
         border-radius: 500px;
-        padding-top: .2rem;
+        padding-top: .7rem;
         position: relative;
         float: right;
         z-index: 3;
+        @include sm {
+            padding: 0;
+        }
       
 
 
@@ -183,9 +187,11 @@ summary:focus,
         position: relative;
         cursor: pointer;
         float: right;
+        margin-right: 1rem;
         @include sm {
             width: 40px;
             height: 40px;
+            margin-right: .1rem;
         }
     }
 
@@ -199,7 +205,7 @@ summary:focus,
         
        
     }
-    li {
+    .nav-list-item {
         background-color: black;
         width: 100vw;
         border: 1px solid rgba(231, 208, 208, 0.4);
@@ -220,8 +226,8 @@ summary:focus,
     }
     .nav-item-nested {
         font-size: var(--font-size-small);
-        margin-left: -6.3rem;
         border: none;
+        width: 100vw;
         
     }
 

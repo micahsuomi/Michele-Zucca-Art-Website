@@ -6,17 +6,47 @@
     justify-items: center;
     align-items: center;
     margin: -5rem;
+    @include shadow-trans;
     @include md {
         grid-template-columns: 1fr;
-        margin: 0;
+    }
+    @include sm {
+        margin: -1rem;
+        padding: 2rem 0;
     }
 }
 
 .contact-left {
-    line-height: 2;
+    line-height: 1.8;
+    padding: 2rem;
+    background-color: $color-text;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    @include md {
+        width: 70vw;
+
+    }
+    @include sm {
+        width: 30rem;
+        height: 30rem;
+    }
+}
+
+.info {
+    list-style: none;
+    align-self: flex-start;
 }
 .contact-right {
     padding: 0;
+}
+.social-icon {
+    color: white;
+    margin: .5rem;
 }
 
 

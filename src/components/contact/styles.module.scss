@@ -5,10 +5,9 @@
     align-items: center;
     flex-direction: column;
     width: 30rem;
-    border: 1px solid lightgrey;
     padding: 3rem 3rem;
     border-radius: 3px;
-    background-color: rgb(43, 38, 41);
+    background-color: white;
     color: white;
     @include md {
         margin-top: 2rem;
@@ -18,14 +17,17 @@
 
 label {
     font-family: 'Montserrat', sans-serif;
+    color:$color-text;
 }
 .name,
 .email,
 .message {
-    width: 22rem;
+    width: 25rem;
     padding: .5rem;
     margin-top: .6rem;
     font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-bottom: 1px solid lightgray;
     
 
 }

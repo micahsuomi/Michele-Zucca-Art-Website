@@ -48,7 +48,7 @@ const Header = ( {title, subtitle} ) => {
           </div>
         
             <ul className={isClicked ? navLinksClassOpen : navLinksClass}>
-                <li>  
+                <li className={headerStyles.navListItem}>  
                 <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/"
@@ -56,13 +56,14 @@ const Header = ( {title, subtitle} ) => {
                   Home
                 </Link></li>
 
-                <li><Link className={headerStyles.navItem}
+                <li className={headerStyles.navListItem}> 
+                  <Link className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/about">
                   About Me
                 </Link></li>
 
-                <li>
+                <li className={headerStyles.navListItem}> 
                 <details>
                 <summary activeClassName={headerStyles.activeNavItem}> Portraits</summary>
                 <ul className={headerStyles.nestedNavList}>
@@ -90,19 +91,21 @@ const Header = ( {title, subtitle} ) => {
                   </details>
 
                   </li>
-                <li><Link className={headerStyles.navItem} 
+                <li className={headerStyles.navListItem}> 
+                  <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/abstracts">
                   Abstracts
                   </Link></li>  
 
-                <li><Link className={headerStyles.navItem} 
+                <li className={headerStyles.navListItem}> 
+                  <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/digital">
                   Digital
                   </Link></li>
 
-                  <li>
+                  <li className={headerStyles.navListItem}> 
                 <details>
                 <summary activeClassName={headerStyles.activeNavItem}> Photography</summary>
                 <ul className={headerStyles.nestedNavList}>
@@ -129,13 +132,15 @@ const Header = ( {title, subtitle} ) => {
 
                   </li>
 
-                <li><Link className={headerStyles.navItem} 
+                <li className={headerStyles.navListItem}> >
+                  <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/blog">
                   Blog
                   </Link></li>
 
-                <li><Link className={headerStyles.navItem} 
+                <li className={headerStyles.navListItem}> >
+                  <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/contact">
                   Contact

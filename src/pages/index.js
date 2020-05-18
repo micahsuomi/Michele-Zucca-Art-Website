@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SEO from '../components/seo';
 import { Helmet } from 'react-helmet';
 import { JsonLd } from '../components/jsonld';
@@ -50,6 +52,10 @@ const IndexPage = (props) => {
               '@type': 'Art Website',
               telephone: '+1-401-555-1212',
               contactType: 'Customer service',
+              facebook: 'https://www.facebook.com/michele.zucca.18',
+              instagram: 'https://www.instagram.com/mikibright_z/',
+              linkedin: 'https://www.linkedin.com/in/michele-zucca/',
+              github: 'https://github.com/micahsuomi'
             },
           }}
         </JsonLd>
@@ -58,7 +64,9 @@ const IndexPage = (props) => {
             <GallerySlider />
             <h1 className={homeStyles.homeHeader}>{props.data.contentfulHome.title}</h1>
             {documentToReactComponents(props.data.contentfulHome.body.json,images)}
-            <p><Link to="/contact">Contact Me</Link></p>
+            <p><Link to="/contact" className={homeStyles.contact}>Contact Me 
+            <FontAwesomeIcon icon={faEnvelope} className={homeStyles.contactIcon}/>
+            </Link></p>
         </Layout>
     )
         

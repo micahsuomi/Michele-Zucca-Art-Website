@@ -5,6 +5,10 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    margin: -4rem;
+    @include sm {
+        margin: 0;
+    }
 
     h2 {
         position: absolute;
@@ -19,21 +23,21 @@
             font-size: $section-title;
         }
          @include sm {
-             top: 45%;
+             top: 47%;
+             font-size: $regular-text;
          }
          @include ssm {
-             font-size: $card-title;
              top: 46.5%;
          }
     }
 
     img {
         animation-name:fade;
-        width: 42rem;
-        height: 26rem;
+        width: 50rem;
+        height: 32rem;
         
         @include md {
-            height: 19rem;
+            height: 22rem;
         }
         @include sm {
             height: 13.5rem;
@@ -42,10 +46,6 @@
             height: 12rem;
         }
 
-
-        // animation-duration:1s;
-        // animation-timing-function: ease-in-out;
-       
       
     }
  
@@ -59,16 +59,20 @@
     height: 80vh;
     position: absolute;
     transition: all ease-in-out 1s;
-    top: -110px;
+    top: -40px;
+    @include lg {
+        top: -76px;
+        height: 85vh;
+    }
     @include md {
-        height: 60vh;
-        top: -148px;
+        height: 50vh;
+        top: -72px;
         opacity: 0.5;
         
     }
     @include sm {
         height: 56vh;
-        top: -107px;
+        top: -105px;
 
     }
     @include ssm {
@@ -156,18 +160,4 @@
 span {
     margin: .4rem;
     color: white;
-}
-
-@media screen and (max-width: 812px) {
-    .container {
-        // img {
-        //     height: 18rem;
-        //}
-        .mask {
-            top: -145px;
-            height: 100vh;
-        }
-    }
-
-
 }
