@@ -7,6 +7,11 @@ import './style.css';
 const Header = ( {title, subtitle} ) => {
   
     const [isClicked, setState] = useState(false);
+    let [isPortraitsOpen, setPortraitsOpen] = useState(false);
+    let [isPhotographyOpen, setPhotographyOpen] = useState(false);
+    let [isHomeClicked, setHomeClicked] = useState(false);
+
+
     let navLinksClass = ['nav-links'];
     let navLinksClassOpen = ['nav-links open'];
 
@@ -24,11 +29,34 @@ const Header = ( {title, subtitle} ) => {
               setState(!isClicked) 
  
           }
+          const openPortraits = () => {
+            setPortraitsOpen(isPortraitsOpen = true)
+            setPhotographyOpen(isPhotographyOpen = false)
+            setHomeClicked(isHomeClicked = false)
+
+            console.log(isPortraitsOpen)
+          }
+
+          const openPhotography = () => {
+            setPhotographyOpen(isPhotographyOpen = true)
+            setPortraitsOpen(isPortraitsOpen = false)
+            setHomeClicked(isHomeClicked = false)
+
+
+            console.log(isPhotographyOpen)
+          }
+          const closeDropdown = () => {
+            setHomeClicked(isHomeClicked = true)
+            setPhotographyOpen(isPhotographyOpen = false)
+            setPortraitsOpen(isPortraitsOpen = false)
+          }
+
+          
 
     return (
         <header>
           <div className={headerStyles.titleWrapper}>
-        <Link to ="/" className={headerStyles.title}>
+        <Link to ="/" className={headerStyles.title} onClick={closeDropdown}>
         <img src={logo} alt="michele zucca logo pic" className={headerStyles.logo}/>
         <h2>{title}</h2>
         <p className={headerStyles.subtitle}>
@@ -52,7 +80,7 @@ const Header = ( {title, subtitle} ) => {
                 <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/"
-                >
+                onClick={closeDropdown}>
                   Home
                 </Link></li>
 
@@ -60,37 +88,40 @@ const Header = ( {title, subtitle} ) => {
                   <Link className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem} 
                 to ="/about">
-                  About Me
+                  About
                 </Link></li>
-
+                
                 <li className={headerStyles.navListItem}> 
                 <details>
-                <summary activeClassName={headerStyles.activeNavItem}> Portraits</summary>
+                <summary activeClassName={headerStyles.activeNavItem} onClick={openPortraits}> Portraits</summary>
+                {isPhotographyOpen || isHomeClicked ? null :
                 <ul className={headerStyles.nestedNavList}>
                 <li className={headerStyles.nestedListItem}>
                 <Link className={headerStyles.navItemNested} 
                 to ="/helsinkifirstbatch">
-                  Helsinki First Batch
+                  Hki First Batch
                   </Link>
                   </li>
                   <li className={headerStyles.nestedListItem}>
                   <Link className={headerStyles.navItemNested} 
                 to ="/helsinkisecondbatch">
-                  Helsinki Second Batch
+                  Hki Second Batch
                   </Link>
-                  </li>
+                  </li> 
 
                   <li className={headerStyles.nestedListItem}>
                   <Link className={headerStyles.navItemNested} 
                 to ="/thelordandthenewcreatures">
-                  The Lord and The New Creatures
+                  The L. and N. C.
                   </Link>
                   </li> 
 
-                  </ul>
+                  </ul> }
+                
                   </details>
 
                   </li>
+
                 <li className={headerStyles.navListItem}> 
                   <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
@@ -107,8 +138,8 @@ const Header = ( {title, subtitle} ) => {
 
                   <li className={headerStyles.navListItem}> 
                 <details>
-                <summary activeClassName={headerStyles.activeNavItem}> Photography</summary>
-                <ul className={headerStyles.nestedNavList}>
+                <summary activeClassName={headerStyles.activeNavItem} onClick={openPhotography}> Photography</summary>
+                {isPortraitsOpen || isHomeClicked ? null : <ul className={headerStyles.nestedNavList}>
                 <li className={headerStyles.nestedListItem}>
                 <Link className={headerStyles.navItemNested} 
                 to ="/allegories">
@@ -118,7 +149,7 @@ const Header = ( {title, subtitle} ) => {
                   <li className={headerStyles.nestedListItem}> 
                   <Link className={headerStyles.navItemNested} 
                 to ="/playingwiththelightsofsydney">
-                  Playing With The Lights Of Sydney
+                  Lights Of Sydney
                   </Link>
                   </li>
                   <li  className={headerStyles.nestedListItem}>
@@ -127,7 +158,8 @@ const Header = ( {title, subtitle} ) => {
                   While Travelling
                   </Link>
                   </li>
-                  </ul>
+                  </ul> }
+               
                   </details>
 
                   </li>
