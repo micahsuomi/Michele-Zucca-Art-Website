@@ -6,6 +6,7 @@
     flex-direction: column;
     position: relative;
     margin: -4rem;
+ 
     @include sm {
         margin: 0;
     }
@@ -17,6 +18,9 @@
         color: rgb(241, 236, 236);
         font-size: $banner-title;
         text-transform: uppercase;
+        animation: move 1s ease-in-out 0.5s 2 alternate;
+        -moz-animation: move 1s ease-in-out 0.5s 2 alternate;
+        -webkit-animation: move 1s ease-in-out 0.5s 2 alternate;
         @include md {
             top: 46.5%;
             left: 16%;
@@ -31,10 +35,17 @@
          }
     }
 
+    @keyframes move {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(100px); }
+     }
+
     img {
-        animation-name:fade;
         width: 50rem;
         height: 32rem;
+        animation-name:appear;
+        animation-duration:1s;
+        animation-timing-function: ease-in-out;
         
         @include md {
             height: 22rem;
@@ -50,6 +61,10 @@
     }
  
 
+}
+@keyframes appear {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .mask {
@@ -71,8 +86,8 @@
         
     }
     @include sm {
-        height: 49vh;
-        top: -60px;
+        height: 56vh;
+        top: -105px;
 
     }
     @include ssm {
