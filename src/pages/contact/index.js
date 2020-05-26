@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby'; 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { FaInstagram, FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import Layout from '../../components/layout';
@@ -46,16 +46,15 @@ const ContactPage = () => {
                   <li className={styles.infoItem}>Email: michele.zucca81@gmail.com</li>
                 </ul>
                 <div className={styles.iconsWrapper}>
-                <a href='https://www.linkedin.com/in/michele-zucca/' target="blank">
-                    <FaLinkedin size={30} className={styles.socialIcon}/></a>
                 <a href='https://www.instagram.com/mikibright_z/' target="blank">
                     <FaInstagram size={30}  
                 className={styles.socialIcon}/></a>
-                <a href='https://www.facebook.com/michele.zucca.18' target="blank">
+                  <a href='https://www.facebook.com/michele.zucca.18' target="blank">
                     <FaFacebook size={30} className={styles.socialIcon}/></a>
-                <a href='https://github.com/micahsuomi' target="blank">
-                    <FaGithub size={30} className={styles.socialIcon}/></a> 
-
+                <a href='https://www.linkedin.com/in/michele-zucca/' target="blank">
+                    <FaLinkedin size={30} className={styles.socialIcon}/></a>
+              
+           
                 </div>
                  </div>
                  <div className={styles.contactRight}>

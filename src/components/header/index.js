@@ -93,7 +93,7 @@ const Header = ( {title, subtitle} ) => {
                 
                 <li className={headerStyles.navListItem}> 
                 <details>
-                <summary activeClassName={headerStyles.activeNavItem} onClick={openPortraits}> Portraits</summary>
+                <summary activeClassName={headerStyles.activeNavItem} onClick={openPortraits} activeClassName={headerStyles.activeNavItem}>Portraits</summary>
                 {isPhotographyOpen || isHomeClicked ? null :
                 <ul className={headerStyles.nestedNavList}>
                 <li className={headerStyles.nestedListItem}>
@@ -167,6 +167,7 @@ const Header = ( {title, subtitle} ) => {
                 <li className={headerStyles.navListItem}> 
                   <Link className={headerStyles.navItem} 
                 activeClassName={headerStyles.activeNavItem} 
+                partiallyActive={true}
                 to ="/blog">
                   Blog
                   </Link></li>

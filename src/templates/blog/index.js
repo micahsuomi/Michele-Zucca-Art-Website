@@ -5,6 +5,8 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Head from '../../components/head';
 import blogStyles from './styles.module.scss';
 import ShareButtons from '../../components/sharebuttons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './styles.module.scss';
 
 
@@ -54,7 +56,11 @@ const Blog = (props) => {
                   twitterHandle={`${props.data.site.siteMetadata.twitterHandle}${props.path}`}
                   title={props.data.contentfulBlogPost.title}
                   />
-            <Link to="/blog">Back to Blog Posts</Link>
+            <div className={styles.backToPostsContainer}>
+            <Link to="/blog">
+            <FontAwesomeIcon icon={faArrowLeft} className={styles.arrowIcon}/>
+              <span className={styles.backToPosts}>Back to Blog Posts</span></Link>
+            </div>
             </div>
             
         </Layout>

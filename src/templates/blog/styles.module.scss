@@ -1,4 +1,4 @@
-
+@import '../../scss/main.scss';
 .container {
     padding: 2rem 5rem;
     display: flex;
@@ -8,6 +8,29 @@
 
     p:nth-of-type(2) {
         margin-top: 2rem;
+    }
+
+
+    .back-to-posts-container {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-text;
+        
+    }
+
+    a:hover {
+        transform: translateY(-.1rem);
+    }
+    .back-to-posts {
+        color: $color-text;
+        margin-bottom: .4rem;
+        text-transform: uppercase;
     }
 }
 .img {
