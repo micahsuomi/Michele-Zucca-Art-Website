@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Head from '../../components/head';
 import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Head from '../../components/head';
+
 import portfolioStyles from '../portfolio.module.scss';
 import styles from './styles.module.scss';
 
