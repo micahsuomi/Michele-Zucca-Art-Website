@@ -1,14 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-// import Layout from '../../components/layout';
-import Head from "../../components/head"
 import {
   faTimes,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
 import styles from "./styles.module.scss"
 
@@ -28,7 +29,7 @@ export const query = graphql`
     }
   }
 `
-const WhileTraveling = props => {
+const WhileTraveling = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -40,21 +41,20 @@ const WhileTraveling = props => {
     },
   }
 
-  const previousWhileTraveling = props.pageContext.next
-    ? {
-        url: `/whiletraveling/${props.pageContext.next.slug}`,
+  const previousWhileTraveling = pageContext.next &&
+     {
+        url: `/whiletraveling/${pageContext.next.slug}`,
       }
-    : ""
+   
 
-  const nextWhileTraveling = props.pageContext.previous
-    ? {
-        url: `/whiletraveling/${props.pageContext.previous.slug}`,
+  const nextWhileTraveling = pageContext.previous &&
+      {
+        url: `/whiletraveling/${pageContext.previous.slug}`,
       }
-    : ""
+  const { title, image, body } = data.contentfulWhileTraveling
   return (
     <div>
-      {/* <Layout> */}
-      <Head title={props.data.contentfulWhileTraveling.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/whiletraveling">
@@ -69,7 +69,7 @@ const WhileTraveling = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulWhileTraveling.title}</h2>
+        <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousWhileTraveling && (
@@ -82,8 +82,8 @@ const WhileTraveling = props => {
             )}
           </div>
           <img
-            src={props.data.contentfulWhileTraveling.image.file.url}
-            alt={props.data.contentfulWhileTraveling.image.description}
+            src={image.file.url}
+            alt={image.description}
             className={styles.photoImage}
           />
           <div>
@@ -95,12 +95,10 @@ const WhileTraveling = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulWhileTraveling.body.json,
+          body.json,
           options
         )}
       </div>
-
-      {/* </Layout> */}
     </div>
   )
 }

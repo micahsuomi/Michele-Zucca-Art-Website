@@ -7,7 +7,7 @@ import Layout from "../../components/layout"
 import portfolioStyles from "../portfolio.module.scss"
 import Head from "../../components/head"
 
-import './style.scss'
+import '../style.scss'
 
 const AbstractsPage = () => {
   const data = useStaticQuery(graphql`
@@ -24,7 +24,7 @@ const AbstractsPage = () => {
             title
             slug
             image {
-              fluid(maxWidth: 300){
+              fluid(maxWidth: 930){
                 src
               }
               }
@@ -56,9 +56,6 @@ const AbstractsPage = () => {
                  fluid={edge.node.image.fluid} 
                  src={edge.node.image.fluid.src}
                  alt={edge.node.title}
-                 objectFit="cover"
-                 position="relative"
-                 className="gatsby-image"
                 />
               </Link>
             </div>

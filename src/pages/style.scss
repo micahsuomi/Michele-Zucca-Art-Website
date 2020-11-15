@@ -1,16 +1,7 @@
 .gatsby-image-wrapper {
     position: inherit;
-    width: 15rem;
-    height: 17rem;
-}
-.gatsby-image picture img {
-    position: relative;
-}
-
-element.style {
-    position: relative;
-}
-
-picture img {
-    position: relative; 
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    display: inline-block;
 }

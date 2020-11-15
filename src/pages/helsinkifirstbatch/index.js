@@ -1,10 +1,14 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Img from "gatsby-image"
+
 import Layout from "../../components/layout"
 import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
 import stylesVertical from "../stylesVertical.module.scss"
+import '../style.scss'
 
 const HelsinkiFirstBatch = () => {
   const data = useStaticQuery(graphql`
@@ -21,41 +25,41 @@ const HelsinkiFirstBatch = () => {
             title
             slug
             image {
-              file {
-                url
+              fluid(maxWidth: 930){
+                src
               }
-              description
-            }
+            } 
           }
         }
       }
     }
   `)
-
+  const { title, body } = data.contentfulHelsinkiFirstBatchHeader
   return (
     <Layout>
       <Head title="helsinki first batch" />
-      <h1>{data.contentfulHelsinkiFirstBatchHeader.title}</h1>
+      <h1>{title}</h1>
       <p>
         {documentToReactComponents(
-          data.contentfulHelsinkiFirstBatchHeader.body.json
+          body.json
         )}
       </p>
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulHelsinkiFirstBatch.edges.map(edge => {
+          const { slug, title, image } = edge.node
           return (
             <div className={portfolioStyles.card}>
               <Link
-                to={`/helsinkifirstbatch/${edge.node.slug}`}
+                to={`/helsinkifirstbatch/${slug}`}
                 className={portfolioStyles.link}
               >
-                <h3>{edge.node.title}</h3>
+                <h3>{title}</h3>
                 <div class={stylesVertical.imageContainer}>
-                  <img
-                    src={edge.node.image.file.url}
-                    alt={edge.node.image.description}
-                    className={stylesVertical.img}
-                  />
+                <Img
+                    fluid={image.fluid} 
+                    src={image.fluid.src}
+                    alt={title}
+                />
                 </div>
               </Link>
             </div>

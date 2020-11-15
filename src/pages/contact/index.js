@@ -2,11 +2,11 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"
-import Header from "../../components/header"
-import Footer from "../../components/footer"
+
 import Layout from "../../components/layout"
 import ContactForm from "../../components/contact"
 import Head from "../../components/head"
+
 import styles from "./styles.module.scss"
 
 const ContactPage = () => {
@@ -37,7 +37,7 @@ const ContactPage = () => {
       <Head title="Contact" />
       <div className={styles.container}>
         <div className={styles.contactLeft}>
-          <h1>{data.contentfulContactHeader.title}</h1>
+          <h3>{data.contentfulContactHeader.title}</h3>
           {documentToReactComponents(
             data.contentfulContactHeader.description.json,
             options
