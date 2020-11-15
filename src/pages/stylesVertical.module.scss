@@ -1,11 +1,17 @@
 @import '../scss/main.scss';
 .image-container {
   display: inline-block;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   overflow: hidden;
   @include shadow-trans
+}
+
+.gatsby-image-wrapper {
+  position: inherit;
+  width: 15rem;
+  height: 17rem;
 }
 
 

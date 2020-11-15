@@ -25,8 +25,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
       : null
-      const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
-
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
     <Helmet
@@ -128,7 +127,6 @@ SEO.propTypes = {
     width: PropTypes.number.isRequired,
   }),
   pathname: PropTypes.string,
-
 }
 
 export default SEO
