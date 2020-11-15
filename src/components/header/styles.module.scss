@@ -20,7 +20,7 @@ header {
 }
 
 .title-wrapper {
-    padding: .3rem 1rem;
+    padding: .3rem 0;
 
     @include md {
         padding: 0;
@@ -44,7 +44,7 @@ header {
 
 
 .subtitle {
-    font-size: 10px;
+    font-size: 9px;
     color: grey;
     @include md {
          display: none;
@@ -95,7 +95,7 @@ details,
 
 .nav-item,
 details {
-    margin: 2rem;
+    margin: 1.2rem;
 }
 
 

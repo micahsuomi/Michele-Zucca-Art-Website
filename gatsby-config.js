@@ -2,92 +2,104 @@
 
 const {
   NODE_ENV,
-  URL: NETLIFY_SITE_URL = 'https://michelezucca-art.netlify.app/',
+  URL: NETLIFY_SITE_URL = "https://michelezucca-art.netlify.app/",
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = NODE_ENV
-} = process.env;
-const isNetlifyProduction = NETLIFY_ENV === 'production';
-const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
-
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+} = process.env
+const isNetlifyProduction = NETLIFY_ENV === "production"
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: 'Michele Zucca',
-    author: 'Michele Zucca',
-    description: 'My personal art website featuring traditional paintings, photography, digital art and a blog.',
-    subtitle: 'Art, all About Art, Photography, Insights, Garbage, You Name It',
-    keywords: ['michele zucca', 'art', 'photography', 'paintings', 'digital', 'blog', 'abstract art', 'modern', 'acrylics', 'oils'],
+    title: "Michele Zucca",
+    author: "Michele Zucca",
+    description:
+      "My personal art website featuring traditional paintings, photography, digital art and a blog.",
+    subtitle: "Art, all About Art, Photography, Insights, Garbage, You Name It",
+    keywords: [
+      "michele zucca",
+      "art",
+      "photography",
+      "paintings",
+      "digital",
+      "blog",
+      "abstract art",
+      "modern",
+      "acrylics",
+      "oils",
+    ],
     siteUrl: `https://michelezucca-art.netlify.app/`,
-    twitterHandle: '@michelezucca-arthata'
+    type: process.env.GATSBY_ACTIVE_ENV || 'staging',
+    twitterHandle: "@michelezucca-arthata",
   },
 
   plugins: [
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-react-helmet",
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: "gatsby-source-contentful",
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        downloadLocal: true
-      }
+        environment: process.env.ENVIRONMENT_ID
+        
+      },
     },
-    'gatsby-plugin-sass',
+    "gatsby-plugin-sass",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'src',
-        path: `${__dirname}/src/`
-      }
+        name: "src",
+        path: `${__dirname}/src/`,
+      },
     },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
           `Montserrat`,
-          `Montserrat \:300,400,700` // you can also specify font weights and styles
+          `Montserrat \:300,400,700`, // you can also specify font weights and styles
         ],
-        display: 'swap'
-      }
+        display: "swap",
+      },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*' }]
+            policy: [{ userAgent: "*" }],
           },
-          'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+          "branch-deploy": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
             sitemap: null,
-            host: null
+            host: null,
           },
-          'deploy-preview': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+          "deploy-preview": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
             sitemap: null,
-            host: null
-          }
-        }
-      }
+            host: null,
+          },
+        },
+      },
     },
-    'gatsby-plugin-sharp',
+    "gatsby-plugin-sharp",
     `gatsby-plugin-sitemap`,
 
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          'gatsby-remark-relative-images',
+          "gatsby-remark-relative-images",
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 750,
-              linkImagesToOriginal: false
-            }
-          }
-        ]
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
       },
-      
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -101,5 +113,5 @@ module.exports = {
         icon: `src/imgs/logo-brightmike.png`, // This path is relative to the root of the site.
       },
     },
-  ]
+  ],
 }
