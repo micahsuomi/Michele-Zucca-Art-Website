@@ -6,14 +6,12 @@
     min-height: 100vh;
     @include lg {
         padding: 0;
-
-
     }
 }
 
 .content {
     flex-grow: 1;
-    padding: 10rem 12rem;
+    padding: 10rem 11rem;
     @include lg {
         flex-grow: 1;
         padding: 12rem 6rem;

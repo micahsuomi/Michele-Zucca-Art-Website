@@ -1,9 +1,13 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Img from "gatsby-image"
+
 import Layout from "../../components/layout"
 import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
+import '../style.scss'
 
 const WhileTravelingPage = () => {
   const data = useStaticQuery(graphql`
@@ -21,37 +25,37 @@ const WhileTravelingPage = () => {
             title
             slug
             image {
-              file {
-                url
+              fluid(maxWidth: 930){
+                src
               }
-              description
-            }
+            } 
           }
         }
       }
     }
   `)
-
+  const { title, description } = data.contentfulWhileTravelingHeader  
   return (
     <Layout>
       <Head title="while traveling" />
-      <h1>{data.contentfulWhileTravelingHeader.title}</h1>
+      <h1>{title}</h1>
       {documentToReactComponents(
-        data.contentfulWhileTravelingHeader.description.json
+        description.json
       )}
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulWhileTraveling.edges.map(edge => {
+          const { slug, title, image } = edge.node
           return (
-            <div className={portfolioStyles.card} key={edge.node.slug}>
+            <div className={portfolioStyles.card} key={slug}>
               <Link
-                to={`/whiletraveling/${edge.node.slug}`}
+                to={`/whiletraveling/${slug}`}
                 className={portfolioStyles.link}
               >
-                <h3>{edge.node.title}</h3>
-                <img
-                  src={edge.node.image.file.url}
-                  alt={edge.node.image.description}
-                  className={portfolioStyles.img}
+                <h3>{title}</h3>
+                <Img
+                  fluid={image.fluid} 
+                  src={image.fluid.src}
+                  alt={title}
                 />
               </Link>
             </div>

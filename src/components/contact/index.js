@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { navigate } from "gatsby-link"
+
 import contactStyles from "./styles.module.scss"
 
 const encode = data => {

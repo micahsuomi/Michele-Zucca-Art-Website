@@ -17,7 +17,7 @@ const Digital = () => {
             title
             slug
             image {
-              fluid(maxWidth: 300){
+              fluid(maxWidth: 930){
                 src
               }
               }
@@ -33,21 +33,19 @@ const Digital = () => {
       <h1>Digital</h1>
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulDigital.edges.map(edge => {
+          const { slug, title, image } = edge.node
           return (
             <div className={portfolioStyles.card}>
               <Link
-                to={`/digital/${edge.node.slug}`}
+                to={`/digital/${slug}`}
                 className={portfolioStyles.link}
               >
-                <h3>{edge.node.title}</h3>
+                <h3>{title}</h3>
                 <div class={portfolioStyles.imageContainer}>
                 <Img
-                 fluid={edge.node.image.fluid} 
-                 src={edge.node.image.fluid.src}
-                 alt={edge.node.title}
-                 objectFit="cover"
-                 position="relative"
-                 className="gatsby-image"
+                 fluid={image.fluid} 
+                 src={image.fluid.src}
+                 alt={title}
                 />
                 </div>
               </Link>
