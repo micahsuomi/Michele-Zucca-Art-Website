@@ -7,7 +7,7 @@ import Layout from "../../components/layout"
 import Head from "../../components/head"
 
 import portfolioStyles from "../portfolio.module.scss"
-import '../style.scss'
+import "../style.scss"
 
 const WhileTravelingPage = () => {
   const data = useStaticQuery(graphql`
@@ -25,23 +25,21 @@ const WhileTravelingPage = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-            } 
+            }
           }
         }
       }
     }
   `)
-  const { title, description } = data.contentfulWhileTravelingHeader  
+  const { title, description } = data.contentfulWhileTravelingHeader
   return (
     <Layout>
       <Head title="while traveling" />
       <h1>{title}</h1>
-      {documentToReactComponents(
-        description.json
-      )}
+      {documentToReactComponents(description.json)}
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulWhileTraveling.edges.map(edge => {
           const { slug, title, image } = edge.node
@@ -52,11 +50,7 @@ const WhileTravelingPage = () => {
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>
-                <Img
-                  fluid={image.fluid} 
-                  src={image.fluid.src}
-                  alt={title}
-                />
+                <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
               </Link>
             </div>
           )

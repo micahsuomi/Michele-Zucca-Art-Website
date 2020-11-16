@@ -34,7 +34,7 @@ const IndexPage = props => {
     },
   }
 
-  const {title, body} = data.contentfulHome
+  const { title, body } = data.contentfulHome
 
   return (
     <Layout>
@@ -66,9 +66,7 @@ const IndexPage = props => {
       </Helmet>
       <Head title="Home" />
       <GallerySlider />
-      <h1 className={homeStyles.homeHeader}>
-        {title}
-      </h1>
+      <h1 className={homeStyles.homeHeader}>{title}</h1>
       {documentToReactComponents(body.json, images)}
       <p>
         <Link to="/contact" className={homeStyles.contact}>

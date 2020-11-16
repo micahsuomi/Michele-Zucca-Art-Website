@@ -8,7 +8,7 @@ import Head from "../../components/head"
 
 import portfolioStyles from "../portfolio.module.scss"
 import stylesVertical from "../stylesVertical.module.scss"
-import '../style.scss'
+import "../style.scss"
 
 const HelsinkiSecondBatch = () => {
   const data = useStaticQuery(graphql`
@@ -27,10 +27,10 @@ const HelsinkiSecondBatch = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-            } 
+            }
           }
         }
       }
@@ -41,9 +41,7 @@ const HelsinkiSecondBatch = () => {
     <Layout>
       <Head title="helsinki second batch" />
       <h1>{title}</h1>
-      {documentToReactComponents(
-        description.json
-      )}
+      {documentToReactComponents(description.json)}
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulHelsinkiSecondBatch.edges.map(edge => {
           const { slug, title, image } = edge.node
@@ -55,11 +53,7 @@ const HelsinkiSecondBatch = () => {
               >
                 <h3>{title}</h3>
                 <div class={stylesVertical.imageContainer}>
-                <Img
-                  fluid={image.fluid} 
-                  src={image.fluid.src}
-                  alt={title}
-                />
+                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
                 </div>
               </Link>
             </div>

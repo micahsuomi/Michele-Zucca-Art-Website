@@ -8,7 +8,7 @@ import Head from "../../components/head"
 
 import portfolioStyles from "../portfolio.module.scss"
 import stylesVertical from "../stylesVertical.module.scss"
-import '../style.scss'
+import "../style.scss"
 
 const TheLordAndTheNewCreatures = () => {
   const data = useStaticQuery(graphql`
@@ -27,10 +27,10 @@ const TheLordAndTheNewCreatures = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-            } 
+            }
           }
         }
       }
@@ -41,11 +41,7 @@ const TheLordAndTheNewCreatures = () => {
     <Layout>
       <Head title="the lord and the new creatures" />
       <h1>{title}</h1>
-      <p>
-        {documentToReactComponents(
-          description.json
-        )}
-      </p>
+      <p>{documentToReactComponents(description.json)}</p>
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulTheLordAndTheNewCreatures.edges.map(edge => {
           const { slug, title, image } = edge.node
@@ -57,11 +53,7 @@ const TheLordAndTheNewCreatures = () => {
               >
                 <h3>{title}</h3>
                 <div class={stylesVertical.imageContainer}>
-                <Img
-                    fluid={image.fluid} 
-                    src={image.fluid.src}
-                    alt={title}
-                />
+                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
                 </div>
               </Link>
             </div>

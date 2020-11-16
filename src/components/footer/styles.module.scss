@@ -21,7 +21,7 @@
     .left {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         padding-left: 3rem;
         @include lg {
             justify-content: center;
@@ -46,6 +46,10 @@
     
 }
 
+.right {
+    display: flex;
+    padding-right: 3rem;
+}
 .right a {
     text-decoration: none;
     color: white;

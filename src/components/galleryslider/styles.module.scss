@@ -16,7 +16,7 @@
         top: 45%;
         left: 18%;
         color: rgb(241, 236, 236);
-        font-size: $banner-title;
+        font-size: 38px;
         text-transform: uppercase;
         animation: move 1s ease-in-out 0.5s 2 alternate;
         -moz-animation: move 1s ease-in-out 0.5s 2 alternate;
@@ -41,12 +41,11 @@
      }
 
     img {
-        width: 38rem;
-        height: 22rem;
-        animation-name:appear;
-        animation-duration:1s;
+        width: 44rem;
+        height: 27rem;
+        animation-duration: 1s;
         animation-timing-function: ease-in-out;
-        
+        margin-top: -.5rem;
         @include md {
             height: 22rem;
         }
@@ -71,7 +70,7 @@
     opacity: 0;
     background-color: rgb(48, 4, 4);
     width: 100vw;
-    height: 80vh;
+    height: 89vh;
     position: absolute;
     transition: all ease-in-out 1s;
     top: -40px;

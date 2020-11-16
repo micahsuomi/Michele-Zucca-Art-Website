@@ -7,7 +7,7 @@ import Layout from "../../components/layout"
 import Head from "../../components/head"
 
 import portfolioStyles from "../portfolio.module.scss"
-import '../style.scss'
+import "../style.scss"
 
 const PlayingWithTheLightsOfSydneyPage = () => {
   const data = useStaticQuery(graphql`
@@ -26,25 +26,24 @@ const PlayingWithTheLightsOfSydneyPage = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-            } 
+            }
           }
         }
       }
     }
   `)
-  const { pageTitle, pageDescription } = data.contentfulPlayingWithTheLightOfSydneyHeader
+  const {
+    pageTitle,
+    pageDescription,
+  } = data.contentfulPlayingWithTheLightOfSydneyHeader
   return (
     <Layout>
       <Head title="digital" />
       <h1>{pageTitle}</h1>
-      <p>
-        {documentToReactComponents(
-          pageDescription.json
-        )}
-      </p>
+      <p>{documentToReactComponents(pageDescription.json)}</p>
 
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulPlayingWithTheLightsOfSydney.edges.map(edge => {
@@ -56,11 +55,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>
-                <Img
-                  fluid={image.fluid} 
-                  src={image.fluid.src}
-                  alt={title}
-                />
+                <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
               </Link>
             </div>
           )
