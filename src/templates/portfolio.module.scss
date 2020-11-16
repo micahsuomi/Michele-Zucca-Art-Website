@@ -10,8 +10,6 @@
     @include md {
         padding: 1rem .5rem;
     }
-
-   
     .exit-container {
         display: flex;
         justify-content: flex-end;
@@ -54,7 +52,13 @@
             color: skyblue;
         }
     }
-
+    .gatsby-image-wrapper {
+        position: inherit;
+        width: 13rem;
+        height: 13rem;
+        display: inline-block;
+    }
+    
     .image {
         width: 60%;
         margin-bottom: 1.5rem;

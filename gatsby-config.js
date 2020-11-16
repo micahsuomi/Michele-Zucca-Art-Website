@@ -29,7 +29,7 @@ module.exports = {
       "oils",
     ],
     siteUrl: `https://michelezucca-art.netlify.app/`,
-    type: process.env.GATSBY_ACTIVE_ENV || 'staging',
+    type: process.env.GATSBY_ACTIVE_ENV || "staging",
     twitterHandle: "@michelezucca-arthata",
   },
 
@@ -40,8 +40,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        environment: process.env.ENVIRONMENT_ID
-        
+        environment: process.env.ENVIRONMENT_ID,
       },
     },
     "gatsby-plugin-sass",

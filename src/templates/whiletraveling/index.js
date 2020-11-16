@@ -41,16 +41,13 @@ const WhileTraveling = ({ pageContext, data }) => {
     },
   }
 
-  const previousWhileTraveling = pageContext.next &&
-     {
-        url: `/whiletraveling/${pageContext.next.slug}`,
-      }
-   
+  const previousWhileTraveling = pageContext.next && {
+    url: `/whiletraveling/${pageContext.next.slug}`,
+  }
 
-  const nextWhileTraveling = pageContext.previous &&
-      {
-        url: `/whiletraveling/${pageContext.previous.slug}`,
-      }
+  const nextWhileTraveling = pageContext.previous && {
+    url: `/whiletraveling/${pageContext.previous.slug}`,
+  }
   const { title, image, body } = data.contentfulWhileTraveling
   return (
     <div>
@@ -94,10 +91,7 @@ const WhileTraveling = ({ pageContext, data }) => {
             )}
           </div>
         </div>
-        {documentToReactComponents(
-          body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
     </div>
   )

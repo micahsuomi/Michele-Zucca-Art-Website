@@ -1,14 +1,15 @@
 import React from "react"
-// import Layout from '../../components/layout';
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Head from "../../components/head"
 import {
   faTimes,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
 
 export const query = graphql`
@@ -27,7 +28,7 @@ export const query = graphql`
     }
   }
 `
-const Abstracts = props => {
+const Abstracts = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -39,23 +40,20 @@ const Abstracts = props => {
     },
   }
 
-  const previousAbstracts = props.pageContext.next
-    ? {
-        url: `/abstracts/${props.pageContext.next.slug}`,
+  const previousAbstracts = pageContext.next
+    && {
+        url: `/abstracts/${pageContext.next.slug}`,
       }
-    : null
 
-  const nextAbstracts = props.pageContext.previous
-    ? {
-        url: `/abstracts/${props.pageContext.previous.slug}`,
+  const nextAbstracts = pageContext.previous
+    && {
+        url: `/abstracts/${pageContext.previous.slug}`,
       }
-    : null
-
-  console.log(props)
+  
+  const { title, image, body } = data.contentfulAbstracts
   return (
     <div>
-      {/* <Layout> */}
-      <Head title={props.data.contentfulAbstracts.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/abstracts">
@@ -70,7 +68,7 @@ const Abstracts = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulAbstracts.title}</h2>
+        <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousAbstracts && (
@@ -83,9 +81,9 @@ const Abstracts = props => {
             )}
           </div>
           <img
-            src={props.data.contentfulAbstracts.image.file.url}
-            alt={props.data.contentfulAbstracts.image.description}
-            className={portfolioStyles.image}
+            src={image.file.url}
+            alt={image.description}
+            className={portfolioStyles.imagePhoto}
           />
           <div>
             {nextAbstracts && (
@@ -96,12 +94,10 @@ const Abstracts = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulAbstracts.body.json,
+          body.json,
           options
         )}
       </div>
-
-      {/* </Layout> */}
     </div>
   )
 }

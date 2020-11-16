@@ -30,7 +30,7 @@ const AboutPage = props => {
     },
   }
 
-  const {title, body} = data.contentfulAbout
+  const { title, body } = data.contentfulAbout
 
   return (
     <div>
@@ -38,12 +38,7 @@ const AboutPage = props => {
         <Head title="About" />
         <div className={aboutStyles.container}>
           <h1>{title}</h1>
-          <div>
-            {documentToReactComponents(
-              body.json,
-              options
-            )}
-          </div>
+          <div>{documentToReactComponents(body.json, options)}</div>
           <p>
             {" "}
             If you would like to get in touch,

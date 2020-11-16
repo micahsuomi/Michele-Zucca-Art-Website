@@ -6,7 +6,7 @@ import Layout from "../../components/layout"
 import Head from "../../components/head"
 
 import portfolioStyles from "../portfolio.module.scss"
-import '../style.scss'
+import "../style.scss"
 
 const Digital = () => {
   const data = useStaticQuery(graphql`
@@ -17,10 +17,10 @@ const Digital = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-              }
+            }
           }
         }
       }
@@ -36,17 +36,10 @@ const Digital = () => {
           const { slug, title, image } = edge.node
           return (
             <div className={portfolioStyles.card}>
-              <Link
-                to={`/digital/${slug}`}
-                className={portfolioStyles.link}
-              >
+              <Link to={`/digital/${slug}`} className={portfolioStyles.link}>
                 <h3>{title}</h3>
                 <div class={portfolioStyles.imageContainer}>
-                <Img
-                 fluid={image.fluid} 
-                 src={image.fluid.src}
-                 alt={title}
-                />
+                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
                 </div>
               </Link>
             </div>

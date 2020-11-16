@@ -7,7 +7,7 @@ import Layout from "../../components/layout"
 import portfolioStyles from "../portfolio.module.scss"
 import Head from "../../components/head"
 
-import '../style.scss'
+import "../style.scss"
 
 const AbstractsPage = () => {
   const data = useStaticQuery(graphql`
@@ -24,18 +24,16 @@ const AbstractsPage = () => {
             title
             slug
             image {
-              fluid(maxWidth: 930){
+              fluid(maxWidth: 930) {
                 src
               }
-              }
             }
-        
           }
         }
+      }
     }
   `)
 
-  console.log(data)
   return (
     <Layout>
       <Head title="Abstracts" />
@@ -43,7 +41,7 @@ const AbstractsPage = () => {
       {documentToReactComponents(
         data.contentfulAbstractsHeader.description.json
       )}
-      <ul className={portfolioStyles.wrapper}> 
+      <ul className={portfolioStyles.wrapper}>
         {data.allContentfulAbstracts.edges.map(edge => {
           return (
             <div className={portfolioStyles.card} key={edge.node.slug}>
@@ -53,15 +51,15 @@ const AbstractsPage = () => {
               >
                 <h3>{edge.node.title}</h3>
                 <Img
-                 fluid={edge.node.image.fluid} 
-                 src={edge.node.image.fluid.src}
-                 alt={edge.node.title}
+                  fluid={edge.node.image.fluid}
+                  src={edge.node.image.fluid.src}
+                  alt={edge.node.title}
                 />
               </Link>
             </div>
           )
         })}
-      </ul> 
+      </ul>
     </Layout>
   )
 }
