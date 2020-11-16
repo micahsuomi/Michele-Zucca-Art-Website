@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
 
 export const query = graphql`
@@ -28,18 +29,16 @@ export const query = graphql`
     }
   }
 `
-const Digital = props => {
-  const previousDigital = props.pageContext.previous
-    ? {
-        url: `/digital/${props.pageContext.previous.slug}`,
+const Digital = ({ pageContext, data }) => {
+  const previousDigital = pageContext.previous
+    && {
+        url: `/digital/${pageContext.previous.slug}`,
       }
-    : ""
 
-  const nextDigital = props.pageContext.next
-    ? {
-        url: `/digital/${props.pageContext.next.slug}`,
+  const nextDigital = pageContext.next
+    && {
+        url: `/digital/${pageContext.next.slug}`,
       }
-    : ""
 
   const options = {
     renderNode: {
@@ -51,10 +50,10 @@ const Digital = props => {
       },
     },
   }
-
+  const { title, subtitle, image, body } = data.contentfulDigital
   return (
     <div>
-      <Head title={props.data.contentfulDigital.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/digital">
@@ -69,8 +68,8 @@ const Digital = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulDigital.title}</h2>
-        <h4>{props.data.contentfulDigital.subtitle}</h4>
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousDigital && (
@@ -83,9 +82,9 @@ const Digital = props => {
             )}
           </div>
           <img
-            src={props.data.contentfulDigital.image.file.url}
-            alt={props.data.contentfulDigital.image.description}
-            className={portfolioStyles.image}
+            src={image.file.url}
+            alt={image.description}
+            className={portfolioStyles.imagePhoto}
           />
           <div>
             {nextDigital && (
@@ -96,12 +95,10 @@ const Digital = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulDigital.body.json,
+          body.json,
           options
         )}
       </div>
-
-      {/* </Layout> */}
     </div>
   )
 }

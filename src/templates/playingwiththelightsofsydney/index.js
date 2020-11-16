@@ -1,13 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Head from "../../components/head"
 import {
   faTimes,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Head from "../../components/head"
+
 import portfolioStyles from "../portfolio.module.scss"
 import styles from "./styles.module.scss"
 
@@ -27,16 +28,16 @@ export const query = graphql`
     }
   }
 `
-const PlayingWithTheLightsOfSydney = props => {
-  const previousPlayingWithTheLightsOfSydney = props.pageContext.next
+const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
+  const previousPlayingWithTheLightsOfSydney = pageContext.next
     ? {
-        url: `/playingwiththelightsofsydney/${props.pageContext.next.slug}`,
+        url: `/playingwiththelightsofsydney/${pageContext.next.slug}`,
       }
     : ""
 
-  const nextPlayingWithTheLightsOfSydney = props.pageContext.previous
+  const nextPlayingWithTheLightsOfSydney = pageContext.previous
     ? {
-        url: `/playingwiththelightsofsydney/${props.pageContext.previous.slug}`,
+        url: `/playingwiththelightsofsydney/${pageContext.previous.slug}`,
       }
     : ""
   const options = {
@@ -49,10 +50,11 @@ const PlayingWithTheLightsOfSydney = props => {
       },
     },
   }
-
+  
+  const { title, subtitle, image, body } = data.contentfulPlayingWithTheLightsOfSydney
   return (
     <div>
-      <Head title={props.data.contentfulPlayingWithTheLightsOfSydney.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/playingwiththelightsofsydney">
@@ -67,8 +69,8 @@ const PlayingWithTheLightsOfSydney = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulPlayingWithTheLightsOfSydney.title}</h2>
-        <h4>{props.data.contentfulPlayingWithTheLightsOfSydney.subtitle}</h4>
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousPlayingWithTheLightsOfSydney && (
@@ -81,13 +83,8 @@ const PlayingWithTheLightsOfSydney = props => {
             )}
           </div>
           <img
-            src={
-              props.data.contentfulPlayingWithTheLightsOfSydney.image.file.url
-            }
-            alt={
-              props.data.contentfulPlayingWithTheLightsOfSydney.image
-                .description
-            }
+            src={image.file.url}
+            alt={image.description}
             className={styles.imagePhoto}
           />
           <div>
@@ -99,7 +96,7 @@ const PlayingWithTheLightsOfSydney = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulPlayingWithTheLightsOfSydney.body.json,
+          body.json,
           options
         )}
       </div>

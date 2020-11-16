@@ -40,14 +40,14 @@ const Abstracts = ({ pageContext, data }) => {
     },
   }
 
-  const previousAbstracts = pageContext.next
-    && {
-        url: `/abstracts/${pageContext.next.slug}`,
-      }
-
-  const nextAbstracts = pageContext.previous
+  const previousAbstracts = pageContext.previous
     && {
         url: `/abstracts/${pageContext.previous.slug}`,
+      }
+
+  const nextAbstracts = pageContext.next
+    && {
+        url: `/abstracts/${pageContext.next.slug}`,
       }
   
   const { title, image, body } = data.contentfulAbstracts
@@ -84,7 +84,7 @@ const Abstracts = ({ pageContext, data }) => {
             src={image.file.url}
             alt={image.description}
             className={portfolioStyles.imagePhoto}
-          />
+          /> 
           <div>
             {nextAbstracts && (
               <Link to={nextAbstracts.url}>

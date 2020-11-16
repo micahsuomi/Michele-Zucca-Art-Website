@@ -20,11 +20,8 @@
         @include sm {
             font-size: $regular-text;
             text-align: center;
-        }
-        
+        }   
     }
-
-    
     .slider-container {
         display: grid;
         grid-template-columns: 20% 60% 20%;
@@ -51,13 +48,11 @@
         a:hover {
             color: skyblue;
         }
+        img {
+            width: 60%;
+        }
     }
-    .gatsby-image-wrapper {
-        position: inherit;
-        width: 13rem;
-        height: 13rem;
-        display: inline-block;
-    }
+    
     
     .image {
         width: 60%;

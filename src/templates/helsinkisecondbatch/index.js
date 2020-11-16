@@ -34,7 +34,7 @@ export const query = graphql`
     }
   }
 `
-const HelsinkiFirstBatch = props => {
+const HelsinkiFirstBatch = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -45,21 +45,20 @@ const HelsinkiFirstBatch = props => {
       },
     },
   }
-  const previousHelsinkiSecondBatch = props.pageContext.next
-    ? {
-        url: `/helsinkisecondbatch/${props.pageContext.next.slug}`,
+  const previousHelsinkiSecondBatch = pageContext.next
+    && {
+        url: `/helsinkisecondbatch/${pageContext.next.slug}`,
       }
-    : ""
 
-  const nextHelsinkiSecondBatch = props.pageContext.previous
-    ? {
-        url: `/helsinkisecondbatch/${props.pageContext.previous.slug}`,
+  const nextHelsinkiSecondBatch = pageContext.previous
+    && {
+        url: `/helsinkisecondbatch/${pageContext.previous.slug}`,
       }
-    : ""
-
+  
+  const { title, subtitle, image, body } = data.contentfulHelsinkiSecondBatch 
   return (
     <div>
-      <Head title={props.data.contentfulHelsinkiSecondBatch.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/helsinkifirstbatch">
@@ -74,8 +73,8 @@ const HelsinkiFirstBatch = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulHelsinkiSecondBatch.title}</h2>
-        <h4>{props.data.contentfulHelsinkiSecondBatch.subtitle}</h4>
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousHelsinkiSecondBatch && (
@@ -88,8 +87,8 @@ const HelsinkiFirstBatch = props => {
             )}
           </div>
           <img
-            src={props.data.contentfulHelsinkiSecondBatch.image.file.url}
-            alt={props.data.contentfulHelsinkiSecondBatch.image.description}
+            src={image.file.url}
+            alt={image.description}
             className={portfolioStyles.image}
           />
           <div>
@@ -101,7 +100,7 @@ const HelsinkiFirstBatch = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulHelsinkiSecondBatch.body.json,
+          body.json,
           options
         )}
       </div>

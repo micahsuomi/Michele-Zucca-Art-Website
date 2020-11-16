@@ -26,7 +26,7 @@ export const query = graphql`
     }
   }
 `
-const TheLordAndTheNewCreatures = props => {
+const TheLordAndTheNewCreatures = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -37,21 +37,20 @@ const TheLordAndTheNewCreatures = props => {
       },
     },
   }
-  const previousTheLordAndTheNewCreatures = props.pageContext.previous
-    ? {
-        url: `/thelordandthenewcreatures/${props.pageContext.previous.slug}`,
+  const previousTheLordAndTheNewCreatures = pageContext.previous
+    && {
+        url: `/thelordandthenewcreatures/${pageContext.previous.slug}`,
       }
-    : null
 
-  const nextTheLordAndTheNewCreatures = props.pageContext.next
-    ? {
-        url: `/thelordandthenewcreatures/${props.pageContext.next.slug}`,
+  const nextTheLordAndTheNewCreatures = pageContext.next
+    && {
+        url: `/thelordandthenewcreatures/${pageContext.next.slug}`,
       }
-    : null
-
+  
+  const { title, image, body } = data.contentfulTheLordAndTheNewCreatures
   return (
     <div>
-      <Head title={props.data.contentfulTheLordAndTheNewCreatures.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/thelordandthenewcreatures">
@@ -66,7 +65,7 @@ const TheLordAndTheNewCreatures = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulTheLordAndTheNewCreatures.title}</h2>
+        <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousTheLordAndTheNewCreatures && (
@@ -80,10 +79,8 @@ const TheLordAndTheNewCreatures = props => {
           </div>
 
           <img
-            src={props.data.contentfulTheLordAndTheNewCreatures.image.file.url}
-            alt={
-              props.data.contentfulTheLordAndTheNewCreatures.image.description
-            }
+            src={image.file.url}
+            alt={image.description}
             className={portfolioStyles.image}
           />
           <div>
@@ -95,7 +92,7 @@ const TheLordAndTheNewCreatures = props => {
           </div>
         </div>
         {documentToReactComponents(
-          props.data.contentfulTheLordAndTheNewCreatures.body.json,
+          body.json,
           options
         )}
       </div>
