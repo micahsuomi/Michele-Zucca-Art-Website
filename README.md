@@ -1,6 +1,6 @@
 # Michele Zucca Art Website
 
-![Main](./public/readme-imgs/main.JPG)
+![Main](./src/main.JPG)
 
 As an art fanatic, art is one of my main passions aside from programming. I did have previously built a Wordpress website when I didn't know how to code, which I later substituted with this website built on Gatsby, GraphQL and Contentful. The website features a section about me and my porfolio as an artist, with different subsections based on my type of work: abstracts, portraits, photography, a blog section and a contact form. Art has been one of my main passions since I was a kid, and it is something I have always been doing a form of expression within the years.
 
@@ -28,36 +28,36 @@ As an art fanatic, art is one of my main passions aside from programming. I did 
 
 ## Home
 
-![Home](./public/readme-imgs/home.png)
+![Home](./src/imgs/home.png)
 
 ## About Me
 
-![About Me](./public/readme-imgs/about-me.png)
+![About Me](./src/readme-imgs/about-me.png)
 
 ## Abstracts
 
-![Abstracts](./public/readme-imgs/abstracts.png)
+![Abstracts](./src/imgs/abstracts.png)
 
 ## Portraits
 
-![Portraits](./public/readme-imgs/portraits.png)
+![Portraits](./src/imgs/portraits.png)
 
 ## Photography
 
-![Photography](./public/readme-imgs/photography.png)
+![Photography](./src/imgs/photography.png)
 
 ## Blog
 
 The blog section features posts on my thoughts about art in general. Users can share my posts via Facebook, Whatsapp, Linkedin, Reddit or Twitter. The sharing components come from a React library called react-share
 
-![Blog](./public/readme-imgs/blog.png)
-![Blog](./public/readme-imgs/share-btn.JPG)
+![Blog](./src/imgs/blog.png)
+![Blog](./src/imgs/share-btn.JPG)
 
 ## Contact
 
 Users viewing my website can contact me using this form, which is built using Netflify forms. The form is connected directly through Netlify and a notification is received on my provided email upon user contact.
 
-![Contact](./public/readme-imgs/contact.png)
+![Contact](./src/imgs/contact.png)
 
 ## CMS
 
