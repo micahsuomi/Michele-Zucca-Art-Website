@@ -1,99 +1,74 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's hello-world starter
-</h1>
+# Michele Zucca Art Website
 
-Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+![Main](./public/readme-imgs/main.JPG)
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+As an art fanatic, art is one of my main passions aside from programming. I did have previously built a Wordpress website when I didn't know how to code, which I later substituted with this website built on Gatsby, GraphQL and Contentful. The website features a section about me and my porfolio as an artist, with different subsections based on my type of work: abstracts, portraits, photography, a blog section and a contact form. Art has been one of my main passions since I was a kid, and it is something I have always been doing a form of expression within the years.
 
-## 🚀 Quick start
+# Table of contents:
 
-1.  **Create a Gatsby site.**
+- [Tech Stack Used](#tech-stack-used)
+- [Home](#home)
+- [About Me](#about-me)
+- [Abstracts](#abstracts)
+- [Portraits](#portraits)
+- [Photography](#exchanges)
+- [Blog](#blog)
+- [Contact](#contact)
+- [Watchlist](#watchlist)
+- [CMS & Content](#cms-and-content)
+- [Deployment](#deployment)
 
-    Use the Gatsby CLI to create a new site, specifying the hello-world starter.
+# Tech Stack Used
+- Gatsby Js
+- React Js
+- JavaScript
+- GraphQL
+- Contentful
+- Netlify Forms
+- Sass
 
-    ```shell
-    # create a new Gatsby site using the hello-world starter
-    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
-    ```
+## Home
 
-1.  **Start developing.**
+![Home](./public/readme-imgs/home.png)
 
-    Navigate into your new site’s directory and start it up.
+## About Me
 
-    ```shell
-    cd my-hello-world-starter/
-    gatsby develop
-    ```
+![About Me](./public/readme-imgs/about-me.png)
 
-1.  **Open the source code and start editing!**
+## Abstracts
 
-    Your site is now running at `http://localhost:8000`!
+![Abstracts](./public/readme-imgs/abstracts.png)
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+## Portraits
 
-    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+![Portraits](./public/readme-imgs/portraits.png)
 
-## 🧐 What's inside?
+## Photography
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+![Photography](./public/readme-imgs/photography.png)
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+## Blog
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+The blog section features posts on my thoughts about art in general. Users can share my posts via Facebook, Whatsapp, Linkedin, Reddit or Twitter. The sharing components come from a React library called react-share
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+![Blog](./public/readme-imgs/blog.png)
+![Blog](./public/readme-imgs/share-btn.JPG)
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## Contact
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+Users viewing my website can contact me using this form, which is built using Netflify forms. The form is connected directly through Netlify and a notification is received on my provided email upon user contact.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+![Contact](./public/readme-imgs/contact.png)
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+## CMS
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+The portfolio website uses Contentful as headless CMS. When adding data, there is no need to access the codebase as all the content is dynamic. Once new content is added through Contentful, such as pictures of new paintings, update on about section, descriptions, or a new blog post, Gatsby fetches the data with GraphQL and the new content is displayed on the website. There is no need to manually trigger a new deploy on Netlify as the CMS is connected to Netlify via Webhooks, therefore automatic deploys are generated once the content is published.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## Deployment
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+The app is deployed on Netlify and the demo can be found at the following link: https://michelezucca-art.netlify.app/
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-12. **`README.md`**: A text file containing useful reference information about your project.
 
-## 🎓 Learning Gatsby
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-hello-world)
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-hello-world)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
