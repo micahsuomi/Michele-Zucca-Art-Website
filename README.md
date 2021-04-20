@@ -32,15 +32,21 @@ As an art fanatic, art is one of my main passions aside from programming. I did 
 
 ## About Me
 
-![About Me](./src/readme-imgs/about-me.png)
+![About Me](./src/imgs/about-me.png)
 
 ## Abstracts
 
 ![Abstracts](./src/imgs/abstracts.png)
+![Abstracts](./src/imgs/abstracts-single.png)
 
 ## Portraits
 
 ![Portraits](./src/imgs/portraits.png)
+
+## Digital
+
+![Digital](./src/imgs/digital.png)
+![Digital](./src/imgs/digital-single.png)
 
 ## Photography
 
