@@ -14,7 +14,6 @@ As an art fanatic, art is one of my main passions aside from programming. I did 
 - [Photography](#exchanges)
 - [Blog](#blog)
 - [Contact](#contact)
-- [Watchlist](#watchlist)
 - [CMS & Content](#cms-and-content)
 - [Deployment](#deployment)
 
