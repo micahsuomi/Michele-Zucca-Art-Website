@@ -19,9 +19,7 @@ const HelsinkiSecondBatch = () => {
           json
         }
       }
-      allContentfulHelsinkiSecondBatch(
-        sort: { fields: createdAt, order: ASC }
-      ) {
+      allContentfulHelsinkiSecondBatch {
         edges {
           node {
             title

@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import {
@@ -36,16 +37,13 @@ export const query = graphql`
   }
 `
 const HelsinkiFirstBatch = ({ pageContext, data }) => {
-  const previousHelsinkiFirstBatch = pageContext.next
-    && {
-        url: `/helsinkifirstbatch/${pageContext.next.slug}`,
-      }
+  const previousHelsinkiFirstBatch = pageContext.previous && {
+    url: `/helsinkifirstbatch/${pageContext.previous.slug}`,
+  }
 
-  const nextHelsinkiFirstBatch = pageContext.previous
-    && {
-        url: `/helsinkifirstbatch/${pageContext.previous.slug}`,
-      }
-
+  const nextHelsinkiFirstBatch = pageContext.next && {
+    url: `/helsinkifirstbatch/${pageContext.next.slug}`,
+  }
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -56,6 +54,7 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
       },
     },
   }
+  
   const { title, subtitle, image, body } = data.contentfulHelsinkiFirstBatch
   return (
     <div>
@@ -101,10 +100,7 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
           </div>
         </div>
 
-        {documentToReactComponents(
-          body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
     </div>
   )

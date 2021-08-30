@@ -37,8 +37,6 @@ const Header = ({ title, subtitle }) => {
     setPhotographyOpen((isPhotographyOpen = true))
     setPortraitsOpen((isPortraitsOpen = false))
     setHomeClicked((isHomeClicked = false))
-
-    console.log(isPhotographyOpen)
   }
   const closeDropdown = () => {
     setHomeClicked((isHomeClicked = true))

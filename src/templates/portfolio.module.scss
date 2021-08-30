@@ -1,84 +1,79 @@
-@import './../scss/main.scss';
+@import "./../scss/main.scss";
 .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(3, 3, 3, 0.99);
+  color: white;
+  position: relative;
+  padding: 1rem 3rem;
+  @include md {
+    padding: 1rem 0.5rem;
+  }
+  .exit-container {
     display: flex;
+    justify-content: flex-end;
+    width: 95vw;
+  }
+
+  h2 {
+    @include sm {
+      font-size: $regular-text;
+      text-align: center;
+    }
+  }
+  .slider-container {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    min-height: 80vh;
+    padding: 1rem 12rem;
+    justify-items: center;
     align-items: center;
-    flex-direction: column;
-    background-color: rgba(3, 3, 3, 0.99);
-    color: white;
-    position: relative;
-    padding: 1rem 3rem;
+    .slider-container div:nth-of-type(2) {
+      padding: 5rem;
+    }
     @include md {
-        padding: 1rem .5rem;
-    }
-    .exit-container {
-        display: flex;
-        justify-content: flex-end;
-        width: 95vw;
+      grid-template-columns: 10% 80% 10%;
+      height: 80vh;
+      padding: 1rem 0;
     }
 
-    h2 {
-        @include sm {
-            font-size: $regular-text;
-            text-align: center;
-        }   
+    a {
+      color: white;
+      margin: 12rem;
+      @include md {
+        margin: 2rem;
+      }
     }
-    .slider-container {
-        display: grid;
-        grid-template-columns: 20% 60% 20%;
-        min-height: 80vh;
-        padding: 1rem 12rem;
-        justify-items: center;
-        align-items: center;
-        .slider-container div:nth-of-type(2) {
-            padding: 5rem;
-        }
-        @include md {
-            grid-template-columns: 10% 80% 10%;
-            height: 80vh;
-            padding: 1rem 0;
-        }
-
-        a {
-            color: white;
-            margin:12rem;
-            @include md {
-                margin: 2rem;
-            }
-        }
-        a:hover {
-            color: skyblue;
-        }
-        img {
-            width: 60%;
-        }
+    a:hover {
+      color: skyblue;
     }
-    
-    
-    .image {
-        width: 60%;
-        margin-bottom: 1.5rem;
-        animation-name:appear;
-        animation-duration:1s;
-        animation-timing-function: ease-in-out;
-
-        @include md {
-            width: 80%;
-        }
-        @include sm {
-            width: 100%;
-        }
-       
-       
+    img {
+      width: 100%;
     }
+  }
 
-    @keyframes appear {
-        0%   { opacity: 0; }
-        100% { opacity: 1; }
+  .image {
+    width: 60%;
+    margin-bottom: 1.5rem;
+    animation-name: appear;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+
+    @include md {
+      width: 80%;
     }
+    @include sm {
+      width: 100%;
+    }
+  }
 
-    
- 
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
-
-
-

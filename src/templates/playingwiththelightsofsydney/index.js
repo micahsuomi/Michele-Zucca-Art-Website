@@ -29,17 +29,18 @@ export const query = graphql`
   }
 `
 const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
-  const previousPlayingWithTheLightsOfSydney = pageContext.next
-    ? {
-        url: `/playingwiththelightsofsydney/${pageContext.next.slug}`,
-      }
-    : ""
-
-  const nextPlayingWithTheLightsOfSydney = pageContext.previous
-    ? {
+  console.log(pageContext, data)
+  const previousPlayingWithTheLightsOfSydney = pageContext.previous
+    && {
         url: `/playingwiththelightsofsydney/${pageContext.previous.slug}`,
       }
-    : ""
+    
+
+  const nextPlayingWithTheLightsOfSydney = pageContext.next
+    && {
+        url: `/playingwiththelightsofsydney/${pageContext.next.slug}`,
+      }
+  
   const options = {
     renderNode: {
       "embedded-asset-block": node => {

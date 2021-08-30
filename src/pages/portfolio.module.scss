@@ -1,76 +1,71 @@
-@import '../scss/main.scss';
+@import "../scss/main.scss";
 
 .portfolio-container {
-    padding: 5rem 3rem;
+  padding: 5rem 3rem;
 }
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    margin-top: 2rem;
-    padding-left: 0;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: stretch;
+  align-items: center;
+  grid-gap: 2rem;
+  margin-top: 2rem;
+  padding-left: 0;
 }
 
 .card {
-    padding-top: 1rem;
-    // border: 1px solid lightgray;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 3px;
-    // background-color: rgb(230, 225, 225);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 3px;
+  position: relative;
+  padding: 0.3em 0.4em;
+  // background-color: rgb(230, 225, 225);
 }
 
-
 .link {
-    text-decoration: none;
-    color: rgb(68, 64, 64);
-    
+  text-decoration: none;
+  color: rgb(68, 64, 64);
 }
 
 .link:hover {
-    color: slategray;
-    transform: scale(1.0099);
-    transition: all ease-in-out .2s;
+  color: slategray;
+  transform: scale(1.0099);
+  transition: all ease-in-out 0.2s;
 }
 
-
-
 .link h3 {
-    font-size: $regular-text;
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-
+  font-size: $regular-text;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  word-break: initial;
 }
 
 .img {
-    // width: 250px;
-    // height: 250px;
-    // border-radius: 50%;
-    width: 100%;
-    @include shadow-trans
+  // width: 250px;
+  // height: 250px;
+  // border-radius: 50%;
+  width: 100%;
+  @include shadow-trans;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
-        padding: 1rem 1rem;
-    }
+  .container {
+    padding: 1rem 1rem;
+  }
 
-    .wrapper {
-        grid-template-columns: repeat(2, 1fr);
-
-    }
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-
 
 @media screen and (max-width: 500px) {
-   
-    .wrapper {
-        grid-template-columns: 1fr;
-
-    }
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 2.8rem;
+  }
 }
-

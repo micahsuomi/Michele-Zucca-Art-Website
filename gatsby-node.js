@@ -23,6 +23,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const helsinkiFirstBatch =
     resHelsinkiFirstBatch.data.allContentfulHelsinkiFirstBatch.edges
   helsinkiFirstBatch.forEach((edge, index) => {
+    console.log(edge, index)
     createPage({
       //the component in the object is the path to the component
       component: helsinkiFirstBatchTemplate,
@@ -211,6 +212,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const lightsSydney =
     resLights.data.allContentfulPlayingWithTheLightsOfSydney.edges
   lightsSydney.forEach((edge, index) => {
+    console.log(edge, index)
     createPage({
       //the component in the object is the path to the component
       component: playingWithTheLightsOfSydneyTemplate,
