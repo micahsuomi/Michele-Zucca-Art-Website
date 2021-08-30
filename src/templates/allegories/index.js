@@ -30,17 +30,14 @@ export const query = graphql`
   }
 `
 const Allegories = props => {
-  const previousAllegories = props.pageContext.previous
-    ? {
-        url: `/allegories/${props.pageContext.previous.slug}`,
-      }
-    : ""
+  const previousAllegories = props.pageContext.previous && {
+    url: `/allegories/${props.pageContext.previous.slug}`,
+  }
 
-  const nextAllegories = props.pageContext.next
-    ? {
-        url: `/allegories/${props.pageContext.next.slug}`,
-      }
-    : ""
+  const nextAllegories = props.pageContext.next && {
+    url: `/allegories/${props.pageContext.next.slug}`,
+  }
+
   const options = {
     renderNode: {
       "embedded-asset-block": node => {

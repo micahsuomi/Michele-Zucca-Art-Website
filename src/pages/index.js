@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import SEO from "../components/seo"
 import { Helmet } from "react-helmet"
 import { JsonLd } from "../components/jsonld"
+
+import Head from "../components/head"
 import Layout from "../components/layout"
 import GallerySlider from "../components/galleryslider"
 import "../styles/index.scss"
+
 import homeStyles from "./home.module.scss"
-import Head from "../components/head"
 
 const IndexPage = props => {
   const data = useStaticQuery(graphql`
@@ -65,7 +67,7 @@ const IndexPage = props => {
         </JsonLd>
       </Helmet>
       <Head title="Home" />
-      <GallerySlider />
+      {window.innerWidth > 500 && <GallerySlider />}
       <h1 className={homeStyles.homeHeader}>{title}</h1>
       {documentToReactComponents(body.json, images)}
       <p>

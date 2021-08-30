@@ -18,9 +18,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
           json
         }
       }
-      allContentfulPlayingWithTheLightsOfSydney(
-        sort: { fields: createdAt, order: ASC }
-      ) {
+      allContentfulPlayingWithTheLightsOfSydney{
         edges {
           node {
             title
@@ -48,6 +46,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
       <ul className={portfolioStyles.wrapper}>
         {data.allContentfulPlayingWithTheLightsOfSydney.edges.map(edge => {
           const { slug, title, image } = edge.node
+          console.log(edge)
           return (
             <div className={portfolioStyles.card} key={slug}>
               <Link
