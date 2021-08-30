@@ -67,7 +67,7 @@ const IndexPage = props => {
         </JsonLd>
       </Helmet>
       <Head title="Home" />
-      {window.innerWidth > 500 && <GallerySlider />}
+      <div className={homeStyles.hideMobile}> <GallerySlider /></div>
       <h1 className={homeStyles.homeHeader}>{title}</h1>
       {documentToReactComponents(body.json, images)}
       <p>
