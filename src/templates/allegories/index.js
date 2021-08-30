@@ -29,16 +29,17 @@ export const query = graphql`
     }
   }
 `
-const Allegories = props => {
-  const previousAllegories = props.pageContext.previous
+const Allegories = ({ pageContext, data }) => {
+  console.log(pageContext, data)
+  const previousAllegories = pageContext.previous
     ? {
-        url: `/allegories/${props.pageContext.previous.slug}`,
+        url: `/allegories/${pageContext.previous.slug}`,
       }
     : ""
 
-  const nextAllegories = props.pageContext.next
+  const nextAllegories = pageContext.next
     ? {
-        url: `/allegories/${props.pageContext.next.slug}`,
+        url: `/allegories/${pageContext.next.slug}`,
       }
     : ""
   const options = {
@@ -51,10 +52,10 @@ const Allegories = props => {
       },
     },
   }
-
+  const { title, subtitle, image, body } = data.contentfulAllegories
   return (
     <div>
-      <Head title={props.data.contentfulAllegories.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
         <div className={portfolioStyles.exitContainer}>
           <Link to="/allegories">
@@ -69,8 +70,8 @@ const Allegories = props => {
             />
           </Link>
         </div>
-        <h2>{props.data.contentfulAllegories.title}</h2>
-        <h4>{props.data.contentfulAllegories.subtitle}</h4>
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousAllegories && (
@@ -83,8 +84,8 @@ const Allegories = props => {
             )}
           </div>
           <img
-            src={props.data.contentfulAllegories.image.file.url}
-            alt={props.data.contentfulAllegories.image.description}
+            src={image.file.url}
+            alt={image.description}
             className={styles.imagePhoto}
           />
           <div>
@@ -95,10 +96,7 @@ const Allegories = props => {
             )}
           </div>
         </div>
-        {documentToReactComponents(
-          props.data.contentfulAllegories.body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
     </div>
   )
