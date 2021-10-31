@@ -19,9 +19,7 @@ const TheLordAndTheNewCreatures = () => {
           json
         }
       }
-      allContentfulTheLordAndTheNewCreatures(
-        sort: { fields: datePublished, order: DESC }
-      ) {
+      allContentfulTheLordAndTheNewCreatures{
         edges {
           node {
             title

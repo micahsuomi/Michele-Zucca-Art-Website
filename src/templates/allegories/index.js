@@ -29,6 +29,7 @@ export const query = graphql`
     }
   }
 `
+<<<<<<< HEAD
 const Allegories = ({ pageContext, data }) => {
   console.log(pageContext, data)
   const previousAllegories = pageContext.previous
@@ -42,6 +43,17 @@ const Allegories = ({ pageContext, data }) => {
         url: `/allegories/${pageContext.next.slug}`,
       }
     : ""
+=======
+const Allegories = props => {
+  const previousAllegories = props.pageContext.previous && {
+    url: `/allegories/${props.pageContext.previous.slug}`,
+  }
+
+  const nextAllegories = props.pageContext.next && {
+    url: `/allegories/${props.pageContext.next.slug}`,
+  }
+
+>>>>>>> 3f259066f4f177e5e51568d57c76e58017a4309d
   const options = {
     renderNode: {
       "embedded-asset-block": node => {

@@ -19,7 +19,7 @@ const AllegoriesPage = () => {
         }
       }
 
-      allContentfulAllegories(sort: { fields: datePublished, order: DESC }) {
+      allContentfulAllegories {
         edges {
           node {
             title
