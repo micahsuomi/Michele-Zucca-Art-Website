@@ -1,177 +1,230 @@
-@import '../../scss/main.scss';
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    margin: -4rem;
- 
+@import "../../scss/main.scss";
+
+.gallery-container {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  overflow: none;
+  height: 70vh;
+  //   margin-bottom: 35rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  @include sm {
+    margin: 0;
+  }
+
+  h2 {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+    color: rgb(241, 236, 236);
+    font-size: 38px;
+    text-transform: uppercase;
+    animation: move 0.5s ease-in-out 0.1s 1 alternate;
+    -moz-animation: move 0.5s ease-in-out 0.1s 2 alternate;
+    -webkit-animation: move 0.5s ease-in-out 0.1s 2 alternate;
+    @include md {
+      top: 46.5%;
+      left: 16%;
+      font-size: $section-title;
+    }
     @include sm {
-        margin: 0;
+      top: 47%;
+      font-size: $regular-text;
     }
-
-    h2 {
-        position: absolute;
-        top: 45%;
-        left: 18%;
-        color: rgb(241, 236, 236);
-        font-size: 38px;
-        text-transform: uppercase;
-        animation: move 1s ease-in-out 0.5s 2 alternate;
-        -moz-animation: move 1s ease-in-out 0.5s 2 alternate;
-        -webkit-animation: move 1s ease-in-out 0.5s 2 alternate;
-        @include md {
-            top: 46.5%;
-            left: 16%;
-            font-size: $section-title;
-        }
-         @include sm {
-             top: 47%;
-             font-size: $regular-text;
-         }
-         @include ssm {
-             top: 46.5%;
-         }
+    @include ssm {
+      top: 46.5%;
     }
+  }
 
-    @keyframes move {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(100px); }
-     }
+  .slider {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-shrink: 0;
+    transition: all 250ms linear;
 
-    img {
-        width: 44rem;
-        height: 27rem;
-        animation-duration: 1s;
-        animation-timing-function: ease-in-out;
-        margin-top: -.5rem;
-        @include md {
-            height: 22rem;
-        }
-        @include sm {
-            height: 13.5rem;
-        }
-        @include ssm {
-            height: 12rem;
-        }
+    flex-grow: 1;
+  }
+  img {
+    animation-duration: 1s;
+    width: 100%;
+  }
+}
 
-      
-    }
- 
+.dots-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.dots {
+  height: 13px;
+  width: 13px;
+  background-color: rgb(206, 197, 197);
+  border-radius: 50px;
+  margin: .04rem;
+  z-index: 3;
+  box-shadow: 0 3rem 3rem rgba(87, 65, 65, 0.3);
+  border: 2px solid white;
 
 }
+
+.active-dot {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(42, 39, 39);
+  border-radius: 50px;
+  margin: .04rem;
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out;
+}
 @keyframes appear {
-    0%   { opacity: 0; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100px);
+  }
 }
 
 .mask {
-    opacity: 0;
-    background-color: rgb(48, 4, 4);
-    width: 100vw;
-    height: 89vh;
-    position: absolute;
-    transition: all ease-in-out 1s;
-    top: -40px;
-    @include lg {
-        top: -76px;
-        height: 85vh;
-    }
-    @include md {
-        height: 50vh;
-        top: -72px;
-        opacity: 0.5;
-        
-    }
-    @include sm {
-        height: 56vh;
-        top: -62px;
-
-    }
-    @include ssm {
-        height: 66vh;
-    }
+  opacity: 0;
+  background-color: rgb(29, 26, 26);
+  width: 100vw;
+  height: 95vh;
+  position: absolute;
+  transition: all ease-in-out 1s;
+  top: -109px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include lg {
+    top: -76px;
+    height: 85vh;
+  }
+  @include md {
+    height: 50vh;
+    top: -72px;
+    opacity: 0.5;
+  }
+  @include sm {
+    height: 56vh;
+    top: -62px;
+  }
+  @include ssm {
+    height: 66vh;
+  }
 }
 .mask:hover {
-    opacity: .8;
+  opacity: 0.8;
 }
 /* Fading animation */
 
-  
-  @-webkit-keyframes fade {
-    from {opacity: .1}
-    to {opacity: 1}
+.slider-active {
+  transition-duration: 300ms;
+  transition-property: transform;
+  flex-shrink: 0;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.1;
   }
-  
-  @keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+  to {
+    opacity: 1;
   }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .nav-container {
-    display: grid;
-    grid-template-columns: 75% 25%;
-    align-items: center;
-    width: 100vw;
-    position: absolute;
-    top: 50%;
-    @include md {
-        width: 36rem;
-    }
-    @include sm {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
+  display: grid;
+  grid-template-columns: 75% 25%;
+  align-items: center;
+  width: 100vw;
+  position: absolute;
+  top: 50%;
+  @include md {
+    width: 36rem;
+  }
+  @include sm {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
-
 
 @keyframes appear {
-    0%   { opacity: 0; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
 
 .pageLink {
-    text-decoration: none;
+  text-decoration: none;
 }
 .title {
-    text-decoration: none;
-    color: rgb(38, 44, 49);
-    text-align: left;
+  text-decoration: none;
+  color: rgb(38, 44, 49);
+  text-align: left;
 }
 
 .icon {
-    margin: 1rem;
-    cursor: pointer;
-    width: 8rem;
-    color: white;
+  margin: 1rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  color: black;
 }
 .icon:hover {
-    color: silver;
+  color: silver;
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out;
 }
 
-.left, .right {
-    position: absolute;
-    top: 45%;
-    display: flex;
-    align-items: center;
-    @include sm {
-        top: 43.5%;
-    }
-
+.left,
+.right {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+  @include sm {
+    top: 43.5%;
+  }
 }
 .left {
-    left: 4%;
-    
-
+  left: -7%;
 }
 
 .right {
-    right: 4%;
-   
+  right: -7%;
 }
 span {
-    margin: .4rem;
-    color: white;
+  margin: 0.4rem;
+  color: white;
 }
