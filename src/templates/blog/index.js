@@ -47,10 +47,7 @@ const Blog = ({ data, path }) => {
       <div className={styles.container}>
         <h1>{title}</h1>
         <p>{publishedDate}</p>
-        {documentToReactComponents(
-          body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
 
         <ShareButtons
           url={`${data.site.siteMetadata.siteUrl}${path}`}

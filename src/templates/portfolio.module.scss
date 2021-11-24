@@ -10,12 +10,7 @@
   @include md {
     padding: 1rem 0.5rem;
   }
-  .exit-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 95vw;
-  }
-
+  
   h2 {
     @include sm {
       font-size: $regular-text;

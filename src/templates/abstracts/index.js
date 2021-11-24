@@ -1,14 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -52,29 +49,12 @@ const Abstracts = ({ pageContext, data }) => {
     <div>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/abstracts">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
+        <ExitContainer exitLink="/abstracts" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousAbstracts && (
-              <Link to={previousAbstracts.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousAbstracts.url} />
             )}
           </div>
           <img
@@ -83,11 +63,7 @@ const Abstracts = ({ pageContext, data }) => {
             className={portfolioStyles.imagePhoto}
           />
           <div>
-            {nextAbstracts && (
-              <Link to={nextAbstracts.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
-            )}
+            {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} />}
           </div>
         </div>
         {documentToReactComponents(body.json, options)}

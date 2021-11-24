@@ -9,6 +9,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 import styles from "./styles.module.scss"
@@ -50,32 +53,15 @@ const WhileTraveling = ({ pageContext, data }) => {
   }
   const { title, image, body } = data.contentfulWhileTraveling
   return (
-    <div>
+    <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/whiletraveling">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
+        <ExitContainer exitLink="/whiletraveling" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousWhileTraveling && (
-              <Link to={previousWhileTraveling.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousWhileTraveling.url} />
             )}
           </div>
           <img
@@ -85,15 +71,13 @@ const WhileTraveling = ({ pageContext, data }) => {
           />
           <div>
             {nextWhileTraveling && (
-              <Link to={nextWhileTraveling.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
+              <NextPageLink nextUrl={nextWhileTraveling.url} />
             )}
           </div>
         </div>
         {documentToReactComponents(body.json, options)}
       </div>
-    </div>
+    </>
   )
 }
 

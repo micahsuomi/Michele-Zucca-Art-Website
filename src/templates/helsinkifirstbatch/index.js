@@ -1,15 +1,12 @@
-import React, { useState } from "react"
+import React from "react"
 
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -54,36 +51,19 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
       },
     },
   }
-  
+
   const { title, subtitle, image, body } = data.contentfulHelsinkiFirstBatch
   return (
-    <div>
+    <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/helsinkifirstbatch">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
+        <ExitContainer exitLink="/helsinkifirstbatch" />
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousHelsinkiFirstBatch && (
-              <Link to={previousHelsinkiFirstBatch.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousHelsinkiFirstBatch.url} />
             )}
           </div>
           <img
@@ -93,16 +73,14 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
           />
           <div>
             {nextHelsinkiFirstBatch && (
-              <Link to={nextHelsinkiFirstBatch.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
+              <NextPageLink nextUrl={nextHelsinkiFirstBatch.url} />
             )}
           </div>
         </div>
 
         {documentToReactComponents(body.json, options)}
       </div>
-    </div>
+    </>
   )
 }
 
