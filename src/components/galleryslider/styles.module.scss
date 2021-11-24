@@ -103,16 +103,7 @@
 
 .mask {
   opacity: 0;
-  background-color: rgb(29, 26, 26);
-  width: 100vw;
-  height: 95vh;
-  position: absolute;
-  transition: all ease-in-out 1s;
-  top: -109px;
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
   @include lg {
     top: -76px;
     height: 85vh;
@@ -132,6 +123,16 @@
 }
 .mask:hover {
   opacity: 0.8;
+  background-color: rgb(29, 26, 26);
+  width: 100vw;
+  height: 95vh;
+  position: absolute;
+  transition: all ease-in-out 1s;
+  top: -109px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* Fading animation */
 
