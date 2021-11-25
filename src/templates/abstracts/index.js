@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -35,13 +35,29 @@ const Abstracts = ({ pageContext, data }) => {
       },
     },
   }
-
+  const [touch, setTouch ] = useState()
   const previousAbstracts = pageContext.previous && {
     url: `/abstracts/${pageContext.previous.slug}`,
   }
 
   const nextAbstracts = pageContext.next && {
     url: `/abstracts/${pageContext.next.slug}`,
+  }
+
+  const handleTouchStart = (e) => {
+    setTouch(e.touches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    const currentTouch = e.touches[0].clientX
+    const diff = touch - currentTouch
+    if(diff > 5 && nextAbstracts) {
+      window.location.assign(nextAbstracts.url, "_self")
+    }
+    if(diff < 5 && previousAbstracts) {
+      window.location.assign(previousAbstracts.url, "_self")
+    }
+
   }
 
   const { title, image, body } = data.contentfulAbstracts
@@ -61,6 +77,8 @@ const Abstracts = ({ pageContext, data }) => {
             src={image.file.url}
             alt={image.description}
             className={portfolioStyles.imagePhoto}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
           />
           <div>
             {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} />}
