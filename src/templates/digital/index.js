@@ -1,14 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -30,15 +27,13 @@ export const query = graphql`
   }
 `
 const Digital = ({ pageContext, data }) => {
-  const previousDigital = pageContext.previous
-    && {
-        url: `/digital/${pageContext.previous.slug}`,
-      }
+  const previousDigital = pageContext.previous && {
+    url: `/digital/${pageContext.previous.slug}`,
+  }
 
-  const nextDigital = pageContext.next
-    && {
-        url: `/digital/${pageContext.next.slug}`,
-      }
+  const nextDigital = pageContext.next && {
+    url: `/digital/${pageContext.next.slug}`,
+  }
 
   const options = {
     renderNode: {
@@ -55,30 +50,13 @@ const Digital = ({ pageContext, data }) => {
     <div>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/digital">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
+        <ExitContainer exitLink="/digital" />
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousDigital && (
-              <Link to={previousDigital.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousDigital.url} />
             )}
           </div>
           <img
@@ -86,18 +64,9 @@ const Digital = ({ pageContext, data }) => {
             alt={image.description}
             className={portfolioStyles.imagePhoto}
           />
-          <div>
-            {nextDigital && (
-              <Link to={nextDigital.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
-            )}
-          </div>
+          <div>{nextDigital && <NextPageLink nextUrl={nextDigital.url} />}</div>
         </div>
-        {documentToReactComponents(
-          body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
     </div>
   )
