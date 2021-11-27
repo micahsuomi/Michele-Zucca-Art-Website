@@ -1,68 +1,70 @@
 @import "./../scss/main.scss";
 .container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   background-color: rgba(3, 3, 3, 0.99);
   color: white;
   position: relative;
   padding: 1rem 3rem;
+  // animation-name: appear;
+  // animation-duration: 1s;
+
   @include md {
     padding: 1rem 0.5rem;
   }
-  
+
   h2 {
+    text-align: center;
     @include sm {
       font-size: $regular-text;
       text-align: center;
     }
   }
   .slider-container {
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
-    min-height: 80vh;
-    padding: 1rem 12rem;
-    justify-items: center;
-    align-items: center;
-    .slider-container div:nth-of-type(2) {
-      padding: 5rem;
-    }
+    position: relative;
+    // animation-name: slidein;
+    // animation-duration: 1s;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // padding: 4rem 4rem;
+
+    // display: grid;
+    // grid-template-columns: 20% 60% 20%;
+    min-height: 90vh;
+    // padding: 1rem 12rem;
+    // justify-items: center;
+    // align-items: center;
     @include md {
-      grid-template-columns: 10% 80% 10%;
-      height: 80vh;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // grid-template-columns: 10% 80% 10%;
+      // height: 80vh;
       padding: 1rem 0;
     }
-
-    a {
-      color: white;
-      margin: 12rem;
-      @include md {
-        margin: 2rem;
-      }
-    }
-    a:hover {
-      color: skyblue;
-    }
-    img {
-      width: 100%;
+    .image-container {
+      position: absolute;
     }
   }
 
-  .image {
-    width: 60%;
+  .image-container {
+    width: 40%;
     margin-bottom: 1.5rem;
-    animation-name: appear;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-
+    position: absolute;
+    // animation-name: appear;
+    // animation-duration: 1s;
+    // animation-timing-function: ease-in-out;
+    //   animation-name: slidein;
+    // animation-duration: 1s;
     @include md {
-      width: 80%;
+      width: 70%;
     }
     @include sm {
       width: 100%;
+
     }
   }
 
+  
   @keyframes appear {
     0% {
       opacity: 0;

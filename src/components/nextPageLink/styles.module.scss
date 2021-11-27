@@ -1,0 +1,14 @@
+@import '../../scss/main.scss';
+
+.next-link {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  :hover {
+    color: skyblue;
+  }
+  @include md {
+    display: none;
+  }
+}

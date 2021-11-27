@@ -1,26 +1,22 @@
-@import '../../scss/main.scss';
+@import "../../scss/main.scss";
 .container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    @include lg {
-        padding: 0;
-    }
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  @include lg {
+    padding: 0;
+  }
 }
 
 .content {
+  flex-grow: 1;
+  padding: 10rem 11rem;
+  @include lg {
     flex-grow: 1;
-    padding: 10rem 11rem;
-    @include lg {
-        flex-grow: 1;
-        padding: 12rem 6rem;
-
-    }
-    @include sm {
-        padding: 7rem 1rem;
-
-    }
-
-   
+    padding: 12rem 6rem;
+  }
+  @include sm {
+    padding: 7rem 1rem;
+  }
 }

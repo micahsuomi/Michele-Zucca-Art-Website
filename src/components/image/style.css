@@ -1,0 +1,34 @@
+.image-default {
+  /* this is provisory */
+  /* height: 100%; */
+  width: 100%;
+  height: 39rem;
+  margin-left: 22.5rem;
+  margin-top: 2rem;
+  animation-name: appear;
+
+  transition: 3s ease-in-out;
+  animation-duration: 3s;
+}
+@media screen and (max-width: 768px) {
+  .image-default {
+    margin-left: 8rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .image-default {
+    margin-left: 0;
+    transition: 1s ease-in-out;
+    height: 35rem;
+    animation-duration: 1s;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
