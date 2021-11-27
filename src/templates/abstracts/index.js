@@ -63,6 +63,11 @@ const Abstracts = ({ pageContext, data }) => {
     }
   }
 
+  const [sliderClick, setSliderClick] = useState()
+
+  const setRightLinkClick = (rightClick) => {
+    setSliderClick(rightClick)
+  }
   const { title, image, body } = data.contentfulAbstracts
   return (
     <div>
@@ -71,18 +76,15 @@ const Abstracts = ({ pageContext, data }) => {
         <ExitContainer exitLink="/abstracts" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
-          {/* <div className={portfolioStyles.sliderLinkContainer}> 
-            {previousAbstracts && (
-              <PreviousPageLink prevUrl={previousAbstracts.url} />
-            )}
-          </div> */}
-          <div className={portfolioStyles.imageContainer}>  
+         
+          <div className={portfolioStyles.imageContainer}>   
           <Image
             image={image}
             prevImage={previousAbstracts}
             nextImage={nextAbstracts}
             prevImageUrl={previousAbstracts && previousAbstracts.url}
             nextImageUrl={nextAbstracts && nextAbstracts.url}
+            sliderClick={sliderClick}
           />
           </div>  
           {/* <img
@@ -92,9 +94,14 @@ const Abstracts = ({ pageContext, data }) => {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           /> */}
-          {/* <div className={portfolioStyles.sliderLinkContainer}> 
-            {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} />}
-          </div> */}
+           <div className={portfolioStyles.sliderLinkContainer}> 
+            {previousAbstracts && (
+              <PreviousPageLink prevUrl={previousAbstracts.url} />
+            )}
+          </div>
+          <div className={portfolioStyles.sliderLinkContainer}> 
+            {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} setRightLinkClick={setRightLinkClick}/>}
+          </div> 
         </div>
         <div>
         {documentToReactComponents(body.json, options)}

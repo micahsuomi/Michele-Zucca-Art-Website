@@ -6,11 +6,11 @@
   padding: 1rem 3rem;
   // animation-name: appear;
   // animation-duration: 1s;
-  
+
   @include md {
     padding: 1rem 0.5rem;
   }
-  
+
   h2 {
     text-align: center;
     @include sm {
@@ -20,12 +20,13 @@
   }
   .slider-container {
     position: relative;
-    animation-name: slidein;
-    animation-duration: 1s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
+    // animation-name: slidein;
+    // animation-duration: 1s;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // padding: 4rem 4rem;
+
     // display: grid;
     // grid-template-columns: 20% 60% 20%;
     min-height: 90vh;
@@ -40,72 +41,30 @@
       // height: 80vh;
       padding: 1rem 0;
     }
-    .slider-link-container {
-      @include md {
-        // display: none;
-      }
-    }
-   
-    
     .image-container {
-      width: 100%;
-      height: 100%;
-     
-      animation-name: slidein;
-      animation-duration: 1s;
-      @include md {
-        width: 90vw;
-      }
-
-
-    }
-    
-    
-    
-    a {
-      color: white;
-      margin: 12rem;
-      @include md {
-        margin: 2rem;
-      }
-    }
-    a:hover {
-      color: skyblue;
-    }
-    img {
-      width: 100%;
+      position: absolute;
     }
   }
 
-  .image {
-    width: 60%;
+  .image-container {
+    width: 40%;
     margin-bottom: 1.5rem;
+    position: absolute;
     // animation-name: appear;
     // animation-duration: 1s;
     // animation-timing-function: ease-in-out;
-  //   animation-name: slidein;
-  // animation-duration: 1s;
-
+    //   animation-name: slidein;
+    // animation-duration: 1s;
     @include md {
-      width: 80%;
+      width: 70%;
     }
     @include sm {
       width: 100%;
-    }
-  }
- 
 
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-  
-    to {
-      margin-left: 0%;
-      width: 100%;
     }
   }
+
+  
   @keyframes appear {
     0% {
       opacity: 0;
@@ -114,5 +73,4 @@
       opacity: 1;
     }
   }
-  
 }

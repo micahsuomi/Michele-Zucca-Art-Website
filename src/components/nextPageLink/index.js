@@ -3,10 +3,15 @@ import { Link } from "gatsby"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const NextPageLink = ({ nextUrl }) => {
+import linkStyles from "./styles.module.scss"
+
+const NextPageLink = ({ nextUrl, setRightLinkClick }) => {
   return (
-    <Link to={nextUrl}>
-      <FontAwesomeIcon icon={faChevronRight} style={{ height: "5rem" }} />
+    <Link to={nextUrl} className={linkStyles.nextLink}>
+      <FontAwesomeIcon
+        icon={faChevronRight}
+        onClick={e => setRightLinkClick(e.clientX)}
+      />
     </Link>
   )
 }

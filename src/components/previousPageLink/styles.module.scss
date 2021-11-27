@@ -1,0 +1,14 @@
+@import '../../scss/main.scss';
+
+.prev-link {
+  color: white;
+  position: absolute;
+  top: 50.4%;
+  left: 5%;
+  :hover {
+    color: skyblue;
+  }
+  @include md {
+    display: none;
+  }
+}
