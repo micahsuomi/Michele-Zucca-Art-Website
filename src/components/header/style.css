@@ -3,6 +3,7 @@
   list-style: none;
   justify-content: center;
   position: sticky;
+  /* flex-direction: column;  */
 }
 
 .nav-item {
@@ -30,7 +31,7 @@ details:hover .nestedNavList {
   display: block;
 }
 .dropdown-content a:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
   color: $color-nav-item;
 }
 
@@ -38,7 +39,7 @@ details:hover .nestedNavList {
   display: block;
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) { */
   header {
     grid-template-columns: 35% 65%;
   }
@@ -60,6 +61,7 @@ details:hover .nestedNavList {
     opacity: 0.95;
     background-color: rgb(15, 15, 15);
     line-height: 1.8;
+    z-index: 2;
   }
 
   .nav-item {
@@ -90,7 +92,7 @@ details:hover .nestedNavList {
   }
   .top {
     transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-    top: 9%;
+    top: 5%;
   }
 
   .middle {
@@ -101,7 +103,7 @@ details:hover .nestedNavList {
 
   .bottom {
     transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-    top: 52%;
+    top: 55%;
     width: 50%;
   }
 
@@ -119,7 +121,7 @@ details:hover .nestedNavList {
     background: white;
     width: 70%;
   }
-}
+/* } */
 @media screen and (max-width: 320px) {
   .nav-links.open {
     top: -3%;
