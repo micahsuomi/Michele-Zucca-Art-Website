@@ -5,13 +5,13 @@ import headerStyles from "./styles.module.scss"
 import "./style.css"
 
 const Header = ({ title, subtitle }) => {
-  const [isClicked, setState] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
   let [isPortraitsOpen, setPortraitsOpen] = useState(false)
   let [isPhotographyOpen, setPhotographyOpen] = useState(false)
   let [isHomeClicked, setHomeClicked] = useState(false)
 
-  let navLinksClass = ["nav-links"]
   let navLinksClassOpen = ["nav-links open"]
+  let navLinksClassClose = ["nav-links close"]
 
   let lineClassOne = ["line top"]
   let lineClassOneActive = ["line top active"]
@@ -21,9 +21,9 @@ const Header = ({ title, subtitle }) => {
 
   let lineClassThree = ["line bottom"]
   let lineClassThreeActive = ["line bottom active"]
-
+  console.log(isClicked)
   const toggle = () => {
-    setState(!isClicked)
+    setIsClicked(!isClicked)
   }
   const openPortraits = () => {
     setPortraitsOpen((isPortraitsOpen = true))
@@ -42,10 +42,8 @@ const Header = ({ title, subtitle }) => {
     setHomeClicked((isHomeClicked = true))
     setPhotographyOpen((isPhotographyOpen = false))
     setPortraitsOpen((isPortraitsOpen = false))
-    setState(false)
+    setIsClicked(false)
   }
-
-  console.log(isClicked)
 
   return (
     <header>
@@ -81,7 +79,7 @@ const Header = ({ title, subtitle }) => {
             </div>
           </div>
 
-          <ul className={isClicked ? navLinksClassOpen : navLinksClass}>
+          <ul className={isClicked ? navLinksClassOpen : navLinksClassClose}>
             <li className={headerStyles.navListItem}>
               <Link
                 className={headerStyles.navItem}

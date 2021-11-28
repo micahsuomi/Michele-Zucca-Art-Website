@@ -41,8 +41,6 @@ const GallerySlider = () => {
 
  
   const openMask = () => setShowMask(true)
-  console.log(showMask)
-  console.log(mask)
   const closeMask = () => setShowMask(false)
   const SlideGalleryOnKey = (e) => {
     if( e.key === "ArrowLeft") {
