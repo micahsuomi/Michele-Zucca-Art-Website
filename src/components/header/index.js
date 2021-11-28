@@ -42,7 +42,10 @@ const Header = ({ title, subtitle }) => {
     setHomeClicked((isHomeClicked = true))
     setPhotographyOpen((isPhotographyOpen = false))
     setPortraitsOpen((isPortraitsOpen = false))
+    setState(false)
   }
+
+  console.log(isClicked)
 
   return (
     <header>
@@ -95,6 +98,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/about"
+                onClick={closeDropdown}
               >
                 About
               </Link>
@@ -115,6 +119,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/helsinkifirstbatch"
+                        onClick={closeDropdown}
                       >
                         Hki First Batch
                       </Link>
@@ -123,6 +128,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/helsinkisecondbatch"
+                        onClick={closeDropdown}
                       >
                         Hki Second Batch
                       </Link>
@@ -132,6 +138,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/thelordandthenewcreatures"
+                        onClick={closeDropdown}
                       >
                         The L. and N. C.
                       </Link>
@@ -146,6 +153,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/abstracts"
+                onClick={closeDropdown}
               >
                 Abstracts
               </Link>
@@ -156,6 +164,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/digital"
+                onClick={closeDropdown}
               >
                 Digital
               </Link>
@@ -176,6 +185,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/allegories"
+                        onClick={closeDropdown}
                       >
                         Allegories
                       </Link>
@@ -184,6 +194,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/playingwiththelightsofsydney"
+                        onClick={closeDropdown}
                       >
                         Lights Of Sydney
                       </Link>
@@ -192,6 +203,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/whiletraveling"
+                        onClick={closeDropdown}
                       >
                         While Travelling
                       </Link>
@@ -207,6 +219,7 @@ const Header = ({ title, subtitle }) => {
                 activeClassName={headerStyles.activeNavItem}
                 partiallyActive={true}
                 to="/blog"
+                onClick={closeDropdown}
               >
                 Blog
               </Link>
@@ -217,16 +230,11 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/contact"
+                onClick={closeDropdown}
               >
                 Contact
               </Link>
             </li>
-
-            {/* <li><Link className={headerStyles.navItem} 
-                activeClassName={headerStyles.activeNavItem} 
-                to ="/calendly">
-                  Book a meeting
-                  </Link></li> */}
           </ul>
         </nav>
       </div>
