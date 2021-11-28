@@ -1,48 +1,38 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import logo from "../../imgs/logo-brightmike.png"
+import { FaChevronUp, FaChevronDown } from "react-icons/fa"
+
 import headerStyles from "./styles.module.scss"
 import "./style.css"
 
 const Header = ({ title, subtitle }) => {
-  const [isClicked, setIsClicked] = useState(false)
-  let [isPortraitsOpen, setPortraitsOpen] = useState(false)
-  let [isPhotographyOpen, setPhotographyOpen] = useState(false)
-  let [isHomeClicked, setHomeClicked] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
+  const [isPortraitsOpen, setPortraitsOpen] = useState(false)
+  const [isPhotographyOpen, setPhotographyOpen] = useState(false)
+  const [isHomeClicked, setHomeClicked] = useState(false)
 
-  let navLinksClassOpen = ["nav-links open"]
-  let navLinksClassClose = ["nav-links close"]
+  const navLinksClassOpen = ["nav-links open"]
+  const navLinksClassClose = ["nav-links close"]
 
-  let lineClassOne = ["line top"]
-  let lineClassOneActive = ["line top active"]
+  const lineClassOne = ["line top"]
+  const lineClassOneActive = ["line top active"]
 
-  let lineClassTwo = ["line middle"]
-  let lineClassTwoActive = ["line middle active"]
+  const lineClassTwo = ["line middle"]
+  const lineClassTwoActive = ["line middle active"]
 
-  let lineClassThree = ["line bottom"]
-  let lineClassThreeActive = ["line bottom active"]
-  console.log(isClicked)
-  const toggle = () => {
-    setIsClicked(!isClicked)
-  }
-  const openPortraits = () => {
-    setPortraitsOpen((isPortraitsOpen = true))
-    setPhotographyOpen((isPhotographyOpen = false))
-    setHomeClicked((isHomeClicked = false))
+  const lineClassThree = ["line bottom"]
+  const lineClassThreeActive = ["line bottom active"]
+  console.log(isToggled)
+  const toggle = () => setIsToggled(!isToggled)
+  const openPortraits = () => setPortraitsOpen(!isPortraitsOpen)
+  const openPhotography = () => setPhotographyOpen(!isPhotographyOpen)
 
-    console.log(isPortraitsOpen)
-  }
-
-  const openPhotography = () => {
-    setPhotographyOpen((isPhotographyOpen = true))
-    setPortraitsOpen((isPortraitsOpen = false))
-    setHomeClicked((isHomeClicked = false))
-  }
   const closeDropdown = () => {
-    setHomeClicked((isHomeClicked = true))
-    setPhotographyOpen((isPhotographyOpen = false))
-    setPortraitsOpen((isPortraitsOpen = false))
-    setIsClicked(false)
+    setHomeClicked(true)
+    setPhotographyOpen(false)
+    setPortraitsOpen(false)
+    setIsToggled(false)
   }
 
   return (
@@ -65,21 +55,22 @@ const Header = ({ title, subtitle }) => {
             <div
               className={headerStyles.toggleBar}
               onClick={toggle}
-              style={isClicked ? styleBorder : styleNoBorder}
+              style={isToggled ? styleBorder : styleNoBorder}
             >
               <span
-                className={isClicked ? lineClassOneActive : lineClassOne}
+                className={isToggled ? lineClassOneActive : lineClassOne}
               ></span>
               <span
-                className={isClicked ? lineClassTwoActive : lineClassTwo}
+                className={isToggled ? lineClassTwoActive : lineClassTwo}
               ></span>
               <span
-                className={isClicked ? lineClassThreeActive : lineClassThree}
+                className={isToggled ? lineClassThreeActive : lineClassThree}
               ></span>
             </div>
           </div>
 
-          <ul className={isClicked ? navLinksClassOpen : navLinksClassClose}>
+          { isToggled &&
+          <ul className={isToggled ? navLinksClassOpen : navLinksClassClose}>
             <li className={headerStyles.navListItem}>
               <Link
                 className={headerStyles.navItem}
@@ -107,11 +98,15 @@ const Header = ({ title, subtitle }) => {
                 <summary
                   activeClassName={headerStyles.activeNavItem}
                   onClick={openPortraits}
-                  activeClassName={headerStyles.activeNavItem}
                 >
                   Portraits
+                  {isPortraitsOpen ? (
+                    <FaChevronUp className={headerStyles.dropDownIcon} />
+                  ) : (
+                    <FaChevronDown className={headerStyles.dropDownIcon} />
+                  )}
                 </summary>
-                {isPhotographyOpen || isHomeClicked ? null : (
+                {isHomeClicked ? null : (
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -176,8 +171,13 @@ const Header = ({ title, subtitle }) => {
                 >
                   {" "}
                   Photography
+                  {isPhotographyOpen ? (
+                    <FaChevronUp className={headerStyles.dropDownIcon} />
+                  ) : (
+                    <FaChevronDown className={headerStyles.dropDownIcon} />
+                  )}
                 </summary>
-                {isPortraitsOpen || isHomeClicked ? null : (
+                {isHomeClicked ? null : (
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -234,6 +234,7 @@ const Header = ({ title, subtitle }) => {
               </Link>
             </li>
           </ul>
+         }
         </nav>
       </div>
     </header>

@@ -89,8 +89,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3;
-  margin-top: 2rem;
 }
 
 .dots {
@@ -99,7 +97,7 @@
   background-color: rgb(206, 197, 197);
   border-radius: 50px;
   margin: 0.04rem;
-  z-index: 3;
+  z-index: 1;
   box-shadow: 0 3rem 3rem rgba(87, 65, 65, 0.3);
   border: 2px solid white;
 }
