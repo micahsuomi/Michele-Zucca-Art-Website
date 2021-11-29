@@ -99,7 +99,7 @@ const Header = ({ title, subtitle }) => {
                   activeClassName={headerStyles.activeNavItem}
                   onClick={openPortraits}
                 >
-                  Portraits
+                  <span>Portraits</span>
                   {isPortraitsOpen ? (
                     <FaChevronUp className={headerStyles.dropDownIcon} />
                   ) : (
@@ -170,7 +170,7 @@ const Header = ({ title, subtitle }) => {
                   onClick={openPhotography}
                 >
                   {" "}
-                  Photography
+                  <span>Photography</span>
                   {isPhotographyOpen ? (
                     <FaChevronUp className={headerStyles.dropDownIcon} />
                   ) : (
