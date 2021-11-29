@@ -1,59 +1,56 @@
-@import '../../scss/main.scss';
+@import "../../scss/main.scss";
 .form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 30rem;
-    padding: 2rem 0;
-    border-radius: 3px;
-    background-color: white;
-    color: white;
-    @include md {
-        margin-top: 2rem;
-    }
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30rem;
+  padding: 2rem 0;
+  border-radius: 3px;
+  background-color: white;
+  color: white;
+  @include md {
+    margin-top: 2rem;
+  }
 }
 
 label {
-    font-family: 'Montserrat', sans-serif;
-    color:$color-text;
+  font-family: "Montserrat", sans-serif;
+  color: $color-text;
 }
 .name,
 .email,
 .message {
-    width: 25rem;
-    padding: .5rem;
-    margin-top: .6rem;
-    font-family: 'Montserrat', sans-serif;
-    border: none;
-    border-bottom: 1px solid lightgray;
+  width: 25rem;
+  padding: 0.5rem;
+  margin-top: 0.6rem;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  @include sm {
+      width: 20rem;
+  }
 }
 
 .message {
-    height: 10rem;
-
+  height: 10rem;
 }
 
 .submit-btn {
-    width: 10rem;
-    padding: .7rem;
-    background-color: rgb(255, 0, 140);
-    border: none;
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all ease-in-out(.2s);
-
+  width: 10rem;
+  padding: 0.7rem;
+  background-color: rgb(255, 0, 140);
+  border: none;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all ease-in-out(0.2s);
 }
 
 .submit-btn:hover {
-    background-color: rgb(187, 13, 109);
-    transform: scale(1.02, 1.02);
-    transition: all ease-in-out .2s;
-
-
-
+  background-color: rgb(187, 13, 109);
+  transform: scale(1.02, 1.02);
+  transition: all ease-in-out 0.2s;
 }
