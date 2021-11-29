@@ -100,7 +100,7 @@ details {
 }
 
 .nested-list-item {
-  padding: 10px 13px;
+  padding: 6px 0;
 }
 details summary::-webkit-details-marker {
   display: none;
@@ -110,54 +110,39 @@ details summary::-webkit-details-marker {
 .nestedNavList {
   list-style: none;
   position: absolute;
-  min-width: 140px;
   background-color: #f1f1f1;
-  margin-top: 14px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   animation: fade-in 0.5s forwards;
 }
 
-@keyframes fade-in {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+
 
 .nestedNavItem {
   display: block;
 }
 
 .nestedNavList li a {
-  padding: 12px 18px;
-  width: 100%;
-}
-.nestedNavList li a:hover {
-  background-color: rgb(179, 163, 163);
-  color: $color-nav-item;
+    margin-right: 5rem;
 }
 
+
 .nav-item:hover,
-details:hover,
 .nav-item-nested:hover {
-  color: lightgray;
+  color: rgb(228, 215, 215);
+  background-color: #0f0f0f;
+  border-bottom: 2px solid rgb(131, 126, 129);
 }
 
 .active-nav-item {
-  border-bottom: 2px solid rgb(53, 36, 46);
+  border-bottom: 2px solid rgb(131, 126, 129);
   color: black;
 }
 
 .nav-item:active,
-summary:focus,
+summary span:focus,
 .nav-item-nested:focus {
   outline: none;
   text-decoration: none;
-  
 }
 
 .drop-btn {
@@ -200,7 +185,6 @@ details:hover .nestedNavList {
   display: block;
 }
 .dropdown-content a:hover {
-//   background-color: #ddd;
   color: $color-nav-item;
 }
 
@@ -260,51 +244,52 @@ nav {
 .nav-item,
 details,
 .nav-item-nested {
-  color: white;
   margin-left: none;
+  color: #0f0f0f;
 }
 .nav-item:hover {
-    background-color: white;
-   
+  background-color: #0f0f0f;
+  @include sm {
+    background-color: rgb(228, 215, 215);
+  }
 }
 
-
-.nav-list-item {
-  background-color: #0f0f0f;
-  width: 120vw;
+.nav-list-item,
+.nested-list-item  {
+  background-color: rgb(228, 215, 215);
+  width: 123vw;
   border: 1px solid rgba(231, 208, 208, 0.4);
   text-align: center;
   cursor: pointer;
-
 }
-.nav-list-item:hover {
-    background-color: white;
-    transition: 3s ease-in-out;
-    animation-duration: 3s;
-    animation-name: changecolor;
-    .nav-item {
-        color: black;
-    }
-
+.nav-list-item:hover,
+.nested-list-item:hover {
+  transition: .2s ease-in-out;
+  animation-duration: 0.2s;
+  border-bottom: 2px solid rgb(53, 36, 46);
+  color: #0f0f0f;
 }
 .nestedNavList {
   position: relative;
   background-color: rgb(15, 15, 15);
 }
 .nav-item,
-summary {
+summary span {
   text-transform: uppercase;
   font-size: var(--font-size-mediumsmall);
-  
+  color: #0f0f0f;
 }
-summary:hover {
-    color: black;
+
+summary span:hover {
+  background-color: #0f0f0f;
+  color: rgb(228, 215, 215);
+}
+summary svg {
+  color: #0f0f0f; 
 }
 
 .nested-list-item {
-  background-color: rgb(78, 77, 77);
-  color: #0f0f0f;
-  border: 1px solid white;
+  background-color: rgb(228, 215, 215);
 }
 
 .nav-item-nested {
@@ -323,8 +308,6 @@ summary:hover {
   height: 100vh;
   width: 100vw;
   position: fixed;
-  /* background-image: linear-gradient(135deg, #667eea 0%, #195aae 100%);     */
-  background-image: inherit;
   top: 0%;
   left: 0%;
   padding: 0;
@@ -333,19 +316,13 @@ summary:hover {
   transition: all ease-in-out 0.1s;
   opacity: 0.95;
   background-color: rgb(15, 15, 15);
-  color: white;
+ 
 }
 
 summary {
   text-align: center;
 }
 //  }
-
-@media screen and (max-width: 568px) {
-  .logo {
-    width: 21%;
-  }
-}
 
 @media screen and (max-width: 500px) {
   header {
@@ -363,21 +340,50 @@ summary {
   .nav-links {
     line-height: 1.5;
   }
+}
 
-  .logo {
-    width: 12%;
+@-webkit-keyframes changecolor {
+  0% {
+    background-color: white;
+  }
+  50.0% {
+    background-color: rgb(231, 227, 227);
+  } /* your chosen 'mid' color */
+  100.0% {
+    background-color: white;
   }
 }
 
-
-@-webkit-keyframes changecolor {
-    0%     {background-color:white;}
-    50.0%  {background-color:rgb(231, 227, 227);} /* your chosen 'mid' color */
-    100.0%  {background-color: white;}
-}
-
 @keyframes changecolor {
-    0%     {background-color:white;}
-    50.0%  {background-color:rgb(231, 227, 227);} /* your chosen 'mid' color */
-    100.0%  {background-color: white;}
+  0% {
+    background-color: white;
+  }
+  50.0% {
+    background-color: rgb(231, 227, 227);
+  } /* your chosen 'mid' color */
+  100.0% {
+    background-color: white;
+  }
 }
+
+@keyframes fade-in {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-left {
+    0% {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
