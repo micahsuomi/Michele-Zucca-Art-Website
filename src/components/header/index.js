@@ -106,7 +106,7 @@ const Header = ({ title, subtitle }) => {
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
                 </summary>
-                {isHomeClicked ? null : (
+                {/* {isHomeClicked ? null : ( */}
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -137,7 +137,7 @@ const Header = ({ title, subtitle }) => {
                       </Link>
                     </li>
                   </ul>
-                )}
+                {/* )} */}
               </details>
             </li>
 
@@ -177,7 +177,7 @@ const Header = ({ title, subtitle }) => {
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
                 </summary>
-                {isHomeClicked ? null : (
+                {/* {isHomeClicked ? null : ( */}
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -207,7 +207,7 @@ const Header = ({ title, subtitle }) => {
                       </Link>
                     </li>
                   </ul>
-                )}
+                {/* )} */}
               </details>
             </li>
 
