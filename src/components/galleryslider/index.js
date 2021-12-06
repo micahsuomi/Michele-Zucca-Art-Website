@@ -66,6 +66,7 @@ const GallerySlider = () => {
               if (activeIndex === index) {
                 return (
                   <div
+                    key={index}
                     className={gallerySliderStyles.slider}
                     className={activeIndex && gallerySliderStyles.active}
                   >

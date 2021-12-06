@@ -18,7 +18,6 @@ class ContactForm extends Component {
   handleChange = e => {
     let { name, value } = e.target
     this.setState({ ...this.state, [name]: value })
-    console.log(name, value)
   }
 
   handleSubmit = e => {
