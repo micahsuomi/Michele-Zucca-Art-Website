@@ -53,8 +53,10 @@ const Abstracts = ({ pageContext, data }) => {
   }
 
   const handleTouchMove = e => {
+    console.log(e.touches[0].clientX)
     const currentTouch = e.touches[0].clientX
     const diff = touch - currentTouch
+    console.log(diff)
     if (diff > 5 && nextAbstracts) {
       window.location.assign(nextAbstracts.url, "_self")
     }

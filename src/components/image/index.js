@@ -18,43 +18,32 @@ const Image = ({
   const [touch, setTouch] = useState()
   const [imageClass, setImageClass] = useState()
 
-  console.log(image)
   const handleTouchStart = e => {
     setTouch(e.touches[0].clientX)
-    console.log(touch)
   }
 
   const handleTouchMove = e => {
     const currentTouch = e.touches[0].clientX
+    console.log("touch", touch, "current touch", currentTouch)
     const diff = touch - currentTouch
-    if (diff > 5 && nextImage) {
-      // window.location.assign(nextImageUrl, "_self")
-      console.log(window)
+    console.log("diff", diff)
+
+    if (diff > 150 && nextImage) {
       window.location.href = nextImageUrl
     }
-    if (diff < 5 && prevImage) {
+    if (diff < 150 && prevImage) {
       window.location.assign(prevImageUrl, "_self")
     }
   }
 
   const animateLeft = useCallback(() => {
-    // setImageClass(imageAnimateLeft)
-    // console.log("image class animate left", imageClass)
   }, [imageAnimateLeft, imageClass])
   useEffect(() => {
-    console.log(window.innerWidth, sliderClick)
     const diff = window.innerWidth - sliderClick
-    console.log(diff)
-    console.log(sliderClick, window.innerWidth)
     if (sliderClick && nextImage && diff > 5) {
-      console.log("image class animate left", imageClass)
-      // setImageClass(imageAnimateLeft)
-
       animateLeft()
-      console.log("image left")
     } else {
       setImageClass(imageDefaultClass)
-      console.log("image default")
     }
   }, [sliderClick])
   return (

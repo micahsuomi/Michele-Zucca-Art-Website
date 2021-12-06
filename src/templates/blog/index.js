@@ -33,7 +33,6 @@ const Blog = ({ data, path }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
-        console.log(node)
         const alt = node.data.target.fields.title["en-US"]
         const url = node.data.target.fields.file["en-US"].url
         return <img alt={alt} src={url} className={blogStyles.img} />

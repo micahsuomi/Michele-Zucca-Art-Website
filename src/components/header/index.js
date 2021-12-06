@@ -24,7 +24,7 @@ const Header = ({ title, subtitle }) => {
 
   const lineClassThree = ["line bottom"]
   const lineClassThreeActive = ["line bottom active"]
-  console.log(isToggled)
+
   const toggle = () => setIsToggled(!isToggled)
   const openPortraits = () => setPortraitsOpen(!isPortraitsOpen)
   const openPhotography = () => setPhotographyOpen(!isPhotographyOpen)
@@ -97,7 +97,7 @@ const Header = ({ title, subtitle }) => {
             <li className={headerStyles.navListItem}>
               <details>
                 <summary
-                  activeClassName={headerStyles.activeNavItem}
+                  activeclassname={headerStyles.activeNavItem}
                   onClick={openPortraits}
                 >
                   <span>Portraits</span>
@@ -167,7 +167,7 @@ const Header = ({ title, subtitle }) => {
             <li className={headerStyles.navListItem}>
               <details>
                 <summary
-                  activeClassName={headerStyles.activeNavItem}
+                  activeclassname={headerStyles.activeNavItem}
                   onClick={openPhotography}
                 >
                   {" "}
