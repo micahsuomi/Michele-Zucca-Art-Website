@@ -27,9 +27,7 @@
   display: block;
 }
 
-details:hover .nestedNavList {
-  display: block;
-}
+
 .dropdown-content a:hover {
   /* background-color: #ddd; */
   color: black;
@@ -47,7 +45,7 @@ details:hover .nestedNavList {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 102vh;
+    min-height: 102vh;
     width: 100vw;
     position: fixed;
     /* background-image: linear-gradient(135deg, #667eea 0%, #195aae 100%);     */
@@ -62,10 +60,6 @@ details:hover .nestedNavList {
     background-color: rgb(228, 215, 215);
     line-height: 1.8;
     z-index: 2;
-  }
-
-  .nav-links a {
-
   }
 
   .nav-item {

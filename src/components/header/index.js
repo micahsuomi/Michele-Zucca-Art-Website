@@ -15,6 +15,7 @@ const Header = ({ title, subtitle }) => {
   const navLinksClassOpen = ["nav-links open"]
   const navLinksClassClose = ["nav-links close"]
 
+  const nestedNavListClose = ["nested-nav-list close"]
   const lineClassOne = ["line top"]
   const lineClassOneActive = ["line top active"]
 
@@ -106,15 +107,16 @@ const Header = ({ title, subtitle }) => {
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
                 </summary>
-                {/* {isHomeClicked ? null : ( */}
-                  <ul className={headerStyles.nestedNavList}>
+                  <ul 
+                  className={headerStyles.nestedNavList}
+                  >
                     <li className={headerStyles.nestedListItem}>
                       <Link
                         className={headerStyles.navItemNested}
                         to="/helsinkifirstbatch"
                         onClick={closeDropdown}
                       >
-                        Hki First Batch
+                        Helsinki First Batch
                       </Link>
                     </li>
                     <li className={headerStyles.nestedListItem}>
@@ -123,7 +125,7 @@ const Header = ({ title, subtitle }) => {
                         to="/helsinkisecondbatch"
                         onClick={closeDropdown}
                       >
-                        Hki Second Batch
+                        Helsinki Second Batch
                       </Link>
                     </li>
 
@@ -137,7 +139,6 @@ const Header = ({ title, subtitle }) => {
                       </Link>
                     </li>
                   </ul>
-                {/* )} */}
               </details>
             </li>
 
@@ -177,7 +178,6 @@ const Header = ({ title, subtitle }) => {
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
                 </summary>
-                {/* {isHomeClicked ? null : ( */}
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link

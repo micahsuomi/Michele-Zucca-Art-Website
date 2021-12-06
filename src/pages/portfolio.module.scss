@@ -11,6 +11,9 @@
   grid-gap: 2rem;
   margin-top: 2rem;
   padding-left: 0;
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
@@ -46,9 +49,6 @@
 }
 
 .img {
-  // width: 250px;
-  // height: 250px;
-  // border-radius: 50%;
   width: 100%;
   @include shadow-trans;
 }
