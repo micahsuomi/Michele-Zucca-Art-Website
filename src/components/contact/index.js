@@ -63,6 +63,7 @@ class ContactForm extends Component {
               name="name"
               onChange={this.handleChange}
               className={contactStyles.name}
+              required
             />
           </label>
         </p>
@@ -75,6 +76,7 @@ class ContactForm extends Component {
               name="email"
               onChange={this.handleChange}
               className={contactStyles.email}
+              required
             />
           </label>
         </p>
@@ -86,6 +88,7 @@ class ContactForm extends Component {
               name="message"
               onChange={this.handleChange}
               className={contactStyles.message}
+              required
             />
           </label>
         </p>
