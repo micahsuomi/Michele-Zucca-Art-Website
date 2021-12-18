@@ -1,47 +1,39 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import logo from "../../imgs/logo-brightmike.png"
+import { FaChevronUp, FaChevronDown } from "react-icons/fa"
+
 import headerStyles from "./styles.module.scss"
 import "./style.css"
 
 const Header = ({ title, subtitle }) => {
-  const [isClicked, setState] = useState(false)
-  let [isPortraitsOpen, setPortraitsOpen] = useState(false)
-  let [isPhotographyOpen, setPhotographyOpen] = useState(false)
-  let [isHomeClicked, setHomeClicked] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
+  const [isPortraitsOpen, setPortraitsOpen] = useState(false)
+  const [isPhotographyOpen, setPhotographyOpen] = useState(false)
+  const [isHomeClicked, setHomeClicked] = useState(false)
 
-  let navLinksClass = ["nav-links"]
-  let navLinksClassOpen = ["nav-links open"]
+  const navLinksClassOpen = ["nav-links open"]
+  const navLinksClassClose = ["nav-links close"]
 
-  let lineClassOne = ["line top"]
-  let lineClassOneActive = ["line top active"]
+  const nestedNavListClose = ["nested-nav-list close"]
+  const lineClassOne = ["line top"]
+  const lineClassOneActive = ["line top active"]
 
-  let lineClassTwo = ["line middle"]
-  let lineClassTwoActive = ["line middle active"]
+  const lineClassTwo = ["line middle"]
+  const lineClassTwoActive = ["line middle active"]
 
-  let lineClassThree = ["line bottom"]
-  let lineClassThreeActive = ["line bottom active"]
+  const lineClassThree = ["line bottom"]
+  const lineClassThreeActive = ["line bottom active"]
 
-  const toggle = () => {
-    setState(!isClicked)
-  }
-  const openPortraits = () => {
-    setPortraitsOpen((isPortraitsOpen = true))
-    setPhotographyOpen((isPhotographyOpen = false))
-    setHomeClicked((isHomeClicked = false))
+  const toggle = () => setIsToggled(!isToggled)
+  const openPortraits = () => setPortraitsOpen(!isPortraitsOpen)
+  const openPhotography = () => setPhotographyOpen(!isPhotographyOpen)
 
-    console.log(isPortraitsOpen)
-  }
-
-  const openPhotography = () => {
-    setPhotographyOpen((isPhotographyOpen = true))
-    setPortraitsOpen((isPortraitsOpen = false))
-    setHomeClicked((isHomeClicked = false))
-  }
   const closeDropdown = () => {
-    setHomeClicked((isHomeClicked = true))
-    setPhotographyOpen((isPhotographyOpen = false))
-    setPortraitsOpen((isPortraitsOpen = false))
+    setHomeClicked(true)
+    setPhotographyOpen(false)
+    setPortraitsOpen(false)
+    setIsToggled(false)
   }
 
   return (
@@ -64,21 +56,22 @@ const Header = ({ title, subtitle }) => {
             <div
               className={headerStyles.toggleBar}
               onClick={toggle}
-              style={isClicked ? styleBorder : styleNoBorder}
+              style={isToggled ? styleBorder : styleNoBorder}
             >
               <span
-                className={isClicked ? lineClassOneActive : lineClassOne}
+                className={isToggled ? lineClassOneActive : lineClassOne}
               ></span>
               <span
-                className={isClicked ? lineClassTwoActive : lineClassTwo}
+                className={isToggled ? lineClassTwoActive : lineClassTwo}
               ></span>
               <span
-                className={isClicked ? lineClassThreeActive : lineClassThree}
+                className={isToggled ? lineClassThreeActive : lineClassThree}
               ></span>
             </div>
           </div>
 
-          <ul className={isClicked ? navLinksClassOpen : navLinksClass}>
+          { isToggled &&
+          <ul className={isToggled ? navLinksClassOpen : navLinksClassClose}>
             <li className={headerStyles.navListItem}>
               <Link
                 className={headerStyles.navItem}
@@ -95,6 +88,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/about"
+                onClick={closeDropdown}
               >
                 About
               </Link>
@@ -103,28 +97,35 @@ const Header = ({ title, subtitle }) => {
             <li className={headerStyles.navListItem}>
               <details>
                 <summary
-                  activeClassName={headerStyles.activeNavItem}
+                  activeclassname={headerStyles.activeNavItem}
                   onClick={openPortraits}
-                  activeClassName={headerStyles.activeNavItem}
                 >
-                  Portraits
+                  <span>Portraits</span>
+                  {isPortraitsOpen ? (
+                    <FaChevronUp className={headerStyles.dropDownIcon} />
+                  ) : (
+                    <FaChevronDown className={headerStyles.dropDownIcon} />
+                  )}
                 </summary>
-                {isPhotographyOpen || isHomeClicked ? null : (
-                  <ul className={headerStyles.nestedNavList}>
+                  <ul 
+                  className={headerStyles.nestedNavList}
+                  >
                     <li className={headerStyles.nestedListItem}>
                       <Link
                         className={headerStyles.navItemNested}
                         to="/helsinkifirstbatch"
+                        onClick={closeDropdown}
                       >
-                        Hki First Batch
+                        Helsinki First Batch
                       </Link>
                     </li>
                     <li className={headerStyles.nestedListItem}>
                       <Link
                         className={headerStyles.navItemNested}
                         to="/helsinkisecondbatch"
+                        onClick={closeDropdown}
                       >
-                        Hki Second Batch
+                        Helsinki Second Batch
                       </Link>
                     </li>
 
@@ -132,12 +133,12 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/thelordandthenewcreatures"
+                        onClick={closeDropdown}
                       >
                         The L. and N. C.
                       </Link>
                     </li>
                   </ul>
-                )}
               </details>
             </li>
 
@@ -146,6 +147,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/abstracts"
+                onClick={closeDropdown}
               >
                 Abstracts
               </Link>
@@ -156,6 +158,7 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/digital"
+                onClick={closeDropdown}
               >
                 Digital
               </Link>
@@ -164,18 +167,23 @@ const Header = ({ title, subtitle }) => {
             <li className={headerStyles.navListItem}>
               <details>
                 <summary
-                  activeClassName={headerStyles.activeNavItem}
+                  activeclassname={headerStyles.activeNavItem}
                   onClick={openPhotography}
                 >
                   {" "}
-                  Photography
+                  <span>Photography</span>
+                  {isPhotographyOpen ? (
+                    <FaChevronUp className={headerStyles.dropDownIcon} />
+                  ) : (
+                    <FaChevronDown className={headerStyles.dropDownIcon} />
+                  )}
                 </summary>
-                {isPortraitsOpen || isHomeClicked ? null : (
                   <ul className={headerStyles.nestedNavList}>
                     <li className={headerStyles.nestedListItem}>
                       <Link
                         className={headerStyles.navItemNested}
                         to="/allegories"
+                        onClick={closeDropdown}
                       >
                         Allegories
                       </Link>
@@ -184,6 +192,7 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/playingwiththelightsofsydney"
+                        onClick={closeDropdown}
                       >
                         Lights Of Sydney
                       </Link>
@@ -192,12 +201,13 @@ const Header = ({ title, subtitle }) => {
                       <Link
                         className={headerStyles.navItemNested}
                         to="/whiletraveling"
+                        onClick={closeDropdown}
                       >
                         While Travelling
                       </Link>
                     </li>
                   </ul>
-                )}
+                {/* )} */}
               </details>
             </li>
 
@@ -207,6 +217,7 @@ const Header = ({ title, subtitle }) => {
                 activeClassName={headerStyles.activeNavItem}
                 partiallyActive={true}
                 to="/blog"
+                onClick={closeDropdown}
               >
                 Blog
               </Link>
@@ -217,17 +228,13 @@ const Header = ({ title, subtitle }) => {
                 className={headerStyles.navItem}
                 activeClassName={headerStyles.activeNavItem}
                 to="/contact"
+                onClick={closeDropdown}
               >
                 Contact
               </Link>
             </li>
-
-            {/* <li><Link className={headerStyles.navItem} 
-                activeClassName={headerStyles.activeNavItem} 
-                to ="/calendly">
-                  Book a meeting
-                  </Link></li> */}
           </ul>
+         }
         </nav>
       </div>
     </header>

@@ -1,14 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 import styles from "./styles.module.scss"
@@ -30,18 +27,14 @@ export const query = graphql`
   }
 `
 const Allegories = ({ pageContext, data }) => {
-  console.log(pageContext, data)
-  const previousAllegories = pageContext.previous
-    ? {
-        url: `/allegories/${pageContext.previous.slug}`,
-      }
-    : ""
+  const previousAllegories = pageContext.previous && {
+    url: `/allegories/${pageContext.previous.slug}`,
+  }
 
-  const nextAllegories = pageContext.next
-    ? {
-        url: `/allegories/${pageContext.next.slug}`,
-      }
-    : ""
+  const nextAllegories = pageContext.next && {
+    url: `/allegories/${pageContext.next.slug}`,
+  }
+
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -56,30 +49,13 @@ const Allegories = ({ pageContext, data }) => {
     <div>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/allegories">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
+        <ExitContainer exitLink="/allegories" />
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousAllegories && (
-              <Link to={previousAllegories.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousAllegories.url} />
             )}
           </div>
           <img
@@ -88,11 +64,7 @@ const Allegories = ({ pageContext, data }) => {
             className={styles.imagePhoto}
           />
           <div>
-            {nextAllegories && (
-              <Link to={nextAllegories.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
-            )}
+            {nextAllegories && <NextPageLink nextUrl={nextAllegories.url} />}
           </div>
         </div>
         {documentToReactComponents(body.json, options)}
