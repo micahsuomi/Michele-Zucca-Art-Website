@@ -74,6 +74,7 @@ details {
 
 .nav-item,
 details,
+.nav-list-item span,
 .nav-item-nested {
   color: $color-nav-item;
   text-decoration: none;
@@ -109,11 +110,15 @@ details summary::-webkit-details-marker {
 }
 
 .nestedNavItem {
-  display: block;
+  display: none;
 }
 
 .nested-nav-list {
-  display: flex;
+  display: block;
+  transition: 1s ease-in-out;
+}
+.nested-nav-list-close {
+  display: none;
   list-style: none;
 }
 .nav-item:hover,
@@ -257,7 +262,8 @@ details,
   position: relative;
 }
 .nav-item,
-summary span {
+summary span,
+.nav-list-item span {
   text-transform: uppercase;
   font-size: var(--font-size-mediumsmall);
   color: #0f0f0f;

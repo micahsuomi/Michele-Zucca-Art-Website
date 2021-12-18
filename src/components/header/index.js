@@ -8,14 +8,17 @@ import "./style.css"
 
 const Header = ({ title, subtitle }) => {
   const [isToggled, setIsToggled] = useState(false)
+
+
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
+  console.log(isPortraitsOpen)
+  
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
   const [isHomeClicked, setHomeClicked] = useState(false)
 
   const navLinksClassOpen = ["nav-links open"]
   const navLinksClassClose = ["nav-links close"]
 
-  const nestedNavListClose = ["nested-nav-list close"]
   const lineClassOne = ["line top"]
   const lineClassOneActive = ["line top active"]
 
@@ -36,6 +39,7 @@ const Header = ({ title, subtitle }) => {
     setIsToggled(false)
   }
 
+  console.log(isPortraitsOpen)
   return (
     <header>
       <div className={headerStyles.titleWrapper}>
@@ -95,7 +99,14 @@ const Header = ({ title, subtitle }) => {
             </li>
 
             <li className={headerStyles.navListItem}>
-              <details>
+            <span onClick={openPortraits}>Portraits</span>
+                  {isPortraitsOpen ? (
+                    <FaChevronUp className={headerStyles.dropDownIcon} />
+                  ) : (
+                    <FaChevronDown className={headerStyles.dropDownIcon} />
+                  )}
+              <>
+              {/* <details>
                 <summary
                   activeclassname={headerStyles.activeNavItem}
                   onClick={openPortraits}
@@ -106,9 +117,9 @@ const Header = ({ title, subtitle }) => {
                   ) : (
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
-                </summary>
+                </summary> */}
                   <ul 
-                  className={headerStyles.nestedNavList}
+                  className={isPortraitsOpen ? headerStyles.nestedNavList : headerStyles.nestedNavListClose}
                   >
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -139,7 +150,8 @@ const Header = ({ title, subtitle }) => {
                       </Link>
                     </li>
                   </ul>
-              </details>
+                  </>
+              {/* </details> */}
             </li>
 
             <li className={headerStyles.navListItem}>
