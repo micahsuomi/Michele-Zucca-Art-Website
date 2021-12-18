@@ -10,14 +10,7 @@ import gallerySliderStyles from "./styles.module.scss"
 
 const GallerySlider = () => {
   const [gallery, setGallery] = useState([])
-  const [state, setState] = useState({
-    activeIndex: 0,
-    isClicked: false,
-  })
-  const [showMask, setShowMask] = useState(false)
-  const [mask, setMask] = useState("mask")
-
-  const { activeIndex } = state
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     setGallery(galleryData)
@@ -25,61 +18,45 @@ const GallerySlider = () => {
 
   const goToNext = currentIndex => {
     if (activeIndex === gallery.length - 1) {
-      setState({ activeIndex: 0 })
+      setActiveIndex(0)
     } else {
-      setState({ activeIndex: currentIndex })
+      setActiveIndex(currentIndex)
     }
   }
 
   const goToPrevious = currentIndex => {
     if (activeIndex === 0) {
-      setState({ activeIndex: gallery.length - 1 })
+      setActiveIndex(gallery.length - 1)
     } else {
-      setState({ activeIndex: currentIndex })
+      setActiveIndex(currentIndex)
     }
   }
 
- 
-  const openMask = () => setShowMask(true)
-  console.log(showMask)
-  console.log(mask)
-  const closeMask = () => setShowMask(false)
-  const SlideGalleryOnKey = (e) => {
-    if( e.key === "ArrowLeft") {
+  const SlideGalleryOnKey = e => {
+    if (e.key === "ArrowLeft") {
       goToPrevious(activeIndex - 1)
     }
-    if(e.key === "ArrowRight") {
+    if (e.key === "ArrowRight") {
       goToNext(activeIndex + 1)
     }
   }
- 
-  return (
-<>
-      <div className={gallerySliderStyles.galleryContainer} >
 
-        {/* <div
-          className={
-            gallerySliderStyles.mask
-          }
-        ></div> */}
+  return (
+    <>
+      <div className={gallerySliderStyles.galleryContainer}>
         <>
           {gallery &&
             gallery.map((item, index) => {
               if (activeIndex === index) {
                 return (
                   <div
-                    className={gallerySliderStyles.slider}
                     className={activeIndex && gallerySliderStyles.active}
                   >
                     <Link
                       to={item.link}
                       className={gallerySliderStyles.pageLink}
                     >
-                      <div
-                        // onMouseEnter={() => setMask(gallerySliderStyles.maskActive)}
-                        // onMouseOut={() => setMask(gallerySliderStyles.mask)}
-                        style={{zIndex: 10}}
-                      >
+                      <div style={{ zIndex: 10 }}>
                         <img
                           key={index}
                           src={item.img}
@@ -103,8 +80,7 @@ const GallerySlider = () => {
               icon={faChevronLeft}
               onClick={() => goToPrevious(activeIndex - 1)}
               className={gallerySliderStyles.icon}
-              onKeyDown={SlideGalleryOnKey
-              }
+              onKeyDown={SlideGalleryOnKey}
               height={20}
               width={20}
               tabIndex="0"
@@ -136,7 +112,7 @@ const GallerySlider = () => {
           )
         })}
       </div>
-      </>
+    </>
   )
 }
 
