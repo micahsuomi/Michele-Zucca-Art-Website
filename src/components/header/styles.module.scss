@@ -217,6 +217,8 @@ nav {
   z-index: 3;
   @include sm {
     padding: 0;
+    margin-right: -0.6rem;
+    margin-top: .2rem;
   }
 }
 
@@ -226,10 +228,10 @@ nav {
   position: relative;
   cursor: pointer;
   float: right;
-  margin-right: 1.5rem;
+  margin-right: 1.1rem;
   @include sm {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     margin-right: 0.1rem;
   }
 }

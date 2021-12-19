@@ -92,7 +92,7 @@
 
   .middle {
     transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55), 0.35s;
-    top: 31%;
+    top: 31.5%;
     width: 60%;
   }
 

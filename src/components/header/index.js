@@ -9,10 +9,9 @@ import "./style.css"
 const Header = ({ title, subtitle }) => {
   const [isToggled, setIsToggled] = useState(false)
 
-
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
   console.log(isPortraitsOpen)
-  
+
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
   const [isHomeClicked, setHomeClicked] = useState(false)
 
@@ -74,39 +73,39 @@ const Header = ({ title, subtitle }) => {
             </div>
           </div>
 
-          { isToggled &&
-          <ul className={isToggled ? navLinksClassOpen : navLinksClassClose}>
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                to="/"
-                onClick={closeDropdown}
-              >
-                Home
-              </Link>
-            </li>
+          {isToggled && (
+            <ul className={isToggled ? navLinksClassOpen : navLinksClassClose}>
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  to="/"
+                  onClick={closeDropdown}
+                >
+                  Home
+                </Link>
+              </li>
 
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                to="/about"
-                onClick={closeDropdown}
-              >
-                About
-              </Link>
-            </li>
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  to="/about"
+                  onClick={closeDropdown}
+                >
+                  About
+                </Link>
+              </li>
 
-            <li className={headerStyles.navListItem}>
-            <span onClick={openPortraits}>Portraits</span>
-                  {isPortraitsOpen ? (
-                    <FaChevronUp className={headerStyles.dropDownIcon} />
-                  ) : (
-                    <FaChevronDown className={headerStyles.dropDownIcon} />
-                  )}
-              <>
-              {/* <details>
+              <li className={headerStyles.navListItem} onClick={openPortraits}>
+                <span>Portraits</span>
+                {isPortraitsOpen ? (
+                  <FaChevronUp className={headerStyles.dropDownIcon} />
+                ) : (
+                  <FaChevronDown className={headerStyles.dropDownIcon} />
+                )}
+                <>
+                  {/* <details>
                 <summary
                   activeclassname={headerStyles.activeNavItem}
                   onClick={openPortraits}
@@ -118,8 +117,12 @@ const Header = ({ title, subtitle }) => {
                     <FaChevronDown className={headerStyles.dropDownIcon} />
                   )}
                 </summary> */}
-                  <ul 
-                  className={isPortraitsOpen ? headerStyles.nestedNavList : headerStyles.nestedNavListClose}
+                  <ul
+                    className={
+                      isPortraitsOpen
+                        ? headerStyles.nestedNavList
+                        : headerStyles.nestedNavListClose
+                    }
                   >
                     <li className={headerStyles.nestedListItem}>
                       <Link
@@ -150,103 +153,118 @@ const Header = ({ title, subtitle }) => {
                       </Link>
                     </li>
                   </ul>
-                  </>
-              {/* </details> */}
-            </li>
+                </>
+                {/* </details> */}
+              </li>
 
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                to="/abstracts"
-                onClick={closeDropdown}
-              >
-                Abstracts
-              </Link>
-            </li>
-
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                to="/digital"
-                onClick={closeDropdown}
-              >
-                Digital
-              </Link>
-            </li>
-
-            <li className={headerStyles.navListItem}>
-              <details>
-                <summary
-                  activeclassname={headerStyles.activeNavItem}
-                  onClick={openPhotography}
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  to="/abstracts"
+                  onClick={closeDropdown}
                 >
-                  {" "}
-                  <span>Photography</span>
-                  {isPhotographyOpen ? (
-                    <FaChevronUp className={headerStyles.dropDownIcon} />
-                  ) : (
-                    <FaChevronDown className={headerStyles.dropDownIcon} />
-                  )}
-                </summary>
-                  <ul className={headerStyles.nestedNavList}>
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/allegories"
-                        onClick={closeDropdown}
-                      >
-                        Allegories
-                      </Link>
-                    </li>
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/playingwiththelightsofsydney"
-                        onClick={closeDropdown}
-                      >
-                        Lights Of Sydney
-                      </Link>
-                    </li>
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/whiletraveling"
-                        onClick={closeDropdown}
-                      >
-                        While Travelling
-                      </Link>
-                    </li>
-                  </ul>
+                  Abstracts
+                </Link>
+              </li>
+
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  to="/digital"
+                  onClick={closeDropdown}
+                >
+                  Digital
+                </Link>
+              </li>
+
+              <li
+                className={headerStyles.navListItem}
+                onClick={openPhotography}
+              >
+                <span>Photography</span>
+                {isPhotographyOpen ? (
+                  <FaChevronUp className={headerStyles.dropDownIcon} />
+                ) : (
+                  <FaChevronDown className={headerStyles.dropDownIcon} />
+                )}
+                {/* <details> */}
+                {/* <summary
+                    activeclassname={headerStyles.activeNavItem}
+                    onClick={openPhotography}
+                  >
+                    {" "}
+                    <span>Photography</span>
+                    {isPhotographyOpen ? (
+                      <FaChevronUp className={headerStyles.dropDownIcon} />
+                    ) : (
+                      <FaChevronDown className={headerStyles.dropDownIcon} />
+                    )}
+                  </summary> */}
+                <ul
+                  className={
+                    isPhotographyOpen
+                      ? headerStyles.nestedNavList
+                      : headerStyles.nestedNavListClose
+                  }
+                >
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/allegories"
+                      onClick={closeDropdown}
+                    >
+                      Allegories
+                    </Link>
+                  </li>
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/playingwiththelightsofsydney"
+                      onClick={closeDropdown}
+                    >
+                      Lights Of Sydney
+                    </Link>
+                  </li>
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/whiletraveling"
+                      onClick={closeDropdown}
+                    >
+                      While Travelling
+                    </Link>
+                  </li>
+                </ul>
                 {/* )} */}
-              </details>
-            </li>
+                {/* </details> */}
+              </li>
 
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                partiallyActive={true}
-                to="/blog"
-                onClick={closeDropdown}
-              >
-                Blog
-              </Link>
-            </li>
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  partiallyActive={true}
+                  to="/blog"
+                  onClick={closeDropdown}
+                >
+                  Blog
+                </Link>
+              </li>
 
-            <li className={headerStyles.navListItem}>
-              <Link
-                className={headerStyles.navItem}
-                activeClassName={headerStyles.activeNavItem}
-                to="/contact"
-                onClick={closeDropdown}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-         }
+              <li className={headerStyles.navListItem}>
+                <Link
+                  className={headerStyles.navItem}
+                  activeClassName={headerStyles.activeNavItem}
+                  to="/contact"
+                  onClick={closeDropdown}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          )}
         </nav>
       </div>
     </header>
