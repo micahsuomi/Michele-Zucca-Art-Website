@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Head from "../../components/head"
+import Image from "../../components/image"
 import PreviousPageLink from "../../components/previousPageLink"
 import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
@@ -53,16 +54,16 @@ const Allegories = ({ pageContext, data }) => {
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
+        <div className={portfolioStyles.imageContainer}>
+            <Image
+              image={image}
+            />
+          </div>
           <div>
             {previousAllegories && (
               <PreviousPageLink prevUrl={previousAllegories.url} />
             )}
           </div>
-          <img
-            src={image.file.url}
-            alt={image.description}
-            className={styles.imagePhoto}
-          />
           <div>
             {nextAllegories && <NextPageLink nextUrl={nextAllegories.url} />}
           </div>
