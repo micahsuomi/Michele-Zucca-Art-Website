@@ -14,7 +14,7 @@ export const galleryData = [
   {
     img: gallery2,
     link: "/playingwiththelightsofsydney",
-    description: "Playing With The Lights Of Sydney",
+    description: "Lights Of Sydney",
   },
 
   {

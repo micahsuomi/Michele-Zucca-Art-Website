@@ -18,7 +18,6 @@ class ContactForm extends Component {
   handleChange = e => {
     let { name, value } = e.target
     this.setState({ ...this.state, [name]: value })
-    console.log(name, value)
   }
 
   handleSubmit = e => {
@@ -63,6 +62,7 @@ class ContactForm extends Component {
               name="name"
               onChange={this.handleChange}
               className={contactStyles.name}
+              required
             />
           </label>
         </p>
@@ -75,6 +75,7 @@ class ContactForm extends Component {
               name="email"
               onChange={this.handleChange}
               className={contactStyles.email}
+              required
             />
           </label>
         </p>
@@ -86,6 +87,7 @@ class ContactForm extends Component {
               name="message"
               onChange={this.handleChange}
               className={contactStyles.message}
+              required
             />
           </label>
         </p>

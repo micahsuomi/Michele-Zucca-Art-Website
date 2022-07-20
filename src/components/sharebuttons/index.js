@@ -13,7 +13,6 @@ import {
 } from "react-share"
 import styles from "./styles.module.scss"
 const ShareButtons = ({ twitterHandle, url, title, tags }) => {
-  console.log(twitterHandle, url, title, tags)
   return (
     <div className={styles.shareButtonsContainer}>
       <div>

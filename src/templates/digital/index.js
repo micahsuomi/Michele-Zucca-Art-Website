@@ -1,14 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
+
 import portfolioStyles from "../portfolio.module.scss"
 
 export const query = graphql`
@@ -28,18 +26,14 @@ export const query = graphql`
     }
   }
 `
-const Digital = props => {
-  const previousDigital = props.pageContext.previous
-    ? {
-        url: `/digital/${props.pageContext.previous.slug}`,
-      }
-    : ""
+const Digital = ({ pageContext, data }) => {
+  const previousDigital = pageContext.previous && {
+    url: `/digital/${pageContext.previous.slug}`,
+  }
 
-  const nextDigital = props.pageContext.next
-    ? {
-        url: `/digital/${props.pageContext.next.slug}`,
-      }
-    : ""
+  const nextDigital = pageContext.next && {
+    url: `/digital/${pageContext.next.slug}`,
+  }
 
   const options = {
     renderNode: {
@@ -51,57 +45,29 @@ const Digital = props => {
       },
     },
   }
-
+  const { title, subtitle, image, body } = data.contentfulDigital
   return (
     <div>
-      <Head title={props.data.contentfulDigital.title} />
+      <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/digital">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
-        <h2>{props.data.contentfulDigital.title}</h2>
-        <h4>{props.data.contentfulDigital.subtitle}</h4>
+        <ExitContainer exitLink="/digital" />
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousDigital && (
-              <Link to={previousDigital.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousDigital.url} />
             )}
           </div>
           <img
-            src={props.data.contentfulDigital.image.file.url}
-            alt={props.data.contentfulDigital.image.description}
-            className={portfolioStyles.image}
+            src={image.file.url}
+            alt={image.description}
+            className={portfolioStyles.imagePhoto}
           />
-          <div>
-            {nextDigital && (
-              <Link to={nextDigital.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
-            )}
-          </div>
+          <div>{nextDigital && <NextPageLink nextUrl={nextDigital.url} />}</div>
         </div>
-        {documentToReactComponents(
-          props.data.contentfulDigital.body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
-
-      {/* </Layout> */}
     </div>
   )
 }

@@ -4,8 +4,6 @@ import gatsbyImg from "../../imgs/gatsby-logo.png"
 import footerStyles from "./styles.module.scss"
 
 const Footer = ({ author, link }) => {
-  console.log(link)
-
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.left}>

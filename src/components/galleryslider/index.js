@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import { galleryData } from "./gallerysliderdata"
 import {
   faChevronLeft,
@@ -8,81 +8,114 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 import gallerySliderStyles from "./styles.module.scss"
 
-class GallerySlider extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      gallery: galleryData,
-      index: 0,
-      isClicked: false,
-    }
-  }
+const GallerySlider = () => {
+  const [gallery, setGallery] = useState([])
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  goToNext = () => {
-    if (this.state.index === this.state.gallery.length - 1) {
-      this.setState({ index: 0 })
+  useEffect(() => {
+    setGallery(galleryData)
+  }, [gallery])
+
+  const goToNext = currentIndex => {
+    if (activeIndex === gallery.length - 1) {
+      setActiveIndex(0)
     } else {
-      this.setState({ index: this.state.index + 1, isClicked: true })
+      setActiveIndex(currentIndex)
     }
   }
 
-  goToPrevious = () => {
-    if (this.state.index === 0) {
-      console.log("index is 0")
-      this.setState({ index: this.state.gallery.length - 1 })
+  const goToPrevious = currentIndex => {
+    if (activeIndex === 0) {
+      setActiveIndex(gallery.length - 1)
     } else {
-      this.setState({ index: this.state.index - 1, isClicked: true })
+      setActiveIndex(currentIndex)
     }
   }
 
-  render() {
-    console.log(this.state.gallery)
-    let { index, gallery } = this.state
+  const SlideGalleryOnKey = e => {
+    if (e.key === "ArrowLeft") {
+      goToPrevious(activeIndex - 1)
+    }
+    if (e.key === "ArrowRight") {
+      goToNext(activeIndex + 1)
+    }
+  }
 
-    return (
-      <div className={gallerySliderStyles.container}>
-        <Link to={gallery[index].link}>
-          <div className={gallerySliderStyles.fade}>
-            <img
-              src={gallery[index].img}
-              alt={gallery[index].description}
-              className={gallerySliderStyles.image}
-              width="941"
-              height="549"
+  return (
+    <>
+      <div className={gallerySliderStyles.galleryContainer}>
+        <>
+          {gallery &&
+            gallery.map((item, index) => {
+              if (activeIndex === index) {
+                return (
+                  <div
+                    key={index}
+                    className={gallerySliderStyles.slider}
+                    className={activeIndex && gallerySliderStyles.active}
+                  >
+                    <Link
+                      to={item.link}
+                      className={gallerySliderStyles.pageLink}
+                    >
+                      <div style={{ zIndex: 10 }}>
+                        <img
+                          key={index}
+                          src={item.img}
+                          className={gallerySliderStyles.image}
+                          width="1200"
+                          height="649"
+                          alt={item.title}
+                        />
+                      </div>
+                      <h2 className={item.title}>{item.description}</h2>
+                    </Link>
+                  </div>
+                )
+              }
+            })}
+        </>
+
+        <div className={gallerySliderStyles.buttonsContainer}>
+          <div className={gallerySliderStyles.left}>
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              onClick={() => goToPrevious(activeIndex - 1)}
+              className={gallerySliderStyles.icon}
+              onKeyDown={SlideGalleryOnKey}
+              height={20}
+              width={20}
+              tabIndex="0"
             />
           </div>
-        </Link>
-
-        <div className={gallerySliderStyles.mask}>
-          <Link
-            to={gallery[index].link}
-            className={gallerySliderStyles.pageLink}
-          >
-            <h2 className={gallerySliderStyles.title}>
-              {gallery[index].description}
-            </h2>
-          </Link>
-
-          <div className={gallerySliderStyles.buttonsContainer}>
-            <div className={gallerySliderStyles.left}>
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                onClick={this.goToPrevious}
-                className={gallerySliderStyles.icon}
-              />
-            </div>
-            <div className={gallerySliderStyles.right}>
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                onClick={this.goToNext}
-                className={gallerySliderStyles.icon}
-              />
-            </div>
+          <div className={gallerySliderStyles.right}>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              onClick={() => goToNext(activeIndex + 1)}
+              className={gallerySliderStyles.icon}
+              onKeyDown={SlideGalleryOnKey}
+              tabIndex="0"
+              height={3}
+            />
           </div>
         </div>
       </div>
-    )
-  }
+      <div className={gallerySliderStyles.dotsWrapper}>
+        {gallery.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className={
+                activeIndex === index
+                  ? gallerySliderStyles.activeDot
+                  : gallerySliderStyles.dots
+              }
+            ></div>
+          )
+        })}
+      </div>
+    </>
+  )
 }
 
 export default GallerySlider

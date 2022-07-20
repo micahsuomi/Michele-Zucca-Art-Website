@@ -1,36 +1,39 @@
-@import './../scss/main.scss';
+@import "./../scss/main.scss";
 
 .imagesContainer {
-    display: flex;
+  display: flex;
 }
 
 .home-header {
-    margin-top: 13rem;
-    @include ssm {
-        margin-top: 10rem;
-    }
+  margin-top: 13rem;
+  @include sm {
+    margin-top: 5rem;
+  }
+}
+.hide-mobile {
+  @include sm {
+    display: none;
+  }
 }
 
 .image {
-    width: 40%;
-    display: inline-block;
-    margin: 1rem;
-    @include sm {
-        width: 87%;
-    }
-
-    
+  width: 40%;
+  display: inline-block;
+  margin: 1rem;
+  @include sm {
+    width: 87%;
+  }
 }
 .contact {
-    text-decoration: none;
-    font-weight: 700;
-    color: $color-text;
+  text-decoration: none;
+  font-weight: 700;
+  color: $color-text;
 }
 
 .contact-icon {
-    margin: .6rem;
+  margin: 0.6rem;
 }
 
 .contact:hover {
-    color: skyblue;
+  color: skyblue;
 }

@@ -1,14 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import PreviousPageLink from "../../components/previousPageLink"
+import NextPageLink from "../../components/nextPageLink"
+import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -34,7 +31,7 @@ export const query = graphql`
     }
   }
 `
-const HelsinkiFirstBatch = props => {
+const HelsinkiFirstBatch = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -45,67 +42,42 @@ const HelsinkiFirstBatch = props => {
       },
     },
   }
-  const previousHelsinkiSecondBatch = props.pageContext.next
-    ? {
-        url: `/helsinkisecondbatch/${props.pageContext.next.slug}`,
-      }
-    : ""
+  const previousHelsinkiSecondBatch = pageContext.previous && {
+    url: `/helsinkisecondbatch/${pageContext.previous.slug}`,
+  }
 
-  const nextHelsinkiSecondBatch = props.pageContext.previous
-    ? {
-        url: `/helsinkisecondbatch/${props.pageContext.previous.slug}`,
-      }
-    : ""
+  const nextHelsinkiSecondBatch = pageContext.next && {
+    url: `/helsinkisecondbatch/${pageContext.next.slug}`,
+  }
 
+  const { title, subtitle, image, body } = data.contentfulHelsinkiSecondBatch
   return (
-    <div>
-      <Head title={props.data.contentfulHelsinkiSecondBatch.title} />
+    <>
+      <Head title={title} />
       <div className={portfolioStyles.container}>
-        <div className={portfolioStyles.exitContainer}>
-          <Link to="/helsinkifirstbatch">
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{
-                color: "white",
-                height: "1.5rem",
-                width: "1.5rem",
-                alignSelf: "flex-end",
-              }}
-            />
-          </Link>
-        </div>
-        <h2>{props.data.contentfulHelsinkiSecondBatch.title}</h2>
-        <h4>{props.data.contentfulHelsinkiSecondBatch.subtitle}</h4>
+        <ExitContainer exitLink="/helsinkisecondbatch" />
+        <h2>{title}</h2>
+        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
           <div>
             {previousHelsinkiSecondBatch && (
-              <Link to={previousHelsinkiSecondBatch.url}>
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  style={{ height: "5rem" }}
-                />
-              </Link>
+              <PreviousPageLink prevUrl={previousHelsinkiSecondBatch.url} />
             )}
           </div>
           <img
-            src={props.data.contentfulHelsinkiSecondBatch.image.file.url}
-            alt={props.data.contentfulHelsinkiSecondBatch.image.description}
+            src={image.file.url}
+            alt={image.description}
             className={portfolioStyles.image}
           />
           <div>
             {nextHelsinkiSecondBatch && (
-              <Link to={nextHelsinkiSecondBatch.url}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Link>
+              <NextPageLink nextUrl={nextHelsinkiSecondBatch.url} />
             )}
           </div>
         </div>
-        {documentToReactComponents(
-          props.data.contentfulHelsinkiSecondBatch.body.json,
-          options
-        )}
+        {documentToReactComponents(body.json, options)}
       </div>
-    </div>
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ const HelsinkiFirstBatch = () => {
           json
         }
       }
-      allContentfulHelsinkiFirstBatch(sort: { fields: createdAt, order: ASC }) {
+      allContentfulHelsinkiFirstBatch {
         edges {
           node {
             title
