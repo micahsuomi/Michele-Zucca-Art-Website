@@ -1,14 +1,9 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import {
-  faTimes,
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Head from "../../components/head"
+import Image from "../../components/image"
 import PreviousPageLink from "../../components/previousPageLink"
 import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
@@ -58,16 +53,22 @@ const WhileTraveling = ({ pageContext, data }) => {
         <ExitContainer exitLink="/whiletraveling" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
+          <div className={portfolioStyles.imageContainer}>
+            <Image
+              image={image}
+              prevImage={previousWhileTraveling}
+              nextImage={nextWhileTraveling}
+              prevImageUrl={
+                previousWhileTraveling && previousWhileTraveling.url
+              }
+              nextImageUrl={nextWhileTraveling && nextWhileTraveling.url}
+            />
+          </div>
           <div>
             {previousWhileTraveling && (
               <PreviousPageLink prevUrl={previousWhileTraveling.url} />
             )}
           </div>
-          <img
-            src={image.file.url}
-            alt={image.description}
-            className={styles.photoImage}
-          />
           <div>
             {nextWhileTraveling && (
               <NextPageLink nextUrl={nextWhileTraveling.url} />

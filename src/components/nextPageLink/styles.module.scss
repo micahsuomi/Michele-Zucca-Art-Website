@@ -4,11 +4,14 @@
   color: white;
   position: absolute;
   top: 50%;
-  right: 5%;
-  :hover {
-    color: skyblue;
-  }
-  @include md {
-    display: none;
+  right: 2%;
+  transform: translate(5%, -50%);
+  background-color: rgb(38, 35, 35);
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  border: 0.7px solid rgb(221, 209, 209);
+  &:hover {
+    background-color: rgb(49, 45, 45);
+    transition: 0.5s ease-in-out;
   }
 }

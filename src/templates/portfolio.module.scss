@@ -20,6 +20,7 @@
   }
   .slider-container {
     position: relative;
+    display: flex;
     // animation-name: slidein;
     // animation-duration: 1s;
     // display: flex;
@@ -44,27 +45,15 @@
     @include sm {
       min-height: 84vh;
     }
-    .image-container {
-      position: absolute;
-    }
+   
   }
 
   .image-container {
-    width: 40%;
     margin-bottom: 1.5rem;
-    position: absolute;
-    // animation-name: appear;
-    // animation-duration: 1s;
-    // animation-timing-function: ease-in-out;
-    //   animation-name: slidein;
-    // animation-duration: 1s;
-    @include md {
-      width: 70%;
-    }
-    @include sm {
-      width: 100%;
-
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
   }
 
   
