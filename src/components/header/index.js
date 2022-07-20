@@ -10,7 +10,6 @@ const Header = ({ title, subtitle }) => {
   const [isToggled, setIsToggled] = useState(false)
 
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
-  console.log(isPortraitsOpen)
 
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
   const [isHomeClicked, setHomeClicked] = useState(false)
@@ -38,7 +37,6 @@ const Header = ({ title, subtitle }) => {
     setIsToggled(false)
   }
 
-  console.log(isPortraitsOpen)
   return (
     <header>
       <div className={headerStyles.titleWrapper}>

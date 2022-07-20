@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Head from "../../components/head"
+import Image from "../../components/image"
 import PreviousPageLink from "../../components/previousPageLink"
 import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
@@ -57,8 +58,12 @@ const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
       <div className={portfolioStyles.container}>
         <ExitContainer exitLink="/playingwiththelightsofsydney" />
         <h2>{title}</h2>
-        <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
+          <div className={portfolioStyles.imageContainer}>
+            <Image
+              image={image}
+            />
+          </div>
           <div>
             {previousPlayingWithTheLightsOfSydney && (
               <PreviousPageLink
@@ -66,11 +71,6 @@ const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
               />
             )}
           </div>
-          <img
-            src={image.file.url}
-            alt={image.description}
-            className={styles.imagePhoto}
-          />
           <div>
             {nextPlayingWithTheLightsOfSydney && (
               <NextPageLink nextUrl={nextPlayingWithTheLightsOfSydney.url} />
