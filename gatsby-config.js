@@ -1,10 +1,14 @@
 //this is a NodeJS file
+const dotenv = require("dotenv").config()
 
 const {
   NODE_ENV,
   URL: NETLIFY_SITE_URL = "https://michelezucca-art.netlify.app/",
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_ACCESS_TOKEN,
+  ENVIRONMENT_ID,
 } = process.env
 const isNetlifyProduction = NETLIFY_ENV === "production"
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
@@ -38,9 +42,9 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        environment: process.env.ENVIRONMENT_ID,
+        spaceId: CONTENTFUL_SPACE_ID,
+        accessToken: CONTENTFUL_ACCESS_TOKEN,
+        environment: ENVIRONMENT_ID,
       },
     },
     "gatsby-plugin-sass",
