@@ -7,6 +7,7 @@ import Image from "../../components/image"
 import PreviousPageLink from "../../components/previousPageLink"
 import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
+import { useBreakPoints } from "../../utils/useBreakPoints"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -30,6 +31,9 @@ export const query = graphql`
   }
 `
 const Abstracts = ({ pageContext, data }) => {
+  console.log(useBreakPoints())
+  const { isTabletOrMobile } = useBreakPoints()
+  console.log(isTabletOrMobile)
   const options = {
     renderNode: {
       "embedded-asset-block": node => {

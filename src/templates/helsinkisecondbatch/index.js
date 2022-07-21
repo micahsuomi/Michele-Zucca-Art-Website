@@ -50,7 +50,7 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
     url: `/helsinkisecondbatch/${pageContext.next.slug}`,
   }
 
-  const { title, subtitle, image, body } = data.contentfulHelsinkiSecondBatch
+  const { title, image, body } = data.contentfulHelsinkiSecondBatch
   return (
     <>
       <Head title={title} />
@@ -75,7 +75,6 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
             )}
           </div>
         </div>
-        <h4>{subtitle}</h4>
         {documentToReactComponents(body.json, options)}
       </div>
     </>

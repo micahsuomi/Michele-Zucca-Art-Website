@@ -3,49 +3,30 @@
   background-color: rgba(3, 3, 3, 0.99);
   color: white;
   position: relative;
-  padding: 1rem 3rem;
-  // animation-name: appear;
-  // animation-duration: 1s;
-
+  padding: 1rem 1rem;
   @include md {
     padding: 1rem 0.5rem;
+    height: 100vh;
   }
 
   h2 {
     text-align: center;
+    margin-top: 1rem;
     @include sm {
-      font-size: $regular-text;
-      text-align: center;
+      font-size: $card-title;
     }
   }
   .slider-container {
     position: relative;
     display: flex;
-    // animation-name: slidein;
-    // animation-duration: 1s;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // padding: 4rem 4rem;
-
-    // display: grid;
-    // grid-template-columns: 20% 60% 20%;
-    min-height: 90vh;
-    // padding: 1rem 12rem;
-    // justify-items: center;
-    // align-items: center;
+    min-height: 82vh;
     @include md {
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // grid-template-columns: 10% 80% 10%;
-      // height: 80vh;
       padding: 1rem 0;
     }
     @include sm {
-      min-height: 84vh;
+      min-height: 70vh;
+      padding: 0;
     }
-   
   }
 
   .image-container {
@@ -53,10 +34,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
   }
 
-  
   @keyframes appear {
     0% {
       opacity: 0;
