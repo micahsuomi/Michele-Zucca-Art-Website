@@ -1,21 +1,23 @@
-.image-default {
-  width: 70%;
+.main-template-image {
+  width: 65%;
   margin-left: 0;
   margin-top: 2rem;
   animation-name: appear;
   transition: 3s ease-in-out;
   animation-duration: 3s;  
 }
-.image-default.portrait {
-  width: 50%;
+.main-template-image.portrait {
+  width: 35%;
 }
 @media screen and (max-width: 1024px) {
-  .image-default {
+  .main-template-image,
+  .main-template-image.portrait {
     width: 100%;
   }
 }
 @media screen and (max-width: 500px) {
-  .image-default {
+  .main-template-image,
+  .main-template-image.portrait {
     width: 100%;
   }
 }
