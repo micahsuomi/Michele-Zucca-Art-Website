@@ -7,8 +7,7 @@ const Footer = ({ author, link }) => {
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.left}>
-        <p>Created by {author} with Gatsby JS, 2020</p>
-        <img src={gatsbyImg} alt="gatsby site generator" />
+        <p>{author}, 2020</p>
       </div>
       <div className={footerStyles.right}>
         <a href="https://www.instagram.com/mikibright_z/" target="blank">

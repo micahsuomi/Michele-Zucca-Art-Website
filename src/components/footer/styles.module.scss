@@ -1,69 +1,46 @@
-@import '../../scss/main.scss';
+@import "../../scss/main.scss";
 
 .footer {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: 90% 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.3rem;
+  background-color: $color-dark-black;
+  
+  color: white;
+  @include lg {
+    padding: 1.4rem 1.3rem;
+  }
+
+  .left {
+    display: flex;
     align-items: center;
-    padding: 1.4rem 2.3rem;
-    background-color:rgb(20, 19, 19);
-    color: white;
+    justify-content: flex-start;
     @include lg {
-        padding: 1.4rem 1.3rem;
-        grid-template-columns: 70% 30%;
+      justify-content: center;
     }
-    @include md {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-   
+  }
 
-    .left {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 3rem;
-        @include lg {
-            justify-content: center;
-        }
-       
-
-    }
-
-    .left p {
-        margin: .5rem;
-    }
-
-    .left img {
-        width: 3%;
-        @include sm {
-            width: 13%;
-
-        }
-    }
-
-
-    
+  .left p {
+    margin: 0.5rem;
+  }
 }
 
 .right {
-    display: flex;
-    padding-right: 3rem;
+  display: flex;
 }
 .right a {
-    text-decoration: none;
-    color: white;
-
+  text-decoration: none;
+  color: white;
 }
 
 .social-icon {
-    margin: .5rem;
-    cursor: pointer;
-
+  margin: 0.5rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
 }
-
 
 .social-icon:hover {
-    color: slategray;
+  color: slategray;
 }
-
