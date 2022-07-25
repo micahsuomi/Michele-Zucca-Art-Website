@@ -11,12 +11,14 @@ import gallerySliderStyles from "./styles.module.scss"
 const GallerySlider = () => {
   const [gallery, setGallery] = useState([])
   const [activeIndex, setActiveIndex] = useState(0)
-
   useEffect(() => {
     setGallery(galleryData)
   }, [gallery])
+  const [nextSlideActive, setNextSlideActive] = useState(false)
 
   const goToNext = currentIndex => {
+    setNextSlideActive(true)
+
     if (activeIndex === gallery.length - 1) {
       setActiveIndex(0)
     } else {
@@ -25,6 +27,7 @@ const GallerySlider = () => {
   }
 
   const goToPrevious = currentIndex => {
+    setNextSlideActive(false)
     if (activeIndex === 0) {
       setActiveIndex(gallery.length - 1)
     } else {
@@ -62,9 +65,13 @@ const GallerySlider = () => {
                         <img
                           key={index}
                           src={item.img}
-                          className={gallerySliderStyles.image}
-                          width="1200"
-                          height="649"
+                          className={
+                            nextSlideActive
+                              ? gallerySliderStyles.next
+                              : gallerySliderStyles.prev
+                          }
+                          // width="1200"
+                          // height="649"
                           alt={item.title}
                         />
                       </div>
@@ -77,7 +84,7 @@ const GallerySlider = () => {
         </>
 
         <div className={gallerySliderStyles.buttonsContainer}>
-          <div className={gallerySliderStyles.left}>
+          <div className={gallerySliderStyles.prev}>
             <FontAwesomeIcon
               icon={faChevronLeft}
               onClick={() => goToPrevious(activeIndex - 1)}
@@ -88,7 +95,7 @@ const GallerySlider = () => {
               tabIndex="0"
             />
           </div>
-          <div className={gallerySliderStyles.right}>
+          <div className={gallerySliderStyles.next}>
             <FontAwesomeIcon
               icon={faChevronRight}
               onClick={() => goToNext(activeIndex + 1)}
