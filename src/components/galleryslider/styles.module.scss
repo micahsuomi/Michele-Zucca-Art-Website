@@ -1,15 +1,13 @@
 @import "../../scss/main.scss";
 
 .gallery-container {
-  overflow: none;
-  height: 70vh;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-
-  @include sm {
-    margin: 0;
+  align-items: center;
+  min-height: 66vh;
+  @include xl {
+    min-height: 25vh;
   }
 
   h2 {
@@ -22,24 +20,20 @@
     text-transform: uppercase;
     word-break: normal;
     font-size: 180px;
-
     color: #3a3333;
     opacity: 0.9;
     animation-name: appear;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
-
+    text-shadow: 0 1px 7px white;
+    @include xl {
+      font-size: 120px;
+    }
     @include md {
-      top: 46.5%;
-      left: 16%;
-      font-size: $section-title;
+      font-size: 100px;
     }
     @include sm {
-      top: 47%;
-      font-size: $regular-text;
-    }
-    @include ssm {
-      top: 46.5%;
+      font-size: 40px;
     }
   }
 
@@ -55,33 +49,31 @@
   }
   img {
     animation-duration: 1s;
-    // width: 100%;
-    // height: 40%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     animation-name: appear;
     animation-duration: 1s;
-    animation-timing-function: ease-in-out;
+    width: 100%;
   }
-  .mask-active {
-    opacity: 0.8;
-    background-color: rgb(29, 26, 26);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: -18%;
-    left: -18%;
-    // width: 100vw;
-    // height: 95vh;
-    transition: all ease-in-out 0.5s;
-    // top: -109px;
-    // opacity: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+  img.prev {
+    animation: slide-prev 0.5s forwards;
+    /* for chrome and safari*/
+    -webkit-animation: slide-prev 0.5s forwards;
+    /*for firefox*/
+    -moz-animation: slide-prev 0.5s forwards;
+    /* for opera*/
+    -o-animation: slide-prev 0.5s forwards;
+  }
+  img.next {
+    animation: slide-next 0.5s forwards;
+    /* for chrome and safari*/
+    -webkit-animation: slide-next 0.5s forwards;
+    /*for firefox*/
+    -moz-animation: slide-next 0.5s forwards;
+    /* for opera*/
+    -o-animation: slide-next 0.5s forwards;
   }
 }
 
@@ -100,6 +92,10 @@
   z-index: 1;
   box-shadow: 0 3rem 3rem rgba(87, 65, 65, 0.3);
   border: 2px solid white;
+  @include sm {
+    height: 10px;
+    width: 10px;
+  }
 }
 
 .active-dot {
@@ -110,6 +106,10 @@
   margin: 0.04rem;
   transform: scale(1.1);
   transition: 0.5s ease-in-out;
+  @include sm {
+    height: 11px;
+    width: 11px;
+  }
 }
 @keyframes appear {
   0% {
@@ -129,72 +129,10 @@
   }
 }
 
-.mask {
-  opacity: 0.8;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(75, 70, 70, 0.8);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  transform: translate(-14%, -12.5%);
-  z-index: 1;
-
-  @include lg {
-    top: -76px;
-    height: 85vh;
-  }
-  @include md {
-    height: 50vh;
-    top: -72px;
-    opacity: 0.5;
-  }
-  @include sm {
-    height: 56vh;
-    top: -62px;
-  }
-  @include ssm {
-    height: 66vh;
-  }
-}
-/*
-.mask:hover {
-  opacity: 0.8;
-  background-color: rgb(29, 26, 26);
-  // width: 100vw;
-  // height: 95vh;
-  position: absolute;
-  transition: all ease-in-out 1s;
-  // top: -109px;
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}*/
-/* Fading animation */
-
 .slider-active {
   transition-duration: 300ms;
   transition-property: transform;
   flex-shrink: 0;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.1;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .nav-container {
@@ -235,10 +173,14 @@
 .icon {
   margin: 1rem;
   cursor: pointer;
-  width: 10rem;
+  width: 3rem;
   height: 3rem;
-  color: black;
+  color: $color-text;
   // color: white;
+  @include sm {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 .icon:hover {
   color: silver;
@@ -246,24 +188,26 @@
   transition: 0.5s ease-in-out;
 }
 
-.left,
-.right {
+.prev,
+.next {
   position: absolute;
   top: 50%;
   display: flex;
   align-items: center;
   transform: translateY(-50%);
-
-  @include sm {
-    top: 43.5%;
+}
+.prev {
+  left: -12%;
+  @include xl {
+    left: -7%;
   }
 }
-.left {
-  left: -7%;
-}
 
-.right {
-  right: -7%;
+.next {
+  right: -12%;
+  @include xl {
+    right: -7%;
+  }
 }
 span {
   margin: 0.4rem;
@@ -275,6 +219,93 @@ span {
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+// working
+@-webkit-keyframes slide-prev {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-prev {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@-moz-keyframes slide-prev {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@-o-keyframes slide-prev {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@-webkit-keyframes slide-next {
+  from {
+    margin-left: 100%;
+    opacity: 0.3;
+  }
+
+  to {
+    margin-left: 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-next {
+  from {
+    margin-left: 100%;
+    opacity: 0.3;
+  }
+
+  to {
+    margin-left: 0%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes slide-next {
+  from {
+    margin-left: 100%;
+    opacity: 0.3;
+  }
+
+  to {
+    margin-left: 0%;
+    opacity: 1;
+  }
+}
+@-o-keyframes slide-next {
+  from {
+    margin-left: 100%;
+    opacity: 0.3;
+  }
+
+  to {
+    margin-left: 0%;
     opacity: 1;
   }
 }
