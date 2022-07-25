@@ -12,7 +12,7 @@
 }
 .hide-mobile {
   @include sm {
-    display: none;
+    // display: none;
   }
 }
 
