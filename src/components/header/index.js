@@ -8,30 +8,39 @@ import "./style.css"
 
 const Header = ({ title, subtitle }) => {
   const [isToggled, setIsToggled] = useState(false)
-
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
-
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
-  const [isHomeClicked, setHomeClicked] = useState(false)
 
-  const navLinksClassOpen = ["nav-links open"]
-  const navLinksClassClose = ["nav-links close"]
+  const toggleOnClick = () => {
+    setIsToggled(!isToggled)
+  }
+  const toggle = e => {
+    console.log(e)
+    if (isToggled && e.keyCode === 27) {
+      setIsToggled(false)
+    } else {
+      if (e.key === "Enter") {
+        // console.log(e.key)
+        // setIsToggled(false)
+      }
+    }
+  }
 
-  const lineClassOne = ["line top"]
-  const lineClassOneActive = ["line top active"]
+  const openPortraitsOnClick = () => setPortraitsOpen(!isPortraitsOpen)
 
-  const lineClassTwo = ["line middle"]
-  const lineClassTwoActive = ["line middle active"]
+  const openPortraitsOnKeyDown = e => {
+    if (e.keyCode === 13) {
+      setPortraitsOpen(!isPortraitsOpen)
+    }
+  }
+  const openPhotographyOnClick = () => setPhotographyOpen(!isPhotographyOpen)
 
-  const lineClassThree = ["line bottom"]
-  const lineClassThreeActive = ["line bottom active"]
-
-  const toggle = () => setIsToggled(!isToggled)
-  const openPortraits = () => setPortraitsOpen(!isPortraitsOpen)
-  const openPhotography = () => setPhotographyOpen(!isPhotographyOpen)
-
+  const openPhotographyOnKeyDown = e => {
+    if (e.keyCode === 13) {
+      setPhotographyOpen(!setPhotographyOpen)
+    }
+  }
   const closeDropdown = () => {
-    setHomeClicked(true)
     setPhotographyOpen(false)
     setPortraitsOpen(false)
     setIsToggled(false)
@@ -54,25 +63,26 @@ const Header = ({ title, subtitle }) => {
       <div>
         <nav>
           <div className={headerStyles.toggleWrapper}>
-            <div
+            <button
               className={headerStyles.toggleBar}
-              onClick={toggle}
               style={isToggled ? styleBorder : styleNoBorder}
+              onClick={toggleOnClick}
+              onKeyDown={e => toggle(e)}
             >
               <span
-                className={isToggled ? lineClassOneActive : lineClassOne}
+                className={isToggled ? "line top active" : "line top"}
               ></span>
               <span
-                className={isToggled ? lineClassTwoActive : lineClassTwo}
+                className={isToggled ? "line middle active" : "line middle"}
               ></span>
               <span
-                className={isToggled ? lineClassThreeActive : lineClassThree}
+                className={isToggled ? "line bottom active" : "line bottom"}
               ></span>
-            </div>
+            </button>
           </div>
 
           {isToggled && (
-            <ul className={isToggled ? navLinksClassOpen : navLinksClassClose}>
+            <ul className={isToggled ? "nav-links open" : "nav-links"}>
               <li className={headerStyles.navListItem}>
                 <Link
                   className={headerStyles.navItem}
@@ -95,66 +105,63 @@ const Header = ({ title, subtitle }) => {
                 </Link>
               </li>
 
-              <li className={headerStyles.navListItem} onClick={openPortraits}>
-                <span>Portraits</span>
+              <button
+                className={headerStyles.navListItem}
+                onKeyDown={e => openPortraitsOnKeyDown(e)}
+                onClick={openPortraitsOnClick}
+              >
+                Portraits
                 {isPortraitsOpen ? (
-                  <FaChevronUp className={headerStyles.dropDownIcon} />
+                  <FaChevronUp
+                    className={headerStyles.dropDownIcon}
+                    aria-hidden="true"
+                  />
                 ) : (
-                  <FaChevronDown className={headerStyles.dropDownIcon} />
+                  <FaChevronDown
+                    className={headerStyles.dropDownIcon}
+                    aria-hidden="true"
+                  />
                 )}
-                <>
-                  {/* <details>
-                <summary
-                  activeclassname={headerStyles.activeNavItem}
-                  onClick={openPortraits}
+              </button>
+
+              <>
+                <ul
+                  className={
+                    isPortraitsOpen
+                      ? headerStyles.nestedNavList
+                      : headerStyles.nestedNavListClose
+                  }
                 >
-                  <span>Portraits</span>
-                  {isPortraitsOpen ? (
-                    <FaChevronUp className={headerStyles.dropDownIcon} />
-                  ) : (
-                    <FaChevronDown className={headerStyles.dropDownIcon} />
-                  )}
-                </summary> */}
-                  <ul
-                    className={
-                      isPortraitsOpen
-                        ? headerStyles.nestedNavList
-                        : headerStyles.nestedNavListClose
-                    }
-                  >
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/helsinkifirstbatch"
-                        onClick={closeDropdown}
-                      >
-                        Helsinki First Batch
-                      </Link>
-                    </li>
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/helsinkisecondbatch"
-                        onClick={closeDropdown}
-                      >
-                        Helsinki Second Batch
-                      </Link>
-                    </li>
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/helsinkifirstbatch"
+                      onClick={closeDropdown}
+                    >
+                      Helsinki First Batch
+                    </Link>
+                  </li>
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/helsinkisecondbatch"
+                      onClick={closeDropdown}
+                    >
+                      Helsinki Second Batch
+                    </Link>
+                  </li>
 
-                    <li className={headerStyles.nestedListItem}>
-                      <Link
-                        className={headerStyles.navItemNested}
-                        to="/thelordandthenewcreatures"
-                        onClick={closeDropdown}
-                      >
-                        The L. and N. C.
-                      </Link>
-                    </li>
-                  </ul>
-                </>
-                {/* </details> */}
-              </li>
-
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      to="/thelordandthenewcreatures"
+                      onClick={closeDropdown}
+                    >
+                      The L. and N. C.
+                    </Link>
+                  </li>
+                </ul>
+              </>
               <li className={headerStyles.navListItem}>
                 <Link
                   className={headerStyles.navItem}
@@ -177,67 +184,59 @@ const Header = ({ title, subtitle }) => {
                 </Link>
               </li>
 
-              <li
+              <button
                 className={headerStyles.navListItem}
-                onClick={openPhotography}
+                onClick={openPhotographyOnClick}
+                onKeyDown={e => openPhotographyOnKeyDown(e)}
               >
-                <span>Photography</span>
+                Photography
                 {isPhotographyOpen ? (
-                  <FaChevronUp className={headerStyles.dropDownIcon} />
+                  <FaChevronUp
+                    className={headerStyles.dropDownIcon}
+                    aria-hidden="true"
+                  />
                 ) : (
-                  <FaChevronDown className={headerStyles.dropDownIcon} />
+                  <FaChevronDown
+                    className={headerStyles.dropDownIcon}
+                    aria-hidden="true"
+                  />
                 )}
-                {/* <details> */}
-                {/* <summary
-                    activeclassname={headerStyles.activeNavItem}
-                    onClick={openPhotography}
+              </button>
+              <ul
+                className={
+                  isPhotographyOpen
+                    ? headerStyles.nestedNavList
+                    : headerStyles.nestedNavListClose
+                }
+              >
+                <li className={headerStyles.nestedListItem}>
+                  <Link
+                    className={headerStyles.navItemNested}
+                    to="/allegories"
+                    onClick={closeDropdown}
                   >
-                    {" "}
-                    <span>Photography</span>
-                    {isPhotographyOpen ? (
-                      <FaChevronUp className={headerStyles.dropDownIcon} />
-                    ) : (
-                      <FaChevronDown className={headerStyles.dropDownIcon} />
-                    )}
-                  </summary> */}
-                <ul
-                  className={
-                    isPhotographyOpen
-                      ? headerStyles.nestedNavList
-                      : headerStyles.nestedNavListClose
-                  }
-                >
-                  <li className={headerStyles.nestedListItem}>
-                    <Link
-                      className={headerStyles.navItemNested}
-                      to="/allegories"
-                      onClick={closeDropdown}
-                    >
-                      Allegories
-                    </Link>
-                  </li>
-                  <li className={headerStyles.nestedListItem}>
-                    <Link
-                      className={headerStyles.navItemNested}
-                      to="/playingwiththelightsofsydney"
-                      onClick={closeDropdown}
-                    >
-                      Lights Of Sydney
-                    </Link>
-                  </li>
-                  <li className={headerStyles.nestedListItem}>
-                    <Link
-                      className={headerStyles.navItemNested}
-                      to="/whiletraveling"
-                      onClick={closeDropdown}
-                    >
-                      While Travelling
-                    </Link>
-                  </li>
-                </ul>
-                {/* )} */}
-                {/* </details> */}
-              </li>
+                    Allegories
+                  </Link>
+                </li>
+                <li className={headerStyles.nestedListItem}>
+                  <Link
+                    className={headerStyles.navItemNested}
+                    to="/playingwiththelightsofsydney"
+                    onClick={closeDropdown}
+                  >
+                    Lights Of Sydney
+                  </Link>
+                </li>
+                <li className={headerStyles.nestedListItem}>
+                  <Link
+                    className={headerStyles.navItemNested}
+                    to="/whiletraveling"
+                    onClick={closeDropdown}
+                  >
+                    While Travelling
+                  </Link>
+                </li>
+              </ul>
 
               <li className={headerStyles.navListItem}>
                 <Link
@@ -269,7 +268,14 @@ const Header = ({ title, subtitle }) => {
   )
 }
 
-const styleBorder = { border: "1px solid white", borderRadius: "500px" }
+const styleBorder = {
+  border: "2px solid rgb(53, 36, 46)",
+  borderRadius: "500px",
+  justifyContent: "center",
+  //  transition: "0.1s ease-in-out",
+  // transition: "transform 0.2s ease-out",
+  // transitionDelay: ".25s"
+}
 const styleNoBorder = { border: "none" }
 
 export default Header
