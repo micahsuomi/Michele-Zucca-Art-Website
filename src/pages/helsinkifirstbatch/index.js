@@ -50,7 +50,7 @@ const HelsinkiFirstBatch = () => {
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>
-                <div class={stylesVertical.imageContainer}>
+                <div className={stylesVertical.imageContainer}>
                   <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
                 </div>
               </Link>

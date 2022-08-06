@@ -11,18 +11,13 @@ const Header = ({ title, subtitle }) => {
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
 
-  const toggleOnClick = () => {
-    setIsToggled(!isToggled)
-  }
+  console.log("is portraits open", isPortraitsOpen)
+  const toggleOnClick = () => setIsToggled(!isToggled)
+  
   const toggle = e => {
     console.log(e)
     if (isToggled && e.keyCode === 27) {
       setIsToggled(false)
-    } else {
-      if (e.key === "Enter") {
-        // console.log(e.key)
-        // setIsToggled(false)
-      }
     }
   }
 
@@ -46,6 +41,30 @@ const Header = ({ title, subtitle }) => {
     setIsToggled(false)
   }
 
+  const closeToggleMenu = () => setIsToggled(false);
+
+  useEffect(() => {
+    // checks if there is any open nav list, sets the nav list to open
+    if(isToggled) {
+      const portraitsList = document.getElementById("#portraits");
+      const photographyList = document.getElementById("#photography");
+      const checkifPortraitsOpen = portraitsList.getAttribute("class");
+      const checkifPhotographyOpen = photographyList.getAttribute("class");
+
+      console.log("check if portraits is open", checkifPortraitsOpen)
+      console.log("check if photography is open", checkifPhotographyOpen)
+
+      if(!checkifPortraitsOpen.includes("close")) {
+        console.log("its open!!!")
+        // setPortraitsOpen(true)
+      }
+      console.log("photographyList", photographyList)
+      console.log("portraitsList", portraitsList)
+
+    }
+  
+  }, [isToggled])
+  
   return (
     <header>
       <div className={headerStyles.titleWrapper}>
@@ -104,26 +123,26 @@ const Header = ({ title, subtitle }) => {
                   About
                 </Link>
               </li>
-
-              <button
-                className={headerStyles.navListItem}
-                onKeyDown={e => openPortraitsOnKeyDown(e)}
-                onClick={openPortraitsOnClick}
-              >
-                Portraits
-                {isPortraitsOpen ? (
-                  <FaChevronUp
-                    className={headerStyles.dropDownIcon}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <FaChevronDown
-                    className={headerStyles.dropDownIcon}
-                    aria-hidden="true"
-                  />
-                )}
-              </button>
-
+              <li className={headerStyles.navListItem}>
+                <button
+                  // className={headerStyles.navListItemDropdown}
+                  onKeyDown={e => openPortraitsOnKeyDown(e)}
+                  onClick={openPortraitsOnClick}
+                >
+                  Portraits
+                  {isPortraitsOpen ? (
+                    <FaChevronUp
+                      className={headerStyles.dropDownIcon}
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <FaChevronDown
+                      className={headerStyles.dropDownIcon}
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+              </li>
               <>
                 <ul
                   className={
@@ -131,12 +150,14 @@ const Header = ({ title, subtitle }) => {
                       ? headerStyles.nestedNavList
                       : headerStyles.nestedNavListClose
                   }
+                  id="#portraits"
                 >
                   <li className={headerStyles.nestedListItem}>
                     <Link
                       className={headerStyles.navItemNested}
+                      activeClassName={headerStyles.activeNavItem}
                       to="/helsinkifirstbatch"
-                      onClick={closeDropdown}
+                      onClick={closeToggleMenu}
                     >
                       Helsinki First Batch
                     </Link>
@@ -144,8 +165,9 @@ const Header = ({ title, subtitle }) => {
                   <li className={headerStyles.nestedListItem}>
                     <Link
                       className={headerStyles.navItemNested}
+                      activeClassName={headerStyles.activeNavItem}
                       to="/helsinkisecondbatch"
-                      onClick={closeDropdown}
+                      onClick={closeToggleMenu}
                     >
                       Helsinki Second Batch
                     </Link>
@@ -154,8 +176,9 @@ const Header = ({ title, subtitle }) => {
                   <li className={headerStyles.nestedListItem}>
                     <Link
                       className={headerStyles.navItemNested}
+                      activeClassName={headerStyles.activeNavItem}
                       to="/thelordandthenewcreatures"
-                      onClick={closeDropdown}
+                      onClick={closeToggleMenu}
                     >
                       The L. and N. C.
                     </Link>
@@ -183,35 +206,38 @@ const Header = ({ title, subtitle }) => {
                   Digital
                 </Link>
               </li>
-
-              <button
-                className={headerStyles.navListItem}
-                onClick={openPhotographyOnClick}
-                onKeyDown={e => openPhotographyOnKeyDown(e)}
-              >
-                Photography
-                {isPhotographyOpen ? (
-                  <FaChevronUp
-                    className={headerStyles.dropDownIcon}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <FaChevronDown
-                    className={headerStyles.dropDownIcon}
-                    aria-hidden="true"
-                  />
-                )}
-              </button>
+              <li className={headerStyles.navListItem}>
+                <button
+                  // className={headerStyles.navListItemDropdown}
+                  onClick={openPhotographyOnClick}
+                  onKeyDown={e => openPhotographyOnKeyDown(e)}
+                >
+                  Photography
+                  {isPhotographyOpen ? (
+                    <FaChevronUp
+                      className={headerStyles.dropDownIcon}
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <FaChevronDown
+                      className={headerStyles.dropDownIcon}
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+              </li>
               <ul
                 className={
                   isPhotographyOpen
                     ? headerStyles.nestedNavList
                     : headerStyles.nestedNavListClose
                 }
+                id="#photography"
               >
                 <li className={headerStyles.nestedListItem}>
                   <Link
                     className={headerStyles.navItemNested}
+                    activeClassName={headerStyles.activeNavItem}
                     to="/allegories"
                     onClick={closeDropdown}
                   >
@@ -221,6 +247,7 @@ const Header = ({ title, subtitle }) => {
                 <li className={headerStyles.nestedListItem}>
                   <Link
                     className={headerStyles.navItemNested}
+                    activeClassName={headerStyles.activeNavItem}
                     to="/playingwiththelightsofsydney"
                     onClick={closeDropdown}
                   >
@@ -230,6 +257,7 @@ const Header = ({ title, subtitle }) => {
                 <li className={headerStyles.nestedListItem}>
                   <Link
                     className={headerStyles.navItemNested}
+                    activeClassName={headerStyles.activeNavItem}
                     to="/whiletraveling"
                     onClick={closeDropdown}
                   >
