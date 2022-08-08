@@ -1,19 +1,21 @@
 import React from "react"
+
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulHelsinkiSecondBatch(slug: { eq: $slug }) {
+    contentfulHelsinkiFirstBatch(slug: { eq: $slug }) {
       title
+      subtitle
       image {
         file {
           url
@@ -24,15 +26,22 @@ export const query = graphql`
         json
       }
     }
-    contentfulHelsinkiSecondBatchHeader {
+    contentfulHelsinkiFirstBatchHeader {
       title
-      description {
+      body {
         json
       }
     }
   }
 `
 const HelsinkiFirstBatch = ({ pageContext, data }) => {
+  const previousHelsinkiFirstBatch = pageContext.previous && {
+    url: `/portraits/helsinkifirstbatch/${pageContext.previous.slug}`,
+  }
+
+  const nextHelsinkiFirstBatch = pageContext.next && {
+    url: `/portraits/helsinkifirstbatch/${pageContext.next.slug}`,
+  }
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -42,20 +51,13 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
       },
     },
   }
-  const previousHelsinkiSecondBatch = pageContext.previous && {
-    url: `/helsinkisecondbatch/${pageContext.previous.slug}`,
-  }
 
-  const nextHelsinkiSecondBatch = pageContext.next && {
-    url: `/helsinkisecondbatch/${pageContext.next.slug}`,
-  }
-
-  const { title, image, body } = data.contentfulHelsinkiSecondBatch
+  const { title, subtitle, image, body } = data.contentfulHelsinkiFirstBatch
   return (
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/helsinkisecondbatch" />
+        <ExitContainer exitLink="/portraits/helsinkifirstbatch" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
@@ -65,16 +67,17 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
             />
           </div>
           <div>
-            {previousHelsinkiSecondBatch && (
-              <PreviousPageLink prevUrl={previousHelsinkiSecondBatch.url} />
+            {previousHelsinkiFirstBatch && (
+              <PreviousPageLink prevUrl={previousHelsinkiFirstBatch.url} />
             )}
           </div>
           <div>
-            {nextHelsinkiSecondBatch && (
-              <NextPageLink nextUrl={nextHelsinkiSecondBatch.url} />
+            {nextHelsinkiFirstBatch && (
+              <NextPageLink nextUrl={nextHelsinkiFirstBatch.url} />
             )}
           </div>
         </div>
+        <h4>{subtitle}</h4>
         {documentToReactComponents(body.json, options)}
       </div>
     </>
