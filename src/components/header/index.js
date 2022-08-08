@@ -11,11 +11,9 @@ const Header = ({ title, subtitle }) => {
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
 
-  console.log("is portraits open", isPortraitsOpen)
   const toggleOnClick = () => setIsToggled(!isToggled)
-  
+
   const toggle = e => {
-    console.log(e)
     if (isToggled && e.keyCode === 27) {
       setIsToggled(false)
     }
@@ -41,30 +39,21 @@ const Header = ({ title, subtitle }) => {
     setIsToggled(false)
   }
 
-  const closeToggleMenu = () => setIsToggled(false);
+  const closeToggleMenu = () => setIsToggled(false)
 
   useEffect(() => {
     // checks if there is any open nav list, sets the nav list to open
-    if(isToggled) {
-      const portraitsList = document.getElementById("#portraits");
-      const photographyList = document.getElementById("#photography");
-      const checkifPortraitsOpen = portraitsList.getAttribute("class");
-      const checkifPhotographyOpen = photographyList.getAttribute("class");
-
-      console.log("check if portraits is open", checkifPortraitsOpen)
-      console.log("check if photography is open", checkifPhotographyOpen)
-
-      if(!checkifPortraitsOpen.includes("close")) {
-        console.log("its open!!!")
-        // setPortraitsOpen(true)
+    if (isToggled) {
+      const getUrl = window.location.href
+      if (getUrl.includes("portraits")) {
+        setPortraitsOpen(true)
       }
-      console.log("photographyList", photographyList)
-      console.log("portraitsList", portraitsList)
-
+      if (getUrl.includes("photography")) {
+        setPhotographyOpen(true)
+      }
     }
-  
   }, [isToggled])
-  
+
   return (
     <header>
       <div className={headerStyles.titleWrapper}>
@@ -156,7 +145,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/helsinkifirstbatch"
+                      to="/portraits/helsinkifirstbatch"
                       onClick={closeToggleMenu}
                     >
                       Helsinki First Batch
@@ -166,7 +155,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/helsinkisecondbatch"
+                      to="/portraits/helsinkisecondbatch"
                       onClick={closeToggleMenu}
                     >
                       Helsinki Second Batch
@@ -177,7 +166,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/thelordandthenewcreatures"
+                      to="/portraits/thelordandthenewcreatures"
                       onClick={closeToggleMenu}
                     >
                       The L. and N. C.
@@ -238,7 +227,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/allegories"
+                    to="/photography/allegories"
                     onClick={closeDropdown}
                   >
                     Allegories
@@ -248,7 +237,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/playingwiththelightsofsydney"
+                    to="/photography/playingwiththelightsofsydney"
                     onClick={closeDropdown}
                   >
                     Lights Of Sydney
@@ -258,7 +247,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/whiletraveling"
+                    to="/photography/whiletraveling"
                     onClick={closeDropdown}
                   >
                     While Travelling
