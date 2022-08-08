@@ -1,14 +1,14 @@
 import React from "react"
-import Layout from "../../components/layout"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
-import Head from "../../components/head"
+import Head from "../../../components/head"
+import Layout from "../../../components/layout"
 
-import portfolioStyles from "../portfolio.module.scss"
-import stylesVertical from "../stylesVertical.module.scss"
-import "../style.scss"
+import portfolioStyles from "../../portfolio.module.scss"
+import stylesVertical from "../../stylesVertical.module.scss"
+import "../../style.scss"
 
 const HelsinkiSecondBatch = () => {
   const data = useStaticQuery(graphql`
@@ -46,7 +46,7 @@ const HelsinkiSecondBatch = () => {
           return (
             <div className={portfolioStyles.card}>
               <Link
-                to={`/helsinkisecondbatch/${slug}`}
+                to={`/portraits/helsinkisecondbatch/${slug}`}
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>

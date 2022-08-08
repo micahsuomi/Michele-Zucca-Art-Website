@@ -2,14 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
-import styles from "./styles.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -29,11 +28,11 @@ export const query = graphql`
 `
 const Allegories = ({ pageContext, data }) => {
   const previousAllegories = pageContext.previous && {
-    url: `/allegories/${pageContext.previous.slug}`,
+    url: `/photography/allegories/${pageContext.previous.slug}`,
   }
 
   const nextAllegories = pageContext.next && {
-    url: `/allegories/${pageContext.next.slug}`,
+    url: `/photography/allegories/${pageContext.next.slug}`,
   }
 
   const options = {
@@ -50,7 +49,7 @@ const Allegories = ({ pageContext, data }) => {
     <div>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/allegories" />
+        <ExitContainer exitLink="/photography/allegories" />
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>

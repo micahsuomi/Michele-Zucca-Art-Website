@@ -3,23 +3,22 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
-import Layout from "../../components/layout"
-import Head from "../../components/head"
+import Layout from "../../../components/layout"
+import Head from "../../../components/head"
 
-import portfolioStyles from "../portfolio.module.scss"
-import "../style.scss"
+import portfolioStyles from "../../portfolio.module.scss"
+import "../../style.scss"
 
-const WhileTravelingPage = () => {
+const PlayingWithTheLightsOfSydneyPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulWhileTravelingHeader {
-        title
-        description {
+      contentfulPlayingWithTheLightOfSydneyHeader {
+        pageTitle
+        pageDescription {
           json
         }
       }
-
-      allContentfulWhileTraveling(sort: { fields: createdAt, order: ASC }) {
+      allContentfulPlayingWithTheLightsOfSydney{
         edges {
           node {
             title
@@ -34,19 +33,23 @@ const WhileTravelingPage = () => {
       }
     }
   `)
-  const { title, description } = data.contentfulWhileTravelingHeader
+  const {
+    pageTitle,
+    pageDescription,
+  } = data.contentfulPlayingWithTheLightOfSydneyHeader
   return (
     <Layout>
-      <Head title="while traveling" />
-      <h1>{title}</h1>
-      {documentToReactComponents(description.json)}
+      <Head title="digital" />
+      <h1>{pageTitle}</h1>
+      <p>{documentToReactComponents(pageDescription.json)}</p>
+
       <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulWhileTraveling.edges.map(edge => {
+        {data.allContentfulPlayingWithTheLightsOfSydney.edges.map(edge => {
           const { slug, title, image } = edge.node
           return (
             <div className={portfolioStyles.card} key={slug}>
               <Link
-                to={`/whiletraveling/${slug}`}
+                to={`/photography/playingwiththelightsofsydney/${slug}`}
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>
@@ -60,4 +63,4 @@ const WhileTravelingPage = () => {
   )
 }
 
-export default WhileTravelingPage
+export default PlayingWithTheLightsOfSydneyPage
