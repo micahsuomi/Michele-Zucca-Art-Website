@@ -2,14 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
-import styles from "./styles.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -29,11 +28,11 @@ export const query = graphql`
 `
 const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
   const previousPlayingWithTheLightsOfSydney = pageContext.previous && {
-    url: `/playingwiththelightsofsydney/${pageContext.previous.slug}`,
+    url: `/photography/playingwiththelightsofsydney/${pageContext.previous.slug}`,
   }
 
   const nextPlayingWithTheLightsOfSydney = pageContext.next && {
-    url: `/playingwiththelightsofsydney/${pageContext.next.slug}`,
+    url: `/photography/playingwiththelightsofsydney/${pageContext.next.slug}`,
   }
 
   const options = {
@@ -56,7 +55,7 @@ const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/playingwiththelightsofsydney" />
+        <ExitContainer exitLink="/photography/playingwiththelightsofsydney" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>

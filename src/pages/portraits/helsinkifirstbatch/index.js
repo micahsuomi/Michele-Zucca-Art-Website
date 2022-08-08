@@ -3,23 +3,23 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
-import Layout from "../../components/layout"
-import Head from "../../components/head"
+import Layout from "../../../components/layout"
+import Head from "../../../components/head"
 
-import portfolioStyles from "../portfolio.module.scss"
-import stylesVertical from "../stylesVertical.module.scss"
-import "../style.scss"
+import portfolioStyles from "../../portfolio.module.scss"
+import stylesVertical from "../../stylesVertical.module.scss"
+import "../../style.scss"
 
-const TheLordAndTheNewCreatures = () => {
+const HelsinkiFirstBatch = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulTheLordAndTheNewCreaturesHeader {
+      contentfulHelsinkiFirstBatchHeader {
         title
-        description {
+        body {
           json
         }
       }
-      allContentfulTheLordAndTheNewCreatures{
+      allContentfulHelsinkiFirstBatch {
         edges {
           node {
             title
@@ -34,23 +34,23 @@ const TheLordAndTheNewCreatures = () => {
       }
     }
   `)
-  const { title, description } = data.contentfulTheLordAndTheNewCreaturesHeader
+  const { title, body } = data.contentfulHelsinkiFirstBatchHeader
   return (
     <Layout>
-      <Head title="the lord and the new creatures" />
+      <Head title="helsinki first batch" />
       <h1>{title}</h1>
-      <p>{documentToReactComponents(description.json)}</p>
+      <p>{documentToReactComponents(body.json)}</p>
       <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulTheLordAndTheNewCreatures.edges.map(edge => {
+        {data.allContentfulHelsinkiFirstBatch.edges.map(edge => {
           const { slug, title, image } = edge.node
           return (
             <div className={portfolioStyles.card}>
               <Link
-                to={`/thelordandthenewcreatures/${slug}`}
+                to={`/portraits/helsinkifirstbatch/${slug}`}
                 className={portfolioStyles.link}
               >
                 <h3>{title}</h3>
-                <div class={stylesVertical.imageContainer}>
+                <div className={stylesVertical.imageContainer}>
                   <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
                 </div>
               </Link>
@@ -62,4 +62,4 @@ const TheLordAndTheNewCreatures = () => {
   )
 }
 
-export default TheLordAndTheNewCreatures
+export default HelsinkiFirstBatch

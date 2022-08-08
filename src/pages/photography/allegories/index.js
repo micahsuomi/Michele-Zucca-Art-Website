@@ -3,22 +3,23 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Img from "gatsby-image"
 
-import Layout from "../../components/layout"
-import Head from "../../components/head"
+import Layout from "../../../components/layout"
+import Head from "../../../components/head"
+import portfolioStyles from "../../portfolio.module.scss"
 
-import portfolioStyles from "../portfolio.module.scss"
-import "../style.scss"
+import "../../style.scss"
 
-const PlayingWithTheLightsOfSydneyPage = () => {
+const AllegoriesPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulPlayingWithTheLightOfSydneyHeader {
-        pageTitle
-        pageDescription {
+      contentfulAllegoriesHeader {
+        title
+        description {
           json
         }
       }
-      allContentfulPlayingWithTheLightsOfSydney{
+
+      allContentfulAllegories {
         edges {
           node {
             title
@@ -33,26 +34,18 @@ const PlayingWithTheLightsOfSydneyPage = () => {
       }
     }
   `)
-  const {
-    pageTitle,
-    pageDescription,
-  } = data.contentfulPlayingWithTheLightOfSydneyHeader
+  const { title, description } = data.contentfulAllegoriesHeader
   return (
     <Layout>
-      <Head title="digital" />
-      <h1>{pageTitle}</h1>
-      <p>{documentToReactComponents(pageDescription.json)}</p>
-
+      <Head title="while traveling" />
+      <h1>{title}</h1>
+      {documentToReactComponents(description.json)}
       <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulPlayingWithTheLightsOfSydney.edges.map(edge => {
+        {data.allContentfulAllegories.edges.map(edge => {
           const { slug, title, image } = edge.node
-          console.log(edge)
           return (
             <div className={portfolioStyles.card} key={slug}>
-              <Link
-                to={`/playingwiththelightsofsydney/${slug}`}
-                className={portfolioStyles.link}
-              >
+              <Link to={`/photography/allegories/${slug}`} className={portfolioStyles.link}>
                 <h3>{title}</h3>
                 <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
               </Link>
@@ -64,4 +57,4 @@ const PlayingWithTheLightsOfSydneyPage = () => {
   )
 }
 
-export default PlayingWithTheLightsOfSydneyPage
+export default AllegoriesPage
