@@ -19,35 +19,43 @@ const PageTemplate = ({
   linkUrl,
   styles,
 }) => {
-  console.log("styles", styles)
   return (
     <Layout>
       <MainContent>
-      <Head title={headTitle} />
-      <h1>{title}</h1>
-      {documentToReactComponents(description.json)}
-      <ul className={portfolioStyles.wrapper}>
-        {contentTypeEdges.map(({ node: { slug, title, image } }) => {
-          return (
-            <div className={portfolioStyles.card} key={slug}>
-              <Link to={`/${linkUrl}/${slug}`} className={portfolioStyles.link}>
-                <h3>{title}</h3>
-                {styles === "vertical" ? (
-                  <div className={stylesVertical.imageContainer}>
-                    <Img
-                      fluid={image.fluid}
-                      src={image.fluid.src}
-                      alt={title}
-                    />
-                  </div>
-                ) : (
-                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
-                )}
-              </Link>
-            </div>
-          )
-        })}
-      </ul>
+        <Head title={headTitle} />
+        {title && <h1>{title}</h1>}
+        {description && <> {documentToReactComponents(description.json)}</>}
+        <ul className={portfolioStyles.wrapper}>
+          {contentTypeEdges.map(({ node: { slug, title, image } }) => {
+            return (
+              <div className={portfolioStyles.card} key={slug}>
+                <Link
+                  to={`/${linkUrl}/${slug}`}
+                  className={portfolioStyles.link}
+                >
+                  <h3>{title}</h3>
+                  {styles === "vertical" ? (
+                    <div className={stylesVertical.imageContainer}>
+                      <Img
+                        fluid={image.fluid}
+                        src={image.fluid.src}
+                        alt={title}
+                      />
+                    </div>
+                  ) : (
+                    <div className={portfolioStyles.imageContainer}>
+                      <Img
+                        fluid={image.fluid}
+                        src={image.fluid.src}
+                        alt={title}
+                      />
+                    </div>
+                  )}
+                </Link>
+              </div>
+            )
+          })}
+        </ul>
       </MainContent>
     </Layout>
   )

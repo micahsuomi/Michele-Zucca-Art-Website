@@ -43,6 +43,7 @@ const Header = ({ title, subtitle }) => {
 
   useEffect(() => {
     // TODO to be completed
+    const getUrl = window.location.pathname
     // checks if there is any open nav list, sets the nav list to open
     if (isToggled) {
       const portraitsList = document.getElementById("#portraits")
