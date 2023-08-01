@@ -74,7 +74,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 
   const postNatalTemplate = path.resolve(
-    "./src/templates/postnatal/index.js"
+    "./src/templates/portraits/postnatal/index.js"
   )
   const resPostNatal = await graphql(`
     query {
@@ -94,7 +94,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   createPage({
     //the component in the object is the path to the component
     component: postNatalTemplate,
-    path: `/postnatal/${edge.node.slug}`,
+    path: `/portraits/postnatal/${edge.node.slug}`,
     context: {
       //slug in this case is like an id
       slug: edge.node.slug,
