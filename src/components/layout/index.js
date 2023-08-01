@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
         title={data.site.siteMetadata.title}
         subtitle={data.site.siteMetadata.subtitle}
       />
-      <div className={layoutStyles.content}>{children}</div>
+      <>{children}</>
       <Footer author={data.site.siteMetadata.author} />
     </div>
   )
