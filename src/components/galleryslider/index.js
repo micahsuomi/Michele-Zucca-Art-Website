@@ -54,7 +54,6 @@ const GallerySlider = () => {
                 return (
                   <div
                     key={index}
-                    className={gallerySliderStyles.slider}
                     className={activeIndex && gallerySliderStyles.active}
                   >
                     <Link

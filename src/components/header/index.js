@@ -11,11 +11,9 @@ const Header = ({ title, subtitle }) => {
   const [isPortraitsOpen, setPortraitsOpen] = useState(false)
   const [isPhotographyOpen, setPhotographyOpen] = useState(false)
 
-  console.log("is portraits open", isPortraitsOpen)
   const toggleOnClick = () => setIsToggled(!isToggled)
-  
+
   const toggle = e => {
-    console.log(e)
     if (isToggled && e.keyCode === 27) {
       setIsToggled(false)
     }
@@ -41,30 +39,22 @@ const Header = ({ title, subtitle }) => {
     setIsToggled(false)
   }
 
-  const closeToggleMenu = () => setIsToggled(false);
+  const closeToggleMenu = () => setIsToggled(false)
 
   useEffect(() => {
+    // TODO to be completed
     // checks if there is any open nav list, sets the nav list to open
-    if(isToggled) {
-      const portraitsList = document.getElementById("#portraits");
-      const photographyList = document.getElementById("#photography");
-      const checkifPortraitsOpen = portraitsList.getAttribute("class");
-      const checkifPhotographyOpen = photographyList.getAttribute("class");
-
-      console.log("check if portraits is open", checkifPortraitsOpen)
-      console.log("check if photography is open", checkifPhotographyOpen)
-
-      if(!checkifPortraitsOpen.includes("close")) {
+    if (isToggled) {
+      const portraitsList = document.getElementById("#portraits")
+      const photographyList = document.getElementById("#photography")
+      const checkifPortraitsOpen = portraitsList.getAttribute("class")
+      if (!checkifPortraitsOpen.includes("close")) {
         console.log("its open!!!")
         // setPortraitsOpen(true)
       }
-      console.log("photographyList", photographyList)
-      console.log("portraitsList", portraitsList)
-
     }
-  
   }, [isToggled])
-  
+
   return (
     <header>
       <div className={headerStyles.titleWrapper}>
@@ -99,8 +89,6 @@ const Header = ({ title, subtitle }) => {
               ></span>
             </button>
           </div>
-
-          {isToggled && (
             <ul className={isToggled ? "nav-links open" : "nav-links"}>
               <li className={headerStyles.navListItem}>
                 <Link
@@ -172,7 +160,16 @@ const Header = ({ title, subtitle }) => {
                       Helsinki Second Batch
                     </Link>
                   </li>
-
+                  <li className={headerStyles.nestedListItem}>
+                    <Link
+                      className={headerStyles.navItemNested}
+                      activeClassName={headerStyles.activeNavItem}
+                      to="/postnatal"
+                      onClick={closeToggleMenu}
+                    >
+                      Postnatal
+                    </Link>
+                  </li>
                   <li className={headerStyles.nestedListItem}>
                     <Link
                       className={headerStyles.navItemNested}
@@ -289,7 +286,6 @@ const Header = ({ title, subtitle }) => {
                 </Link>
               </li>
             </ul>
-          )}
         </nav>
       </div>
     </header>
@@ -300,9 +296,6 @@ const styleBorder = {
   border: "2px solid rgb(53, 36, 46)",
   borderRadius: "500px",
   justifyContent: "center",
-  //  transition: "0.1s ease-in-out",
-  // transition: "transform 0.2s ease-out",
-  // transitionDelay: ".25s"
 }
 const styleNoBorder = { border: "none" }
 
