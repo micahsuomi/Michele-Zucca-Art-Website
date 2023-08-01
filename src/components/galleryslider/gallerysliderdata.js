@@ -13,25 +13,25 @@ export const galleryData = [
 
   {
     img: gallery2,
-    link: "/playingwiththelightsofsydney",
+    link: "/photography/playingwiththelightsofsydney",
     description: "Lights Of Sydney",
   },
 
   {
     img: gallery3,
-    link: "/helsinkisecondbatch",
+    link: "/portraits/helsinkisecondbatch",
     description: "Helsinki Second Batch",
   },
 
   {
     img: gallery4,
-    link: "/allegories",
+    link: "/photography/allegories",
     description: "Allegories",
   },
 
   {
     img: gallery5,
-    link: "/whiletraveling",
+    link: "/photography/whiletraveling",
     description: "While Traveling",
   },
 ]
