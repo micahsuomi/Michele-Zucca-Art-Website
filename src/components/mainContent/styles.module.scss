@@ -1,0 +1,15 @@
+@import "../../scss/main.scss";
+
+.content {
+    flex-grow: 1;
+    padding: 12rem 12rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    @include lg {
+      flex-grow: 1;
+      padding: 9rem 3rem;
+    }
+    @include sm {
+      padding: 7rem 1rem;
+    }
+  }
