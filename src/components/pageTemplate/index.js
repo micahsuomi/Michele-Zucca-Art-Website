@@ -30,7 +30,7 @@ const PageTemplate = ({
             return (
               <div className={portfolioStyles.card} key={slug}>
                 <Link
-                  to={`/${linkUrl}/${slug}`}
+                  to={`${linkUrl}/${slug}`}
                   className={portfolioStyles.link}
                 >
                   <h3>{title}</h3>

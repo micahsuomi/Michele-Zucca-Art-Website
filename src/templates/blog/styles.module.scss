@@ -1,46 +1,43 @@
-@import '../../scss/main.scss';
+@import "../../scss/main.scss";
 .container {
-    padding: 2rem 5rem;
+  padding: 12rem 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  p:nth-of-type(2) {
+    margin-top: 2rem;
+  }
+
+  .back-to-posts-container {
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+  }
 
-    p:nth-of-type(2) {
-        margin-top: 2rem;
-    }
+  a {
+    text-decoration: none;
+    color: $color-text;
+  }
 
-
-    .back-to-posts-container {
-        margin-top: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    a {
-        text-decoration: none;
-        color: $color-text;
-        
-    }
-
-    a:hover {
-        transform: translateY(-.1rem);
-    }
-    .back-to-posts {
-        color: $color-text;
-        margin-bottom: .4rem;
-        text-transform: uppercase;
-    }
+  a:hover {
+    transform: translateY(-0.1rem);
+  }
+  .back-to-posts {
+    color: $color-text;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
 }
 .img {
-    width: 70%;
-    margin-bottom: 1rem;
+  width: 70%;
+  margin: 2rem 0;
 }
 
 @media screen and (max-width: 768px) {
-    .container {
-        padding: 5rem 0;
-    }
-
+  .container {
+    padding: 5rem 0;
+  }
 }

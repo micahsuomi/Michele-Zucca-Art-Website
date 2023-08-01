@@ -3,9 +3,10 @@ import { graphql, useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"
 
-import Layout from "../../components/layout"
-import ContactForm from "../../components/contact"
 import Head from "../../components/head"
+import Layout from "../../components/layout"
+import MainContent from "../../components/mainContent"
+import ContactForm from "../../components/contact"
 
 import styles from "./styles.module.scss"
 
@@ -34,6 +35,7 @@ const ContactPage = () => {
   return (
     <Layout>
       <Head title="Contact" />
+      <MainContent>
       <div className={styles.container}>
         <div className={styles.contactLeft}>
           <h3>{data.contentfulContactHeader.title}</h3>
@@ -63,6 +65,7 @@ const ContactPage = () => {
           <ContactForm />
         </div>
       </div>
+      </MainContent>
     </Layout>
   )
 }
