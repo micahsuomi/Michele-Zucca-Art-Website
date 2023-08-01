@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import PageTemplate from "../../components/pageTemplate"
-import "../style.scss"
+import PageTemplate from "../../../components/pageTemplate"
+
+import "../../style.scss"
 
 const AllegoriesPage = () => {
   const data = useStaticQuery(graphql`
