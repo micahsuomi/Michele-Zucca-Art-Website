@@ -87,7 +87,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  console.log("res post natal", resPostNatal)
+
   const postNatal =
   resPostNatal.data.allContentfulPostnatal.edges
   postNatal.forEach((edge, index) => {
