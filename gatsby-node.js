@@ -7,7 +7,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   //1. get path to template
   const helsinkiFirstBatchTemplate = path.resolve(
-    "./src/templates/helsinkifirstbatch/index.js"
+    "./src/templates/portraits/helsinkifirstbatch/index.js"
   )
   const resHelsinkiFirstBatch = await graphql(`
     query {
@@ -26,7 +26,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: helsinkiFirstBatchTemplate,
-      path: `/helsinkifirstbatch/${edge.node.slug}`,
+      path: `/portraits/helsinkifirstbatch/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,
@@ -40,7 +40,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
   const helsinkiSecondBatchTemplate = path.resolve(
-    "./src/templates/helsinkisecondbatch/index.js"
+    "./src/templates/portraits/helsinkisecondbatch/index.js"
   )
   const resHelsinkiSecondBatch = await graphql(`
     query {
@@ -59,7 +59,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: helsinkiSecondBatchTemplate,
-      path: `/helsinkisecondbatch/${edge.node.slug}`,
+      path: `/portraits/helsinkisecondbatch/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,
@@ -109,7 +109,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 })
 
   const theLordAndTheNewCreaturesTemplate = path.resolve(
-    "./src/templates/thelordandthenewcreatures/index.js"
+    "./src/templates/portraits/thelordandthenewcreatures/index.js"
   )
   const resTheLordAndTheNewCreatures = await graphql(`
     query {
@@ -130,7 +130,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: theLordAndTheNewCreaturesTemplate,
-      path: `/thelordandthenewcreatures/${edge.node.slug}`,
+      path: `/portraits/thelordandthenewcreatures/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,
@@ -200,7 +200,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const allegoriesTemplate = path.resolve("./src/templates/allegories/index.js")
+  const allegoriesTemplate = path.resolve("./src/templates/photography/allegories/index.js")
   const resAllegories = await graphql(`
     query {
       allContentfulAllegories {
@@ -217,7 +217,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: allegoriesTemplate,
-      path: `/allegories/${edge.node.slug}`,
+      path: `/photography/allegories/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,
@@ -230,7 +230,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 
   const playingWithTheLightsOfSydneyTemplate = path.resolve(
-    "./src/templates/playingwiththelightsofsydney/index.js"
+    "./src/templates/photography/playingwiththelightsofsydney/index.js"
   )
   const resLights = await graphql(`
     query {
@@ -249,7 +249,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: playingWithTheLightsOfSydneyTemplate,
-      path: `/playingwiththelightsofsydney/${edge.node.slug}`,
+      path: `/photography/playingwiththelightsofsydney/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,
@@ -264,7 +264,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 
   const whileTravelingTemplate = path.resolve(
-    "./src/templates/whiletraveling/index.js"
+    "./src/templates/photography/whiletraveling/index.js"
   )
   const resWhileTraveling = await graphql(`
     query {
@@ -283,7 +283,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       //the component in the object is the path to the component
       component: whileTravelingTemplate,
-      path: `/whiletraveling/${edge.node.slug}`,
+      path: `/photography/whiletraveling/${edge.node.slug}`,
       context: {
         //slug in this case is like an id
         slug: edge.node.slug,

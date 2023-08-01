@@ -2,19 +2,18 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import PageTemplate from "../../components/pageTemplate"
-import "../style.scss"
+import "../../style.scss"
 
-const AllegoriesPage = () => {
+const TheLordAndTheNewCreatures = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulAllegoriesHeader {
+      contentfulTheLordAndTheNewCreaturesHeader {
         title
         description {
           json
         }
       }
-
-      allContentfulAllegories {
+      allContentfulTheLordAndTheNewCreatures {
         edges {
           node {
             title
@@ -29,16 +28,17 @@ const AllegoriesPage = () => {
       }
     }
   `)
-  const { title, description } = data.contentfulAllegoriesHeader
+  const { title, description } = data.contentfulTheLordAndTheNewCreaturesHeader
   return (
     <PageTemplate
-      headTitle="Allegories"
+      headTitle="The lord and the new creatures"
       title={title}
       description={description}
-      contentTypeEdges={data.allContentfulAllegories.edges}
-      linkUrl="allegories"
+      contentTypeEdges={data.allContentfulTheLordAndTheNewCreatures.edges}
+      linkUrl="/portraits/thelordandthenewcreatures"
+      styles="vertical"
     />
   )
 }
 
-export default AllegoriesPage
+export default TheLordAndTheNewCreatures

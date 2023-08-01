@@ -3,13 +3,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -35,11 +35,11 @@ export const query = graphql`
 `
 const HelsinkiFirstBatch = ({ pageContext, data }) => {
   const previousHelsinkiFirstBatch = pageContext.previous && {
-    url: `/helsinkifirstbatch/${pageContext.previous.slug}`,
+    url: `/portraits/helsinkifirstbatch/${pageContext.previous.slug}`,
   }
 
   const nextHelsinkiFirstBatch = pageContext.next && {
-    url: `/helsinkifirstbatch/${pageContext.next.slug}`,
+    url: `/portraits/helsinkifirstbatch/${pageContext.next.slug}`,
   }
   const options = {
     renderNode: {
@@ -56,7 +56,7 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/helsinkifirstbatch" />
+        <ExitContainer exitLink="/portraits/helsinkifirstbatch" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>

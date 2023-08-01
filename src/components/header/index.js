@@ -52,6 +52,9 @@ const Header = ({ title, subtitle }) => {
         console.log("its open!!!")
         // setPortraitsOpen(true)
       }
+      if (getUrl.includes("photography")) {
+        setPhotographyOpen(true)
+      }
     }
   }, [isToggled])
 
@@ -144,7 +147,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/helsinkifirstbatch"
+                      to="/portraits/helsinkifirstbatch"
                       onClick={closeToggleMenu}
                     >
                       Helsinki First Batch
@@ -154,7 +157,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/helsinkisecondbatch"
+                      to="/portraits/helsinkisecondbatch"
                       onClick={closeToggleMenu}
                     >
                       Helsinki Second Batch
@@ -164,7 +167,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/postnatal"
+                      to="/portraits/postnatal"
                       onClick={closeToggleMenu}
                     >
                       Postnatal
@@ -174,7 +177,7 @@ const Header = ({ title, subtitle }) => {
                     <Link
                       className={headerStyles.navItemNested}
                       activeClassName={headerStyles.activeNavItem}
-                      to="/thelordandthenewcreatures"
+                      to="/portraits/thelordandthenewcreatures"
                       onClick={closeToggleMenu}
                     >
                       The L. and N. C.
@@ -235,7 +238,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/allegories"
+                    to="/photography/allegories"
                     onClick={closeDropdown}
                   >
                     Allegories
@@ -245,7 +248,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/playingwiththelightsofsydney"
+                    to="/photography/playingwiththelightsofsydney"
                     onClick={closeDropdown}
                   >
                     Lights Of Sydney
@@ -255,7 +258,7 @@ const Header = ({ title, subtitle }) => {
                   <Link
                     className={headerStyles.navItemNested}
                     activeClassName={headerStyles.activeNavItem}
-                    to="/whiletraveling"
+                    to="/photography/whiletraveling"
                     onClick={closeDropdown}
                   >
                     While Travelling

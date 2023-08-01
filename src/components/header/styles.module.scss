@@ -18,7 +18,7 @@ header {
 
 .title-wrapper {
   @include md {
-    padding: 0.4rem;
+    padding: 0.2rem;
   }
 }
 
@@ -284,7 +284,7 @@ nav {
 @media screen and (max-width: 500px) {
   header {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0.15rem 0.8rem;
+    padding: 0.15rem 1.7rem 0.15rem 0.8rem;
   }
   .nav-item {
     font-size: var(--font-size-small);

@@ -4,16 +4,17 @@ import { graphql, useStaticQuery } from "gatsby"
 import PageTemplate from "../../components/pageTemplate"
 import "../style.scss"
 
-const HelsinkiSecondBatch = () => {
+const AllegoriesPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulHelsinkiSecondBatchHeader {
+      contentfulAllegoriesHeader {
         title
         description {
           json
         }
       }
-      allContentfulHelsinkiSecondBatch {
+
+      allContentfulAllegories {
         edges {
           node {
             title
@@ -28,17 +29,16 @@ const HelsinkiSecondBatch = () => {
       }
     }
   `)
-  const { title, description } = data.contentfulHelsinkiSecondBatchHeader
+  const { title, description } = data.contentfulAllegoriesHeader
   return (
     <PageTemplate
-      headTitle="Helsinki second batch"
+      headTitle="Allegories"
       title={title}
       description={description}
-      contentTypeEdges={data.allContentfulHelsinkiSecondBatch.edges}
-      linkUrl="helsinkisecondbatch"
-      styles="vertical"
+      contentTypeEdges={data.allContentfulAllegories.edges}
+      linkUrl="/photography/allegories"
     />
   )
 }
 
-export default HelsinkiSecondBatch
+export default AllegoriesPage

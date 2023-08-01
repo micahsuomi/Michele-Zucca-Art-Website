@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -7,7 +7,6 @@ import Image from "../../components/image"
 import PreviousPageLink from "../../components/previousPageLink"
 import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
-import { useBreakPoints } from "../../utils/useBreakPoints"
 
 import portfolioStyles from "../portfolio.module.scss"
 
@@ -31,9 +30,6 @@ export const query = graphql`
   }
 `
 const Abstracts = ({ pageContext, data }) => {
-  console.log(useBreakPoints())
-  const { isTabletOrMobile } = useBreakPoints()
-  console.log(isTabletOrMobile)
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -60,7 +56,10 @@ const Abstracts = ({ pageContext, data }) => {
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
-            <Image image={image} imageStyle="portrait" />
+            <Image
+              image={image}
+              imageStyle="portrait"
+            />
           </div>
           <div>
             {previousAbstracts && (
@@ -71,9 +70,7 @@ const Abstracts = ({ pageContext, data }) => {
             {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} />}
           </div>
         </div>
-        <div className={portfolioStyles.contentBody}>
-          {documentToReactComponents(body.json, options)}
-        </div>
+        <div>{documentToReactComponents(body.json, options)}</div>
       </div>
     </div>
   )

@@ -39,7 +39,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
       title={pageTitle}
       description={pageDescription}
       contentTypeEdges={data.allContentfulPlayingWithTheLightsOfSydney.edges}
-      linkUrl="playingwiththelightsofsydney"
+      linkUrl="/photography/playingwiththelightsofsydney"
     />
   )
 }

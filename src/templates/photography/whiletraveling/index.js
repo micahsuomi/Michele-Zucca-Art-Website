@@ -2,13 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -38,18 +38,18 @@ const WhileTraveling = ({ pageContext, data }) => {
   }
 
   const previousWhileTraveling = pageContext.next && {
-    url: `/whiletraveling/${pageContext.next.slug}`,
+    url: `/photography/whiletraveling/${pageContext.next.slug}`,
   }
 
   const nextWhileTraveling = pageContext.previous && {
-    url: `/whiletraveling/${pageContext.previous.slug}`,
+    url: `/photography/whiletraveling/${pageContext.previous.slug}`,
   }
   const { title, image, body } = data.contentfulWhileTraveling
   return (
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/whiletraveling" />
+        <ExitContainer exitLink="/photography/whiletraveling" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
