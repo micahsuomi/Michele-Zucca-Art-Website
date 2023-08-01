@@ -10,11 +10,12 @@ import { JsonLd } from "../components/jsonld"
 import Head from "../components/head"
 import Layout from "../components/layout"
 import GallerySlider from "../components/galleryslider"
+import MainContent from "../components/mainContent"
 import "../styles/index.scss"
 
 import homeStyles from "./home.module.scss"
 
-const IndexPage = props => {
+const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
       contentfulHome {
@@ -67,7 +68,8 @@ const IndexPage = props => {
         </JsonLd>
       </Helmet>
       <Head title="Home" />
-      <div className={homeStyles.hideMobile}> <GallerySlider /></div>
+      <div className={homeStyles.galleryContainer}><GallerySlider /></div>
+      <MainContent>
       <h1 className={homeStyles.homeHeader}>{title}</h1>
       {documentToReactComponents(body.json, images)}
       <p>
@@ -79,6 +81,7 @@ const IndexPage = props => {
           />
         </Link>
       </p>
+      </MainContent>
     </Layout>
   )
 }

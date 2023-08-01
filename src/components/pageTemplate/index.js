@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 
 import Head from "../head"
 import Layout from "../layout"
+import MainContent from "../mainContent"
 
 import "../../pages/style.scss"
 import portfolioStyles from "../../pages/portfolio.module.scss"
@@ -18,8 +19,10 @@ const PageTemplate = ({
   linkUrl,
   styles,
 }) => {
+  console.log("styles", styles)
   return (
     <Layout>
+      <MainContent>
       <Head title={headTitle} />
       <h1>{title}</h1>
       {documentToReactComponents(description.json)}
@@ -45,6 +48,7 @@ const PageTemplate = ({
           )
         })}
       </ul>
+      </MainContent>
     </Layout>
   )
 }
