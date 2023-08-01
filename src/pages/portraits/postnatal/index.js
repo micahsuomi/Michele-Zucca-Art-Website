@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import PageTemplate from "../../components/pageTemplate"
-import "../style.scss"
+import PageTemplate from "../../../components/pageTemplate"
+import "../../style.scss"
 
 const PostNatal = () => {
   const data = useStaticQuery(graphql`
