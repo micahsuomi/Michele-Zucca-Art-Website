@@ -9,7 +9,6 @@ import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
-import styles from "./styles.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -48,7 +47,6 @@ const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
 
   const {
     title,
-    subtitle,
     image,
     body,
   } = data.contentfulPlayingWithTheLightsOfSydney

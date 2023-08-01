@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -60,10 +60,7 @@ const Abstracts = ({ pageContext, data }) => {
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
-            <Image
-              image={image}
-              imageStyle="portrait"
-            />
+            <Image image={image} imageStyle="portrait" />
           </div>
           <div>
             {previousAbstracts && (
@@ -74,7 +71,9 @@ const Abstracts = ({ pageContext, data }) => {
             {nextAbstracts && <NextPageLink nextUrl={nextAbstracts.url} />}
           </div>
         </div>
-        <div>{documentToReactComponents(body.json, options)}</div>
+        <div className={portfolioStyles.contentBody}>
+          {documentToReactComponents(body.json, options)}
+        </div>
       </div>
     </div>
   )

@@ -15,7 +15,6 @@ export const query = graphql`
   query($slug: String!) {
     contentfulHelsinkiFirstBatch(slug: { eq: $slug }) {
       title
-      subtitle
       image {
         file {
           url
@@ -53,7 +52,6 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
   }
 
   const { title, subtitle, image, body } = data.contentfulHelsinkiFirstBatch
-  console.log(image)
   return (
     <>
       <Head title={title} />

@@ -9,7 +9,6 @@ import NextPageLink from "../../components/nextPageLink"
 import ExitContainer from "../../components/exitContainer"
 
 import portfolioStyles from "../portfolio.module.scss"
-import styles from "./styles.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -54,10 +53,8 @@ const Allegories = ({ pageContext, data }) => {
         <h2>{title}</h2>
         <h4>{subtitle}</h4>
         <div className={portfolioStyles.sliderContainer}>
-        <div className={portfolioStyles.imageContainer}>
-            <Image
-              image={image}
-            />
+          <div className={portfolioStyles.imageContainer}>
+            <Image image={image} />
           </div>
           <div>
             {previousAllegories && (
@@ -68,7 +65,10 @@ const Allegories = ({ pageContext, data }) => {
             {nextAllegories && <NextPageLink nextUrl={nextAllegories.url} />}
           </div>
         </div>
-        {documentToReactComponents(body.json, options)}
+        <div className={portfolioStyles.contentBody}>
+          {" "}
+          {documentToReactComponents(body.json, options)}
+        </div>
       </div>
     </div>
   )
