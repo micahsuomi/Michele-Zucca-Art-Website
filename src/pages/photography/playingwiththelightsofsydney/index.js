@@ -1,12 +1,8 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
 
-import Layout from "../../../components/layout"
-import Head from "../../../components/head"
+import PageTemplate from "../../../components/pageTemplate"
 
-import portfolioStyles from "../../portfolio.module.scss"
 import "../../style.scss"
 
 const PlayingWithTheLightsOfSydneyPage = () => {
@@ -18,7 +14,7 @@ const PlayingWithTheLightsOfSydneyPage = () => {
           json
         }
       }
-      allContentfulPlayingWithTheLightsOfSydney{
+      allContentfulPlayingWithTheLightsOfSydney {
         edges {
           node {
             title
@@ -37,29 +33,15 @@ const PlayingWithTheLightsOfSydneyPage = () => {
     pageTitle,
     pageDescription,
   } = data.contentfulPlayingWithTheLightOfSydneyHeader
-  return (
-    <Layout>
-      <Head title="digital" />
-      <h1>{pageTitle}</h1>
-      <p>{documentToReactComponents(pageDescription.json)}</p>
 
-      <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulPlayingWithTheLightsOfSydney.edges.map(edge => {
-          const { slug, title, image } = edge.node
-          return (
-            <div className={portfolioStyles.card} key={slug}>
-              <Link
-                to={`/photography/playingwiththelightsofsydney/${slug}`}
-                className={portfolioStyles.link}
-              >
-                <h3>{title}</h3>
-                <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
-              </Link>
-            </div>
-          )
-        })}
-      </ul>
-    </Layout>
+  return (
+    <PageTemplate
+      headTitle="Playing with the lights of Sydney"
+      title={pageTitle}
+      description={pageDescription}
+      contentTypeEdges={data.allContentfulPlayingWithTheLightsOfSydney.edges}
+      linkUrl="/photography/playingwiththelightsofsydney"
+    />
   )
 }
 

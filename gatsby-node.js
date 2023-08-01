@@ -73,6 +73,41 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const postNatalTemplate = path.resolve(
+    "./src/templates/portraits/postnatal/index.js"
+  )
+  const resPostNatal = await graphql(`
+    query {
+      allContentfulPostnatal {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  const postNatal =
+  resPostNatal.data.allContentfulPostnatal.edges
+  postNatal.forEach((edge, index) => {
+  createPage({
+    //the component in the object is the path to the component
+    component: postNatalTemplate,
+    path: `/portraits/postnatal/${edge.node.slug}`,
+    context: {
+      //slug in this case is like an id
+      slug: edge.node.slug,
+      index: index,
+      previous: index === 0 ? null : postNatal[index - 1].node,
+      next:
+        index === postNatal.length - 1
+          ? null
+          : postNatal[index + 1].node,
+    },
+  })
+})
+
   const theLordAndTheNewCreaturesTemplate = path.resolve(
     "./src/templates/portraits/thelordandthenewcreatures/index.js"
   )

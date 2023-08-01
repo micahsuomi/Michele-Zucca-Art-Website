@@ -1,5 +1,4 @@
 import React from "react"
-
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
@@ -13,7 +12,7 @@ import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulHelsinkiFirstBatch(slug: { eq: $slug }) {
+    contentfulPostnatal(slug: { eq: $slug }) {
       title
       image {
         file {
@@ -25,22 +24,15 @@ export const query = graphql`
         json
       }
     }
-    contentfulHelsinkiFirstBatchHeader {
+    contentfulPostnatalHeader {
       title
-      body {
+      description {
         json
       }
     }
   }
 `
-const HelsinkiFirstBatch = ({ pageContext, data }) => {
-  const previousHelsinkiFirstBatch = pageContext.previous && {
-    url: `/portraits/helsinkifirstbatch/${pageContext.previous.slug}`,
-  }
-
-  const nextHelsinkiFirstBatch = pageContext.next && {
-    url: `/portraits/helsinkifirstbatch/${pageContext.next.slug}`,
-  }
+const PostNatal = ({ pageContext, data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
@@ -50,13 +42,20 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
       },
     },
   }
+  const previousPostnatal = pageContext.previous && {
+    url: `/portraits/postnatal/${pageContext.previous.slug}`,
+  }
 
-  const { title, subtitle, image, body } = data.contentfulHelsinkiFirstBatch
+  const nextPostnatal = pageContext.next && {
+    url: `/portraits/postnatal/${pageContext.next.slug}`,
+  }
+
+  const { title, image, body } = data.contentfulPostnatal
   return (
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/portraits/helsinkifirstbatch" />
+        <ExitContainer exitLink="/portraits/postnatal" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
@@ -66,21 +65,20 @@ const HelsinkiFirstBatch = ({ pageContext, data }) => {
             />
           </div>
           <div>
-            {previousHelsinkiFirstBatch && (
-              <PreviousPageLink prevUrl={previousHelsinkiFirstBatch.url} />
+            {previousPostnatal && (
+              <PreviousPageLink prevUrl={previousPostnatal.url} />
             )}
           </div>
           <div>
-            {nextHelsinkiFirstBatch && (
-              <NextPageLink nextUrl={nextHelsinkiFirstBatch.url} />
+            {nextPostnatal && (
+              <NextPageLink nextUrl={nextPostnatal.url} />
             )}
           </div>
         </div>
-        <h4>{subtitle}</h4>
         {documentToReactComponents(body.json, options)}
       </div>
     </>
   )
 }
 
-export default HelsinkiFirstBatch
+export default PostNatal

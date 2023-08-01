@@ -1,11 +1,8 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
 
-import Layout from "../../components/layout"
-import Head from "../../components/head"
+import PageTemplate from "../../components/pageTemplate"
 
-import portfolioStyles from "../portfolio.module.scss"
 import "../style.scss"
 
 const Digital = () => {
@@ -28,25 +25,13 @@ const Digital = () => {
   `)
 
   return (
-    <Layout>
-      <Head title="Digital" />
-      <h1>Digital</h1>
-      <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulDigital.edges.map(edge => {
-          const { slug, title, image } = edge.node
-          return (
-            <div className={portfolioStyles.card}>
-              <Link to={`/digital/${slug}`} className={portfolioStyles.link}>
-                <h3>{title}</h3>
-                <div class={portfolioStyles.imageContainer}>
-                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
-                </div>
-              </Link>
-            </div>
-          )
-        })}
-      </ul>
-    </Layout>
+    <PageTemplate
+      headTitle="Digital"
+      title="Digital"
+      description={null}
+      contentTypeEdges={data.allContentfulDigital.edges}
+      linkUrl="/digital"
+    />
   )
 }
 

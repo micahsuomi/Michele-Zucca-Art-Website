@@ -1,13 +1,8 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
 
-import Head from "../../../components/head"
-import Layout from "../../../components/layout"
+import PageTemplate from "../../../components/pageTemplate"
 
-import portfolioStyles from "../../portfolio.module.scss"
-import stylesVertical from "../../stylesVertical.module.scss"
 import "../../style.scss"
 
 const HelsinkiSecondBatch = () => {
@@ -36,29 +31,14 @@ const HelsinkiSecondBatch = () => {
   `)
   const { title, description } = data.contentfulHelsinkiSecondBatchHeader
   return (
-    <Layout>
-      <Head title="helsinki second batch" />
-      <h1>{title}</h1>
-      {documentToReactComponents(description.json)}
-      <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulHelsinkiSecondBatch.edges.map(edge => {
-          const { slug, title, image } = edge.node
-          return (
-            <div className={portfolioStyles.card}>
-              <Link
-                to={`/portraits/helsinkisecondbatch/${slug}`}
-                className={portfolioStyles.link}
-              >
-                <h3>{title}</h3>
-                <div class={stylesVertical.imageContainer}>
-                  <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
-                </div>
-              </Link>
-            </div>
-          )
-        })}
-      </ul>
-    </Layout>
+    <PageTemplate
+      headTitle="Helsinki second batch"
+      title={title}
+      description={description}
+      contentTypeEdges={data.allContentfulHelsinkiSecondBatch.edges}
+      linkUrl="/portraits/helsinkisecondbatch"
+      styles="vertical"
+    />
   )
 }
 

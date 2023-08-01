@@ -3,11 +3,14 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Layout from "../../components/layout"
+
 import Head from "../../components/head"
+import Layout from "../../components/layout"
+import MainContent from "../../components/mainContent"
+
 import aboutStyles from "./styles.module.scss"
 
-const AboutPage = props => {
+const AboutPage = () => {
   const data = useStaticQuery(graphql`
     query {
       contentfulAbout {
@@ -35,22 +38,24 @@ const AboutPage = props => {
     <div>
       <Layout>
         <Head title="About" />
-        <div className={aboutStyles.container}>
-          <h1>{title}</h1>
-          <div>{documentToReactComponents(body.json, options)}</div>
-          <p>
-            {" "}
-            If you would like to get in touch,
-            <Link to="/contact" className={aboutStyles.contact}>
+        <MainContent>
+          <div className={aboutStyles.container}>
+            <h1>{title}</h1>
+            <div>{documentToReactComponents(body.json, options)}</div>
+            <p>
               {" "}
-              Contact Me
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className={aboutStyles.contactIcon}
-              />
-            </Link>
-          </p>
-        </div>
+              If you would like to get in touch,
+              <Link to="/contact" className={aboutStyles.contact}>
+                {" "}
+                Contact Me
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className={aboutStyles.contactIcon}
+                />
+              </Link>
+            </p>
+          </div>
+        </MainContent>
       </Layout>
     </div>
   )

@@ -1,9 +1,9 @@
 import React from "react"
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa"
-import gatsbyImg from "../../imgs/gatsby-logo.png"
+
 import footerStyles from "./styles.module.scss"
 
-const Footer = ({ author, link }) => {
+const Footer = ({ author }) => {
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.left}>

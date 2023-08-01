@@ -5,7 +5,7 @@ header {
   grid-template-columns: 25% 75%;
   justify-content: space-between;
   position: fixed;
-  padding: 0.2rem 1.2rem;
+  padding: 0.5rem 3rem;
   width: 100vw;
   box-shadow: 0px 3px 10px #00000033;
   height: 70px;
@@ -17,8 +17,6 @@ header {
 }
 
 .title-wrapper {
-  padding: 0.5rem 8px;
-
   @include md {
     padding: 0.2rem;
   }
@@ -82,12 +80,12 @@ nav {
   text-decoration: none;
   font-weight: 400;
   overflow: hidden;
-  // font-size: 15px;
   text-align: center;
   width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid rgba(147, 139, 139, 0.2);
 }
 
 .nav-item,
@@ -104,7 +102,6 @@ nav {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    // width: 100%;
     cursor: pointer;
     text-align: center;
   }
@@ -117,16 +114,10 @@ nav {
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  // cursor: pointer;
 }
 
 .drop-down-icon {
   margin-left: 0.8rem;
-}
-
-.nav-item-nested {
-  margin-left: -2.2rem;
-  width: 100%;
 }
 
 .nestedNavItem {
@@ -145,55 +136,49 @@ nav {
 .nav-list-item:hover,
 .nav-item-nested:hover,
 .nav-list-item-dropdown:hover {
-  // background-color: red;
   display: block;
   content: "";
-  // border-bottom: 3.7px dotted rgb(44, 42, 43);
-  transform: scaleX(0);
+  transform: scale(1.02);
   transition: transform 200ms ease-in-out;
-  background-color: rgb(208, 199, 199);
-  background-color: #f3eceb;
-  background-image: linear-gradient(19deg, #f4f1f1 0%, #d1cfd7 100%);
-  transition: 0.3s ease-in-out;
-}
-
-.nav-item:after,
-.nav-list-item:after,
-.nav-item-nested:after {
-  // color: rgb(228, 215, 215);
-  // background-color: #0f0f0f;
-  // display: block;
-  // content: "";
-  // border-bottom: 3.7px solid rgb(44, 42, 43);
-  // transform: scaleX(0);
-  // transition: transform 200ms ease-in-out;
+  background-image: linear-gradient(19deg, #f4f1f1 0%, #c7397b 100%);
+  transition: 0.1s ease-in-out;
 }
 
 .nav-item:not(.active-nav-item):hover,
 .nav-list-item:hover,
 .nav-item-nested:hover,
 .nav-list-item button:hover {
-  transform: scaleX(1.02);
-  transform-origin: 0% 0.2%;
-  color: rgba(76, 66, 66, 0.6);
+  // transform: scaleX(1.005);
+  transform-origin: 10% 20%;
+  color: rgba(30, 28, 28, 0.9);
+  // border-bottom: 2px solid rgb(193, 192, 192);
+  font-weight: 700;
 }
 
 .nav-item:not(.active-nav-item):hover:after,
 .nav-list-item:hover:after,
 .nav-item-dropdown:hover:after,
 .nav-item-nested:not(.active-nav-item):hover:after {
-  transform: scaleX(1);
-  transform-origin: 0% 0.2%;
-}
-.nav-item-nested:not(.active-nav-item):hover:after {
-  margin-left: -2rem;
+  // transform: scaleX(1);
+  // transform-origin: 0% 0.2%;
+  // position: relative;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
 }
 
 .active-nav-item {
-  border-bottom: 3.7px dotted rgb(237, 236, 236);
-  // color: black;
+  border-bottom: 3.7px solid rgb(34, 20, 20);
   background-color: #f3eceb;
-  background-image: linear-gradient(19deg, #f4f1f1 0%, #858488 100%);
+  // background-image: linear-gradient(19deg, #f4f1f1 0%, #858488 100%);
 }
 
 .nav-item:active,
@@ -209,8 +194,6 @@ nav {
   display: none;
 }
 
-// @media screen and (max-width: 1024px) {
-
 nav {
   position: relative;
 }
@@ -218,18 +201,16 @@ nav {
   color: rgb(53, 36, 46);
   display: flex;
   border-radius: 500px;
-  padding: 0.4rem 0.7rem;
   float: right;
   @include sm {
     padding: 0;
-    margin-right: -0.6rem;
     margin-top: 0.2rem;
   }
 }
 
 .toggle-bar {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   position: relative;
   cursor: pointer;
   float: right;
@@ -259,7 +240,9 @@ nav {
 .nestedNavList {
   position: relative;
   width: 100%;
+  padding-left: 0;
 }
+
 .nav-item,
 .nav-list-item span,
 .nav-list-item,
@@ -267,12 +250,10 @@ nav {
   text-transform: uppercase;
   font-size: var(--font-size-mediumsmall);
   color: #0f0f0f;
-  // border-bottom: 1px solid #ccc7c7;
 }
 
 .nested-list-item {
   list-style: none;
-  // border-bottom: 1px solid #ccc7c7;
 }
 
 .nav-item-nested {
@@ -323,7 +304,7 @@ nav {
   }
   50.0% {
     background-color: rgb(231, 227, 227);
-  } /* your chosen 'mid' color */
+  }
   100.0% {
     background-color: white;
   }
@@ -335,7 +316,7 @@ nav {
   }
   50.0% {
     background-color: rgb(231, 227, 227);
-  } /* your chosen 'mid' color */
+  }
   100.0% {
     background-color: white;
   }

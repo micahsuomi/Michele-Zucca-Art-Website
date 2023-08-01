@@ -1,42 +1,43 @@
-@import '../../scss/main.scss';
+@import "../../scss/main.scss";
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    align-self: flex-start;
+    font-weight: 800;
+  }
+
+  div {
+    line-height: $paragraph-line-height;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-
-    h1 {
-        align-self: flex-start;
-        font-weight: 800;
-    }
-
-    div {
-        line-height: $paragraph-line-height;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  }
 }
 .about-img {
-    width: 80%;
-    justify-self: center;
-    @include sm {
-        width: 98%;
-    }
+  width: 80%;
+  justify-self: center;
+  margin: 1rem 0;
+  @include sm {
+    width: 98%;
+  }
 }
 
 .contact {
-    text-decoration: none;
-    font-weight: 700;
-    color: $color-text;
+  text-decoration: none;
+  font-weight: 700;
+  color: $color-text;
 }
 
 .contact-icon {
-    margin: .6rem;
+  margin: 0.6rem;
 }
 
 .contact:hover {
-    color: skyblue;
+  color: skyblue;
 }

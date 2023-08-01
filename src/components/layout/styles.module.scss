@@ -1,4 +1,5 @@
 @import "../../scss/main.scss";
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -9,14 +10,4 @@
   }
 }
 
-.content {
-  flex-grow: 1;
-  padding: 10rem 11rem;
-  @include lg {
-    flex-grow: 1;
-    padding: 9rem 3rem;
-  }
-  @include sm {
-    padding: 7rem 1rem;
-  }
-}
+

@@ -47,7 +47,6 @@ const PlayingWithTheLightsOfSydney = ({ pageContext, data }) => {
 
   const {
     title,
-    subtitle,
     image,
     body,
   } = data.contentfulPlayingWithTheLightsOfSydney

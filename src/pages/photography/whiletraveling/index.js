@@ -1,12 +1,8 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
 
-import Layout from "../../../components/layout"
-import Head from "../../../components/head"
+import PageTemplate from "../../../components/pageTemplate"
 
-import portfolioStyles from "../../portfolio.module.scss"
 import "../../style.scss"
 
 const WhileTravelingPage = () => {
@@ -18,7 +14,6 @@ const WhileTravelingPage = () => {
           json
         }
       }
-
       allContentfulWhileTraveling(sort: { fields: createdAt, order: ASC }) {
         edges {
           node {
@@ -36,27 +31,13 @@ const WhileTravelingPage = () => {
   `)
   const { title, description } = data.contentfulWhileTravelingHeader
   return (
-    <Layout>
-      <Head title="while traveling" />
-      <h1>{title}</h1>
-      {documentToReactComponents(description.json)}
-      <ul className={portfolioStyles.wrapper}>
-        {data.allContentfulWhileTraveling.edges.map(edge => {
-          const { slug, title, image } = edge.node
-          return (
-            <div className={portfolioStyles.card} key={slug}>
-              <Link
-                to={`/photography/whiletraveling/${slug}`}
-                className={portfolioStyles.link}
-              >
-                <h3>{title}</h3>
-                <Img fluid={image.fluid} src={image.fluid.src} alt={title} />
-              </Link>
-            </div>
-          )
-        })}
-      </ul>
-    </Layout>
+    <PageTemplate
+      headTitle="While traveling"
+      title={title}
+      description={description}
+      contentTypeEdges={data.allContentfulWhileTraveling.edges}
+      linkUrl="/photography/whiletraveling"
+    />
   )
 }
 

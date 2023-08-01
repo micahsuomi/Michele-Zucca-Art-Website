@@ -2,19 +2,18 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import PageTemplate from "../../../components/pageTemplate"
-
 import "../../style.scss"
 
-const HelsinkiFirstBatch = () => {
+const PostNatal = () => {
   const data = useStaticQuery(graphql`
     query {
-      contentfulHelsinkiFirstBatchHeader {
+      contentfulPostnatalHeader {
         title
-        body {
+        description {
           json
         }
       }
-      allContentfulHelsinkiFirstBatch(sort: { fields: createdAt, order: ASC }) {
+      allContentfulPostnatal {
         edges {
           node {
             title
@@ -29,17 +28,17 @@ const HelsinkiFirstBatch = () => {
       }
     }
   `)
-  const { title, body } = data.contentfulHelsinkiFirstBatchHeader
+  const { title, description } = data.contentfulPostnatalHeader
   return (
     <PageTemplate
-      headTitle="Helsinki first batch"
+      headTitle="Postnatal"
       title={title}
-      description={body}
-      contentTypeEdges={data.allContentfulHelsinkiFirstBatch.edges}
-      linkUrl="/portraits/helsinkifirstbatch"
+      description={description}
+      contentTypeEdges={data.allContentfulPostnatal.edges}
+      linkUrl="/portraits/postnatal"
       styles="vertical"
     />
   )
 }
 
-export default HelsinkiFirstBatch
+export default PostNatal
