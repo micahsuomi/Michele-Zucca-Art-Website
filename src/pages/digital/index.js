@@ -30,7 +30,7 @@ const Digital = () => {
       title="Digital"
       description={null}
       contentTypeEdges={data.allContentfulDigital.edges}
-      linkUrl="digital"
+      linkUrl="/digital"
     />
   )
 }

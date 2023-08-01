@@ -37,7 +37,7 @@ const AbstractsPage = () => {
       title={title}
       description={description}
       contentTypeEdges={data.allContentfulAbstracts.edges}
-      linkUrl="abstracts"
+      linkUrl="/abstracts"
     />
   )
 }

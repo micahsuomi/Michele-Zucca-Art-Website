@@ -35,7 +35,7 @@ const PostNatal = () => {
       title={title}
       description={description}
       contentTypeEdges={data.allContentfulPostnatal.edges}
-      linkUrl="postnatal"
+      linkUrl="/portraits/postnatal"
       styles="vertical"
     />
   )

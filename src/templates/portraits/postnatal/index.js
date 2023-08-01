@@ -2,13 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Head from "../../components/head"
-import Image from "../../components/image"
-import PreviousPageLink from "../../components/previousPageLink"
-import NextPageLink from "../../components/nextPageLink"
-import ExitContainer from "../../components/exitContainer"
+import Head from "../../../components/head"
+import Image from "../../../components/image"
+import PreviousPageLink from "../../../components/previousPageLink"
+import NextPageLink from "../../../components/nextPageLink"
+import ExitContainer from "../../../components/exitContainer"
 
-import portfolioStyles from "../portfolio.module.scss"
+import portfolioStyles from "../../portfolio.module.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -43,11 +43,11 @@ const PostNatal = ({ pageContext, data }) => {
     },
   }
   const previousPostnatal = pageContext.previous && {
-    url: `/postnatal/${pageContext.previous.slug}`,
+    url: `/portraits/postnatal/${pageContext.previous.slug}`,
   }
 
   const nextPostnatal = pageContext.next && {
-    url: `/postnatal/${pageContext.next.slug}`,
+    url: `/portraits/postnatal/${pageContext.next.slug}`,
   }
 
   const { title, image, body } = data.contentfulPostnatal
@@ -55,7 +55,7 @@ const PostNatal = ({ pageContext, data }) => {
     <>
       <Head title={title} />
       <div className={portfolioStyles.container}>
-        <ExitContainer exitLink="/postnatal" />
+        <ExitContainer exitLink="/portraits/postnatal" />
         <h2>{title}</h2>
         <div className={portfolioStyles.sliderContainer}>
           <div className={portfolioStyles.imageContainer}>
