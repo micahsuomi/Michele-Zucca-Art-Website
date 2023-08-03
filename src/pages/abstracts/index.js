@@ -14,7 +14,7 @@ const AbstractsPage = () => {
           json
         }
       }
-      allContentfulAbstracts(sort: { fields: createdAt, order: DESC }) {
+      allContentfulAbstracts {
         edges {
           node {
             title
