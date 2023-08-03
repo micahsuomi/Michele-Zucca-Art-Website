@@ -12,7 +12,15 @@
 .gallery-container {
   margin-top: 5.5rem;
   padding: 5rem 12rem;
+  position: relative;
+  @include lg {
+    padding: 5rem 3rem;
+  }
+  @include md {
+    padding: 5rem 2rem;
+  }
   @include sm {
+    padding: 1rem;
   }
 }
 
