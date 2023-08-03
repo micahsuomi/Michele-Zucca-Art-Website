@@ -1,7 +1,7 @@
 @import "../../scss/main.scss";
 
 .gallery-container {
-  position: relative;
+  // position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +16,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(68, 63, 63);
-    font-size: 38px;
     text-transform: uppercase;
-    word-break: normal;
-    font-size: 180px;
+    text-align: center;
+    font-size: 150px;
     color: #3a3333;
     opacity: 0.9;
     animation-name: appear;
@@ -29,8 +28,8 @@
     @include xl {
       font-size: 120px;
     }
-    @include md {
-      font-size: 100px;
+    @include lg {
+      font-size: 80px;
     }
     @include sm {
       font-size: 40px;
@@ -44,8 +43,8 @@
     left: 0;
     flex-shrink: 0;
     transition: all 250ms linear;
-
     flex-grow: 1;
+    max-width: 1000px;
   }
   img {
     animation-duration: 1s;
@@ -159,7 +158,10 @@
     opacity: 1;
   }
 }
+.active {}
+.overlay {
 
+}
 .pageLink {
   text-decoration: none;
   z-index: 1;
@@ -197,16 +199,16 @@
   transform: translateY(-50%);
 }
 .prev {
-  left: -12%;
+  left: 0;
   @include xl {
-    left: -7%;
+    // left: -7%;
   }
 }
 
 .next {
-  right: -12%;
+  right: 0;
   @include xl {
-    right: -7%;
+    // right: -7%;
   }
 }
 span {
