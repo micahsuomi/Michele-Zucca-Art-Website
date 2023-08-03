@@ -14,7 +14,7 @@ const WhileTravelingPage = () => {
           json
         }
       }
-      allContentfulWhileTraveling(sort: { fields: createdAt, order: ASC }) {
+      allContentfulWhileTraveling {
         edges {
           node {
             title
